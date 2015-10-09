@@ -53,7 +53,9 @@ $route['default_controller'] = 'Login';
 //USERS MANAGEMENT
 $route['login/verify'] = 'Login/Verify';
 //DATABASE MANAGEMENT
-$route['compiler/users'] = 'Compiler/Users/Index';
+$route['compiler/createdb']     = 'Compiler/Create/Index';
+$route['compiler/dropdb']       = 'Compiler/Create/Dropdb';
+$route['compiler/users']      = 'Compiler/Users/Index';
 $route['compiler/users/drop'] = 'Compiler/Users/Drop';
 //URI DASHES AND OVERRIDE
 $route['404_override'] = '';
