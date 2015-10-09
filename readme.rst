@@ -17,12 +17,13 @@ How to Use
 *******************
 
 1. Set application/config/database.php with your host, user, password your db
-2. Open <http://your-domain-name.com/compiler/createdb
+2. Open <http://your-domain-name.com/compiler/createdb>
 3. Input your database name that you want and submit
 4. For dropping see on your right screen, find your database name and click drop
 5. Now you have database that you want, back to application/config/database.php
 6. Change $config['database'] to database name that you input, now you can create table
-7. For create table see the example on application/compiler/example.php
+7. For create table see the example on application/controller/compiler/example.php
+8. You must execute the Link and you can check it on phpmyadmin for the table.
 8. Happy Coding :)
 
 *******************
