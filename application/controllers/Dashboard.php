@@ -16,12 +16,10 @@ class Dashboard extends CI_Controller {
   }
 
   //INDEX FOR FIRST VIEW
-	public function index()
+	public function Index()
   {
     //DECLARE VIEW DATA FOR WRAPPER
-    $view_data['header'] = 'header';
-    $view_data['body']   = 'body/users/login/dsp';
-    $view_data['footer'] = 'footer';
+    $view_data['body']   = 'body/dashboard/dsp';
     //LOAD VIEW DATA TO WRAPPER
     $this->load->view('wrapper',$view_data);
 	}
