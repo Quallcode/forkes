@@ -18,9 +18,9 @@
   </head>
   <body>
     <h1>Hello, world!</h1>
-    <?=$header?>
-    <?=$body?>
-    <?=$footer?>
+    <?=$this->load-view($header)?>
+    <?=$this->load->view($body)?>
+    <?=$this->load->view($footer)?>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="<?=base_url()?>includes/jquery/jquery-1.11.3.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
