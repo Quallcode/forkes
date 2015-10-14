@@ -52,6 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'Login';
 //USERS MANAGEMENT
 $route['login/verify'] = 'Login/Verify';
+$route['logout']       = 'Logout/Index';
 //DATABASE MANAGEMENT
 $route['compiler/createdb']     = 'Compiler/Create/Index';
 $route['compiler/dropdb']       = 'Compiler/Create/Dropdb';

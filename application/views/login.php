@@ -49,18 +49,18 @@
                         		</div>
                             </div>
                             <div class="form-bottom">
-			                    <form role="form" action="" method="post" class="login-form">
-			                    	<div class="form-group">
-			                    		<label class="sr-only" for="form-username">Username</label>
-			                        	<input type="text" name="form-username" placeholder="Type your username" class="form-username form-control" id="form-username">
-			                        </div>
-			                        <div class="form-group">
-			                        	<label class="sr-only" for="form-password">Password</label>
-			                        	<input type="password" name="form-password" placeholder="Type your password" class="form-password form-control" id="form-password">
-			                        </div>
-			                        <button type="submit" class="btn">Sign in!</button>
-			                    </form>
-		                    </div>
+    			                    <form role="form" action="" method="post" class="login-form">
+    			                    	<div class="form-group">
+    			                    		<label class="sr-only" for="form-username">Username</label>
+    			                        	<input type="text" name="form-username" placeholder="Type your username" class="form-username form-control" id="form-username">
+    			                        </div>
+    			                        <div class="form-group">
+    			                        	<label class="sr-only" for="form-password">Password</label>
+    			                        	<input type="password" name="form-password" placeholder="Type your password" class="form-password form-control" id="form-password">
+    			                        </div>
+    			                        <button type="submit" class="btn">Sign in!</button>
+    			                    </form>
+		                        </div>
                         </div>
                     </div>
                 </div>
@@ -70,6 +70,7 @@
 
 
         <!-- Javascript -->
+        <script type="text/javascript">var base_url = '<?=base_url()?>';</script>
         <script src="<?=base_url()?>includes/css_login/assets/js/jquery-1.11.1.min.js"></script>
         <script src="<?=base_url()?>includes/css_login/assets/bootstrap/js/bootstrap.min.js"></script>
         <script src="<?=base_url()?>includes/css_login/assets/js/jquery.backstretch.min.js"></script>

@@ -8,16 +8,17 @@ class Dashboard extends CI_Controller {
     //CALL MODEL
     $this->load->model('Model_users');
     //CHECK SESSION LOGIN
-    $session = $this->session->userdata('username');
-    if(!empty($session)) {
-      redirect('dashboard' , 'refresh');
+    $session = $this->session->userdata('user_data');
+    if(empty($session)) {
+      redirect('login' , 'refresh');
       exit();
     }
   }
 
   //INDEX FOR FIRST VIEW
-	public function Index()
-  {
+	public function Index(){
+    //DECLARE USER DATA FROM SESSION
+    $view_data['udata'] = $this->session->userdata('user_data');
     //DECLARE VIEW DATA FOR WRAPPER
     $view_data['body']   = 'body/dashboard/dsp';
     //LOAD VIEW DATA TO WRAPPER

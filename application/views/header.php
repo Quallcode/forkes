@@ -7,9 +7,8 @@
                 <img src="<?=base_url()?>includes/css_dashboard/img/img-profile.jpg" alt="Profile Pic" /></div>
             <div class="floatleft marginleft10">
                 <ul class="inline-ul floatleft">
-                    <li>Hello Admin</li>
-                    <li><a href="#">Config</a></li>
-                    <li><a href="#">Logout</a></li>
+                    <li>Halo <?=$udata['name']?></li>
+                    <li><a href="<?=base_url()?>logout">Keluar</a></li>
                 </ul>
                 <br />
                 <!--<span class="small grey">Last Login: 3 hours ago</span>-->

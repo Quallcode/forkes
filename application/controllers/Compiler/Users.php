@@ -15,6 +15,10 @@ class Users extends CI_Controller {
 	public function Index(){
     //PUT YOUR FIELD HERE
     $fields = array(
+      'name' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '100',
+      ),
       'username' => array(
               'type' => 'VARCHAR',
               'constraint' => '100',
@@ -23,6 +27,9 @@ class Users extends CI_Controller {
               'type' =>'VARCHAR',
               'constraint' => '255',
               'null' => TRUE,
+      ),
+      'type' => array(
+              'type' =>'TINYINT',
       ),
       'date_created' => array(
               'type' => 'DATETIME',
@@ -48,8 +55,10 @@ class Users extends CI_Controller {
 
   public function Insert(){
     $data = array(
+      'name'     => 'Julius Cesario',
       'username' => 'admin',
       'password' => md5('admin'),
+      'type' => 1,
       'date_created' => date('Y-m-d H:i:s')
     );
     $this->db->insert(TABLE,$data);
