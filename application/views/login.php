@@ -31,7 +31,7 @@
 
     </head>
 
-    <body style="background-image: url('<?=base_url()?>includes/css_login/assets/img/backgrounds/1.jpg'); background-size:cover">
+    <body>
 
         <!-- Top content -->
         <div class="top-content">
