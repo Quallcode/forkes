@@ -1,10 +1,10 @@
 <?php
 class Model_users extends CI_Model {
-	function check_login_valid ($username,$password) {
+	function check_login_valid ($data) {
 		$this->db->select('*');
 		$this->db->from('users');
-		$this->db->where('users.username = ',$username);
-		$this->db->where('users.password =',md5($password));
+		$this->db->where('users.username = ',$data['username']);
+		$this->db->where('users.password =',md5($data['password']));
 
 		$result = $this->db->get();
 		if ($result->num_rows() == 1) {
