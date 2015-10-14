@@ -55,8 +55,9 @@ $route['login/verify'] = 'Login/Verify';
 //DATABASE MANAGEMENT
 $route['compiler/createdb']     = 'Compiler/Create/Index';
 $route['compiler/dropdb']       = 'Compiler/Create/Dropdb';
-$route['compiler/users']      = 'Compiler/Users/Index';
-$route['compiler/users/drop'] = 'Compiler/Users/Drop';
+$route['compiler/users']        = 'Compiler/Users/Index';
+$route['compiler/users/drop']   = 'Compiler/Users/Drop';
+$route['compiler/users/insert'] = 'Compiler/Users/Insert';
 //URI DASHES AND OVERRIDE
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

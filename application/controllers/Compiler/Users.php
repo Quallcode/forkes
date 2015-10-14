@@ -5,42 +5,54 @@ class Users extends CI_Controller {
   //CONSTRUCT FOR LOGIN
   function __construct(){
     parent::__construct();
-    //CALL MODEL
+    //CALL LIBRARY
+    $this->load->database();
     $this->load->dbforge();
+    define('TABLE','users');
   }
 
   //INDEX FOR FIRST VIEW
 	public function Index(){
-    //PUT YOUR TABLE NAME HERE
-    $table_name = 'users';
     //PUT YOUR FIELD HERE
     $fields = array(
-      'blog_title' => array(
+      'username' => array(
               'type' => 'VARCHAR',
               'constraint' => '100',
       ),
-      'blog_author' => array(
+      'password' => array(
               'type' =>'VARCHAR',
-              'constraint' => '100',
-              'default' => 'King of Town',
+              'constraint' => '255',
+              'null' => TRUE,
       ),
-      'blog_description' => array(
-              'type' => 'TEXT',
+      'date_created' => array(
+              'type' => 'DATETIME',
+              'null' => TRUE,
+      ),
+      'date_modified' => array(
+              'type' => 'DATETIME',
               'null' => TRUE,
       ),
     );
     //COMPILE FOR CREATE TABLE
     $this->dbforge->add_field('id');
     $this->dbforge->add_field($fields);
-    $this->dbforge->create_table($table_name);
-    echo('Compile for create table '.$table_name.' success');
+    $this->dbforge->create_table(TABLE);
+    echo('Compile for create table '.TABLE.' success');
 	}
 
   public function Drop(){
-    //PUT YOUR TABLE NAME HERE
-    $table_name = 'users';
     //COMPILE FOR DROP TABLE
-    $this->dbforge->drop_table($table_name);
-    echo('Compile for drop table '.$table_name.' success');
+    $this->dbforge->drop_table(TABLE);
+    echo('Compile for drop table '.TABLE.' success');
+  }
+
+  public function Insert(){
+    $data = array(
+      'username' => 'admin',
+      'password' => md5('admin'),
+      'date_created' => date('Y-m-d H:i:s')
+    );
+    $this->db->insert(TABLE,$data);
+    echo('Compile for insert '.serialize($data).' to table '.TABLE.' success');
   }
 }
