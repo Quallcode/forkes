@@ -519,4 +519,5 @@ function setupATCMenu() {
         .next().addClass("current");
 		
 		$('#section-menu2 .submenu2').css('height','auto');
+		$('.submenu2 .subsubmenu2').css('height','auto');
 }
