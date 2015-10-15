@@ -6,7 +6,7 @@ class Login extends CI_Controller {
   function __construct(){
     parent::__construct();
     //INIT MODEL USERS
-    $this->load->model('model_users');
+    $this->load->model('Model_Users');
     //CHECK SESSION
     $sess = $this->session->userdata('user_data');
     if(!empty($sess)){
@@ -30,7 +30,7 @@ class Login extends CI_Controller {
       echo json_encode(array('response'=>'10','msg'=>'Empty Post'));
     }else{
       //CHECK POST TO DATABASE
-      $data = $this->model_users->check_login_valid($post);
+      $data = $this->Model_Users->Check_Login_Valid($post);
       $this->session->set_userdata(array('user_data'=>$data));
       if(!empty($data)) {
         //IF DATA EXIST

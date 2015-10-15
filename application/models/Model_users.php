@@ -1,6 +1,6 @@
 <?php
-class Model_users extends CI_Model {
-	function check_login_valid ($post) {
+class Model_Users extends CI_Model {
+	function Check_Login_Valid ($post) {
 		$this->db->select('*');
 		$this->db->from('users');
 		$this->db->where('users.username = ',$post['username']);
