@@ -41,8 +41,8 @@
                         <div class="col-sm-6 col-sm-offset-3 form-box">
                         	<div class="form-top">
                         		<div class="form-top-left">
-                        			<h3>Login to our site</h3>
-                            		<p>Enter your username and password to log on:</p>
+                        			<h3>Silahkan login terlebih dahulu</h3>
+                            		<p>Masukkan username dan password Anda:</p>
                         		</div>
                         		<div class="form-top-right">
                         			<i class="fa fa-lock"></i>
@@ -58,7 +58,7 @@
     			                        	<label class="sr-only" for="form-password">Password</label>
     			                        	<input type="password" name="form-password" placeholder="Type your password" class="form-password form-control" id="form-password">
     			                        </div>
-    			                        <button type="submit" class="btn">Sign in!</button>
+    			                        <button type="submit" class="btn">Login</button>
     			                    </form>
 		                        </div>
                         </div>

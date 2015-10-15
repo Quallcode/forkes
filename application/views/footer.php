@@ -1,5 +1,5 @@
 <div id="site_info">
     <p>
-        Copyright <a href="#">BlueWhale Admin</a>. All Rights Reserved.
+        Copyright <a href="#">Fornas 2015</a>. All Rights Reserved.
     </p>
 </div>

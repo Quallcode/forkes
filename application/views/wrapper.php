@@ -32,11 +32,10 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
+      			setupLeftMenu();
+            setupATCMenu();
+            setSidebarHeight();
             setupDashboardChart('chart1');
-            setupLeftMenu();
-			setSidebarHeight();
-
-
         });
     </script>
 </head>

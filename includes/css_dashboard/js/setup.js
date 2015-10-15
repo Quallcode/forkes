@@ -505,3 +505,18 @@ function setupLeftMenu() {
 		
 		$('#section-menu .submenu').css('height','auto');
 }
+
+function setupATCMenu() {
+    $("#section-menu2")
+        .accordion({
+            "header": "a.menuitem2"
+        })
+        .bind("accordionchangestart", function (e, data) {
+            data.newHeader.next().andSelf().addClass("current");
+            data.oldHeader.next().andSelf().removeClass("current");
+        })
+        .find("a.menuitem2:first").addClass("current")
+        .next().addClass("current");
+		
+		$('#section-menu2 .submenu2').css('height','auto');
+}
