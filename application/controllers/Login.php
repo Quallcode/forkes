@@ -27,7 +27,7 @@ class Login extends CI_Controller {
     $post = $this->input->post();
     //CHECK IF EMPTY POST
     if(empty($post)){
-      echo json_encode(array('response'=>'10','msg'=>'Empty Post'));
+      echo json_encode(array('response'=>'10','msg'=>'Data Kosong'));
     }else{
       //CHECK POST TO DATABASE
       $data = $this->Model_Users->Check_Login_Valid($post);
@@ -37,7 +37,7 @@ class Login extends CI_Controller {
         echo json_encode(array('response'=>'00','msg'=>$data));
       } else {
         //IF DATA NOT EXIST
-        echo json_encode(array('response'=>'11','msg'=>'Username or Password failed'));
+        echo json_encode(array('response'=>'11','msg'=>'ID user dan Password anda salah'));
       }
     }
   }

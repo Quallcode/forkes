@@ -6,7 +6,7 @@ class Dashboard extends CI_Controller {
   function __construct(){
     parent::__construct();
     //CALL MODEL
-    $this->load->model('Model_users');
+    $this->load->model('Model_Users');
     //CHECK SESSION LOGIN
     $session = $this->session->userdata('user_data');
     if(empty($session)) {
