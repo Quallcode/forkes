@@ -30,7 +30,7 @@
         <a href="../../index2.html"><b>FORNAS</b>LOGIN</a>
       </div><!-- /.login-logo -->
       <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+        <p class="login-box-msg">Login untuk masuk ke menu utama</p>
         <form class="login-form" method="post">
           <div class="form-group has-feedback">
             <input type="username" class="form-control" placeholder="Username" id="form-username">
@@ -42,7 +42,7 @@
           </div>
           <div class="row">
             <div class="col-xs-12">
-              <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+              <button type="submit" class="btn btn-primary btn-block btn-flat">LOGIN</button>
             </div><!-- /.col -->
           </div>
         </form>
