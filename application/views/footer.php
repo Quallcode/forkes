@@ -1,5 +1,6 @@
-<div id="site_info">
-    <p>
-        Copyright <a href="#">Fornas 2015</a>. All Rights Reserved.
-    </p>
-</div>
+<footer class="main-footer">
+  <div class="pull-right hidden-xs">
+    <b>Version</b> 2.3.0
+  </div>
+  <strong>Copyright &copy; 2015 FORNAS.</strong> All rights reserved.
+</footer>
