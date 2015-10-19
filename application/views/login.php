@@ -31,13 +31,13 @@
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your session</p>
-        <form action="<?=base_url()?>login/Verify" method="post">
+        <form class="login-form" method="post">
           <div class="form-group has-feedback">
-            <input type="username" class="form-control" placeholder="Username" name="username">
+            <input type="username" class="form-control" placeholder="Username" id="form-username">
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="password" class="form-control" placeholder="Password" name="password">
+            <input type="password" class="form-control" placeholder="Password" id="form-password">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div class="row">
@@ -56,6 +56,7 @@
     <!-- iCheck -->
     <script src="<?=base_url()?>includes/css_dashboard/plugins/iCheck/icheck.min.js"></script>
     <script>
+      var base_url = '<?=base_url()?>';
       $(function () {
         $('input').iCheck({
           checkboxClass: 'icheckbox_square-blue',
@@ -63,6 +64,44 @@
           increaseArea: '20%' // optional
         });
       });
+      $(document).ready(function() {
+        $('.login-form').on('submit', function(e) {
+
+        	$(this).find('input[type="text"], input[type="password"], textarea').each(function(){
+        		if( $(this).val() == "" ) {
+        			e.preventDefault();
+        			$(this).addClass('input-error');
+        		}
+        		else {
+        			$(this).removeClass('input-error');
+        		}
+        	});
+          //AJAX QUERY POST
+          var usernameId  = $("#form-username").val();
+          var passwordId  = $("#form-password").val();
+          var request = $.ajax({
+            url: base_url + "login/verify",
+            method: "POST",
+            data: { username : usernameId, password : passwordId },
+            dataType: "json"
+          });
+
+          request.done(function( msg ) {
+            if(msg.response == 11 || msg.response == 10)
+              alert(msg.msg);
+            else{
+              alert('Selamat datang '+msg.msg['name']);
+              window.location.replace(base_url+"dashboard");
+            }
+          });
+
+          request.fail(function( jqXHR, textStatus ) {
+            alert( "Request failed Error Connection reason : " + textStatus );
+          });
+        });
+      });
+
     </script>
+
   </body>
 </html>
