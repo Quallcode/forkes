@@ -56,9 +56,38 @@ $route['logout']       = 'Logout/Index';
 //DATABASE MANAGEMENT
 $route['compiler/createdb']     = 'Compiler/Create/Index';
 $route['compiler/dropdb']       = 'Compiler/Create/Dropdb';
+
 $route['compiler/users']        = 'Compiler/Users/Index';
 $route['compiler/users/drop']   = 'Compiler/Users/Drop';
 $route['compiler/users/insert'] = 'Compiler/Users/Insert';
+
+$route['compiler/atc_obat']         = 'Compiler/Atc_Obat/Index';
+$route['compiler/atc_obat/drop']    = 'Compiler/Atc_Obat/Drop';
+$route['compiler/atc_obat/insert']  = 'Compiler/Atc_Obat/Insert';
+
+$route['compiler/keterangan_atc_obat']         = 'Compiler/Keterangan_Atc_Obat/Index';
+$route['compiler/keterangan_atc_obat/drop']    = 'Compiler/Keterangan_Atc_Obat/Drop';
+$route['compiler/keterangan_atc_obat/insert']  = 'Compiler/Keterangan_Atc_Obat/Insert';
+
+$route['compiler/kekuatan']         = 'Compiler/Kekuatan/Index';
+$route['compiler/kekuatan/drop']    = 'Compiler/Kekuatan/Drop';
+$route['compiler/kekuatan/insert']  = 'Compiler/Kekuatan/Insert';
+
+$route['compiler/satuan']         = 'Compiler/Satuan/Index';
+$route['compiler/satuan/drop']    = 'Compiler/Satuan/Drop';
+$route['compiler/satuan/insert']  = 'Compiler/Satuan/Insert';
+
+$route['compiler/sediaan']         = 'Compiler/Sediaan/Index';
+$route['compiler/sediaan/drop']    = 'Compiler/Sediaan/Drop';
+$route['compiler/sediaan/insert']  = 'Compiler/Sediaan/Insert';
+
+$route['compiler/kelas_terapi']         = 'Compiler/Kelas_Terapi/Index';
+$route['compiler/kelas_terapi/drop']    = 'Compiler/Kelas_Terapi/Drop';
+$route['compiler/kelas_terapi/insert']  = 'Compiler/Kelas_Terapi/Insert';
+
+$route['compiler/sub_kelas_terapi']         = 'Compiler/Sub_Kelas_Terapi/Index';
+$route['compiler/sub_kelas_terapi/drop']    = 'Compiler/Sub_Kelas_Terapi/Drop';
+$route['compiler/sub_kelas_terapi/insert']  = 'Compiler/Sub_Kelas_Terapi/Insert';
 //URI DASHES AND OVERRIDE
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
