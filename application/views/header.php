@@ -47,6 +47,8 @@
       </div>
     </div>
     <?php $bc = $this->session->userdata('breadcrumb'); ?>
+    <?php $msbc = $this->session->userdata('main_sub_breadcrumb'); ?>
+    <?php $sbc = $this->session->userdata('sub_breadcrumb'); ?>
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
       <li class="header">Menu Utama</li>
@@ -61,7 +63,7 @@
           <i class="fa fa-dashboard"></i> <span>MASTER</span> <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
-          <li class="<?php if($bc == 'sediaan'){?>active<?php }?> treeview"><a><i class="fa fa-circle-o"></i> SEDIAAN</a>
+          <li class="<?php if(!empty($msbc)&&$msbc == 'sediaan'){?>active<?php }?> treeview"><a><i class="fa fa-circle-o"></i> SEDIAAN</a>
             <ul class="treeview-menu">
               <li><a href="<?= base_url()?>sediaan"><i class="fa fa-circle-o"></i> DAFTAR SEDIAAN</a></li>
               <li><a href="<?= base_url()?>sediaan/insert"><i class="fa fa-circle-o"></i> TAMBAH SEDIAAN</a></li>
