@@ -17,7 +17,8 @@ class Sediaan extends CI_Controller {
     //SET TABLE NAME
     define('TABLE','sediaan');
     //SET BREADCRUMB
-    $this->session->set_userdata(array('breadcrumb'=>'sediaan'));
+    $this->session->set_userdata(array('breadcrumb'=>'master'));
+    $this->session->set_userdata(array('main_sub_breadcrumb'=>'sediaan'));
   }
 
   //INDEX FOR FIRST VIEW
