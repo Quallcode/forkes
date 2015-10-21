@@ -23,9 +23,9 @@ class Kekuatan extends CI_Controller {
   //INDEX FOR FIRST VIEW
 	public function Index(){
     //GET SEDIAAN DATA
-    $sediaan = $this->Model_Get_Kekuatan->Normal_Select(TABLE);
-    print_r($sediaan);exit;
+    $kekuatan = $this->Model_Get_Kekuatan->Normal_Select(TABLE);
     //DECLARE VIEW DATA FOR WRAPPER
+	$view_data['data']   = $kekuatan;
     $view_data['body']   = 'body/master/kekuatan/record_dsp';
     //LOAD VIEW DATA TO WRAPPER
     $this->load->view('wrapper',$view_data);

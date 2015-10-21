@@ -24,8 +24,8 @@ class Satuan extends CI_Controller {
 	public function Index(){
     //GET SEDIAAN DATA
     $satuan = $this->Model_Get_Satuan->Normal_Select(TABLE);
-    print_r($satuan);exit;
     //DECLARE VIEW DATA FOR WRAPPER
+	$view_data['data'] = $satuan;
     $view_data['body']   = 'body/master/satuan/record_dsp';
     //LOAD VIEW DATA TO WRAPPER
     $this->load->view('wrapper',$view_data);
