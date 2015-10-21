@@ -48,38 +48,37 @@
     </div>
     <?php $bc = $this->session->userdata('breadcrumb'); ?>
     <?php $msbc = $this->session->userdata('main_sub_breadcrumb'); ?>
-    <?php $sbc = $this->session->userdata('sub_breadcrumb'); ?>
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
       <li class="header">Menu Utama</li>
-      <li class="<?php if($bc == 'dashboard'){?>active<?php }?> treeview">
+      <li class="<?php if($bc == 'dashboard'){?>active<?php }?>">
         <a href="<?= base_url()?>dashboard">
           <i class="fa fa-laptop"></i>
           <span>DASHBOARD</span>
         </a>
       </li>
+
       <li class="<?php if($bc == 'master'){?>active<?php }?> treeview">
         <a href="#">
           <i class="fa fa-dashboard"></i> <span>MASTER</span> <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
-          <li class="<?php if(!empty($msbc)&&$msbc == 'sediaan'){?>active<?php }?> treeview"><a><i class="fa fa-circle-o"></i> SEDIAAN</a>
+          <li class="<?php if(!empty($msbc)&&$msbc == 'sediaan'){?>active<?php }?>">
+            <a><i class="fa fa-circle-o"></i> SEDIAAN</a>
             <ul class="treeview-menu">
               <li><a href="<?= base_url()?>sediaan"><i class="fa fa-circle-o"></i> DAFTAR SEDIAAN</a></li>
               <li><a href="<?= base_url()?>sediaan/insert"><i class="fa fa-circle-o"></i> TAMBAH SEDIAAN</a></li>
             </ul>
           </li>
-        </ul>
-        <ul class="treeview-menu">
-          <li class="<?php if($bc == 'satuan'){?>active<?php }?> treeview"><a><i class="fa fa-circle-o"></i> SATUAN</a>
+          <li class="<?php if(!empty($msbc)&&$msbc == 'satuan'){?>active<?php }?>">
+            <a><i class="fa fa-circle-o"></i> SATUAN</a>
             <ul class="treeview-menu">
               <li><a href="<?= base_url()?>satuan"><i class="fa fa-circle-o"></i> DAFTAR SATUAN</a></li>
               <li><a href="<?= base_url()?>satuan/insert"><i class="fa fa-circle-o"></i> TAMBAH SATUAN</a></li>
             </ul>
           </li>
-        </ul>
-        <ul class="treeview-menu">
-          <li class="<?php if($bc == 'kekuatan'){?>active<?php }?> treeview"><a><i class="fa fa-circle-o"></i> KEKUATAN</a>
+          <li class="<?php if(!empty($msbc)&&$msbc == 'kekuatan'){?>active<?php }?>">
+            <a><i class="fa fa-circle-o"></i> KEKUATAN</a>
             <ul class="treeview-menu">
               <li><a href="<?= base_url()?>kekuatan"><i class="fa fa-circle-o"></i> DAFTAR KEKUATAN</a></li>
               <li><a href="<?= base_url()?>kekuatan/insert"><i class="fa fa-circle-o"></i> TAMBAH KEKUATAN</a></li>
@@ -87,7 +86,8 @@
           </li>
         </ul>
       </li>
-      <li class="treeview">
+
+      <li>
         <a href="#">
           <i class="fa fa-files-o"></i>
           <span>RINGKASAN</span>
@@ -98,24 +98,24 @@
           <i class="fa fa-th"></i> <span>PERBANDINGAN</span>
         </a>
       </li>
-      <li class="treeview">
+      <li>
         <a href="#">
           <i class="fa fa-pie-chart"></i>
           <span>HASIL</span>
         </a>
       </li>
-      <li class="treeview">
+      <li>
         <a href="#">
           <i class="fa fa-laptop"></i>
           <span>PRODUK</span>
         </a>
       </li>
-      <li class="treeview">
+      <li>
         <a href="#">
           <i class="fa fa-edit"></i> <span>EKSPORT</span>
         </a>
       </li>
-      <li class="treeview">
+      <li>
         <a href="#">
           <i class="fa fa-table"></i> <span>PERMINTAAN</span>
         </a>
