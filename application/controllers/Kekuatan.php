@@ -47,14 +47,13 @@ class Kekuatan extends CI_Controller {
       $exist = $this->Model_Get_Kekuatan->validate(TABLE,$post['id_kekuatan']);
       if($exist==1)
       {
-        echo '<script>alert("ID Kekuatan Sudah Ada");</script>';
+		echo '<script>alert("ID Kekuatan Sudah Ada"); window.location.assign("'.base_url().'kekuatan");</script>';
         //redirect('kekuatan');
       }
       else {
         //INSERT TO DATABASE
         $this->Model_Transaction->Insert_To_Db($post,TABLE);
-  	    echo '<script>alert("Berhasil Menambahkan Data");</script>';
-        redirect('kekuatan');
+		echo '<script>alert("Berhasil Menambahkan Data"); window.location.assign("'.base_url().'kekuatan");</script>';
       }
     }
   }
@@ -69,8 +68,7 @@ class Kekuatan extends CI_Controller {
 			'kekuatan'		=> $post['kekuatan']
 		);
 		$this->Model_Transaction->Update_To_Db($data,TABLE,'id',$id);
-		echo '<script>alert("Berhasil Merubah Data");</script>';
-		redirect('kekuatan');
+		echo '<script>alert("Berhasil Merubah Data"); window.location.assign("'.base_url().'kekuatan");</script>';
 	}else{
     //GET SEDIAAN DATA
 		$kekuatan = $this->Model_Get_Kekuatan->Update_Select(TABLE,'id',$uri);
