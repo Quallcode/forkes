@@ -54,7 +54,6 @@ class Sediaan extends CI_Controller {
       }
       else {
         //INSERT TO DATABASE
-        print_r($post);exit;
         $this->Model_Transaction->Insert_To_Db($post,TABLE);
         redirect('sediaan');
       }
