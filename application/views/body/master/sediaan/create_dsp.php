@@ -23,7 +23,7 @@
               </div>
               <div class="form-group">
                 <label for="sediaan">Sediaan</label>
-                <input type="text" class="form-control" id="sediaan" name="sediaan" placeholder="Masukkan Nama Sediaan">
+                <input type="text" class="form-control" id="nama_sediaan" name="nama_sediaan" placeholder="Masukkan Nama Sediaan">
               </div>
               <div class="form-group">
                 <label for="keterangan">Keterangan</label>
