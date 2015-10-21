@@ -50,7 +50,13 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
       <li class="header">Menu Utama</li>
-      <li class="active treeview">
+      <li class="<?php if($bc == 'dashboard'){?>active<?php }?> treeview">
+        <a href="<?= base_url()?>dashboard">
+          <i class="fa fa-laptop"></i>
+          <span>DASHBOARD</span>
+        </a>
+      </li>
+      <li class="<?php if($bc == 'master'){?>active<?php }?> treeview">
         <a href="#">
           <i class="fa fa-dashboard"></i> <span>MASTER</span> <i class="fa fa-angle-left pull-right"></i>
         </a>
