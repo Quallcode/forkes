@@ -7,6 +7,7 @@ class Sediaan extends CI_Controller {
     parent::__construct();
     //INIT MODEL TRANSACTION
     $this->load->model('Model_Transaction');
+    $this->load->model('Model_Get_Sediaan');
     //CHECK SESSION
     $sess = $this->session->userdata('user_data');
     if(empty($sess)){
@@ -14,7 +15,7 @@ class Sediaan extends CI_Controller {
       exit;
     }
     //SET TABLE NAME
-    define('TABLE','sediaan')
+    define('TABLE','sediaan');
     //SET BREADCRUMB
     $this->session->set_userdata(array('breadcrumb'=>'sediaan'));
   }
