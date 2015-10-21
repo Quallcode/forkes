@@ -45,7 +45,7 @@
       <?php $this->load->view('header');?>
 
       <!-- Content Wrapper. Contains page content -->
-      <?php $this->load->view('body/dashboard/dsp'); ?>
+      <?php $this->load->view($body); ?>
       <?php $this->load->view('footer');?>
 
       <!-- Control Sidebar -->

@@ -17,7 +17,7 @@
         <!-- User Account: style can be found in dropdown.less -->
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <span class="hidden-xs"><?=$udata['name'] ?></span>
+            <span class="hidden-xs"><?php $udata = $this->session->userdata('user_data'); echo $udata['name']; ?></span>
           </a>
           <ul class="dropdown-menu">
             <!-- User image -->
@@ -43,18 +43,24 @@
         <img src="<?=base_url()?>includes/css_dashboard/dist/img/avatar.png" class="img-circle" alt="User Image">
       </div>
       <div class="pull-left info">
-        <p><?=$udata['name'] ?></p>
+        <p><?php $udata = $this->session->userdata('user_data'); echo $udata['name']; ?></p>
       </div>
     </div>
+    <?php $bc = $this->session->userdata('breadcrumb'); ?>
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu">
       <li class="header">Menu Utama</li>
       <li class="active treeview">
         <a href="#">
-          <i class="fa fa-dashboard"></i> <span>ATC</span> <i class="fa fa-angle-left pull-right"></i>
+          <i class="fa fa-dashboard"></i> <span>MASTER</span> <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
-          <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> INSERT</a></li>
+          <li class="<?php if($bc == 'sediaan'){?>active<?php }?> treeview"><a><i class="fa fa-circle-o"></i> SEDIAAN</a>
+            <ul class="treeview-menu">
+              <li><a href="<?= base_url()?>sediaan"><i class="fa fa-circle-o"></i> DAFTAR SEDIAAN</a></li>
+              <li><a href="<?= base_url()?>sediaan/insert"><i class="fa fa-circle-o"></i> TAMBAH SEDIAAN</a></li>
+            </ul>
+          </li>
         </ul>
       </li>
       <li class="treeview">
