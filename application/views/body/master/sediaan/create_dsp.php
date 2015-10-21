@@ -15,24 +15,24 @@
             <h3 class="box-title">Data Master Sediaan</h3>
           </div><!-- /.box-header -->
           <!-- form start -->
-          <form role="form" action="" method="post" enctype="multipart/form-data">
+          <form role="form" action="<?=base_url()?>sediaan/insert" method="post">
             <div class="box-body">
               <div class="form-group">
                 <label for="id_sediaan">ID</label>
-                <input type="email" class="form-control" id="id_sediaan" placeholder="ID untuk Sediaan Baru">
+                <input type="text" class="form-control" id="id_sediaan" placeholder="ID untuk Sediaan Baru">
               </div>
               <div class="form-group">
                 <label for="sediaan">Sediaan</label>
-                <input type="password" class="form-control" id="sediaan" placeholder="Nama Sediaan">
+                <input type="text" class="form-control" id="sediaan" placeholder="Masukkan Nama Sediaan">
               </div>
               <div class="form-group">
                 <label for="keterangan">Keterangan</label>
-                <input type="password" class="form-control" id="keterangan" placeholder="Keterangan">
+                <textarea class="form-control" id="keterangan" placeholder="Masukkan Keterangan Sediaan"></textarea>
               </div>
             </div><!-- /.box-body -->
 
             <div class="box-footer">
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <input type="submit" class="btn btn-primary" value="Submit" />
             </div>
           </form>
         </div><!-- /.box -->

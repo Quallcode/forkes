@@ -24,8 +24,9 @@ class Sediaan extends CI_Controller {
 	public function Index(){
     //GET SEDIAAN DATA
     $sediaan = $this->Model_Get_Sediaan->Normal_Select(TABLE);
-    print_r($sediaan);exit;
+    //print_r($sediaan);exit;
     //DECLARE VIEW DATA FOR WRAPPER
+    $view_data['data'] = $sediaan;
     $view_data['body']   = 'body/master/sediaan/record_dsp';
     //LOAD VIEW DATA TO WRAPPER
     $this->load->view('wrapper',$view_data);
@@ -37,13 +38,14 @@ class Sediaan extends CI_Controller {
     //GET POST DATA
     $post = $this->input->post();
     //CHECK IF EMPTY POST
-    if(empty($post)){
+    if(empty($post['Submit'])){
       //DECLARE VIEW DATA FOR WRAPPER
       $view_data['body']   = 'body/master/sediaan/create_dsp';
       //LOAD VIEW DATA TO WRAPPER
       $this->load->view('wrapper',$view_data);
     }else{
       //INSERT TO DATABASE
+      print_r($post);exit;
       $this->Model_Transaction->Insert_To_Db($post,TABLE);
       redirect('sediaan');
     }

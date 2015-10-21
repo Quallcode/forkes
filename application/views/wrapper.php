@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="<?=base_url()?>includes/css_dashboard/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
     <!-- DataTables -->
     <link rel="stylesheet" href="<?=base_url()?>includes/css_dashboard/plugins/datatables/dataTables.bootstrap.css">
+    <link rel="stylesheet" href="<?=base_url()?>includes/datatables/Responsive-1.0.7/css/responsive.dataTables.min.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -250,7 +251,7 @@
     <script src="<?=base_url()?>includes/css_dashboard/dist/js/app.min.js"></script>
     <!-- DataTables -->
     <script src="<?=base_url()?>includes/css_dashboard/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="<?=base_url()?>includes/css_dashboard/plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <script src="<?=base_url()?>includes/datatables/Responsive-1.0.7/js/dataTables.responsive.min.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <!--<script src="<?=base_url()?>includes/css_dashboard/dist/js/pages/dashboard.js"></script>-->
     <!-- AdminLTE for demo purposes -->
@@ -258,14 +259,8 @@
 
     <script>
       $(function () {
-        $("#example1").DataTable();
-        $('#example2').DataTable({
-          "paging": true,
-          "lengthChange": false,
-          "searching": false,
-          "ordering": true,
-          "info": true,
-          "autoWidth": false
+        $('#dataTable').DataTable({
+          responsive: true
         });
       });
     </script>
