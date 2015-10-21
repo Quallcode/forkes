@@ -45,9 +45,18 @@ class Satuan extends CI_Controller {
       //LOAD VIEW DATA TO WRAPPER
       $this->load->view('wrapper',$view_data);
     }else{
-      //INSERT TO DATABASE
-      $this->Model_Transaction->Insert_To_Db($post,TABLE);
-      redirect('satuan');
+      //VALIDATE TO DATABASE
+      $exist = $this->Model_Get_Satuan->validate(TABLE,$post['id_satuan']);
+      if($exist==1)
+      {
+        echo '<script>alert("ID Satuan Sudah Ada");</script>';
+        //redirect('kekuatan');
+      }
+      else {
+        //INSERT TO DATABASE
+        $this->Model_Transaction->Insert_To_Db($post,TABLE);
+        redirect('satuan');
+      }
     }
   }
   //END OF POST SEDIAAN

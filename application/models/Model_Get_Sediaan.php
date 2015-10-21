@@ -16,5 +16,20 @@ class Model_Get_Sediaan extends CI_Model {
 			return FALSE;
 		}
 	}
+
+  function validate($table,$id){
+    $this->db->select('id');
+    $this->db->from($table);
+    $this->db->where('id_sediaan',$id);
+    $result = $this->db->get();
+    $view_result = $result->result_array();
+    if($view_result == Array ( ))
+    {
+      return FALSE;
+    }
+    else {
+      return TRUE;
+    }
+  }
 }
 ?>

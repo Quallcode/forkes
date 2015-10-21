@@ -39,16 +39,25 @@ class Sediaan extends CI_Controller {
     //GET POST DATA
     $post = $this->input->post();
     //CHECK IF EMPTY POST
-    if(empty($post['Submit'])){
+    if(empty($post)){
       //DECLARE VIEW DATA FOR WRAPPER
       $view_data['body']   = 'body/master/sediaan/create_dsp';
       //LOAD VIEW DATA TO WRAPPER
       $this->load->view('wrapper',$view_data);
     }else{
-      //INSERT TO DATABASE
-      print_r($post);exit;
-      $this->Model_Transaction->Insert_To_Db($post,TABLE);
-      redirect('sediaan');
+      //VALIDATE TO DATABASE
+      $exist = $this->Model_Get_Sediaan->validate(TABLE,$post['id_sediaan']);
+      if($exist==1)
+      {
+        echo '<script>alert("ID Sedian Sudah Ada");</script>';
+        //redirect('kekuatan');
+      }
+      else {
+        //INSERT TO DATABASE
+        print_r($post);exit;
+        $this->Model_Transaction->Insert_To_Db($post,TABLE);
+        redirect('sediaan');
+      }
     }
   }
   //END OF POST SEDIAAN

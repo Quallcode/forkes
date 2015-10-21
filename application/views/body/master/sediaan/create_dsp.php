@@ -19,15 +19,15 @@
             <div class="box-body">
               <div class="form-group">
                 <label for="id_sediaan">ID</label>
-                <input type="text" class="form-control" id="id_sediaan" placeholder="ID untuk Sediaan Baru">
+                <input type="text" class="form-control" id="id_sediaan" name="id_sediaan" placeholder="ID untuk Sediaan Baru">
               </div>
               <div class="form-group">
                 <label for="sediaan">Sediaan</label>
-                <input type="text" class="form-control" id="sediaan" placeholder="Masukkan Nama Sediaan">
+                <input type="text" class="form-control" id="sediaan" name="sediaan" placeholder="Masukkan Nama Sediaan">
               </div>
               <div class="form-group">
                 <label for="keterangan">Keterangan</label>
-                <textarea class="form-control" id="keterangan" placeholder="Masukkan Keterangan Sediaan"></textarea>
+                <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Masukkan Keterangan Sediaan"></textarea>
               </div>
             </div><!-- /.box-body -->
 
