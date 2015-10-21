@@ -26,7 +26,11 @@ class Atc_Obat extends CI_Controller {
       ),
       'id_keterangan' => array(
               'type' => 'INT',
-      )
+      ),
+      'deleted' =>array(
+              'type' => 'TINYINT',
+              'default' => '0'
+      ),
     );
     //COMPILE FOR CREATE TABLE
     $this->dbforge->add_field('id');

@@ -19,6 +19,10 @@ class Keterangan_Atc_Obat extends CI_Controller {
       'keterangan' => array(
               'type' => 'VARCHAR',
               'constraint' => '100'
+      ),
+      'deleted' =>array(
+              'type' => 'TINYINT',
+              'default' => '0'
       )
     );
     //COMPILE FOR CREATE TABLE

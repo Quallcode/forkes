@@ -27,6 +27,10 @@ class Satuan extends CI_Controller {
       'keterangan' => array(
               'type' => 'VARCHAR',
               'constraint' => '50'
+      ),
+      'deleted' =>array(
+              'type' => 'TINYINT',
+              'default' => '0'
       )
     );
     //COMPILE FOR CREATE TABLE
