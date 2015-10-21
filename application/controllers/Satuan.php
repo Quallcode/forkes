@@ -17,15 +17,17 @@ class Satuan extends CI_Controller {
     //SET TABLE NAME
     define('TABLE','satuan');
     //SET BREADCRUMB
-    $this->session->set_userdata(array('breadcrumb'=>'satuan'));
+    $this->session->set_userdata(array('breadcrumb'=>'master'));
+    $this->session->set_userdata(array('main_sub_breadcrumb'=>'satuan'));
   }
 
   //INDEX FOR FIRST VIEW
 	public function Index(){
     //GET SEDIAAN DATA
     $satuan = $this->Model_Get_Satuan->Normal_Select(TABLE);
+    //print_r($satuan);exit;
     //DECLARE VIEW DATA FOR WRAPPER
-	$view_data['data'] = $satuan;
+    $view_data['data']   = $satuan;
     $view_data['body']   = 'body/master/satuan/record_dsp';
     //LOAD VIEW DATA TO WRAPPER
     $this->load->view('wrapper',$view_data);
