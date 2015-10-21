@@ -62,6 +62,22 @@
             </ul>
           </li>
         </ul>
+        <ul class="treeview-menu">
+          <li class="<?php if($bc == 'satuan'){?>active<?php }?> treeview"><a><i class="fa fa-circle-o"></i> SATUAN</a>
+            <ul class="treeview-menu">
+              <li><a href="<?= base_url()?>satuan"><i class="fa fa-circle-o"></i> DAFTAR SATUAN</a></li>
+              <li><a href="<?= base_url()?>satuan/insert"><i class="fa fa-circle-o"></i> TAMBAH SATUAN</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="treeview-menu">
+          <li class="<?php if($bc == 'kekuatan'){?>active<?php }?> treeview"><a><i class="fa fa-circle-o"></i> KEKUATAN</a>
+            <ul class="treeview-menu">
+              <li><a href="<?= base_url()?>kekuatan"><i class="fa fa-circle-o"></i> DAFTAR KEKUATAN</a></li>
+              <li><a href="<?= base_url()?>kekuatan/insert"><i class="fa fa-circle-o"></i> TAMBAH KEKUATAN</a></li>
+            </ul>
+          </li>
+        </ul>
       </li>
       <li class="treeview">
         <a href="#">
