@@ -43,13 +43,22 @@ class Kekuatan extends CI_Controller {
       //LOAD VIEW DATA TO WRAPPER
       $this->load->view('wrapper',$view_data);
     }else{
-      //INSERT TO DATABASE
-      $this->Model_Transaction->Insert_To_Db($post,TABLE);
-	  echo '<script>alert("Berhasil Menambahkan Data");</script>';
-      redirect('kekuatan');
+      //VALIDATE TO DATABASE
+      $exist = $this->Model_Get_Kekuatan->validate(TABLE,$post['id_kekuatan']);
+      if($exist==1)
+      {
+        echo '<script>alert("ID Kekuatan Sudah Ada");</script>';
+        //redirect('kekuatan');
+      }
+      else {
+        //INSERT TO DATABASE
+        $this->Model_Transaction->Insert_To_Db($post,TABLE);
+  	    echo '<script>alert("Berhasil Menambahkan Data");</script>';
+        redirect('kekuatan');
+      }
     }
   }
-  
+
   public function update(){
 	$uri = $this->uri->segment(3);
 	if(empty($uri)){
@@ -72,7 +81,7 @@ class Kekuatan extends CI_Controller {
 		$this->load->view('wrapper',$view_data);
 		}
   }
-  
+
   public function delete(){
 	$uri = $this->uri->segment(3);
 	print_r($uri);exit;
