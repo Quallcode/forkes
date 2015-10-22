@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Kekuatan extends CI_Controller {
-  //CONSTRUCT FOR SEDIAAN
+  //CONSTRUCT FOR KEKUATAN
   function __construct(){
     parent::__construct();
     //INIT MODEL TRANSACTION
@@ -17,12 +17,13 @@ class Kekuatan extends CI_Controller {
     //SET TABLE NAME
     define('TABLE','kekuatan');
     //SET BREADCRUMB
-    $this->session->set_userdata(array('breadcrumb'=>'kekuatan'));
+    $this->session->set_userdata(array('breadcrumb'=>'master'));
+    $this->session->set_userdata(array('main_sub_breadcrumb'=>'kekuatan'));
   }
 
   //INDEX FOR FIRST VIEW
 	public function Index(){
-    //GET SEDIAAN DATA
+    //GET KEKUATAN DATA
     $kekuatan = $this->Model_Get_Kekuatan->Normal_Select(TABLE);
     //DECLARE VIEW DATA FOR WRAPPER
 	  $view_data['data']   = $kekuatan;
@@ -32,7 +33,7 @@ class Kekuatan extends CI_Controller {
 	}
   //END OF INDEX FOR FIRST VIEW
 
-  //POST SEDIAAN
+  //POST KEKUATAN
   public function Insert(){
     //GET POST DATA
     $post = $this->input->post();
@@ -70,7 +71,7 @@ class Kekuatan extends CI_Controller {
 		$this->Model_Transaction->Update_To_Db($data,TABLE,'id',$id);
 		echo '<script>alert("Berhasil Merubah Data"); window.location.assign("'.base_url().'kekuatan");</script>';
 	}else{
-    //GET SEDIAAN DATA
+    //GET KEKUATAN DATA
 		$kekuatan = $this->Model_Get_Kekuatan->Update_Select(TABLE,'id',$uri);
 		//DECLARE VIEW DATA FOR WRAPPER
 		$view_data['data']   = $kekuatan[0];
@@ -88,6 +89,6 @@ class Kekuatan extends CI_Controller {
 	$this->Model_Transaction->Update_To_Db($data,TABLE,'id',$uri);
 	echo '<script>alert("Berhasil Menghapus Data"); window.location.assign("'.base_url().'kekuatan");</script>';
   }
-  //END OF POST SEDIAAN
+  //END OF POST KEKUATAN
 }
 ?>

@@ -2,7 +2,7 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Update Data Kekuatan
+      Update Data Keterangan ATC Obat
     </h1>
   </section>
   <section class="content">
@@ -12,19 +12,15 @@
         <!-- general form elements -->
         <div class="box box-primary">
           <div class="box-header with-border">
-            <h3 class="box-title">Data Kekuatan</h3>
+            <h3 class="box-title">Data Keterangan ATC Obat</h3>
           </div><!-- /.box-header -->
           <!-- form start -->
-          <form role="form" action="<?=base_url()?>kekuatan/update" method="post" enctype="multipart/form-data">
+          <form role="form" action="<?=base_url()?>keterangan_atc_obat/update" method="post" enctype="multipart/form-data">
           <input type="hidden" class="form-control" id="id" name="id" value="<?= $data['id']; ?>">
             <div class="box-body">
               <div class="form-group">
-                <label for="id_kekuatan">ID Kekuatan</label>
-                <input type="text" class="form-control" id="id_kekuatan" name="id_kekuatan" value="<?= $data['id_kekuatan']; ?>">
-              </div>
-              <div class="form-group">
-                <label for="besar_kekutaan">Besar Kekuatan</label>
-                <input type="text" class="form-control" id="kekuatan" name="kekuatan" value="<?= $data['kekuatan']; ?>">
+                <label for="keterangan">Keterangan</label>
+                <input type="text" class="form-control" id="keterangan" name="keterangan" value="<?= $data['keterangan']; ?>">
               </div>
             </div><!-- /.box-body -->
 

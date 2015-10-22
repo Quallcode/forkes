@@ -20,15 +20,15 @@
             <div class="box-body">
               <div class="form-group">
                 <label for="id_sediaan">ID Sediaan</label>
-                <input type="text" class="form-control" id="id_sediaan" name="id_sediaan" value="<? echo $data['id_sediaan']; ?>">
+                <input type="text" class="form-control" id="id_sediaan" name="id_sediaan" value="<?= $data['id_sediaan']; ?>">
               </div>
               <div class="form-group">
                 <label for="nama_sediaan">Nama Sediaan</label>
-                <input type="text" class="form-control" id="nama_sediaan" name="nama_sediaan" value="<? echo $data['nama_sediaan']; ?>">
+                <input type="text" class="form-control" id="nama_sediaan" name="nama_sediaan" value="<?= $data['nama_sediaan']; ?>">
               </div>
               <div class="form-group">
                 <label for="keterangan">Keterangan</label>
-                <input type="text" class="form-control" id="keterangan" name="keterangan" value="<? echo $data['keterangan']; ?>">
+                <input type="text" class="form-control" id="keterangan" name="keterangan" value="<?= $data['keterangan']; ?>">
               </div>
             </div><!-- /.box-body -->
 

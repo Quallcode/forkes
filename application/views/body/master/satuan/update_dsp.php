@@ -16,19 +16,19 @@
           </div><!-- /.box-header -->
           <!-- form start -->
           <form role="form" action="<?=base_url()?>satuan/update" method="post" enctype="multipart/form-data">
-          <input type="hidden" class="form-control" id="id" name="id" value="<? echo $data['id']; ?>">
+          <input type="hidden" class="form-control" id="id" name="id" value="<?= $data['id']; ?>">
             <div class="box-body">
               <div class="form-group">
                 <label for="id_satuan">ID Satuan</label>
-                <input type="text" class="form-control" id="id_satuan" name="id_satuan" value="<? echo $data['id_satuan']; ?>">
+                <input type="text" class="form-control" id="id_satuan" name="id_satuan" value="<?= $data['id_satuan']; ?>">
               </div>
               <div class="form-group">
                 <label for="nama_satuan">Nama Satuan</label>
-                <input type="text" class="form-control" id="nama_satuan" name="nama_satuan" value="<? echo $data['nama_satuan']; ?>">
+                <input type="text" class="form-control" id="nama_satuan" name="nama_satuan" value="<?= $data['nama_satuan']; ?>">
               </div>
               <div class="form-group">
                 <label for="keterangan">Keterangan</label>
-                <input type="text" class="form-control" id="keterangan" name="keterangan" value="<? echo $data['keterangan']; ?>">
+                <input type="text" class="form-control" id="keterangan" name="keterangan" value="<?= $data['keterangan']; ?>">
               </div>
             </div><!-- /.box-body -->
 

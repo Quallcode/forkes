@@ -63,6 +63,20 @@
           <i class="fa fa-dashboard"></i> <span>MASTER</span> <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
+          <li class="<?php if(!empty($msbc)&& ($msbc == 'atc_obat' || $msbc == 'keterangan_atc_obat')){?>active<?php }?>">
+            <a><i class="fa fa-circle-o"></i> ATC OBAT</a>
+            <ul class="treeview-menu">
+              <li class="treeview <?php if(!empty($msbc)&&$msbc == 'keterangan_atc_obat'){?>active<?php }?>">
+                <a><i class="fa fa-circle-o"></i> KETERANGAN</a>
+                <ul class="treeview-menu">
+                  <li><a href="<?= base_url()?>keterangan_atc_obat"><i class="fa fa-circle-o"></i> DAFTAR KETERANGAN</a></li>
+                  <li><a href="<?= base_url()?>keterangan_atc_obat/insert"><i class="fa fa-circle-o"></i> TAMBAH KETERANGAN</a></li>
+                </ul>
+              </li>
+              <li><a href="<?= base_url()?>atc_obat"><i class="fa fa-circle-o"></i> DAFTAR ATC OBAT</a></li>
+              <li><a href="<?= base_url()?>atc_obat/insert"><i class="fa fa-circle-o"></i> TAMBAH ATC OBAT</a></li>
+            </ul>
+          </li>
           <li class="<?php if(!empty($msbc)&&$msbc == 'sediaan'){?>active<?php }?>">
             <a><i class="fa fa-circle-o"></i> SEDIAAN</a>
             <ul class="treeview-menu">

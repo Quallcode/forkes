@@ -4,12 +4,12 @@
   <section class="content-header">
     <h1>
       Daftar
-      <small>Kekuatan</small>
+      <small>ATC Obat</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="<?=base_url()?>dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
       <li>Master</li>
-      <li class="active"><a href="<?=base_url()?>kekuatan">Daftar Kekuatan</a></li>
+      <li class="active"><a href="<?=base_url()?>atc_obat">Daftar ATC Obat</a></li>
     </ol>
   </section>
 
@@ -26,8 +26,9 @@
             <table id="dataTable" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <th>ID Kekuatan</th>
-                  <th>Kekuatan</th>
+                  <th>ID Atc Obat</th>
+                  <th>Nama Obat</th>
+                  <th>Keterangan</th>
                   <th>Aksi</th>
                 </tr>
               </thead>
@@ -35,11 +36,12 @@
                 <?php if(!empty($data)){?>
                   <?php foreach($data as $val){?>
                     <tr>
-                      <td><?=$val['id_kekuatan']?></td>
-                      <td><?=$val['kekuatan']?></td>
+                      <td><?=$val['id_atc_obat']?></td>
+                      <td><?=$val['nama_obat']?></td>
+                      <td><?=$val['keterangan']?></td>
                       <td>
-                        <a href="<?=base_url()?>kekuatan/update/<?=$val['id']?>" class="btn btn-info">Update</a>&nbsp;
-                        <a href="<?=base_url()?>kekuatan/delete/<?=$val['id']?>" onclick="return confirm('Apakah Anda Yakin Akan Menghapus Data?')" class="btn btn-danger">Delete</a>
+                        <a href="<?=base_url()?>atc_obat/update/<?=$val['id']?>" class="btn btn-info">Update</a>&nbsp;
+                        <a href="<?=base_url()?>atc_obat/delete/<?=$val['id']?>" onclick="return confirm('Apakah Anda Yakin Akan Menghapus Data?')" class="btn btn-danger">Delete</a>
                       </td>
                     </tr>
                   <?php }?>
@@ -47,8 +49,9 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <th>ID Kekuatan</th>
-                  <th>Kekuatan</th>
+                  <th>ID Atc Obat</th>
+                  <th>Nama Obat</th>
+                  <th>Keterangan</th>
                   <th>Aksi</th>
                 </tr>
               </tfoot>

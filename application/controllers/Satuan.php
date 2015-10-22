@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Satuan extends CI_Controller {
-  //CONSTRUCT FOR SEDIAAN
+  //CONSTRUCT FOR SATUAAN
   function __construct(){
     parent::__construct();
     //INIT MODEL TRANSACTION
@@ -23,7 +23,7 @@ class Satuan extends CI_Controller {
 
   //INDEX FOR FIRST VIEW
 	public function Index(){
-    //GET SEDIAAN DATA
+    //GET SATUAAN DATA
     $satuan = $this->Model_Get_Satuan->Normal_Select(TABLE);
     //print_r($satuan);exit;
     //DECLARE VIEW DATA FOR WRAPPER
@@ -34,7 +34,7 @@ class Satuan extends CI_Controller {
 	}
   //END OF INDEX FOR FIRST VIEW
 
-  //POST SEDIAAN
+  //POST SATUAAN
   public function Insert(){
     //GET POST DATA
     $post = $this->input->post();
@@ -58,7 +58,7 @@ class Satuan extends CI_Controller {
       }
     }
   }
-  
+
   public function update(){
 	$uri = $this->uri->segment(3);
 	if(empty($uri)){
@@ -72,7 +72,7 @@ class Satuan extends CI_Controller {
 		$this->Model_Transaction->Update_To_Db($data,TABLE,'id',$id);
 		echo '<script>alert("Berhasil Merubah Data"); window.location.assign("'.base_url().'satuan");</script>';
 	}else{
-    //GET SEDIAAN DATA
+    //GET SATUAAN DATA
 		$satuan = $this->Model_Get_Satuan->Update_Select(TABLE,'id',$uri);
 		//DECLARE VIEW DATA FOR WRAPPER
 		$view_data['data']   = $satuan[0];
@@ -90,6 +90,6 @@ class Satuan extends CI_Controller {
 	$this->Model_Transaction->Update_To_Db($data,TABLE,'id',$uri);
 	echo '<script>alert("Berhasil Menghapus Data"); window.location.assign("'.base_url().'satuan");</script>';
   }
-  //END OF POST SEDIAAN
+  //END OF POST SATUAAN
 }
 ?>
