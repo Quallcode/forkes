@@ -49,15 +49,46 @@ class Sediaan extends CI_Controller {
       $exist = $this->Model_Get_Sediaan->validate(TABLE,$post['id_sediaan']);
       if($exist==1)
       {
-        echo '<script>alert("ID Sedian Sudah Ada");</script>';
-        //redirect('kekuatan');
+        echo '<script>alert("ID Kekuatan Sudah Ada"); window.location.assign("'.base_url().'sediaan");</script>';
       }
       else {
         //INSERT TO DATABASE
         $this->Model_Transaction->Insert_To_Db($post,TABLE);
-        redirect('sediaan');
+        echo '<script>alert("Berhasil Menambahkan Data"); window.location.assign("'.base_url().'sediaan");</script>';
       }
     }
+  }
+  
+  public function update(){
+	$uri = $this->uri->segment(3);
+	if(empty($uri)){
+		$post = $this->input->post();
+		$id = $post['id'];
+		$data = array(
+			'id_sediaan' 	=> $post['id_sediaan'],
+			'nama_sediaan'	=> $post['nama_sediaan'],
+			'keterangan'	=> $post['keterangan']
+		);
+		$this->Model_Transaction->Update_To_Db($data,TABLE,'id',$id);
+		echo '<script>alert("Berhasil Merubah Data"); window.location.assign("'.base_url().'sediaan");</script>';
+	}else{
+    //GET SEDIAAN DATA
+		$sediaan = $this->Model_Get_Sediaan->Update_Select(TABLE,'id',$uri);
+		//DECLARE VIEW DATA FOR WRAPPER
+		$view_data['data']   = $sediaan[0];
+		$view_data['body']   = 'body/master/sediaan/update_dsp';
+		//LOAD VIEW DATA TO WRAPPER
+		$this->load->view('wrapper',$view_data);
+		}
+  }
+
+  public function delete(){
+	$uri = $this->uri->segment(3);
+	$data = array(
+		'deleted'	=> '1'
+	);
+	$this->Model_Transaction->Update_To_Db($data,TABLE,'id',$uri);
+	echo '<script>alert("Berhasil Menghapus Data"); window.location.assign("'.base_url().'sediaan");</script>';
   }
   //END OF POST SEDIAAN
 }

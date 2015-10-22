@@ -82,8 +82,11 @@ class Kekuatan extends CI_Controller {
 
   public function delete(){
 	$uri = $this->uri->segment(3);
-	print_r($uri);exit;
-	$this->Model_Transaction->Update_To_Db($data,TABLE,'id',$id);
+	$data = array(
+		'deleted'	=> '1'
+	);
+	$this->Model_Transaction->Update_To_Db($data,TABLE,'id',$uri);
+	echo '<script>alert("Berhasil Menghapus Data"); window.location.assign("'.base_url().'kekuatan");</script>';
   }
   //END OF POST SEDIAAN
 }

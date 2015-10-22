@@ -9,6 +9,5 @@ class Model_Transaction extends CI_Model {
 		$this->db->where($param, $on);
 		$this->db->update($table, $data);
 	}
-
 }
 ?>
