@@ -115,6 +115,12 @@
         </ul>
       </li>
 
+      <li class="<?php if($bc == 'usulan'){?>active<?php }?>">
+        <a href="<?= base_url()?>Usulan">
+          <i class="fa fa-files-o"></i>
+          <span>Usulan</span>
+        </a>
+      </li>
       <li>
         <a href="#">
           <i class="fa fa-files-o"></i>
