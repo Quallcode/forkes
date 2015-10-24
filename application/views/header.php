@@ -101,6 +101,20 @@
         </ul>
       </li>
 
+      <li class="<?php if($bc == 'form'){?>active<?php }?> treeview">
+        <a href="#">
+          <i class="fa fa-dashboard"></i> <span>FORM PENDAFTARAN</span> <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+          <li class="<?php if(!empty($msbc)&&$msbc == 'form_rumah_sakit'){?>active<?php }?>">
+            <a href="<?= base_url()?>form_registrasi/rumah_sakit"><i class="fa fa-circle-o"></i> FORM RUMAH SAKIT</a>
+          </li>
+          <li class="<?php if(!empty($msbc)&&$msbc == 'form_dokter_praktek'){?>active<?php }?>">
+            <a href="<?= base_url()?>form_registrasi/dokter_praktek"><i class="fa fa-circle-o"></i> FORM DOKTER PRAKTEK</a>
+          </li>
+        </ul>
+      </li>
+
       <li>
         <a href="#">
           <i class="fa fa-files-o"></i>
