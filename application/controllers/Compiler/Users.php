@@ -28,8 +28,19 @@ class Users extends CI_Controller {
               'constraint' => '255',
               'null' => TRUE,
       ),
+      'email' => array(
+              'type' =>'VARCHAR',
+              'constraint' => '100',
+      ),
+      'phone_number' => array(
+              'type' =>'VARCHAR',
+              'constraint' => '20',
+      ),
       'type' => array(
               'type' =>'TINYINT',
+      ),
+      'organization' => array(
+              'type' =>'BIGINT',
       ),
       'date_created' => array(
               'type' => 'DATETIME',
@@ -58,7 +69,10 @@ class Users extends CI_Controller {
       'name'     => 'Julius Cesario',
       'username' => 'admin',
       'password' => md5('admin'),
+      'email'    => 'lixus.julius17@gmail.com',
+      'phone_number' => '081288540387',
       'type' => 1,
+      'organization' => 1,
       'date_created' => date('Y-m-d H:i:s')
     );
     $this->db->insert(TABLE,$data);

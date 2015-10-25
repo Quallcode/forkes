@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Atc_Obat extends CI_Controller {
+class Kabkota extends CI_Controller {
   //CONSTRUCT FOR LOGIN
   function __construct(){
     parent::__construct();
@@ -9,32 +9,29 @@ class Atc_Obat extends CI_Controller {
     $this->load->database();
     $this->load->dbforge();
     $this->load->library(array('PHPExcel','PHPExcel/IOFactory'));
-    define('TABLE','atc_obat');
+    define('TABLE','kabkota');
   }
 
   //INDEX FOR FIRST VIEW
 	public function Index(){
     //PUT YOUR FIELD HERE
     $fields = array(
-      'id_atc_obat' => array(
+      'parent_id' => array(
               'type' => 'VARCHAR',
-              'constraint' => '10',
+              'constraint' => '5',
       ),
-      'nama_obat' => array(
+      'id' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '5',
+      ),
+      'kabupaten' => array(
               'type' => 'VARCHAR',
               'constraint' => '150',
-      ),
-      'id_keterangan' => array(
-              'type' => 'INT',
-      ),
-      'parent_id' => array(
-              'type' => 'INT',
-              'null' => TRUE
       ),
       'deleted' =>array(
               'type' => 'TINYINT',
               'default' => '0'
-      ),
+      )
     );
     //COMPILE FOR CREATE TABLE
     $this->dbforge->add_field('id');
@@ -91,16 +88,15 @@ class Atc_Obat extends CI_Controller {
 
         //iNSERT ROW DATA ARRAY INTO YOUR DATABASE OF CHOISE HERE
         $data_upload = array(
-          'id_atc_obat'=>$rowData[0][0],
-          'nama_obat'=>$rowData[0][1],
-          'id_keterangan'=>$rowData[0][2],
-          'parent_id'=>$rowData[0][3]
+          'parent_id'=>$rowData[0][0],
+          'id_kabupaten'=>$rowData[0][1],
+          'kabupaten'=>$rowData[0][2],
         );
         $this->db->insert(TABLE,$data_upload);
       }
       echo 'Compile for insert to table '.TABLE.' success';
     }else{
-      $view_data['controller'] = 'atc_obat';
+      $view_data['controller'] = 'kabkota';
       $view_data['table'] = TABLE;
       $view_data['body'] = 'compiler/import';
       $this->load->view('compiler/wrapper',$view_data);

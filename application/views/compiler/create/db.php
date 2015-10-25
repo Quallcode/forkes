@@ -39,3 +39,79 @@
     </tbody>
   </table>
 </div>
+<div class="col-md-12">
+  <h3>Table Compiler List</h3>
+  <hr/>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th width="30%">List Table</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>users</td>
+        <td align="center">
+          <a href="<?=base_url()?>compiler/users">Create</a>&nbsp;&nbsp;
+          <a href="<?=base_url()?>compiler/users/drop">Drop</a>&nbsp;&nbsp;
+          <a href="<?=base_url()?>compiler/users/insert">Insert</a>&nbsp;&nbsp;
+        </td>
+      </tr>
+      <tr>
+        <td>user_type</td>
+        <td align="center">
+          <a href="<?=base_url()?>compiler/user_type">Create</a>&nbsp;&nbsp;
+          <a href="<?=base_url()?>compiler/user_type/drop">Drop</a>&nbsp;&nbsp;
+          <a href="<?=base_url()?>compiler/user_type/insert">Insert</a>&nbsp;&nbsp;
+        </td>
+      </tr>
+      <tr>
+        <td>propinsi</td>
+        <td align="center">
+          <a href="<?=base_url()?>compiler/propinsi">Create</a>&nbsp;&nbsp;
+          <a href="<?=base_url()?>compiler/propinsi/drop">Drop</a>&nbsp;&nbsp;
+          <a href="<?=base_url()?>compiler/propinsi/insert">Insert</a>&nbsp;&nbsp;
+        </td>
+      </tr>
+      <tr>
+        <td>kabkota</td>
+        <td align="center">
+          <a href="<?=base_url()?>compiler/kabkota">Create</a>&nbsp;&nbsp;
+          <a href="<?=base_url()?>compiler/kabkota/drop">Drop</a>&nbsp;&nbsp;
+          <a href="<?=base_url()?>compiler/kabkota/insert">Insert</a>&nbsp;&nbsp;
+        </td>
+      </tr>
+      <tr>
+        <td>detail_usulan</td>
+        <td align="center">
+          <a href="<?=base_url()?>compiler/detail_usulan">Create</a>&nbsp;&nbsp;
+          <a href="<?=base_url()?>compiler/detail_usulan/drop">Drop</a>&nbsp;&nbsp;
+        </td>
+      </tr>
+      <tr>
+        <td>usulan</td>
+        <td align="center">
+          <a href="<?=base_url()?>compiler/usulan">Create</a>&nbsp;&nbsp;
+          <a href="<?=base_url()?>compiler/usulan/drop">Drop</a>&nbsp;&nbsp;
+        </td>
+      </tr>
+      <tr>
+        <td>satuan</td>
+        <td align="center">
+          <a href="<?=base_url()?>compiler/satuan">Create</a>&nbsp;&nbsp;
+          <a href="<?=base_url()?>compiler/satuan/drop">Drop</a>&nbsp;&nbsp;
+          <a href="<?=base_url()?>compiler/satuan/insert">Insert</a>&nbsp;&nbsp;
+        </td>
+      </tr>
+      <tr>
+        <td>sediaan</td>
+        <td align="center">
+          <a href="<?=base_url()?>compiler/sediaan">Create</a>&nbsp;&nbsp;
+          <a href="<?=base_url()?>compiler/sediaan/drop">Drop</a>&nbsp;&nbsp;
+          <a href="<?=base_url()?>compiler/sediaan/insert">Insert</a>&nbsp;&nbsp;
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

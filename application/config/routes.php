@@ -61,6 +61,10 @@ $route['compiler/users']        = 'Compiler/Users/Index';
 $route['compiler/users/drop']   = 'Compiler/Users/Drop';
 $route['compiler/users/insert'] = 'Compiler/Users/Insert';
 
+$route['compiler/user_type']         = 'Compiler/Users_Type/Index';
+$route['compiler/user_type/drop']    = 'Compiler/Users_Type/Drop';
+$route['compiler/user_type/insert']  = 'Compiler/Users_Type/Insert';
+
 $route['compiler/atc_obat']         = 'Compiler/Atc_Obat/Index';
 $route['compiler/atc_obat/drop']    = 'Compiler/Atc_Obat/Drop';
 $route['compiler/atc_obat/insert']  = 'Compiler/Atc_Obat/Insert';
@@ -84,6 +88,34 @@ $route['compiler/sediaan/insert']  = 'Compiler/Sediaan/Insert';
 $route['compiler/kelas_terapi']         = 'Compiler/Kelas_Terapi/Index';
 $route['compiler/kelas_terapi/drop']    = 'Compiler/Kelas_Terapi/Drop';
 $route['compiler/kelas_terapi/insert']  = 'Compiler/Kelas_Terapi/Insert';
+
+$route['compiler/faskes']         = 'Compiler/Faskes/Index';
+$route['compiler/faskes/drop']    = 'Compiler/Faskes/Drop';
+$route['compiler/faskes/insert']  = 'Compiler/Faskes/Insert';
+
+$route['compiler/klinik']         = 'Compiler/Klinik/Index';
+$route['compiler/klinik/drop']    = 'Compiler/Klinik/Drop';
+$route['compiler/klinik/insert']  = 'Compiler/Klinik/Insert';
+
+$route['compiler/usulan']         = 'Compiler/Usulan/Index';
+$route['compiler/usulan/drop']    = 'Compiler/Usulan/Drop';
+$route['compiler/usulan/insert']  = 'Compiler/Usulan/Insert';
+
+$route['compiler/detail_usulan']         = 'Compiler/Detail_Usulan/Index';
+$route['compiler/detail_usulan/drop']    = 'Compiler/Detail_Usulan/Drop';
+$route['compiler/detail_usulan/insert']  = 'Compiler/Detail_Usulan/Insert';
+
+$route['compiler/propinsi']         = 'Compiler/Propinsi/Index';
+$route['compiler/propinsi/drop']    = 'Compiler/Propinsi/Drop';
+$route['compiler/propinsi/insert']  = 'Compiler/Propinsi/Insert';
+
+$route['compiler/kabkota']         = 'Compiler/Kabkota/Index';
+$route['compiler/kabkota/drop']    = 'Compiler/Kabkota/Drop';
+$route['compiler/kabkota/insert']  = 'Compiler/Kabkota/Insert';
+
+$route['compiler/kabkota']         = 'Compiler/Kabkota/Index';
+$route['compiler/kabkota/drop']    = 'Compiler/Kabkota/Drop';
+$route['compiler/kabkota/insert']  = 'Compiler/Kabkota/Insert';
 
 $route['compiler/sub_kelas_terapi']         = 'Compiler/Sub_Kelas_Terapi/Index';
 $route['compiler/sub_kelas_terapi/drop']    = 'Compiler/Sub_Kelas_Terapi/Drop';

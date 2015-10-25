@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Atc_Obat extends CI_Controller {
+class Usulan extends CI_Controller {
   //CONSTRUCT FOR LOGIN
   function __construct(){
     parent::__construct();
@@ -9,7 +9,7 @@ class Atc_Obat extends CI_Controller {
     $this->load->database();
     $this->load->dbforge();
     $this->load->library(array('PHPExcel','PHPExcel/IOFactory'));
-    define('TABLE','atc_obat');
+    define('TABLE','usulan');
   }
 
   //INDEX FOR FIRST VIEW
@@ -100,7 +100,7 @@ class Atc_Obat extends CI_Controller {
       }
       echo 'Compile for insert to table '.TABLE.' success';
     }else{
-      $view_data['controller'] = 'atc_obat';
+      $view_data['controller'] = 'usulan';
       $view_data['table'] = TABLE;
       $view_data['body'] = 'compiler/import';
       $this->load->view('compiler/wrapper',$view_data);
