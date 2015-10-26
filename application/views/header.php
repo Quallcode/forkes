@@ -100,26 +100,25 @@
           </li>
         </ul>
       </li>
-      
-       <li class="<?php if(!empty($msbc)&&$msbc == 'transaksi'){?>active<?php }?>">
-            <a><i class="fa  fa-edit"></i> TRANSAKSI<i class="fa fa-angle-left pull-right"></i></a>
-            <ul class="treeview-menu">
-              <li><a href="<?= base_url()?>kekuatan"><i class="fa  fa-plus-square "></i> BUAT USULAN</a></li>
-              <li><a href="<?= base_url()?>kekuatan/insert"><i class="fa fa-list"></i> DAFTAR USULAN</a></li>
-            </ul>
+
+      <li class="<?php if(!empty($msbc)&&$msbc == 'transaksi'){?>active<?php }?>">
+        <a><i class="fa  fa-edit"></i> TRANSAKSI<i class="fa fa-angle-left pull-right"></i></a>
+        <ul class="treeview-menu">
+          <li class="<?php if(!empty($msbc)&&$msbc == 'tambah_usulan'){?>active<?php }?>"><a href="<?= base_url()?>usulan"><i class="fa  fa-plus-square "></i> BUAT USULAN</a></li>
+          <li><a href="<?= base_url()?>kekuatan/insert"><i class="fa fa-list"></i> DAFTAR USULAN</a></li>
+        </ul>
       </li>
-          
-          
-          
-            <li class="<?php if(!empty($msbc)&&$msbc == 'transaksi'){?>active<?php }?>">
-            <a><i class="fa  fa-legal"></i> VERIFIKASI<i class="fa fa-angle-left pull-right"></i></a>
-            <ul class="treeview-menu">
-              <li><a href="#"><i class="fa  fa-list"></i> USULAN TERBARU</a></li>
-              <li><a href="#"><i class="fa  fa-list"></i> DAFTAR USULAN LENGKAP</a></li>
-              <li><a href="#"><i class="fa  fa-list"></i>DAFTAR USULAN TIDAK LENGKAP</a></li>
-            </ul>
-            <a href="#">
-    
+
+      <li class="<?php if($bc == 'usulan'){?>active<?php }?>">
+        <a><i class="fa  fa-legal"></i> VERIFIKASI<i class="fa fa-angle-left pull-right"></i></a>
+        <ul class="treeview-menu">
+          <li class="<?php if(!empty($msbc)&&$msbc == 'verifikasi_usulan'){?>active<?php }?>"><a href="<?= base_url()?>usulan/verifikasi"><i class="fa  fa-list"></i> USULAN TERBARU</a></li>
+          <li class="<?php if(!empty($msbc)&&$msbc == 'daftar_usulan_lengkap'){?>active<?php }?>"><a href="<?= base_url()?>usulan/daftar_lengkap"><i class="fa  fa-list"></i> DAFTAR USULAN LENGKAP</a></li>
+          <li class="<?php if(!empty($msbc)&&$msbc == 'daftar_usulan_tidak_lengkap'){?>active<?php }?>"><a href="<?= base_url()?>usulan/daftar_tidak_lengkap"><i class="fa  fa-list"></i>DAFTAR USULAN TIDAK LENGKAP</a></li>
+        </ul>
+        <a href="#">
+      </li>
+
     </ul>
   </section>
   <!-- /.sidebar -->

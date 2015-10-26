@@ -2,7 +2,7 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      VERIFIKASI USULAN
+      DAFTAR USULAN
     </h1>
   </section>
   <section class="content">
@@ -21,7 +21,6 @@
                   <th>Daftar Usulan Obat</th>
                   <th>Detail Obat</th>
                   <th>Status</th>
-                  <th colspan="2" style="text-align:center">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -31,9 +30,7 @@
                     Explorer 4.0</td>
                   <td>Win 95+</td>
                   <td> 4</td>
-                  <td>TERKIRIM</td>
                   <td>DITERIMA</td>
-                  <td>DITOLAK</td>
                 </tr>
               </tbody>
               <tfoot>
@@ -45,3 +42,18 @@
     </div>   <!-- /.row -->
   </section>
 </div>
+
+  <!-- page script -->
+    <script>
+      $(function () {
+        $("#example1").DataTable();
+        $('#example2').DataTable({
+          "paging": true,
+          "lengthChange": false,
+          "searching": false,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false
+        });
+      });
+    </script>

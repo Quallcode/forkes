@@ -30,7 +30,7 @@
                     Explorer 4.0</td>
                   <td>Win 95+</td>
                   <td> 4</td>
-                  <td>X</td>
+                  <td>DITOLAK</td>
                 </tr>
               </tbody>
               <tfoot>

@@ -33,18 +33,31 @@ class Usulan extends CI_Controller {
 	}
   //END OF INDEX FOR ADD USULAN VIEW
 
-  //INDEX FOR DAFTAR USULAN VIEW
-	public function Daftar(){
+  //INDEX FOR DAFTAR USULAN LENGKAP VIEW
+	public function Daftar_lengkap(){
     //SET SUB BREADCRUMB
-    $this->session->set_userdata(array('main_sub_breadcrumb'=>'daftar_usulan'));
+    $this->session->set_userdata(array('main_sub_breadcrumb'=>'daftar_usulan_lengkap'));
     //GET KEKUATAN DATA
     //$kekuatan = $this->Model_Get_Kekuatan->Normal_Select(TABLE);
     //DECLARE VIEW DATA FOR WRAPPER
-    $view_data['body']   = 'body/usulan/daftar_dsp';
+    $view_data['body']   = 'body/usulan/daftar_lengkap_dsp';
     //LOAD VIEW DATA TO WRAPPER
     $this->load->view('wrapper',$view_data);
 	}
-  //END OF INDEX FOR DAFTAR USULAN VIEW
+  //END OF INDEX FOR DAFTAR USULAN LENGKAP VIEW
+
+  //INDEX FOR DAFTAR USULAN TIDAK LENGKAP VIEW
+	public function Daftar_tidak_lengkap(){
+    //SET SUB BREADCRUMB
+    $this->session->set_userdata(array('main_sub_breadcrumb'=>'daftar_usulan_tidak_lengkap'));
+    //GET KEKUATAN DATA
+    //$kekuatan = $this->Model_Get_Kekuatan->Normal_Select(TABLE);
+    //DECLARE VIEW DATA FOR WRAPPER
+    $view_data['body']   = 'body/usulan/daftar_tidak_lengkap_dsp';
+    //LOAD VIEW DATA TO WRAPPER
+    $this->load->view('wrapper',$view_data);
+	}
+  //END OF INDEX FOR DAFTAR USULAN TIDAK LENGKAP VIEW
 
   //INDEX FOR VERIFIKASI USULAN VIEW
 	public function Verifikasi(){
