@@ -115,11 +115,21 @@
         </ul>
       </li>
 
-      <li class="<?php if($bc == 'usulan'){?>active<?php }?>">
-        <a href="<?= base_url()?>Usulan">
-          <i class="fa fa-files-o"></i>
-          <span>USULAN</span>
+      <li class="<?php if($bc == 'usulan'){?>active<?php }?> treeview">
+        <a href="#">
+          <i class="fa fa-files-o"></i> <span>USULAN</span> <i class="fa fa-angle-left pull-right"></i>
         </a>
+        <ul class="treeview-menu">
+          <li class="<?php if(!empty($msbc)&&$msbc == 'tambah_usulan'){?>active<?php }?>">
+            <a href="<?= base_url()?>usulan"><i class="fa fa-circle-o"></i> TAMBAH USULAN</a>
+          </li>
+          <li class="<?php if(!empty($msbc)&&$msbc == 'daftar_usulan'){?>active<?php }?>">
+            <a href="<?= base_url()?>usulan/daftar"><i class="fa fa-circle-o"></i> DAFTAR USULAN</a>
+          </li>
+          <li class="<?php if(!empty($msbc)&&$msbc == 'verifikasi_usulan'){?>active<?php }?>">
+            <a href="<?= base_url()?>usulan/verifikasi"><i class="fa fa-circle-o"></i> VERIFIKASI USULAN</a>
+          </li>
+        </ul>
       </li>
       <li>
         <a href="#">
