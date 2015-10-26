@@ -20,8 +20,10 @@ class Usulan extends CI_Controller {
     $this->session->set_userdata(array('breadcrumb'=>'usulan'));
   }
 
-  //INDEX FOR FIRST VIEW
+  //INDEX FOR ADD USULAN VIEW
 	public function Index(){
+    //SET SUB BREADCRUMB
+    $this->session->set_userdata(array('main_sub_breadcrumb'=>'tambah_usulan'));
     //GET KEKUATAN DATA
     //$kekuatan = $this->Model_Get_Kekuatan->Normal_Select(TABLE);
     //DECLARE VIEW DATA FOR WRAPPER
@@ -29,6 +31,32 @@ class Usulan extends CI_Controller {
     //LOAD VIEW DATA TO WRAPPER
     $this->load->view('wrapper',$view_data);
 	}
-  //END OF INDEX FOR FIRST VIEW
+  //END OF INDEX FOR ADD USULAN VIEW
+
+  //INDEX FOR DAFTAR USULAN VIEW
+	public function Daftar(){
+    //SET SUB BREADCRUMB
+    $this->session->set_userdata(array('main_sub_breadcrumb'=>'daftar_usulan'));
+    //GET KEKUATAN DATA
+    //$kekuatan = $this->Model_Get_Kekuatan->Normal_Select(TABLE);
+    //DECLARE VIEW DATA FOR WRAPPER
+    $view_data['body']   = 'body/usulan/daftar_dsp';
+    //LOAD VIEW DATA TO WRAPPER
+    $this->load->view('wrapper',$view_data);
+	}
+  //END OF INDEX FOR DAFTAR USULAN VIEW
+
+  //INDEX FOR VERIFIKASI USULAN VIEW
+	public function Verifikasi(){
+    //SET SUB BREADCRUMB
+    $this->session->set_userdata(array('main_sub_breadcrumb'=>'verifikasi_usulan'));
+    //GET KEKUATAN DATA
+    //$kekuatan = $this->Model_Get_Kekuatan->Normal_Select(TABLE);
+    //DECLARE VIEW DATA FOR WRAPPER
+    $view_data['body']   = 'body/usulan/verifikasi_dsp';
+    //LOAD VIEW DATA TO WRAPPER
+    $this->load->view('wrapper',$view_data);
+	}
+  //END OF INDEX FOR VERIFIKASI USULAN VIEW
 }
 ?>
