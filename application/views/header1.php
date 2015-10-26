@@ -4,7 +4,7 @@
     <!-- mini logo for sidebar mini 50x50 pixels -->
     <span class="logo-mini"><b>F</b>KS</span>
     <!-- logo for regular state and mobile devices -->
-    <span class="logo-lg"><img class="img" src="img/kemenkeslogo.png" /></span>
+    <span class="logo-lg"><b>FORKES</b></span>
   </a>
   <!-- Header Navbar: style can be found in header.less -->
   <nav class="navbar navbar-static-top" role="navigation">
@@ -60,10 +60,10 @@
 
       <li class="<?php if($bc == 'master'){?>active<?php }?> treeview">
         <a href="#">
-          <i class="fa fa-file-text"></i> <span>MASTER</span> <i class="fa fa-angle-left pull-right"></i>
+          <i class="fa fa-dashboard"></i> <span>MASTER</span> <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
-        <li class="<?php if(!empty($msbc)&& ($msbc == 'atc_obat' || $msbc == 'keterangan_atc_obat')){?>active<?php }?>">
+          <li class="<?php if(!empty($msbc)&& ($msbc == 'atc_obat' || $msbc == 'keterangan_atc_obat')){?>active<?php }?>">
             <a><i class="fa fa-circle-o"></i> ATC OBAT</a>
             <ul class="treeview-menu">
               <li class="treeview <?php if(!empty($msbc)&&$msbc == 'keterangan_atc_obat'){?>active<?php }?>">
@@ -78,48 +78,92 @@
             </ul>
           </li>
           <li class="<?php if(!empty($msbc)&&$msbc == 'sediaan'){?>active<?php }?>">
-            <a><i class="fa fa-flask"></i> SEDIAAN</a>
+            <a><i class="fa fa-circle-o"></i> SEDIAAN</a>
             <ul class="treeview-menu">
-              <li><a href="<?= base_url()?>sediaan"><i class="fa  fa-list "></i> DAFTAR SEDIAAN</a></li>
-              <li><a href="<?= base_url()?>sediaan/insert"><i  class="fa fa-plus-square"></i> TAMBAH SEDIAAN</a></li>
+              <li><a href="<?= base_url()?>sediaan"><i class="fa fa-circle-o"></i> DAFTAR SEDIAAN</a></li>
+              <li><a href="<?= base_url()?>sediaan/insert"><i class="fa fa-circle-o"></i> TAMBAH SEDIAAN</a></li>
             </ul>
           </li>
           <li class="<?php if(!empty($msbc)&&$msbc == 'satuan'){?>active<?php }?>">
-            <a><i class="fa fa-superscript"></i> SATUAN</a>
+            <a><i class="fa fa-circle-o"></i> SATUAN</a>
             <ul class="treeview-menu">
-              <li><a href="<?= base_url()?>satuan"><i class="fa  fa-list "></i> DAFTAR SATUAN</a></li>
-              <li><a href="<?= base_url()?>satuan/insert"><i class="fa fa-plus-square"></i> TAMBAH SATUAN</a></li>
+              <li><a href="<?= base_url()?>satuan"><i class="fa fa-circle-o"></i> DAFTAR SATUAN</a></li>
+              <li><a href="<?= base_url()?>satuan/insert"><i class="fa fa-circle-o"></i> TAMBAH SATUAN</a></li>
             </ul>
           </li>
           <li class="<?php if(!empty($msbc)&&$msbc == 'kekuatan'){?>active<?php }?>">
-            <a><i class="fa  fa-flash"></i> KEKUATAN</a>
+            <a><i class="fa fa-circle-o"></i> KEKUATAN</a>
             <ul class="treeview-menu">
-              <li><a href="<?= base_url()?>kekuatan"><i class="fa  fa-list "></i> DAFTAR KEKUATAN</a></li>
-              <li><a href="<?= base_url()?>kekuatan/insert"><i class="fa fa-plus-square"></i> TAMBAH KEKUATAN</a></li>
+              <li><a href="<?= base_url()?>kekuatan"><i class="fa fa-circle-o"></i> DAFTAR KEKUATAN</a></li>
+              <li><a href="<?= base_url()?>kekuatan/insert"><i class="fa fa-circle-o"></i> TAMBAH KEKUATAN</a></li>
             </ul>
           </li>
         </ul>
       </li>
-      
-       <li class="<?php if(!empty($msbc)&&$msbc == 'transaksi'){?>active<?php }?>">
-            <a><i class="fa  fa-edit"></i> TRANSAKSI<i class="fa fa-angle-left pull-right"></i></a>
-            <ul class="treeview-menu">
-              <li><a href="<?= base_url()?>kekuatan"><i class="fa  fa-plus-square "></i> BUAT USULAN</a></li>
-              <li><a href="<?= base_url()?>kekuatan/insert"><i class="fa fa-list"></i> DAFTAR USULAN</a></li>
-            </ul>
+
+      <li class="<?php if($bc == 'form'){?>active<?php }?> treeview">
+        <a href="#">
+          <i class="fa fa-dashboard"></i> <span>FORM PENDAFTARAN</span> <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+          <li class="<?php if(!empty($msbc)&&$msbc == 'form_rumah_sakit'){?>active<?php }?>">
+            <a href="<?= base_url()?>form_registrasi/rumah_sakit"><i class="fa fa-circle-o"></i> FORM RUMAH SAKIT</a>
+          </li>
+          <li class="<?php if(!empty($msbc)&&$msbc == 'form_dokter_praktek'){?>active<?php }?>">
+            <a href="<?= base_url()?>form_registrasi/dokter_praktek"><i class="fa fa-circle-o"></i> FORM DOKTER PRAKTEK</a>
+          </li>
+        </ul>
       </li>
-          
-          
-          
-            <li class="<?php if(!empty($msbc)&&$msbc == 'transaksi'){?>active<?php }?>">
-            <a><i class="fa  fa-legal"></i> VERIFIKASI<i class="fa fa-angle-left pull-right"></i></a>
-            <ul class="treeview-menu">
-              <li><a href="#"><i class="fa  fa-list"></i> USULAN TERBARU</a></li>
-              <li><a href="#"><i class="fa  fa-list"></i> DAFTAR USULAN LENGKAP</a></li>
-              <li><a href="#"><i class="fa  fa-list"></i>DAFTAR USULAN TIDAK LENGKAP</a></li>
-            </ul>
-            <a href="#">
-    
+
+      <li class="<?php if($bc == 'usulan'){?>active<?php }?> treeview">
+        <a href="#">
+          <i class="fa fa-files-o"></i> <span>USULAN</span> <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu">
+          <li class="<?php if(!empty($msbc)&&$msbc == 'tambah_usulan'){?>active<?php }?>">
+            <a href="<?= base_url()?>usulan"><i class="fa fa-circle-o"></i> TAMBAH USULAN</a>
+          </li>
+          <li class="<?php if(!empty($msbc)&&$msbc == 'daftar_usulan'){?>active<?php }?>">
+            <a href="<?= base_url()?>usulan/daftar"><i class="fa fa-circle-o"></i> DAFTAR USULAN</a>
+          </li>
+          <li class="<?php if(!empty($msbc)&&$msbc == 'verifikasi_usulan'){?>active<?php }?>">
+            <a href="<?= base_url()?>usulan/verifikasi"><i class="fa fa-circle-o"></i> VERIFIKASI USULAN</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa fa-files-o"></i>
+          <span>RINGKASAN</span>
+        </a>
+      </li>
+      <li>
+        <a href="pages/widgets.html">
+          <i class="fa fa-th"></i> <span>PERBANDINGAN</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa fa-pie-chart"></i>
+          <span>HASIL</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa fa-laptop"></i>
+          <span>PRODUK</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa fa-edit"></i> <span>EKSPORT</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa fa-table"></i> <span>PERMINTAAN</span>
+        </a>
+      </li>
     </ul>
   </section>
   <!-- /.sidebar -->
