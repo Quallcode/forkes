@@ -17,7 +17,7 @@
         <!-- User Account: style can be found in dropdown.less -->
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <span class="hidden-xs"><?php $udata = $this->session->userdata('user_data'); echo $udata['name']; ?></span>
+            <span class="hidden-xs"><?php $udata = $this->session->userdata('user_data'); echo $udata['nama']; ?></span>
           </a>
           <ul class="dropdown-menu">
             <!-- User image -->
@@ -43,7 +43,7 @@
         <img src="<?=base_url()?>includes/css_dashboard/dist/img/avatar.png" class="img-circle" alt="User Image">
       </div>
       <div class="pull-left info">
-        <p><?php $udata = $this->session->userdata('user_data'); echo $udata['name']; ?></p>
+        <p><?php $udata = $this->session->userdata('user_data'); echo $udata['nama']; ?></p>
       </div>
     </div>
     <?php $bc = $this->session->userdata('breadcrumb'); ?>
