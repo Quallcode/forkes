@@ -259,13 +259,22 @@
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <!--<script src="<?=base_url()?>includes/css_dashboard/dist/js/pages/dashboard.js"></script>-->
     <!-- AdminLTE for demo purposes -->
-    <script src="<?=base_url()?>includes/css_dashboard/dist/js/demo.js"></script>
+
     <!-- Page script -->
+    <!-- DataTables -->
+    <script src="<?=base_url()?>includes/css_dashboard/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?=base_url()?>includes/css_dashboard/plugins/datatables/dataTables.bootstrap.min.js"></script>
     <script>
       $(function () {
         $("#inputFaskes").select2();
-        $('#dataTable').DataTable({
-          responsive: true
+        $("#example1").DataTable();
+        $('#example2').DataTable({
+          "paging": true,
+          "lengthChange": false,
+          "searching": false,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false
         });
       });
     </script>
