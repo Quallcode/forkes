@@ -101,9 +101,9 @@ $route['compiler/detail_usulan']         = 'Compiler/Detail_Usulan/Index';
 $route['compiler/detail_usulan/drop']    = 'Compiler/Detail_Usulan/Drop';
 $route['compiler/detail_usulan/insert']  = 'Compiler/Detail_Usulan/Insert';
 
-$route['compiler/propinsi']         = 'Compiler/Propinsi/Index';
-$route['compiler/propinsi/drop']    = 'Compiler/Propinsi/Drop';
-$route['compiler/propinsi/insert']  = 'Compiler/Propinsi/Insert';
+$route['compiler/provinsi']         = 'Compiler/Provinsi/Index';
+$route['compiler/provinsi/drop']    = 'Compiler/Provinsi/Drop';
+$route['compiler/provinsi/insert']  = 'Compiler/Provinsi/Insert';
 
 $route['compiler/kabkota']         = 'Compiler/Kabkota/Index';
 $route['compiler/kabkota/drop']    = 'Compiler/Kabkota/Drop';

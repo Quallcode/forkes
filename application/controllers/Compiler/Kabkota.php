@@ -20,11 +20,11 @@ class Kabkota extends CI_Controller {
               'type' => 'VARCHAR',
               'constraint' => '5',
       ),
-      'id' => array(
+      'id_kabkota' => array(
               'type' => 'VARCHAR',
               'constraint' => '5',
       ),
-      'kabupaten' => array(
+      'kabkota' => array(
               'type' => 'VARCHAR',
               'constraint' => '150',
       ),
@@ -89,8 +89,8 @@ class Kabkota extends CI_Controller {
         //iNSERT ROW DATA ARRAY INTO YOUR DATABASE OF CHOISE HERE
         $data_upload = array(
           'parent_id'=>$rowData[0][0],
-          'id_kabupaten'=>$rowData[0][1],
-          'kabupaten'=>$rowData[0][2],
+          'id_kabkota'=>$rowData[0][1],
+          'kabkota'=>$rowData[0][2],
         );
         $this->db->insert(TABLE,$data_upload);
       }

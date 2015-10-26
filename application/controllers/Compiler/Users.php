@@ -15,7 +15,7 @@ class Users extends CI_Controller {
 	public function Index(){
     //PUT YOUR FIELD HERE
     $fields = array(
-      'name' => array(
+      'nama' => array(
               'type' => 'VARCHAR',
               'constraint' => '100',
       ),
@@ -32,15 +32,24 @@ class Users extends CI_Controller {
               'type' =>'VARCHAR',
               'constraint' => '100',
       ),
-      'phone_number' => array(
+      'no_telp' => array(
               'type' =>'VARCHAR',
               'constraint' => '20',
       ),
       'type' => array(
               'type' =>'TINYINT',
       ),
-      'organization' => array(
-              'type' =>'BIGINT',
+      'id_provinsi' => array(
+              'type' =>'VARCHAR',
+              'constraint' => '5',
+      ),
+      'id_kabkota' => array(
+              'type' =>'VARCHAR',
+              'constraint' => '5',
+      ),
+      'id_faskes' => array(
+              'type' =>'VARCHAR',
+              'constraint' => '5',
       ),
       'date_created' => array(
               'type' => 'DATETIME',
@@ -66,13 +75,15 @@ class Users extends CI_Controller {
 
   public function Insert(){
     $data = array(
-      'name'     => 'Julius Cesario',
+      'nama'     => 'Julius Cesario',
       'username' => 'admin',
       'password' => md5('admin'),
       'email'    => 'lixus.julius17@gmail.com',
       'phone_number' => '081288540387',
       'type' => 1,
-      'organization' => 1,
+      'id_provinsi' => 11,
+      'id_kabkota' => 1,
+      'id_faskes'  => 1,
       'date_created' => date('Y-m-d H:i:s')
     );
     $this->db->insert(TABLE,$data);

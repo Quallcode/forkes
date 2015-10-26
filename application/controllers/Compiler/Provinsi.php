@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Propinsi extends CI_Controller {
+class Provinsi extends CI_Controller {
   //CONSTRUCT FOR LOGIN
   function __construct(){
     parent::__construct();
@@ -9,18 +9,18 @@ class Propinsi extends CI_Controller {
     $this->load->database();
     $this->load->dbforge();
     $this->load->library(array('PHPExcel','PHPExcel/IOFactory'));
-    define('TABLE','propinsi');
+    define('TABLE','provinsi');
   }
 
   //INDEX FOR FIRST VIEW
 	public function Index(){
     //PUT YOUR FIELD HERE
     $fields = array(
-      'id_propinsi' => array(
+      'id_provinsi' => array(
               'type' => 'VARCHAR',
               'constraint' => '5',
       ),
-      'propinsi' => array(
+      'provinsi' => array(
               'type' => 'VARCHAR',
               'constraint' => '150',
       ),
@@ -84,14 +84,14 @@ class Propinsi extends CI_Controller {
 
         //iNSERT ROW DATA ARRAY INTO YOUR DATABASE OF CHOISE HERE
         $data_upload = array(
-          'id_propinsi'=>$rowData[0][0],
-          'propinsi'=>$rowData[0][1]
+          'id_provinsi'=>$rowData[0][0],
+          'provinsi'=>$rowData[0][1]
         );
         $this->db->insert(TABLE,$data_upload);
       }
       echo 'Compile for insert to table '.TABLE.' success';
     }else{
-      $view_data['controller'] = 'propinsi';
+      $view_data['controller'] = 'provinsi';
       $view_data['table'] = TABLE;
       $view_data['body'] = 'compiler/import';
       $this->load->view('compiler/wrapper',$view_data);

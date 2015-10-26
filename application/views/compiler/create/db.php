@@ -69,9 +69,9 @@
       <tr>
         <td>propinsi</td>
         <td align="center">
-          <a href="<?=base_url()?>compiler/propinsi">Create</a>&nbsp;&nbsp;
-          <a href="<?=base_url()?>compiler/propinsi/drop">Drop</a>&nbsp;&nbsp;
-          <a href="<?=base_url()?>compiler/propinsi/insert">Insert</a>&nbsp;&nbsp;
+          <a href="<?=base_url()?>compiler/provinsi">Create</a>&nbsp;&nbsp;
+          <a href="<?=base_url()?>compiler/provinsi/drop">Drop</a>&nbsp;&nbsp;
+          <a href="<?=base_url()?>compiler/provinsi/insert">Insert</a>&nbsp;&nbsp;
         </td>
       </tr>
       <tr>

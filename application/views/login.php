@@ -90,7 +90,7 @@
             if(msg.response == 11 || msg.response == 10)
               alert(msg.msg);
             else{
-              alert('Selamat datang '+msg.msg['name']);
+              alert('Selamat datang '+msg.msg['nama']);
               window.location.replace(base_url+"dashboard");
             }
           });
