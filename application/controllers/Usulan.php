@@ -15,7 +15,8 @@ class Usulan extends CI_Controller {
       exit;
     }
     //SET TABLE NAME
-    define('TABLE','kekuatan');
+    define('TABLE','usulan');
+    define('NOUSULAN','e-forkes/'.$sess['id_provinsi'].$sess['id_kabkota'].$sess['id_faskes'].'/'.date('d').'/'.date('m').'/'.date('Y').'/'.(date('His') + rand(10000,99999)));
     //SET BREADCRUMB
     $this->session->set_userdata(array('breadcrumb'=>'usulan'));
   }

@@ -4,7 +4,7 @@
     <!-- mini logo for sidebar mini 50x50 pixels -->
     <span class="logo-mini"><b>F</b>KS</span>
     <!-- logo for regular state and mobile devices -->
-    <span class="logo-lg"><img class="img" src="img/kemenkeslogo.png" /></span>
+    <span class="logo-lg"><img class="img" src="<?=base_url()?>img/kemenkeslogo.png" /></span>
   </a>
   <!-- Header Navbar: style can be found in header.less -->
   <nav class="navbar navbar-static-top" role="navigation">
@@ -102,7 +102,7 @@
       </li>
 
       <li class="<?php if(!empty($msbc)&&$msbc == 'transaksi'){?>active<?php }?>">
-        <a><i class="fa  fa-edit"></i> TRANSAKSI<i class="fa fa-angle-left pull-right"></i></a>
+        <a href="#"><i class="fa  fa-edit"></i> TRANSAKSI<i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
           <li class="<?php if(!empty($msbc)&&$msbc == 'tambah_usulan'){?>active<?php }?>"><a href="<?= base_url()?>usulan"><i class="fa  fa-plus-square "></i> BUAT USULAN</a></li>
           <li><a href="<?= base_url()?>kekuatan/insert"><i class="fa fa-list"></i> DAFTAR USULAN</a></li>
@@ -110,13 +110,12 @@
       </li>
 
       <li class="<?php if($bc == 'usulan'){?>active<?php }?>">
-        <a><i class="fa  fa-legal"></i> VERIFIKASI<i class="fa fa-angle-left pull-right"></i></a>
+        <a href="#"><i class="fa  fa-legal"></i> VERIFIKASI<i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
           <li class="<?php if(!empty($msbc)&&$msbc == 'verifikasi_usulan'){?>active<?php }?>"><a href="<?= base_url()?>usulan/verifikasi"><i class="fa  fa-list"></i> USULAN TERBARU</a></li>
           <li class="<?php if(!empty($msbc)&&$msbc == 'daftar_usulan_lengkap'){?>active<?php }?>"><a href="<?= base_url()?>usulan/daftar_lengkap"><i class="fa  fa-list"></i> DAFTAR USULAN LENGKAP</a></li>
           <li class="<?php if(!empty($msbc)&&$msbc == 'daftar_usulan_tidak_lengkap'){?>active<?php }?>"><a href="<?= base_url()?>usulan/daftar_tidak_lengkap"><i class="fa  fa-list"></i>DAFTAR USULAN TIDAK LENGKAP</a></li>
         </ul>
-        <a href="#">
       </li>
 
     </ul>
