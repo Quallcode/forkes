@@ -2,7 +2,7 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      DAFTAR USULANa
+      DAFTAR USULAN
     </h1>
   </section>
   <section class="content">
@@ -16,11 +16,11 @@
             <table id="example1" class="table table-bordered table-striped">
               <thead>
                 <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
+                  <th>Nomor E-Fornas</th>
+                  <th>Surat Pengantar</th>
+                  <th>Daftar Usulan Obat</th>
+                  <th>Detail Obat</th>
+                  <th>Status</th>
                 </tr>
               </thead>
               <tbody>
