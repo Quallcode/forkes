@@ -51,6 +51,7 @@ class Form_registrasi extends CI_Controller {
 
   public function Dokter_praktek(){
     //SET SUB BREADCRUMB
+    $data = $this->Model_Get_RumahSakit->Normal_Select(TABLE);
     $this->session->set_userdata(array('main_sub_breadcrumb'=>'form_dokter_praktek'));
     //DECLARE VIEW DATA FOR WRAPPER
     //$view_data['data']   = $kekuatan;

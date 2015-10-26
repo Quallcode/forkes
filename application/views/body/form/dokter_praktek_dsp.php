@@ -14,7 +14,17 @@
           <!-- form start -->
           <form class="form-horizontal">
             <div class="box-body">
-              <input type="hidden" name="type" value="1" />
+              <input type="hidden" name="type" value="2" />
+              <div class="form-group">
+                <label for="inputFaskes" class="col-sm-2 control-label">Faskes</label>
+                <div class="col-sm-10">
+                  <select class="form-control" id="inputFaskes" name="organization">
+                    <?php foreach( $data as $key) { ?>
+                    <option value="<?=$key['id_provinsi']?>#<?=$key['id_kabkota']?>#<?=$key['id_rs']?>"><?=$key['nama_rs']?></option>
+                    <?php } ?>
+                  </select>
+                </div><!-- /.form-group -->
+              </div>
               <div class="form-group">
                 <label for="inputFaskes" class="col-sm-2 control-label">FASKES</label>
                 <div class="col-sm-10">
