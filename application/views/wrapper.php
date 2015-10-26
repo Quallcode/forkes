@@ -256,7 +256,22 @@
     <!--<script src="<?=base_url()?>includes/css_dashboard/dist/js/pages/dashboard.js"></script>-->
     <!-- AdminLTE for demo purposes -->
     <script src="<?=base_url()?>includes/css_dashboard/dist/js/demo.js"></script>
-
+    <!-- DataTables -->
+    <script src="<?=base_url()?>includes/css_dashboard/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?=base_url()?>includes/css_dashboard/plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <script>
+      $(function () {
+        $("#example1").DataTable();
+        $('#example2').DataTable({
+          "paging": true,
+          "lengthChange": false,
+          "searching": false,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false
+        });
+      });
+    </script>
     <script>
       $(function () {
         $('#dataTable').DataTable({

@@ -43,10 +43,6 @@
   </section>
 </div>
 
-  <!-- DataTables -->
-  <script src="<?=base_url()?>includes/css_dashboard/plugins/datatables/jquery.dataTables.min.js"></script>
-  <script src="<?=base_url()?>includes/css_dashboard/plugins/datatables/dataTables.bootstrap.min.js"></script>
-
   <!-- page script -->
     <script>
       $(function () {
