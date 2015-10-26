@@ -14,10 +14,11 @@
           <!-- form start -->
           <form class="form-horizontal">
             <div class="box-body">
+              <input type="hidden" name="type" value="1" />
               <div class="form-group">
                 <label for="inputFaskes" class="col-sm-2 control-label">FASKES</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputFaskes" placeholder="FASKES">
+                  <input type="text" class="form-control" id="inputFaskes" name="organization" placeholder="FASKES">
                 </div>
               </div>
               <div class="form-group">

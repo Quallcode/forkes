@@ -89,13 +89,9 @@ $route['compiler/kelas_terapi']         = 'Compiler/Kelas_Terapi/Index';
 $route['compiler/kelas_terapi/drop']    = 'Compiler/Kelas_Terapi/Drop';
 $route['compiler/kelas_terapi/insert']  = 'Compiler/Kelas_Terapi/Insert';
 
-$route['compiler/faskes']         = 'Compiler/Faskes/Index';
-$route['compiler/faskes/drop']    = 'Compiler/Faskes/Drop';
-$route['compiler/faskes/insert']  = 'Compiler/Faskes/Insert';
-
-$route['compiler/klinik']         = 'Compiler/Klinik/Index';
-$route['compiler/klinik/drop']    = 'Compiler/Klinik/Drop';
-$route['compiler/klinik/insert']  = 'Compiler/Klinik/Insert';
+$route['compiler/rumah_sakit']         = 'Compiler/Rumah_Sakit/Index';
+$route['compiler/rumah_sakit/drop']    = 'Compiler/Rumah_Sakit/Drop';
+$route['compiler/rumah_sakit/insert']  = 'Compiler/Rumah_Sakit/Insert';
 
 $route['compiler/usulan']         = 'Compiler/Usulan/Index';
 $route['compiler/usulan/drop']    = 'Compiler/Usulan/Drop';

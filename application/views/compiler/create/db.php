@@ -112,6 +112,14 @@
           <a href="<?=base_url()?>compiler/sediaan/insert">Insert</a>&nbsp;&nbsp;
         </td>
       </tr>
+      <tr>
+        <td>rumah_sakit</td>
+        <td align="center">
+          <a href="<?=base_url()?>compiler/rumah_sakit">Create</a>&nbsp;&nbsp;
+          <a href="<?=base_url()?>compiler/rumah_sakit/drop">Drop</a>&nbsp;&nbsp;
+          <a href="<?=base_url()?>compiler/rumah_sakit/insert">Insert</a>&nbsp;&nbsp;
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>

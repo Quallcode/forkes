@@ -14,6 +14,7 @@
           <!-- form start -->
           <form class="form-horizontal">
             <div class="box-body">
+              <input type="hidden" name="type" value="1" />
               <div class="form-group">
                 <label for="inputFaskes" class="col-sm-2 control-label">FASKES</label>
                 <div class="col-sm-10">
