@@ -118,7 +118,7 @@
       <li class="<?php if($bc == 'usulan'){?>active<?php }?>">
         <a href="<?= base_url()?>Usulan">
           <i class="fa fa-files-o"></i>
-          <span>Usulan</span>
+          <span>USULAN</span>
         </a>
       </li>
       <li>
