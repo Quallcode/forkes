@@ -26,10 +26,10 @@ class Form_registrasi extends CI_Controller {
     $this->session->set_userdata(array('main_sub_breadcrumb'=>'form_rumah_sakit'));
     //DECLARE VIEW DATA FOR WRAPPER
     //$view_data['data']   = $kekuatan;
-    $view_data['data']   = $data;
-    $view_data['body']   = 'body/form/rumah_sakit_dsp';
+	$view_data['data']   = $data;
+    //$view_data['body']   = 'body/form/rumah_sak_dsp';
     //LOAD VIEW DATA TO WRAPPER
-    $this->load->view('wrapper',$view_data);
+    $this->load->view('body/form/rumah_sakit_dsp',$view_data);
   }
 
   public function Daftar_User(){
@@ -55,9 +55,9 @@ class Form_registrasi extends CI_Controller {
     $this->session->set_userdata(array('main_sub_breadcrumb'=>'form_dokter_praktek'));
     //DECLARE VIEW DATA FOR WRAPPER
     //$view_data['data']   = $kekuatan;
-    $view_data['body']   = 'body/form/dokter_praktek_dsp';
+    //$view_data['body']   = 'body/form/dokter_prak_dsp';
     //LOAD VIEW DATA TO WRAPPER
-    $this->load->view('wrapper',$view_data);
+    $this->load->view('body/form/dokter_praktek_dsp');
   }
 }
 ?>

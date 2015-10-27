@@ -54,6 +54,9 @@ $route['default_controller'] = 'Login';
 $route['login/verify'] = 'Login/Verify';
 $route['logout']       = 'Logout/Index';
 //DATABASE MANAGEMENT
+$route['Registrasi/RumahSakit']        = 'Form_registrasi/Rumah_sakit';
+$route['Registrasi/DokterPraktek']     = 'Form_registrasi/Dokter_praktek';
+
 $route['compiler/createdb']     = 'Compiler/Create/Index';
 $route['compiler/dropdb']       = 'Compiler/Create/Dropdb';
 
