@@ -34,8 +34,6 @@
     <link rel="stylesheet" href="<?=base_url()?>includes/datatables/Responsive-1.0.7/css/responsive.dataTables.min.css">
     <!-- Select2 -->
     <link rel="stylesheet" href="<?=base_url()?>includes/css_dashboard/plugins/select2/select2.min.css">
-    <!-- Jquery File Upload -->
-    <link rel="stylesheet" href="<?=base_url()?>includes/fileupload/css/jquery.fileupload-ui.min.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -266,6 +264,8 @@
     <!-- DataTables -->
     <script src="<?=base_url()?>includes/css_dashboard/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="<?=base_url()?>includes/css_dashboard/plugins/datatables/dataTables.bootstrap.min.js"></script>
+
+    <!-- Custom Script -->
     <script type="text/javascript">
       var base_url = '<?= base_url()?>';
       $(function () {
@@ -280,8 +280,6 @@
           "autoWidth": false
         });
         Check_Id();
-
-
       });
 
       function Autocomplete(){

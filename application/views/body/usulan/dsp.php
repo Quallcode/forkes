@@ -53,6 +53,7 @@
                     <input type="text" class="form-control" id="inputNoEfornas" name="nomor_efornas" value="<?=$nousulan?>">
                   </div>
                 </div>
+
                 <div class="form-group">
                   <label for="inputSurat" class="col-sm-2 control-label">Surat Pengantar</label>
                   <div class="col-sm-10">
