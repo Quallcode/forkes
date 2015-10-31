@@ -36,9 +36,9 @@
           <form class="form-horizontal">
             <div class="box-body">
               <input type="hidden" name="type" value="2" />
-              <div class="form-group">             
+              <div class="form-group">
                 <div class="col-sm-10" style="text-align:-webkit-center">
-				<label for="inputFaskes" class="col-sm-2 control-label">Faskes</label>
+				          <label for="inputFaskes" class="col-sm-2 control-label">Faskes</label>
                   <select class="form-control" id="inputFaskes" name="organization" style="width:21em">
                     <?php foreach( $data as $key) { ?>
                     <option value="<?=$key['id_provinsi']?>#<?=$key['id_kabkota']?>#<?=$key['id_rs']?>"><?=$key['nama_rs']?></option>
@@ -46,37 +46,37 @@
                   </select>
                 </div><!-- /.form-group -->
               </div>
-              <div class="form-group">            
+              <div class="form-group">
                 <div class="col-sm-10" style="text-align:-webkit-center">
 				 <label for="inputFaskes" class="col-sm-2 control-label">FASKES</label>
                   <input type="text" class="form-control" id="inputFaskes" placeholder="FASKES" style="width:21em">
                 </div>
               </div>
-              <div class="form-group">               
+              <div class="form-group">
                 <div class="col-sm-10" style="text-align:-webkit-center">
 				<label for="inputNama" class="col-sm-2 control-label">Nama</label>
                   <input type="text" class="form-control" id="inputNama" placeholder="Nama Faskes" style="width:21em">
                 </div>
               </div>
-              <div class="form-group">               
+              <div class="form-group">
                 <div class="col-sm-10" style="text-align:-webkit-center">
 				<label for="inputEmail" class="col-sm-2 control-label">Email</label>
                   <input type="email" class="form-control" id="inputEmail" placeholder="E-mail" style="width:21em">
                 </div>
               </div>
-              <div class="form-group">               
+              <div class="form-group">
                 <div class="col-sm-10" style="text-align:-webkit-center">
 				<label for="inputNoTlp" class="col-sm-2 control-label">No.Tel</label>
                   <input type="number" class="form-control" id="inputNoTlp" placeholder="No Telepon" style="width:21em">
                 </div>
               </div>
-              <div class="form-group">               
+              <div class="form-group">
                 <div class="col-sm-10" style="text-align:-webkit-center">
 				<label for="inputUsername" class="col-sm-2 control-label">Username</label>
                   <input type="text" class="form-control" id="inputUsername" placeholder="User name" style="width:21em">
                 </div>
               </div>
-              <div class="form-group">                
+              <div class="form-group">
                 <div class="col-sm-10" style="text-align:-webkit-center">
 				<label for="inputPassword" class="col-sm-2 control-label">Password</label>
                   <input type="password" class="form-control" id="inputPassword" placeholder="Password" style="width:21em">

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Usulan extends CI_Controller {
+class Detail_Usulan extends CI_Controller {
   //CONSTRUCT FOR LOGIN
   function __construct(){
     parent::__construct();
@@ -16,22 +16,35 @@ class Usulan extends CI_Controller {
 	public function Index(){
     //PUT YOUR FIELD HERE
     $fields = array(
+      'nomor_efornas' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '50',
+      ),
       'id_atc_obat' => array(
               'type' => 'VARCHAR',
               'constraint' => '10',
       ),
-      'nama_obat' => array(
+      'id_sediaan' => array(
               'type' => 'VARCHAR',
-              'constraint' => '150',
+              'constraint' => '10',
       ),
-      'id_keterangan' => array(
-              'type' => 'INT',
+      'id_kekuatan' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '5',
       ),
-      'parent_id' => array(
-              'type' => 'INT',
+      'id_satuan' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '10'
+      ),
+      'alasan' => array(
+              'type' => 'TEXT',
               'null' => TRUE
       ),
-      'deleted' =>array(
+      'restriksi' => array(
+              'type' => 'TEXT',
+              'null' => TRUE
+      ),
+      'deleted' => array(
               'type' => 'TINYINT',
               'default' => '0'
       ),

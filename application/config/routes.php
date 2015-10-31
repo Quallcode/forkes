@@ -116,6 +116,12 @@ $route['compiler/kabkota']         = 'Compiler/Kabkota/Index';
 $route['compiler/kabkota/drop']    = 'Compiler/Kabkota/Drop';
 $route['compiler/kabkota/insert']  = 'Compiler/Kabkota/Insert';
 
+$route['compiler/usulan']         = 'Compiler/Usulan/Index';
+$route['compiler/usulan/drop']    = 'Compiler/Usulan/Drop';
+
+$route['compiler/detail_usulan']         = 'Compiler/Detail_Usulan/Index';
+$route['compiler/detail_usulan/drop']    = 'Compiler/Detail_Usulan/Drop';
+
 $route['compiler/sub_kelas_terapi']         = 'Compiler/Sub_Kelas_Terapi/Index';
 $route['compiler/sub_kelas_terapi/drop']    = 'Compiler/Sub_Kelas_Terapi/Drop';
 $route['compiler/sub_kelas_terapi/insert']  = 'Compiler/Sub_Kelas_Terapi/Insert';

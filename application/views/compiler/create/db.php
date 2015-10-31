@@ -120,6 +120,20 @@
           <a href="<?=base_url()?>compiler/rumah_sakit/insert">Insert</a>&nbsp;&nbsp;
         </td>
       </tr>
+      <tr>
+        <td>usulan</td>
+        <td align="center">
+          <a href="<?=base_url()?>compiler/usulan">Create</a>&nbsp;&nbsp;
+          <a href="<?=base_url()?>compiler/usulan/drop">Drop</a>&nbsp;&nbsp;
+        </td>
+      </tr>
+      <tr>
+        <td>detail_usulan</td>
+        <td align="center">
+          <a href="<?=base_url()?>compiler/detail_usulan">Create</a>&nbsp;&nbsp;
+          <a href="<?=base_url()?>compiler/detail_usulan/drop">Drop</a>&nbsp;&nbsp;
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>
