@@ -32,6 +32,10 @@ class Usulan extends CI_Controller {
               'type' => 'VARCHAR',
               'constraint' => '150',
       ),
+      'type' => array(
+              'type' => 'TINYINT',
+              'default' => '1'
+      ),
       'surat_pengantar' => array(
               'type' => 'TEXT',
               'null' => TRUE

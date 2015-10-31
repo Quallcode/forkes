@@ -35,6 +35,9 @@
     <!-- Select2 -->
     <link rel="stylesheet" href="<?=base_url()?>includes/css_dashboard/plugins/select2/select2.min.css">
 
+    <!-- Jasny bootstrap -->
+    <link href="<?php echo base_url(); ?>includes/jqueryupload/jasny-bootstrap.min.css" rel="stylesheet" media="screen">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -260,8 +263,13 @@
     <!--<script src="<?=base_url()?>includes/css_dashboard/dist/js/pages/dashboard.js"></script>-->
     <!-- AdminLTE for demo purposes -->
     <!-- Page script -->
-    <script type="text/javascript">var base_url = '<?= base_url()?>';</script>
+    <script type="text/javascript">
+      var base_url = '<?= base_url()?>';
+      var uploadURI = '<?=base_url()?>Upload';
+    </script>
     <script src="<?=base_url()?>includes/custom/js/app.js"></script>
+
+    <script src="<?php echo base_url(); ?>includes/jqueryupload/jasny-bootstrap.min.js"></script>
 
   </body>
 </html>

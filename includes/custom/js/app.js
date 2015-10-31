@@ -91,8 +91,7 @@ $(function () {
           newNum  = new Number(num + 1),
           final_html = create_usulan_html(newNum);     // the numeric ID of the new input field being added
 
-      $('#form-usulan').append(final_html).fadeIn('slow');
-
+      $('#form-usulan').append(final_html);
       // create the new element via clone(), and manipulate it's ID using newNum value
       // manipulate the name/id values of the input inside the new element
       // H2 - section
@@ -100,8 +99,8 @@ $(function () {
       $("#inputSediaan"+ newNum ).select2();
       $("#inputKekuatan"+ newNum ).select2();
       $("#inputSatuan"+ newNum ).select2();
-      window.location.hash = "#entry"+ newNum
-
+      window.location.hash = "#entry"+ newNum;
+      $('#btnDel').attr('disabled', false);
       // right now you can only add 5 sections. change '5' below to the max number of times the form can be duplicated
       if (newNum == 99)
       $('#btnAdd').attr('disabled', true).prop('value', "Anda telah melewati batas untuk memasukkan detail usulan");
@@ -128,5 +127,88 @@ $(function () {
   });
 
   $('#btnDel').attr('disabled', true);
+  //Script For Jquery Upload
+  var inputFile = $('input[name=file]');
+  var progressBar = $('#progress-bar');
+  listFilesOnServer();
+
+  $('#upload-btn').on('click', function(event) {
+    var fileToUpload = inputFile[0].files[0];
+    // make sure there is file to upload
+    if (fileToUpload != 'undefined') {
+      // provide the form data
+      // that would be sent to sever through ajax
+      var formData = new FormData();
+      formData.append("file", fileToUpload);
+      var num = $('.uploadsItems').length;
+      if(num == 2){
+        alert('Anda sudah melebihi batas file upload. Maks file upload 2');
+      }else{
+        // now upload the file using $.ajax
+        $.ajax({
+          url: uploadURI,
+          type: 'post',
+          data: formData,
+          processData: false,
+          contentType: false,
+          success: function(data) {
+            alert(data);
+            listFilesOnServer();
+          },
+          error: function(data){
+            alert('Error di Upload anda');
+          },
+          xhr: function() {
+            var xhr = new XMLHttpRequest();
+            xhr.upload.addEventListener("progress", function(event) {
+              if (event.lengthComputable) {
+                var percentComplete = Math.round( (event.loaded / event.total) * 100 );
+                // console.log(percentComplete);
+
+                $('.progress').show();
+                progressBar.css({width: percentComplete + "%"});
+                progressBar.text(percentComplete + '%');
+              };
+            }, false);
+
+            return xhr;
+          }
+        });
+      }
+
+    }
+  });
+
+  $('body').on('click', '.remove-file', function () {
+    var me = $(this);
+
+    $.ajax({
+      url: uploadURI,
+      type: 'post',
+      data: {file_to_remove: me.attr('data-file')},
+      success: function(data) {
+        alert(data);
+        me.closest('li').remove();
+      }
+    });
+
+  })
+
+  function listFilesOnServer () {
+    var items = [];
+
+    $.getJSON(uploadURI, function(data) {
+      $.each(data, function(index, element) {
+        items.push('<li class="list-group-item uploadsItems"><input type="hidden" value="uploads/'+basefolder+'/'+no_fornas+'/'+element+'" name ="UploadFile[]"/><a href="'+base_url+'/uploads/'+basefolder+'/'+no_fornas+'/'+element+'" target="_blank">' + element  + '</a><div class="pull-right"><a href="#" data-file="' + element + '" class="remove-file"><i class="glyphicon glyphicon-remove"></i></a></div></li>');
+      });
+      $('.list-group').html("").html(items.join(""));
+    });
+  }
+
+  $('body').on('change.bs.fileinput', function(e) {
+    $('.progress').hide();
+    progressBar.text("0%");
+    progressBar.css({width: "0%"});
+  });
 
 });

@@ -101,15 +101,15 @@
         </ul>
       </li>
 
-      <li class="<?php if(!empty($msbc)&&$msbc == 'transaksi'){?>active<?php }?>">
+      <li class="<?php if(!empty($bc)&&$bc == 'usulan'){?>active<?php }?>">
         <a href="#"><i class="fa  fa-edit"></i> TRANSAKSI<i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
-          <li class="<?php if(!empty($msbc)&&$msbc == 'tambah_usulan'){?>active<?php }?>"><a href="<?= base_url()?>usulan"><i class="fa  fa-plus-square "></i> BUAT USULAN</a></li>
-          <li><a href="<?= base_url()?>kekuatan/insert"><i class="fa fa-list"></i> DAFTAR USULAN</a></li>
+          <li class="<?php if(!empty($msbc)&&$msbc == 'tambah_usulan'){?>active<?php }?>"><a href="<?= base_url()?>usulan/insert"><i class="fa fa-plus-square "></i> BUAT USULAN</a></li>
+          <li class="<?php if(!empty($msbc)&&$msbc == 'daftar_usulan'){?>active<?php }?>"><a href="<?= base_url()?>usulan"><i class="fa fa-list"></i> DAFTAR USULAN</a></li>
         </ul>
       </li>
 
-      <li class="<?php if($bc == 'usulan'){?>active<?php }?>">
+      <li class="<?php if($bc == 'verifikasi'){?>active<?php }?>">
         <a href="#"><i class="fa  fa-legal"></i> VERIFIKASI<i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
           <li class="<?php if(!empty($msbc)&&$msbc == 'verifikasi_usulan'){?>active<?php }?>"><a href="<?= base_url()?>usulan/verifikasi"><i class="fa  fa-list"></i> USULAN TERBARU</a></li>

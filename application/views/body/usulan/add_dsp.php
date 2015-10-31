@@ -1,3 +1,7 @@
+<script type="text/javascript">
+var basefolder = '<?=$basefolder?>';
+var no_fornas = '<?=$no_fornas?>';
+</script>
 <form class="form-horizontal" action="<?=base_url()?>usulan/add_usulan" method="post" enctype="multipart/form-data">
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -53,8 +57,29 @@
                     <input type="text" class="form-control" id="inputNoEfornas" name="nomor_efornas" value="<?=$nousulan?>">
                   </div>
                 </div>
-
                 <div class="form-group">
+                  <label for="inputFile" class="col-sm-2 control-label">Surat Pengantar & Daftar Usulan Obat</label>
+                  <div class="col-sm-10">
+                    <form action="" id="form-upload">
+                      <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                        <div class="form-control" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
+                        <span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new"><i class="glyphicon glyphicon-paperclip"></i> Select file</span><span class="fileinput-exists"><i class="glyphicon glyphicon-repeat"></i> Change</span><input type="file" name="file"></span>
+                        <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput"><i class="glyphicon glyphicon-remove"></i> Remove</a>
+                        <a href="#" id="upload-btn" class="input-group-addon btn btn-success fileinput-exists"><i class="glyphicon glyphicon-open"></i> Upload</a>
+                      </div>
+                    </form>
+
+                    <!-- <progress id="progress-bar" max="100" value="0"></progress> -->
+                    <div class="progress" style="display:none;">
+                      <div id="progress-bar" class="progress-bar progress-bar-success progress-bar-striped " role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 30%;">
+                        20%
+                      </div>
+                    </div>
+
+                    <ul class="list-group"><ul>
+                  </div>
+                </div>
+                <!--<div class="form-group">
                   <label for="inputSurat" class="col-sm-2 control-label">Surat Pengantar</label>
                   <div class="col-sm-10">
                     <input type="file" id="inputSurat">
@@ -65,7 +90,7 @@
                   <div class="col-sm-10">
                     <input type="file" id="inputDaftarUsulan">
                   </div>
-                </div>
+                </div>-->
               </div><!-- /.box-body -->
             </form>
           </div><!-- /.box -->
@@ -232,6 +257,7 @@
               <div class="box-footer">
                 <a href="#" class="btn btn-default">Batal</a>
                 <button type="button" id="btnAdd" class="btn btn-default">Tambah Details</button>
+                <button type="button" id="btnDel" class="btn btn-default">Hapus Details</button>
                 <button type="submit" class="btn btn-info pull-right">Masukkan</button>
               </div><!-- /.box-footer -->
 
