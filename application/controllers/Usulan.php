@@ -33,9 +33,17 @@ class Usulan extends CI_Controller {
     //SET SUB BREADCRUMB
     $this->session->set_userdata(array('main_sub_breadcrumb'=>'daftar_usulan'));
     $sess = $this->session->userdata('user_data');
+    if($sess['type'] ==1){
+      $faskes = $this->Model_Get_Usulan->Normal_Select('rumah_sakit','id_rs',$sess['id_faskes'],'id_provinsi',$sess['id_provinsi'],'id_kabkota',$sess['id_kabkota']);
+      $view_data['faskes'] = $faskes[0]['nama_rs'];
+    }elseif($sess['type'] ==2){
+      $faskes = $this->Model_Get_Usulan->Normal_Select('klinik','id_klinik',$sess['id_faskes'],'id_provinsi',$sess['id_provinsi'],'id_kabkota',$sess['id_kabkota']);
+      $view_data['faskes'] = $faskes[0]['nama_klinik'];
+    }
     $data = $this->Model_Get_Usulan->Custom_Usulan($sess['type']);
-    print_r($data);exit;
+    //print_r($data);exit;
     //DECLARE VIEW DATA FOR WRAPPER
+    $view_data['usulan'] = $data;
     $view_data['body']   = 'body/usulan/record_dsp';
     //LOAD VIEW DATA TO WRAPPER
     $this->load->view('wrapper',$view_data);

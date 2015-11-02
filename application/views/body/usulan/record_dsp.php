@@ -10,7 +10,7 @@
       <div class="col-md-12">
         <div class="box">
           <div class="box-header">
-            <h3 class="box-title">Daftar Usulan <?=$rumah_sakit?></h3>
+            <h3 class="box-title">Daftar Usulan <?=$faskes?></h3>
           </div><!-- /.box-header -->
           <div class="box-body">
             <table id="dataTable" class="table table-bordered table-hover">
@@ -24,14 +24,15 @@
                 </tr>
               </thead>
               <tbody>
+                <?php foreach($usulan as $row){?>
                 <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0</td>
-                  <td>Win 95+</td>
-                  <td><a data-toggle="modal" href="#myModal">DETAIL</a></td>
-                  <td>DITERIMA</td>
+                  <td><?=$row['nomor_efornas']?></td>
+                  <td><a href="<?=base_url().$row['surat_pengantar']?>" target="_blank"><?php $sp_element = explode('/',$row['surat_pengantar']) ?><?=$sp_element[6]?></a></td>
+                  <td><a href="<?=base_url().$row['daftar_usulan_obat']?>" target="_blank"><?php $sp_element = explode('/',$row['daftar_usulan_obat']) ?><?=$sp_element[6]?></a></td>
+                  <td><a data-toggle="modal" href="#ModalDetail<?=$row['id']?>">DETAIL</a></td>
+                  <td><?=$row['status']?> DITERIMA</td>
                 </tr>
+                <?php } ?>
               </tbody>
               <tfoot>
               </tfoot>
@@ -42,11 +43,11 @@
     </div>   <!-- /.row -->
   </section>
 </div>
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<?php foreach($usulan as $row2){?>
+<div class="modal fade" id="ModalDetail<?=$row2['id']?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" style="width:75%; background:#fff">
     <div class="model-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
         <h4 class="modal-tittle">Detail Obat</h4>
       </div>
       <div class="modal-body">
@@ -65,17 +66,19 @@
             </tr>
           </thead>
           <tbody>
+            <?php foreach($row2['detail_usulan'] as $i => $val){?>
             <tr>
-              <td>No</td>
-              <td>Nama Obat</td>
-              <td>Sediaan</td>
-              <td>Kekuatan</td>
-              <td>Satuan</td>
-              <td>Link Journal</td>
-              <td>Alasan</td>
-              <td>Restriksi</td>
-              <td>Type Usulan</td>
+              <td><?=$i+1?></td>
+              <td><?=$val['nama_obat']?></td>
+              <td><?=$val['nama_sediaan']?></td>
+              <td><?=$val['kekuatan']?></td>
+              <td><?=$val['nama_satuan']?></td>
+              <td><a href="<?=base_url().$val['jurnal']?>" target="_blank">Lihat</a></td>
+              <td><?=$val['alasan']?></td>
+              <td><?=$val['restriksi']?></td>
+              <td><?=$val['tipe_usulan']?></td>
             </tr>
+            <?php } ?>
           </tbody>
           <tfoot>
           </tfoot>
@@ -87,3 +90,4 @@
     </div>
   </div>
 </div>
+<?php } ?>

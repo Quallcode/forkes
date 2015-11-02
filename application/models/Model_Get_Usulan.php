@@ -59,14 +59,16 @@ class Model_Get_Usulan extends CI_Model {
 
   function Custom_Usulan($type){
     if($type == 1)
-      $query = "SELECT `usulan`.`id`,B.`provinsi`,B.`kabkota`,B.`nama_rs`,`usulan`.`nomor_efornas`,`usulan`.`daftar_usulan_obat`,`usulan`.`surat_pengantar` FROM `usulan`,(SELECT `rumah_sakit`.`id_rs`,`rumah_sakit`.`nama_rs`, A.`id_provinsi`, A.`id_kabkota`,A.kabkota,A.`provinsi` FROM `rumah_sakit`, (SELECT `id_provinsi`,`id_kabkota`, `kabkota`.`kabkota`,`provinsi`.`provinsi` FROM `kabkota`,`provinsi` WHERE `kabkota`.`parent_id` = `provinsi`.`id_provinsi`) A WHERE A.`id_provinsi` = `rumah_sakit`.`id_provinsi` AND A.`id_kabkota` = `rumah_sakit`.`id_kabkota`) B WHERE B.`id_kabkota` = `usulan`.`id_kabkota` AND B.`id_provinsi` = `usulan`.`id_provinsi` AND `usulan`.`id_faskes` = B.`id_rs` AND `usulan`.`deleted` = 0";
+      $query = "SELECT `usulan`.`id`,B.`provinsi`,B.`kabkota`,B.`nama_rs`,`usulan`.`nomor_efornas`,`usulan`.`daftar_usulan_obat`,`usulan`.`surat_pengantar`, `usulan`.`status` FROM `usulan`,(SELECT `rumah_sakit`.`id_rs`,`rumah_sakit`.`nama_rs`, A.`id_provinsi`, A.`id_kabkota`,A.`kabkota`,A.`provinsi` FROM `rumah_sakit`, (SELECT `id_provinsi`,`id_kabkota`, `kabkota`.`kabkota`,`provinsi`.`provinsi` FROM `kabkota`,`provinsi` WHERE `kabkota`.`parent_id` = `provinsi`.`id_provinsi`) A WHERE A.`id_provinsi` = `rumah_sakit`.`id_provinsi` AND A.`id_kabkota` = `rumah_sakit`.`id_kabkota`) B WHERE B.`id_kabkota` = `usulan`.`id_kabkota` AND B.`id_provinsi` = `usulan`.`id_provinsi` AND `usulan`.`id_faskes` = B.`id_rs` AND `usulan`.`deleted` = 0";
     if($type ==2)
-      $query = "SELECT `usulan`.`id`,B.`provinsi`,B.`kabkota`,B.`nama_klinik`,`usulan`.`nomor_efornas`,`usulan`.`daftar_usulan_obat`,`usulan`.`surat_pengantar` FROM `usulan`,(SELECT `klinik`.`id_klinik`,`klinik`.`nama_klinik`, A.`id_provinsi`, A.`id_kabkota`,A.kabkota,A.`provinsi` FROM `klinik`, (SELECT `id_provinsi`,`id_kabkota`, `kabkota`.`kabkota`,`provinsi`.`provinsi` FROM `kabkota`,`provinsi` WHERE `kabkota`.`parent_id` = `provinsi`.`id_provinsi`) A WHERE A.`id_provinsi` = `klinik`.`id_provinsi` AND A.`id_kabkota` = `klinik`.`id_kabkota`) B WHERE B.`id_kabkota` = `usulan`.`id_kabkota` AND B.`id_provinsi` = `usulan`.`id_provinsi` AND `usulan`.`id_faskes` = B.`id_klinik` AND `usulan`.`deleted` = 0";
+      $query = "SELECT `usulan`.`id`,B.`provinsi`,B.`kabkota`,B.`nama_klinik`,`usulan`.`nomor_efornas`,`usulan`.`daftar_usulan_obat`,`usulan`.`surat_pengantar`, `usulan`.`status` FROM `usulan`,(SELECT `klinik`.`id_klinik`,`klinik`.`nama_klinik`, A.`id_provinsi`, A.`id_kabkota`,A.`kabkota,A.`provinsi` FROM `klinik`, (SELECT `id_provinsi`,`id_kabkota`, `kabkota`.`kabkota`,`provinsi`.`provinsi` FROM `kabkota`,`provinsi` WHERE `kabkota`.`parent_id` = `provinsi`.`id_provinsi`) A WHERE A.`id_provinsi` = `klinik`.`id_provinsi` AND A.`id_kabkota` = `klinik`.`id_kabkota`) B WHERE B.`id_kabkota` = `usulan`.`id_kabkota` AND B.`id_provinsi` = `usulan`.`id_provinsi` AND `usulan`.`id_faskes` = B.`id_klinik` AND `usulan`.`deleted` = 0";
     $result = $this->db->query($query);
     $i = 0;
     if ($result->num_rows() > 0) {
       foreach($result->result_array() as $row){
         $data[$i] = $row;
+        $detail_usulan = $this->Sub_Select('detail_usulan','nomor_efornas',$row['nomor_efornas']);
+        $data[$i]['detail_usulan'] = $detail_usulan;
         $i++;
       }
       return $data;
@@ -74,6 +76,28 @@ class Model_Get_Usulan extends CI_Model {
     else{
       return FALSE;
     }
+  }
+
+  function Sub_Select($table,$param,$on){
+    $this->db->select('kekuatan, nama_sediaan, nama_satuan, nama_obat, jurnal, alasan, restriksi, tipe_usulan');
+    $this->db->from($table);
+    $this->db->join('atc_obat', '`atc_obat`.`id_atc_obat` = `detail_usulan`.`id_atc_obat`' , 'left');
+    $this->db->join('kekuatan', ' `kekuatan`.`id_kekuatan` = `detail_usulan`.`id_kekuatan`' , 'left');
+    $this->db->join('sediaan', '`sediaan`.`id_sediaan` = `detail_usulan`.`id_sediaan`' , 'left');
+    $this->db->join('satuan', '`satuan`.`id_satuan` = `detail_usulan`.`id_satuan`' , 'left');
+		$this->db->where($param,$on);
+    $result = $this->db->get();
+    $i = 0;
+		if ($result->num_rows() > 0) {
+			foreach($result->result_array() as $row){
+				$data[$i] = $row;
+        $i++;
+      }
+			return $data;
+		}
+		else{
+			return FALSE;
+		}
   }
 }
 ?>

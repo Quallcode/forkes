@@ -44,10 +44,15 @@ class Usulan extends CI_Controller {
               'type' => 'TEXT',
               'null' => TRUE
       ),
+      'status' =>array(
+              'type' => 'VARCHAR',
+              'constraint' => '10',
+              'default' => 'BELUM'
+      ),
       'deleted' =>array(
               'type' => 'TINYINT',
               'default' => '0'
-      ),
+      )
     );
     //COMPILE FOR CREATE TABLE
     $this->dbforge->add_field('id');
