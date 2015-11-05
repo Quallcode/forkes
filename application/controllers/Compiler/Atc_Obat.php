@@ -93,8 +93,7 @@ class Atc_Obat extends CI_Controller {
         $data_upload = array(
           'id_atc_obat'=>$rowData[0][0],
           'nama_obat'=>$rowData[0][1],
-          'id_keterangan'=>$rowData[0][2],
-          'parent_id'=>$rowData[0][3]
+          'id_keterangan'=>$rowData[0][2]
         );
         $this->db->insert(TABLE,$data_upload);
       }

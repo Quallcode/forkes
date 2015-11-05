@@ -83,17 +83,27 @@
         </td>
       </tr>
       <tr>
-        <td>detail_usulan</td>
+        <td>kekuatan</td>
         <td align="center">
-          <a href="<?=base_url()?>compiler/detail_usulan">Create</a>&nbsp;&nbsp;
-          <a href="<?=base_url()?>compiler/detail_usulan/drop">Drop</a>&nbsp;&nbsp;
+          <a href="<?=base_url()?>compiler/kekuatan">Create</a>&nbsp;&nbsp;
+          <a href="<?=base_url()?>compiler/kekuatan/insert">Insert</a>&nbsp;&nbsp;
+          <a href="<?=base_url()?>compiler/kekuatan/drop">Drop</a>&nbsp;&nbsp;
         </td>
       </tr>
       <tr>
-        <td>usulan</td>
+        <td>keterangan_atc_obat</td>
         <td align="center">
-          <a href="<?=base_url()?>compiler/usulan">Create</a>&nbsp;&nbsp;
-          <a href="<?=base_url()?>compiler/usulan/drop">Drop</a>&nbsp;&nbsp;
+          <a href="<?=base_url()?>compiler/keterangan_atc_obat">Create</a>&nbsp;&nbsp;
+          <a href="<?=base_url()?>compiler/keterangan_atc_obat/insert">Insert</a>&nbsp;&nbsp;
+          <a href="<?=base_url()?>compiler/keterangan_atc_obat/drop">Drop</a>&nbsp;&nbsp;
+        </td>
+      </tr>
+      <tr>
+        <td>atc_obat</td>
+        <td align="center">
+          <a href="<?=base_url()?>compiler/atc_obat">Create</a>&nbsp;&nbsp;
+          <a href="<?=base_url()?>compiler/atc_obat/insert">Insert</a>&nbsp;&nbsp;
+          <a href="<?=base_url()?>compiler/atc_obat/drop">Drop</a>&nbsp;&nbsp;
         </td>
       </tr>
       <tr>

@@ -26,18 +26,18 @@ class Login extends CI_Controller {
     //GET POST DATA
     $post = $this->input->post();
     //CHECK IF EMPTY POST
-    if(empty($post)){
-      echo json_encode(array('response'=>'10','msg'=>'Data Kosong'));
+    if(empty($post['username']) || empty($post['password'])){
+      echo '<script>alert("Username atau Password anda kosong"); window.location.assign("'.base_url().'login");</script>';
     }else{
       //CHECK POST TO DATABASE
       $data = $this->Model_Users->Check_Login_Valid($post);
       $this->session->set_userdata(array('user_data'=>$data));
       if(!empty($data)) {
         //IF DATA EXIST
-        echo json_encode(array('response'=>'00','msg'=>$data));
+        echo '<script>alert("Selamat Datang '.$data['nama'].'"); window.location.assign("'.base_url().'dashboard");</script>';
       } else {
         //IF DATA NOT EXIST
-        echo json_encode(array('response'=>'11','msg'=>'ID user dan Password anda salah'));
+        echo '<script>alert("Username atau Password anda salah"); window.location.assign("'.base_url().'login");</script>';
       }
     }
   }

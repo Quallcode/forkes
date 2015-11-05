@@ -57,28 +57,41 @@ var no_fornas = '<?=$no_fornas?>';
                     <input type="text" class="form-control" id="inputNoEfornas" name="nomor_efornas" value="<?=$nousulan?>">
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="inputFile" class="col-sm-2 control-label">Surat Pengantar & Daftar Usulan Obat</label>
-                  <div class="col-sm-10">
-                    <form action="" id="form-upload">
-                      <div class="fileinput fileinput-new input-group" data-provides="fileinput">
-                        <div class="form-control" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
-                        <span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new"><i class="glyphicon glyphicon-paperclip"></i> Select file</span><span class="fileinput-exists"><i class="glyphicon glyphicon-repeat"></i> Change</span><input type="file" name="file"></span>
-                        <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput"><i class="glyphicon glyphicon-remove"></i> Remove</a>
-                        <a href="#" id="upload-btn" class="input-group-addon btn btn-success fileinput-exists"><i class="glyphicon glyphicon-open"></i> Upload</a>
-                      </div>
-                    </form>
 
-                    <!-- <progress id="progress-bar" max="100" value="0"></progress> -->
-                    <div class="progress" style="display:none;">
-                      <div id="progress-bar" class="progress-bar progress-bar-success progress-bar-striped " role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 30%;">
-                        20%
-                      </div>
+                <form action="" id="form-upload">
+                  <div class="form-group">
+                    <label for="inputFile" class="col-sm-2 control-label">Surat Pengantar</label>
+                    <div class="col-sm-10">
+                        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                          <div class="form-control" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
+                          <span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new"><i class="glyphicon glyphicon-paperclip"></i> Select file</span><span class="fileinput-exists"><i class="glyphicon glyphicon-repeat"></i> Change</span><input type="file" name="file"></span>
+                          <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput"><i class="glyphicon glyphicon-remove"></i> Remove</a>
+                          <a href="#" id="upload-btn" class="input-group-addon btn btn-success fileinput-exists"><i class="glyphicon glyphicon-open"></i> Upload</a>
+                        </div>
                     </div>
-
-                    <ul class="list-group"><ul>
                   </div>
-                </div>
+
+                  <div class="form-group">
+                    <label for="inputFile" class="col-sm-2 control-label">Daftar Usulan Obat</label>
+                    <div class="col-sm-10">
+                        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                          <div class="form-control" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
+                          <span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new"><i class="glyphicon glyphicon-paperclip"></i> Select file</span><span class="fileinput-exists"><i class="glyphicon glyphicon-repeat"></i> Change</span><input type="file" name="file2"></span>
+                          <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput"><i class="glyphicon glyphicon-remove"></i> Remove</a>
+                          <a href="#" id="upload-btn2" class="input-group-addon btn btn-success fileinput-exists"><i class="glyphicon glyphicon-open"></i> Upload</a>
+                        </div>
+
+                      <!-- <progress id="progress-bar" max="100" value="0"></progress> -->
+                      <div class="progress" style="display:none;">
+                        <div id="progress-bar" class="progress-bar progress-bar-success progress-bar-striped " role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 30%;">
+                          20%
+                        </div>
+                      </div>
+
+                      <ul class="list-group"><ul>
+                    </div>
+                  </div>
+                </form>
                 <!--<div class="form-group">
                   <label for="inputSurat" class="col-sm-2 control-label">Surat Pengantar</label>
                   <div class="col-sm-10">
@@ -202,9 +215,11 @@ var no_fornas = '<?=$no_fornas?>';
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputJurnal" class="col-sm-2 control-label labelJurnal">Link Jurnal</label>
+                    <label for="inputJurnal" class="col-sm-2 control-label labelJurnal">Jurnal</label>
                     <div class="col-sm-10">
-                      <input type="file" id="inputJurnal" class="form-control inputJurnal" name="jurnal[]">
+                      <textarea class="form-control inputJurnal" rows="3" placeholder="Masukkan Jurnal" id="inputJurnal" name="jurnal[]"></textarea>
+                      <b>File Pendukung Jurnal (optional)</b>
+                      <input type="file" id="inputJurnal" class="form-control inputJurnal" name="file_jurnal[]">
                     </div>
                   </div>
                   <div class="form-group">
@@ -238,7 +253,7 @@ var no_fornas = '<?=$no_fornas?>';
                   <div class="form-group">
                     <label for="inputTypeUsulan" class="col-sm-2 control-label labelTypeUsulan">Type Usulan</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control inputTypeUsulan" id="inputTypeUsulan" placeholder="Type Usulan">
+                      <input type="text" class="form-control inputTypeUsulan" id="inputTypeUsulan" placeholder="Type Usulan" name="tipe_usulan[]">
                     </div>
                   </div>
                   <!--<div class="form-group">

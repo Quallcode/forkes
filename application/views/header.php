@@ -1,3 +1,4 @@
+<?php $udata = $this->session->userdata('user_data');?>
 <header class="main-header">
   <!-- Logo -->
   <a href="index2.html" class="logo">
@@ -17,7 +18,7 @@
         <!-- User Account: style can be found in dropdown.less -->
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <span class="hidden-xs"><?php $udata = $this->session->userdata('user_data'); echo $udata['nama']; ?></span>
+            <span class="hidden-xs"><?= $udata['nama']; ?></span>
           </a>
           <ul class="dropdown-menu">
             <!-- User image -->
@@ -43,7 +44,7 @@
         <img src="<?=base_url()?>includes/css_dashboard/dist/img/avatar.png" class="img-circle" alt="User Image">
       </div>
       <div class="pull-left info">
-        <p><?php $udata = $this->session->userdata('user_data'); echo $udata['nama']; ?></p>
+        <p><?= $udata['nama']; ?></p>
       </div>
     </div>
     <?php $bc = $this->session->userdata('breadcrumb'); ?>
@@ -57,7 +58,8 @@
           <span>DASHBOARD</span>
         </a>
       </li>
-
+      <!-- MASTER DATA -->
+      <?php if($udata['type'] == 3) { ?>
       <li class="<?php if($bc == 'master'){?>active<?php }?> treeview">
         <a href="#">
           <i class="fa fa-file-text"></i> <span>MASTER</span> <i class="fa fa-angle-left pull-right"></i>
@@ -92,7 +94,7 @@
             </ul>
           </li>
           <li class="<?php if(!empty($msbc)&&$msbc == 'kekuatan'){?>active<?php }?>">
-            <a><i class="fa  fa-flash"></i> KEKUATAN</a>
+            <a><i class="fa fa-flash"></i> KEKUATAN</a>
             <ul class="treeview-menu">
               <li><a href="<?= base_url()?>kekuatan"><i class="fa  fa-list "></i> DAFTAR KEKUATAN</a></li>
               <li><a href="<?= base_url()?>kekuatan/insert"><i class="fa fa-plus-square"></i> TAMBAH KEKUATAN</a></li>
@@ -100,24 +102,28 @@
           </li>
         </ul>
       </li>
-
+      <?php } ?>
+      <!-- TRANSAKSI -->
+      <?php if($udata['type'] != 3){?>
       <li class="<?php if(!empty($bc)&&$bc == 'usulan'){?>active<?php }?>">
-        <a href="#"><i class="fa  fa-edit"></i> TRANSAKSI<i class="fa fa-angle-left pull-right"></i></a>
+        <a href="#"><i class="fa fa-edit"></i> TRANSAKSI<i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
           <li class="<?php if(!empty($msbc)&&$msbc == 'tambah_usulan'){?>active<?php }?>"><a href="<?= base_url()?>usulan/insert"><i class="fa fa-plus-square "></i> BUAT USULAN</a></li>
           <li class="<?php if(!empty($msbc)&&$msbc == 'daftar_usulan'){?>active<?php }?>"><a href="<?= base_url()?>usulan"><i class="fa fa-list"></i> DAFTAR USULAN</a></li>
         </ul>
       </li>
-
+      <?php } ?>
+      <!-- VERIFIKASI USULAN -->
+      <?php if($udata['type'] == 3){ ?>
       <li class="<?php if($bc == 'verifikasi'){?>active<?php }?>">
-        <a href="#"><i class="fa  fa-legal"></i> VERIFIKASI<i class="fa fa-angle-left pull-right"></i></a>
+        <a href="#"><i class="fa fa-legal"></i> VERIFIKASI<i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
           <li class="<?php if(!empty($msbc)&&$msbc == 'verifikasi_usulan'){?>active<?php }?>"><a href="<?= base_url()?>usulan/verifikasi"><i class="fa  fa-list"></i> USULAN TERBARU</a></li>
           <li class="<?php if(!empty($msbc)&&$msbc == 'daftar_usulan_lengkap'){?>active<?php }?>"><a href="<?= base_url()?>usulan/daftar_lengkap"><i class="fa  fa-list"></i> DAFTAR USULAN LENGKAP</a></li>
           <li class="<?php if(!empty($msbc)&&$msbc == 'daftar_usulan_tidak_lengkap'){?>active<?php }?>"><a href="<?= base_url()?>usulan/daftar_tidak_lengkap"><i class="fa  fa-list"></i>DAFTAR USULAN TIDAK LENGKAP</a></li>
         </ul>
       </li>
-
+      <?php } ?>
     </ul>
   </section>
   <!-- /.sidebar -->

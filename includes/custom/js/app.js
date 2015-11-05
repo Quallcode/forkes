@@ -129,6 +129,7 @@ $(function () {
   $('#btnDel').attr('disabled', true);
   //Script For Jquery Upload
   var inputFile = $('input[name=file]');
+  var inputFile2 = $('input[name=file2]');
   var progressBar = $('#progress-bar');
   listFilesOnServer();
 
@@ -147,6 +148,53 @@ $(function () {
         // now upload the file using $.ajax
         $.ajax({
           url: uploadURI,
+          type: 'post',
+          data: formData,
+          processData: false,
+          contentType: false,
+          success: function(data) {
+            alert(data);
+            listFilesOnServer();
+          },
+          error: function(data){
+            alert('Error di Upload anda');
+          },
+          xhr: function() {
+            var xhr = new XMLHttpRequest();
+            xhr.upload.addEventListener("progress", function(event) {
+              if (event.lengthComputable) {
+                var percentComplete = Math.round( (event.loaded / event.total) * 100 );
+                // console.log(percentComplete);
+
+                $('.progress').show();
+                progressBar.css({width: percentComplete + "%"});
+                progressBar.text(percentComplete + '%');
+              };
+            }, false);
+
+            return xhr;
+          }
+        });
+      }
+
+    }
+  });
+
+  $('#upload-btn2').on('click', function(event) {
+    var fileToUpload2 = inputFile2[0].files[0];
+    // make sure there is file to upload
+    if (fileToUpload2 != 'undefined') {
+      // provide the form data
+      // that would be sent to sever through ajax
+      var formData = new FormData();
+      formData.append("file2", fileToUpload2);
+      var num = $('.uploadsItems').length;
+      if(num == 2){
+        alert('Anda sudah melebihi batas file upload. Maks file upload 2');
+      }else{
+        // now upload the file using $.ajax
+        $.ajax({
+          url: uploadURI2,
           type: 'post',
           data: formData,
           processData: false,

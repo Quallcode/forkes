@@ -40,7 +40,7 @@ class Usulan extends CI_Controller {
       $faskes = $this->Model_Get_Usulan->Normal_Select('klinik','id_klinik',$sess['id_faskes'],'id_provinsi',$sess['id_provinsi'],'id_kabkota',$sess['id_kabkota']);
       $view_data['faskes'] = $faskes[0]['nama_klinik'];
     }
-    $data = $this->Model_Get_Usulan->Custom_Usulan($sess['type']);
+    $data = $this->Model_Get_Usulan->Custom_UsulanWithParam($sess['type'],$sess);
     //print_r($data);exit;
     //DECLARE VIEW DATA FOR WRAPPER
     $view_data['usulan'] = $data;
@@ -89,6 +89,10 @@ class Usulan extends CI_Controller {
       if(!empty($check)){
         echo '<script type="text/javascript">alert("Nomor efornas '.$post['nomor_efornas'].' telah terdaftar. Silahkan mencoba beberapa saat lagi"); window.location.assign("'.base_url().'usulan");</script>';
       }
+      if(!isset($post['UploadFile'][0]) || !isset($post['UploadFile'][1]) ){
+        echo ('<script type="text/javascript">alert("Anda harus memasukkan file data usulan obat dan surat pengantar");window.location.assign("'.base_url().'usulan/insert");</script>');
+        exit;
+      }
       $data_usulan = array(
         'nomor_efornas'      => $post['nomor_efornas'],
         'id_faskes'          => $sess['id_faskes'],
@@ -107,6 +111,10 @@ class Usulan extends CI_Controller {
           'id_sediaan'    => $post['id_sediaan'][$i],
           'id_kekuatan'   => $post['id_kekuatan'][$i],
           'id_satuan'     => $post['id_satuan'][$i],
+          'jurnal'        => $post['jurnal'][$i],
+          'alasan'        => $post['alasan'][$i],
+          'restriksi'     => $post['restriksi'][$i],
+          'tipe_usulan'   => $post['tipe_usulan'][$i],
         );
         $this->Model_Transaction->Insert_To_Db($data_detail_usulan,'detail_usulan');
       }
@@ -147,6 +155,12 @@ class Usulan extends CI_Controller {
 	public function Verifikasi(){
     //SET SUB BREADCRUMB
     $this->session->set_userdata(array('main_sub_breadcrumb'=>'verifikasi_usulan'));
+    $usulan_rs = $this->Model_Get_Usulan->Custom_Usulan(1);
+    $usulan_klinik = $this->Model_Get_Usulan->Custom_Usulan(1);
+    $usulan_klinik = array();
+    $view_data['usulan_rs'] = $usulan_rs;
+    $view_data['usulan_klinik'] = $usulan_klinik;
+    //print_r($usulan_rs);exit;
     //GET KEKUATAN DATA
     //$kekuatan = $this->Model_Get_Kekuatan->Normal_Select(TABLE);
     //DECLARE VIEW DATA FOR WRAPPER

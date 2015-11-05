@@ -44,6 +44,19 @@ class Detail_Usulan extends CI_Controller {
               'type' => 'TEXT',
               'null' => TRUE
       ),
+      'jurnal' => array(
+              'type' => 'TEXT',
+              'null' => TRUE
+      ),
+      'file_jurnal' => array(
+              'type' => 'TEXT',
+              'null' => TRUE
+      ),
+      'tipe_usulan' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '80',
+              'null' => TRUE
+      ),
       'deleted' => array(
               'type' => 'TINYINT',
               'default' => '0'
@@ -61,63 +74,4 @@ class Detail_Usulan extends CI_Controller {
     $this->dbforge->drop_table(TABLE);
     echo('Compile for drop table '.TABLE.' success');
   }
-
-  public function Insert()
-  {
-    if($this->input->post('Import'))
-    {
-      //FOR UPLOAD
-      $fileName = $_FILES['fileimport']['name'];
-      //FOR UPLOAD
-      $config['upload_path'] = BASEPATH.'../includes/assets/';
-      $config['file_name'] = $fileName;
-      $config['allowed_types'] = 'csv';
-      $config['max_size'] = 1000000;
-
-      $this->load->library('upload');
-      $this->upload->initialize($config);
-
-      if(!$this->upload->do_upload('fileimport')){
-        $error = $this->upload->display_errors();
-        echo $error; exit;
-      }
-      //FOR READ
-      $inputFileName = BASEPATH.'../includes/assets/'.$fileName;
-
-      //READ your excel workbook
-      try {
-        $inputFileType = IOFactory::identify($inputFileName);
-        $objReader = IOFactory::createReader($inputFileType);
-        $objPHPExcel = $objReader->load($inputFileName);
-      } catch(Exception $e) {
-        die('Error loading file "'.pathinfo($inputFileName,PATHINFO_BASENAME).'": '.$e->getMessage());
-      }
-
-      //Get Worksheet dimendions
-      $sheet = $objPHPExcel->getSheet(0);
-      $highestRow = $sheet->getHighestRow();
-      $highestColumn = $sheet->getHighestColumn();
-      //Loop through each row of thw Worksheet in turn
-      for($row = 1; $row <= $highestRow; $row++)//Read a row of data into an array
-      {
-        $rowData = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row, NULL, TRUE, FALSE);
-
-        //iNSERT ROW DATA ARRAY INTO YOUR DATABASE OF CHOISE HERE
-        $data_upload = array(
-          'id_atc_obat'=>$rowData[0][0],
-          'nama_obat'=>$rowData[0][1],
-          'id_keterangan'=>$rowData[0][2],
-          'parent_id'=>$rowData[0][3]
-        );
-        $this->db->insert(TABLE,$data_upload);
-      }
-      echo 'Compile for insert to table '.TABLE.' success';
-    }else{
-      $view_data['controller'] = 'detail_usulan';
-      $view_data['table'] = TABLE;
-      $view_data['body'] = 'compiler/import';
-      $this->load->view('compiler/wrapper',$view_data);
-    }
-  }
-
 }

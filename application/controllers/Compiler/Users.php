@@ -80,7 +80,7 @@ class Users extends CI_Controller {
       'password' => md5('admin'),
       'email'    => 'lixus.julius17@gmail.com',
       'no_telp' => '081288540387',
-      'type' => 1,
+      'type' => 3,
       'id_provinsi' => 11,
       'id_kabkota' => 1,
       'id_faskes'  => 1,

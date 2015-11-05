@@ -266,6 +266,7 @@
     <script type="text/javascript">
       var base_url = '<?= base_url()?>';
       var uploadURI = '<?=base_url()?>Upload';
+      var uploadURI2 = '<?=base_url()?>Upload2';
     </script>
     <script src="<?=base_url()?>includes/custom/js/app.js"></script>
 
