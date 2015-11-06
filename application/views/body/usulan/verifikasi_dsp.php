@@ -26,30 +26,58 @@
               </thead>
               <tbody>
                 <?php if(!empty($usulan_rs)){
-                  foreach($usulan_rs as $val){
+                  foreach($usulan_rs as $urskey => $val){
                 ?>
                 <tr>
                   <td><?=$val['nomor_efornas']?></td>
                   <td><a href="<?=base_url().$val['surat_pengantar']?>" target="_blank"><?php $sp_element = explode('/',$val['surat_pengantar']) ?><?=$sp_element[6]?></a></td>
                   <td><a href="<?=base_url().$val['daftar_usulan_obat']?>" target="_blank"><?php $sp_element = explode('/',$val['daftar_usulan_obat']) ?><?=$sp_element[6]?></a></td>
                   <td><a data-toggle="modal" href="#ModalDetailUR<?=$val['id']?>">DETAIL</a></td>
-                  <td><?=$val['status']?> DITERIMA</td>
-                  <td align="center"><a href="" class="btn btn-info">DITERIMA</a>&nbsp;&nbsp;<a href="" class="btn btn-danger">DITOLAK</a></td>
+                  <td><span class="status<?=$urskey+1?>"><?=$val['status']?></span> DITERIMA</td>
+                  <td align="center">
+                    <?php if($val['status'] == 'BELUM'){ ?>
+                      <span class="status<?=$urskey+1?>">
+                        <button type="button" onclick="UpdateStatusTerima('<?=$val['nomor_efornas']?>',<?=$urskey+1?>);" class="btn btn-info">DITERIMA</button>
+                          &nbsp;&nbsp;
+                        <button type="button" onclick="UpdateStatusTolak('<?=$val['nomor_efornas']?>',<?=$urskey+1?>);"class="btn btn-danger">DITOLAK</button>
+                      </span>
+                      <span id="terima<?=$urskey+1?>">
+
+                      </span>
+                    <?php }else{ ?>
+                      <?= $val['status']?> TERVERIFIKASI
+                    <?php } ?>
+                    </td>
                 </tr>
-                <?php }
+                <?php
+                      $flag = $urskey+1;
+                    }
                   }
                 ?>
                 <?php if(!empty($usulan_klinik)){
-                  foreach($usulan_klinik as $val2){
+                  foreach($usulan_klinik as $uklkey => $val2){
                 ?>
                 <tr>
                   <td><?=$val2['nomor_efornas']?></td>
                   <td><a href="<?=base_url().$val2['surat_pengantar']?>" target="_blank"><?php $sp_element2 = explode('/',$val2['surat_pengantar']) ?><?=$sp_element2[6]?></a></td>
                   <td><a href="<?=base_url().$val2['daftar_usulan_obat']?>" target="_blank"><?php $sp_element2 = explode('/',$val2['daftar_usulan_obat']) ?><?=$sp_element2[6]?></a></td>
                   <td><a data-toggle="modal" href="#ModalDetailUK<?=$val2['id']?>">DETAIL</a></td>
-                  <td><?=$val2['status']?> DITERIMA</td>
-                  <td align="center"><a href="" class="btn btn-info">DITERIMA</a>&nbsp;&nbsp;<a href="" class="btn btn-danger">DITOLAK</a></td>
-                </tr>
+                  <td><span class="status<?=$flag + ($uklkey+1)?>"><?=$val2['status']?></span> DITERIMA</td>
+                  <td align="center">
+                    <?php if($val2['status'] == 'BELUM'){ ?>
+                    <span class="status<?=$flag + ($uklkey+1)?>">
+                      <button type="button" onclick="UpdateStatusTerima('<?=$val2['nomor_efornas']?>',<?=$flag + ($uklkey+1)?>);" class="btn btn-info">DITERIMA</button>
+                        &nbsp;&nbsp;
+                      <button type="button" onclick="UpdateStatusTolak('<?=$val2['nomor_efornas']?>',<?=$flag +  ($uklkey+1)?>);"class="btn btn-danger">DITOLAK</button>
+                    </span>
+                    <span id="terima<?=$flag + ($uklkey+1)?>">
+
+                    </span>
+                    <?php }else{ ?>
+                      <?= $val2['status']?> TERVERIFIKASI
+                    <?php } ?>
+                    </td>
+                  </tr>
                 <?php }
                   }
                 ?>
@@ -104,7 +132,7 @@
               <td><?=$value['kekuatan']?></td>
               <td><?=$value['nama_satuan']?></td>
               <td><?=$value['jurnal']?><br/>
-                <a href="<?=base_url().$value['file_jurnal']?>" target="_blank">Lihat</a></td>
+                <?php if(!empty($value['file_jurnal'])){?><a href="<?=base_url().$value['file_jurnal']?>" target="_blank">Lihat File</a><?php } ?></td>
               <td><?=$value['alasan']?></td>
               <td><?=$value['restriksi']?></td>
               <td><?=$value['tipe_usulan']?></td>

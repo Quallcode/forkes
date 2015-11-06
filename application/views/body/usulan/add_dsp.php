@@ -118,7 +118,7 @@ var no_fornas = '<?=$no_fornas?>';
 
       <select class="form-control" id="idSelectSediaanHidden" style="display:none">
         <?php foreach( $sediaan as $key6) { ?>
-          <option value="<?=$key6['id_sediaan']?>" ><?=$key6['nama_sediaan']?></option>
+          <option data-id="<?=$key6['id_sediaan']?>" value="<?=$key6['id_sediaan']?>" ><?=$key6['nama_sediaan']?></option>
         <?php } ?>
       </select>
 
@@ -157,9 +157,9 @@ var no_fornas = '<?=$no_fornas?>';
                   <div class="form-group">
                     <label for="inputSediaan" class="col-sm-2 control-label labelSediaan">Sediaan</label>
                     <div class="col-sm-10">
-                      <select class="form-control inputSediaan" id="inputSediaan" name="id_sediaan[]">
+                      <select class="form-control inputSediaan" id="inputSediaan" name="id_sediaan[]" onchange="CheckSediaan(this.value)">
                         <?php foreach( $sediaan as $key2) { ?>
-                          <option value="<?=$key2['id_sediaan']?>"><?=$key2['nama_sediaan']?></option>
+                          <option data-id="<?=$key6['id_sediaan']?>" value="<?=$key2['id_sediaan']?>"><?=$key2['nama_sediaan']?></option>
                         <?php } ?>
                       </select>
                     </div>

@@ -169,5 +169,31 @@ class Usulan extends CI_Controller {
     $this->load->view('wrapper',$view_data);
 	}
   //END OF INDEX FOR VERIFIKASI USULAN VIEW
+  //FUNCTION FOR TERIMA USULAN
+  Public function Terima(){
+    $post = $this->input->post();
+    if(!empty($post)){
+      $data = array(
+        'status' => 'SUDAH'
+      );
+      $this->Model_Transaction->Update_To_Db($data,'usulan','nomor_efornas',$post['nomor_efornas']);
+    }else{
+      echo ('Anda tidak bisa mengakeses laman ini');
+    }
+  }
+  //END OF INDEX FOR TERIMA USULAN
+  //FUNCTION FOR TOLAK USULAN
+  Public function Tolak(){
+    $post = $this->input->post();
+    if(!empty($post)){
+      $data = array(
+        'status' => 'TIDAK'
+      );
+      $this->Model_Transaction->Update_To_Db($data,'usulan','nomor_efornas',$post['nomor_efornas']);
+    }else{
+      echo ('Anda tidak bisa mengakeses laman ini');
+    }
+  }
+  //END OF INDEX FOR TOLAK USULAN
 }
 ?>

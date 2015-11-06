@@ -1,20 +1,34 @@
 // Attach a submit handler to the form
-$( "#searchForm" ).submit(function( event ) {
-
-  // Stop form from submitting normally
-  event.preventDefault();
-
+function UpdateStatusTerima(noefornas,id) {
+  alert(noefornas);
+  alert(id);
   // Get some values from elements on the page:
-  var $form = $( this ),
-    term = $form.find( "input[name='s']" ).val(),
-    url = $form.attr( "action" );
+  url = base_url+'Usulan/Terima';
 
   // Send the data using post
-  var posting = $.post( url, { s: term } );
+  var posting = $.post( url, { nomor_efornas: noefornas } );
 
   // Put the results in a div
   posting.done(function( data ) {
-    var content = $( data ).find( "#content" );
-    $( "#result" ).empty().append( content );
+    $('.status'+id).html('SUDAH');
+    $('#terima'+id).html('TERVERIFIKASI');
+    alert('Usulan '+noefornas+' telah diverifikasi dan diterima');
   });
-});
+}
+
+function UpdateStatusTolak(noefornas,id) {
+  alert(noefornas);
+  alert(id);
+  // Get some values from elements on the page:
+  url = base_url+'Usulan/Tolak';
+
+  // Send the data using post
+  var posting = $.post( url, { nomor_efornas: noefornas } );
+
+  // Put the results in a div
+  posting.done(function( data ) {
+    $('.status'+id).html('TIDAK');
+    $('#terima'+id).html('TERVERIFIKASI');
+    alert('Usulan '+noefornas+' telah diverifikasi dan tidak diterima');
+  });
+}

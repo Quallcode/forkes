@@ -2,7 +2,6 @@ $(function () {
   Autocomplete();
   $("#dataTable").DataTable();
   $(".dataTable").DataTable();
-  Check_Id();
 });
 
 function Autocomplete(){
@@ -13,10 +12,8 @@ function Autocomplete(){
     $("#inputSatuan").select2();
 }
 
-function Check_Id(){
-  $('.inputSediaan').change(function(){
-      alert($(this).find(':selected').data('id'));
-  });
+function CheckSediaan(sediaan){
+  alert(sediaan);
 }
 
 function create_usulan_html(num){
@@ -37,7 +34,7 @@ function create_usulan_html(num){
                 <div class="form-group">\
                   <label for="inputSediaan'+num+'" class="col-sm-2 control-label labelSediaan">Sediaan</label>\
                   <div class="col-sm-10">\
-                    <select class="form-control inputSediaan" id="inputSediaan'+num+'" name="id_sediaan[]">';
+                    <select class="form-control inputSediaan" id="inputSediaan'+num+'" name="id_sediaan[]" onchange="CheckSediaan(this.value)">';
   var html3 =      '</select>\
                   </div>\
                 </div>\
@@ -58,7 +55,9 @@ function create_usulan_html(num){
                 <div class="form-group">\
                   <label for="inputJurnal'+num+'" class="col-sm-2 control-label labelJurnal">Link Jurnal</label>\
                   <div class="col-sm-10">\
-                    <input type="file" id="inputJurnal'+num+'" class="form-control inputJurnal" name="jurnal[]">\
+                    <textarea class="form-control inputJurnal" rows="3" placeholder="Masukkan Jurnal" id="inputJurnal'+num+'" name="jurnal[]"></textarea>\
+                    <b>File Pendukung Jurnal (optional)</b>\
+                    <input type="file" id="inputJurnal'+num+'" class="form-control inputJurnal" name="file_jurnal[]">\
                   </div>\
                 </div>\
                 <div class="form-group">\
