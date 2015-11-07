@@ -24,7 +24,7 @@
                 </tr>
               </thead>
               <tbody>
-                <?php foreach($usulan as $row){?>
+                <?php if(!empty($usulan)){ foreach($usulan as $row){?>
                 <tr>
                   <td><?=$row['nomor_efornas']?></td>
                   <td><a href="<?=base_url().$row['surat_pengantar']?>" target="_blank"><?php $sp_element = explode('/',$row['surat_pengantar']) ?><?=$sp_element[6]?></a></td>
@@ -32,7 +32,7 @@
                   <td><a data-toggle="modal" href="#ModalDetail<?=$row['id']?>">DETAIL</a></td>
                   <td><?=$row['status']?> DITERIMA</td>
                 </tr>
-                <?php } ?>
+                <?php } }?>
               </tbody>
               <tfoot>
               </tfoot>
@@ -43,7 +43,7 @@
     </div>   <!-- /.row -->
   </section>
 </div>
-<?php foreach($usulan as $row2){?>
+<?php if(!empty($usulan)){ foreach($usulan as $row2){?>
 <div class="modal fade" id="ModalDetail<?=$row2['id']?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" style="width:75%; background:#fff">
     <div class="model-content">
@@ -90,4 +90,4 @@
     </div>
   </div>
 </div>
-<?php } ?>
+<?php } } ?>
