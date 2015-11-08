@@ -13,7 +13,7 @@
             <h3 class="box-title">List Usulan Faskes</h3>
           </div><!-- /.box-header -->
           <div class="box-body">
-            <table id="dataTable" class="table table-bordered table-hover">
+            <table id="example1" class="table table-bordered table-hover">
               <thead>
                 <tr>
                   <th>Nomor E-Fornas</th>

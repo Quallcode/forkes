@@ -258,6 +258,7 @@
     <script src="<?=base_url()?>includes/css_dashboard/plugins/select2/select2.full.min.js"></script>
     <!-- DataTables -->
     <script src="<?=base_url()?>includes/css_dashboard/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?=base_url()?>includes/css_dashboard/plugins/datatables/dataTables.bootstrap.min.js"></script>
     <script src="<?=base_url()?>includes/datatables/Responsive-1.0.7/js/dataTables.responsive.min.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <!--<script src="<?=base_url()?>includes/css_dashboard/dist/js/pages/dashboard.js"></script>-->
@@ -272,6 +273,19 @@
     <script src="<?=base_url()?>includes/custom/js/ajaxpost.js"></script>
 
     <script src="<?php echo base_url(); ?>includes/jqueryupload/jasny-bootstrap.min.js"></script>
-
+    <!-- page script -->
+    <script>
+      $(function () {
+        $("#example1").DataTable();
+        $('#example2').DataTable({
+          "paging": true,
+          "lengthChange": false,
+          "searching": false,
+          "ordering": true,
+          "info": true,
+          "autoWidth": false
+        });
+      });
+    </script>
   </body>
 </html>
