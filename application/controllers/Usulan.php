@@ -129,6 +129,11 @@ class Usulan extends CI_Controller {
 	public function Daftar_lengkap(){
     //SET SUB BREADCRUMB
     $this->session->set_userdata(array('main_sub_breadcrumb'=>'daftar_usulan_lengkap'));
+    $usulan_rs = $this->Model_Get_Usulan->Custom_Usulan_Lengkap(1);
+    $usulan_klinik = $this->Model_Get_Usulan->Custom_Usulan_Lengkap(1);
+    $usulan_klinik = array();
+    $view_data['usulan_rs'] = $usulan_rs;
+    $view_data['usulan_klinik'] = $usulan_klinik;
     //GET KEKUATAN DATA
     //$kekuatan = $this->Model_Get_Kekuatan->Normal_Select(TABLE);
     //DECLARE VIEW DATA FOR WRAPPER
@@ -142,6 +147,12 @@ class Usulan extends CI_Controller {
 	public function Daftar_tidak_lengkap(){
     //SET SUB BREADCRUMB
     $this->session->set_userdata(array('main_sub_breadcrumb'=>'daftar_usulan_tidak_lengkap'));
+    $this->session->set_userdata(array('main_sub_breadcrumb'=>'daftar_usulan_lengkap'));
+    $usulan_rs = $this->Model_Get_Usulan->Custom_Usulan_Tidak_Lengkap(1);
+    $usulan_klinik = $this->Model_Get_Usulan->Custom_Usulan_Tidak_Lengkap(1);
+    $usulan_klinik = array();
+    $view_data['usulan_rs'] = $usulan_rs;
+    $view_data['usulan_klinik'] = $usulan_klinik;
     //GET KEKUATAN DATA
     //$kekuatan = $this->Model_Get_Kekuatan->Normal_Select(TABLE);
     //DECLARE VIEW DATA FOR WRAPPER

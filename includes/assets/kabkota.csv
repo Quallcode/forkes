@@ -1,0 +1,455 @@
+11,01,Simeulue
+11,02,Aceh Singkil
+11,03,Aceh Selatan
+11,04,Aceh Tenggara
+11,05,Aceh Timur
+11,06,Aceh Tengah
+11,07,Aceh Barat
+11,08,Aceh Besar
+11,09,Pidie
+11,10,Bireuen
+11,11,Aceh Utara
+11,12,Aceh Barat Daya
+11,13,Gayo Lues
+11,14,Aceh Tamiang
+11,15,Nagan Raya
+11,16,Aceh Jaya
+11,17,Bener Meriah
+11,18,Pidie Jaya
+11,71,Kota Banda Aceh
+11,72,Kota Sabang
+11,73,Kota Langsa
+11,74,Kota Lhokseumawe
+12,01,Nias
+12,02,Mandailing Natal
+12,03,Tapanuli Selatan
+12,04,Tapanuli Tengah
+12,05,Tapanuli Utara
+12,06,Toba Samosir
+12,07,Labuhan Batu
+12,08,Asahan
+12,09,Simalungun
+12,10,Dairi
+12,11,Karo
+12,12,Deli Serdang
+12,13,Langkat
+12,14,Nias Selatan
+12,16,Pakpak Bharat
+12,18,Serdang Bedagai
+12,19,Batu Bara
+12,21,Padang Lawas
+12,22,Labuhan Batu Selatan
+12,23,Labuhan Batu Utara
+12,71,Kota Sibolga
+12,72,Kota Tanjung Balai
+12,73,Kota Pematang Siantar
+12,74,Kota Tebing Tinggi
+12,75,Kota Medan
+12,76,Kota Binjai
+12,77,Kota Padang Sidempuan
+12,78,Kota Gunungsitoli
+13,01,Kepulauan Mentawai
+13,02,Pesisir Selatan
+13,03,Solok
+13,04,Sijunjung
+13,05,Tanah Datar
+13,06,Padang Pariaman
+13,07,Agam
+13,08,Lima Puluh Kota
+13,09,Pasaman
+13,11,Dharmas raya
+13,12,Pasaman Barat
+13,71,Kota Padang
+13,72,Kota Solok
+13,73,Kota Sawah Lunto
+13,74,Kota Padang Panjang
+13,75,Kota Bukittinggi
+13,76,Kota Payakumbuh
+13,77,Kota Pariaman
+14,01,Kuantan Singingi
+14,02,Indragiri Hulu
+14,03,Indragiri Hilir
+14,04,Pelalawan
+14,05,Siak
+14,06,Kampar
+14,07,Rokan Hulu
+14,08,Bengkalis
+14,09,Rokan Hilir
+14,10,Kepulauan Meranti
+14,71,Kota Pekanbaru
+14,73,Kota Dumai
+15,01,Kerinci
+15,02,Merangin
+15,03,Sarolangun
+15,04,Batang Hari
+15,05,Muaro Jambi
+15,06,Tanjung Jabung Timur
+15,07,Tanjung Jabung Barat
+15,08,Tebo
+15,09,Bungo
+15,71,Kota Jambi
+16,01,Ogan Komering Ulu
+16,02,Ogan Komering Ilir
+16,03,Muara Enim
+16,04,Lahat
+16,05,Musi Rawas
+16,06,Musi Banyuasin
+16,07,Banyuasin
+16,08,Ogan Komering Ulu Selatan
+16,09,Ogan Komering Ulu Timur
+16,10,Ogan Ilir
+16,11,Empat Lawang
+16,71,Kota Palembang
+16,72,Kota Prabumulih
+16,73,Kota Pagar Alam
+16,74,Kota Lubuk Linggau
+17,01,Bengkulu Selatan
+17,02,Rejang Lebong
+17,03,Bengkulu Utara
+17,04,Kaur
+17,05,Seluma
+17,06,Muko Muko
+17,07,Lebong
+17,08,Kepahiang
+17,09,Bengkulu Tengah
+17,71,Kota Bengkulu
+18,01,Lampung Barat
+18,02,Tanggamus
+18,03,Lampung Selatan
+18,04,Lampung Timur
+18,05,Lampung Tengah
+18,06,Lampung Utara
+18,07,Way Kanan
+18,08,Tulang Bawang
+18,09,Pesawaran
+18,10,Pringsewu
+18,11,Tulang Bawang Barat
+18,71,Kota Bandar Lampung
+18,72,Kota Metro
+19,01,Bangka
+19,02,Belitung
+19,03,Bangka Barat
+19,04,Bangka Tengah
+19,05,Bangka Selatan
+19,06,Belitung Timur
+19,71,Kota Pangkal Pinang
+20,01,Karimun
+20,02,Bintan
+20,03,Natuna
+20,04,Lingga
+20,05,Kepulauan Anambas
+20,71,Kota Batam
+20,72,Kota Tanjung Pinang
+31,01,Kepulauan Seribu
+31,71,Jakarta Selatan
+31,72,Jakarta Timur
+31,73,Jakarta Pusat
+31,74,Jakarta Barat
+31,75,Jakarta Utara
+32,01,Bogor
+32,02,Sukabumi
+32,03,Cianjur
+32,04,Bandung
+32,05,Garut
+32,06,Tasikmalaya
+32,07,Ciamis
+32,08,Kuningan
+32,09,Cirebon
+32,10,Majalengka
+32,11,Sumedang
+32,12,Indramayu
+32,13,Subang
+32,14,Purwakarta
+32,15,Karawang
+32,16,Bekasi
+32,17,Bandung Barat
+32,71,Kota Bogor
+32,72,Kota Sukabumi
+32,73,Kota Bandung
+32,74,Kota Cirebon
+32,75,Kota Bekasi
+32,76,Kota Depok
+32,77,Kota Cimahi
+32,78,Kota Tasikmalaya
+32,79,Kota Banjar
+33,01,Cilacap
+33,02,Banyumas
+33,03,Purbalingga
+33,04,Banjarnegara
+33,05,Kebumen
+33,06,Purworejo
+33,07,Wonosobo
+33,08,Magelang
+33,09,Boyolali
+33,10,Klaten
+33,11,Sukoharjo
+33,12,Wonogiri
+33,13,Karanganyar
+33,14,Sragen
+33,15,Grobogan
+33,16,Blora
+33,17,Rembang
+33,18,Pati
+33,19,Kudus
+33,20,Jepara
+33,21,Demak
+33,22,Semarang
+33,23,Temanggung
+33,24,Kendal
+33,25,Batang
+33,26,Pekalongan
+33,27,Pemalang
+33,28,Tegal
+33,29,Brebes
+33,71,Kota Magelang
+33,72,Kota Surakarta
+33,73,Kota Salatiga
+33,74,Kota Semarang
+33,75,Kota Pekalongan
+33,76,Kota Tegal
+34,01,Kulon Progo
+34,02,Bantul
+34,03,Gunung Kidul
+34,04,Sleman
+34,71,Kota Yogyakarta
+35,01,Pacitan
+35,02,Ponorogo
+35,03,Trenggalek
+35,04,Tulungagung
+35,05,Blitar
+35,06,Kediri
+35,07,Malang
+35,08,Lumajang
+35,09,Jember
+35,10,Banyuwangi
+35,11,Bondowoso
+35,12,Situbondo
+35,13,Probolinggo
+35,14,Pasuruan
+35,15,Sidoarjo
+35,16,Mojokerto
+35,17,Jombang
+35,18,Nganjuk
+35,19,Madiun
+35,20,Magetan
+35,21,Ngawi
+35,22,Bojonegoro
+35,23,Tuban
+35,24,Lamongan
+35,25,Gresik
+35,26,Bangkalan
+35,27,Sampang
+35,28,Pamekasan
+35,29,Sumenep
+35,71,Kota Kediri
+35,72,Kota Blitar
+35,73,Kota Malang
+35,74,Kota Probolinggo
+35,75,Kota Pasuruan
+35,76,Kota Mojokerto
+35,77,Kota Madiun
+35,78,Kota Surabaya
+35,79,Kota Batu
+36,01,Pandeglang
+36,02,Lebak
+36,03,Tangerang
+36,04,Serang
+36,71,Kota Tangerang
+36,72,Kota Cilegon
+36,73,Kota Serang
+36,74,Kota Tangerang Selatan
+51,01,Jembrana
+51,02,Tabanan
+51,03,Badung
+51,04,Gianyar
+51,05,Klungkung
+51,06,Bangli
+51,07,Karangasem
+51,08,Buleleng
+51,71,Kota Denpasar
+52,01,Lombok Barat
+52,02,Lombok Tengah
+52,03,Lombok Timur
+52,04,Sumbawa
+52,05,Dompu
+52,06,Bima
+52,07,Sumbawa Barat
+52,08,Lombok Utara
+52,71,Kota Mataram
+52,72,Kota Bima
+53,01,Sumba Barat
+53,02,Sumba Timur
+53,03,Kupang
+53,04,Timor Tengah Selatan
+53,05,Timor Tengah Utara
+53,06,Belu
+53,07,Alor
+53,08,Lembata
+53,09,Flores Timur
+53,10,Sikka
+53,11,Ende
+53,12,Ngada
+53,13,Manggarai
+53,16,Sumba Tengah
+53,20,Sabu Raijua
+53,71,Kota Kupang
+61,01,Sambas
+61,02,Bengkayang
+61,03,Landak
+61,04,Pontianak
+61,05,Sanggau
+61,06,Ketapang
+61,07,Sintang
+61,08,Kapuas Hulu
+61,09,Sekadau
+61,10,Melawi
+61,11,Kubu Raya
+61,71,Kota Pontianak
+61,72,Kota Singkawang
+62,01,Kotawaringin Barat
+62,02,Kotawaringin Timur
+62,03,Kapuas
+62,04,Barito Selatan
+62,05,Barito Utara
+62,07,Lamandau
+62,08,Seruyan
+62,09,Katingan
+62,10,Pulang Pisau
+62,11,Gunung Mas
+62,12,Barito Timur
+62,13,Murung Raya
+62,71,Kota Palangka Raya
+63,01,Tanah Laut
+63,02,Kota baru
+63,03,Banjar
+63,04,Barito Kuala
+63,05,Tapin
+63,06,Hulu Sungai Selatan
+63,07,Hulu Sungai Tengah
+63,08,Hulu Sungai Utara
+63,09,Tabalong
+63,10,Tanah Bumbu
+63,11,Balangan
+63,71,Kota Banjarmasin
+63,72,Kota Banjar baru
+64,01,Paser
+64,02,Kutai Barat
+64,03,Kutai Kartanegara
+64,04,Kutai Timur
+64,05,Berau
+64,06,Malinau
+64,08,Nunukan
+64,09,Penajam Paser Utara
+64,71,Kota Balikpapan
+64,72,Kota Samarinda
+64,73,Kota Tarakan
+64,74,Kota Bontang
+71,01,Bolaang Mongondow
+71,02,Minahasa
+71,03,Kepulauan Sangihe
+71,04,Kepulauan Talaud
+71,05,Minahasa Selatan
+71,06,Minahasa Utara
+71,07,Bolaang Mongondow Utara
+71,08,Kepulauan Siau Tagulandang Biaro
+71,09,Minahasa Tenggara
+71,10,Bolaang Mongondow Selatan
+71,71,Kota Manado
+71,72,Kota Bitung
+71,73,Kota Tomohon
+71,74,Kota Kotamobagu
+72,01,Banggai Kepulauan
+72,02,Banggai
+72,03,Morowali
+72,04,Poso
+72,05,Donggala
+72,06,Toli-Toli
+72,07,Buol
+72,08,Parigi Moutong
+72,09,Tojo Una-Una
+72,10,Sigi
+72,71,Kota Palu
+73,01,Kepulauan Selayar
+73,02,Bulukumba
+73,03,Bantaeng
+73,04,Jeneponto
+73,05,Takalar
+73,06,Gowa
+73,07,Sinjai
+73,08,Bone
+73,09,Maros
+73,10,Pangkajene Kepulauan
+73,11,Barru
+73,12,Soppeng
+73,13,Wajo
+73,14,Sidenreng Rappang
+73,15,Pinrang
+73,16,Enrekang
+73,17,Luwu
+73,18,Tana Toraja
+73,22,Luwu Utara
+73,71,Kota Makassar
+73,72,Kota Pare-pare
+73,73,Kota Palopo
+74,01,BUTON
+74,02,MUNA
+74,03,KONAWE
+74,04,KOLAKA
+74,06,BOMBANA
+74,07,WAKATOBI
+74,08,KOLAKA UTARA
+74,71,Kota KENDARI
+74,72,Kota BAU-BAU
+75,01,Boalemo
+75,02,Gorontalo
+75,03,Pohuwato
+75,04,Bone Bolango
+75,05,Gorontalo Utara
+75,71,Kota Gorontalo
+76,01,Majene
+76,02,Polewali Mandar
+76,03,Mamasa
+76,04,Mamuju
+76,05,Mamuju Utara
+81,01,Maluku Tenggara Barat
+81,03,Maluku Tengah
+81,05,Kepulauan Aru
+81,06,Seram Bagian Barat
+81,07,Seram Bagian Timur
+81,08,Maluku Barat Daya
+81,09,Buru Selatan
+81,71,Kota Ambon
+81,72,Kota Tual
+82,01,Halmahera Barat
+82,02,Halmahera Tengah
+82,03,Kepulauan Sula
+82,04,Halmahera Selatan
+82,05,Halmahera Utara
+82,06,Halmahera Timur
+82,07,Pulau Morotai
+82,71,Kota Ternate
+91,01,Fakfak
+91,02,Kaimana
+91,03,Teluk Wondama
+91,04,Teluk Bintuni
+91,06,Sorong Selatan
+91,07,Sorong
+91,08,Raja Ampat
+91,71,Kota Sorong
+92,01,Merauke
+92,02,Jayawijaya
+92,03,Jayapura
+92,04,Nabire
+92,05,Biak Numfor
+92,11,Puncak Jaya
+92,12,Mimika
+92,13,Boven Digoel
+92,14,Mappi
+92,15,Asmat
+92,17,Pegunungan Bintang
+92,19,Sarmi
+92,20,Keerom
+92,27,Supiori
+92,28,Mamberamo Raya
+92,29,Lanny Jaya
+92,71,Kota Jayapura
