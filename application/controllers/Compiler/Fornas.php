@@ -16,12 +16,145 @@ class Kelas_Terapi extends CI_Controller {
 	public function Index(){
     //PUT YOUR FIELD HERE
     $fields = array(
-      'id_kelas' => array(
+      'id_kelas_terapi' => array(
               'type' => 'VARCHAR',
-              'constraint' => '4',
+              'constraint' => '2',
       ),
-      'kelas_terapi' => array(
-              'type' => 'TEXT',
+      'id_sub_kelas_terapi1' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '2',
+      ),
+      'id_sub_kelas_terapi2' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '2',
+      ),
+      'id_sub_kelas_terapi3' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '2',
+      ),
+      'nama_obat' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '255',
+      ),
+      'id_atc_obat' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '10',
+      ),
+      'id_sediaan' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '5',
+      ),
+      'id_kekuatan' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '5',
+      ),
+      'id_satuan' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '3',
+      ),
+      'subkutan' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '1',
+      ),
+      'intrakutan' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '1',
+      ),
+      'intramuscular' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '1',
+      ),
+      'intravena' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '1',
+      ),
+      'intravena_bolus' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '1',
+      ),
+      'intra-arteri' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '1',
+      ),
+      'intralumbal' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '1',
+      ),
+      'intrapleural' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '1',
+      ),
+      'intracardial' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '1',
+      ),
+      'anti_artikuler' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '1',
+      ),
+      'implantasi_subkutan' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '1',
+      ),
+      'rektal' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '1',
+      ),
+      'intranasal' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '1',
+      ),
+      'intra_okuler' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '1',
+      ),
+      'intra_aurikuler' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '1',
+      ),
+      'intrapulmonal' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '1',
+      ),
+      'intravaginal' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '1',
+      ),
+      'infus_drip' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '1',
+      ),
+      'injeksi_infiltr' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '1',
+      ),
+      'pv' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '1',
+      ),
+      'Tk1' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '1',
+      ),
+      'Tk2' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '1',
+      ),
+      'Tk3' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '1',
+      ),
+      'PRB' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '1',
+      ),
+      'PP' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '1',
+      ),
+      'restriksi_kelas_terapi' => array(
+              'type' => 'VARCHAR',
+              'constraint' => '1',
       )
     );
     //COMPILE FOR CREATE TABLE
