@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Kelas_Terapi extends CI_Controller {
+class Fornas extends CI_Controller {
   //CONSTRUCT FOR LOGIN
   function __construct(){
     parent::__construct();
@@ -348,7 +348,7 @@ class Kelas_Terapi extends CI_Controller {
       }
       echo 'Compile for insert to table '.TABLE.' success';
     }else{
-      $view_data['controller'] = 'kelas_terapi';
+      $view_data['controller'] = 'fornas';
       $view_data['table'] = TABLE;
       $view_data['body'] = 'compiler/import';
       $this->load->view('compiler/wrapper',$view_data);

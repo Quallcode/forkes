@@ -10,6 +10,7 @@ function Autocomplete(){
     $("#inputSediaan").select2();
     $("#inputKekuatan").select2();
     $("#inputSatuan").select2();
+    $("#inputJurnal").ckeditor();
 }
 
 function CheckSediaan(sediaan){
@@ -98,6 +99,7 @@ $(function () {
       $("#inputSediaan"+ newNum ).select2();
       $("#inputKekuatan"+ newNum ).select2();
       $("#inputSatuan"+ newNum ).select2();
+      $("#inputJurnal"+ newNum ).ckeditor();
       window.location.hash = "#entry"+ newNum;
       $('#btnDel').attr('disabled', false);
       // right now you can only add 5 sections. change '5' below to the max number of times the form can be duplicated

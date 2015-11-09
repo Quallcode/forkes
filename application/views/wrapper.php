@@ -256,6 +256,9 @@
     <script src="<?=base_url()?>includes/css_dashboard/dist/js/app.min.js"></script>
     <!-- Select2 -->
     <script src="<?=base_url()?>includes/css_dashboard/plugins/select2/select2.full.min.js"></script>
+    <!-- Ckeditor -->
+    <script src="<?=base_url()?>includes/ckeditor/ckeditor.js"></script>
+    <script src="<?=base_url()?>includes/ckeditor/adapters/jquery.js"></script>
     <!-- DataTables -->
     <script src="<?=base_url()?>includes/css_dashboard/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="<?=base_url()?>includes/css_dashboard/plugins/datatables/dataTables.bootstrap.min.js"></script>
