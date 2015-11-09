@@ -9,7 +9,7 @@ class Kelas_Terapi extends CI_Controller {
     $this->load->database();
     $this->load->dbforge();
     $this->load->library(array('PHPExcel','PHPExcel/IOFactory'));
-    define('TABLE','kelas_terapi');
+    define('TABLE','fornas');
   }
 
   //INDEX FOR FIRST VIEW

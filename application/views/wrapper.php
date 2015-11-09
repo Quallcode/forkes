@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>FORKES | Admin</title>
+    <title>E-FORNAS | Admin</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -266,8 +266,9 @@
     <!-- Page script -->
     <script type="text/javascript">
       var base_url = '<?= base_url()?>';
-      var uploadURI = '<?=base_url()?>Upload';
-      var uploadURI2 = '<?=base_url()?>Upload2';
+      var uploadURI = '<?=base_url()?>upload';
+      var uploadURI2 = '<?=base_url()?>upload2';
+      var uploadURI3 = '<?=base_url()?>upload3';
     </script>
     <script src="<?=base_url()?>includes/custom/js/app.js"></script>
     <script src="<?=base_url()?>includes/custom/js/ajaxpost.js"></script>

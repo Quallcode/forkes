@@ -79,6 +79,32 @@
               <li><a href="<?= base_url()?>atc_obat/insert"><i class="fa fa-circle-o"></i> TAMBAH ATC OBAT</a></li>
             </ul>
           </li>
+          <li class="<?php if(!empty($msbc)&& ($msbc == 'kelas_terapi' || $msbc == 'sub_kelas_terapi')){?>active<?php }?>">
+            <a><i class="fa fa-circle-o"></i> KELAS</a>
+            <ul class="treeview-menu">
+              <li class="treeview <?php if(!empty($msbc)&&$msbc == 'kelas_terapi'){?>active<?php }?>">
+                <a><i class="fa fa-circle-o"></i> KELAS TERAPI</a>
+                <ul class="treeview-menu">
+                  <li><a href="<?= base_url()?>kelas_terapi"><i class="fa fa-circle-o"></i> DAFTAR KELAS</a></li>
+                  <li><a href="<?= base_url()?>kelas_terapi/insert"><i class="fa fa-circle-o"></i> TAMBAH KELAS</a></li>
+                </ul>
+              </li>
+              <li class="treeview <?php if(!empty($msbc)&&$msbc == 'sub_kelas_terapi'){?>active<?php }?>">
+                <a><i class="fa fa-circle-o"></i> SUB KELAS TERAPI</a>
+                <ul class="treeview-menu">
+                  <li><a href="<?= base_url()?>sub_kelas_terapi"><i class="fa fa-circle-o"></i> DAFTAR SUB KELAS</a></li>
+                  <li><a href="<?= base_url()?>sub_kelas_terapi/insert"><i class="fa fa-circle-o"></i> TAMBAH KELAS</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="<?php if(!empty($msbc)&&$msbc == 'fornas'){?>active<?php }?>">
+            <a><i class="fa fa-flask"></i> FORNAS</a>
+            <ul class="treeview-menu">
+              <li><a href="<?= base_url()?>fornas"><i class="fa  fa-list "></i> DAFTAR FORNAS</a></li>
+              <li><a href="<?= base_url()?>fornas/insert"><i  class="fa fa-plus-square"></i> TAMBAH FORNAS</a></li>
+            </ul>
+          </li>
           <li class="<?php if(!empty($msbc)&&$msbc == 'sediaan'){?>active<?php }?>">
             <a><i class="fa fa-flask"></i> SEDIAAN</a>
             <ul class="treeview-menu">
@@ -105,7 +131,7 @@
       <?php } ?>
       <!-- TRANSAKSI -->
       <?php if($udata['type'] != 3){?>
-      <li class="<?php if(!empty($bc)&&$bc == 'usulan'){?>active<?php }?>">
+      <li class="<?php if(!empty($bc)&&$bc == 'usulan'){?>active<?php }?> treeview">
         <a href="#"><i class="fa fa-edit"></i> TRANSAKSI<i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
           <li class="<?php if(!empty($msbc)&&$msbc == 'tambah_usulan'){?>active<?php }?>"><a href="<?= base_url()?>usulan/insert"><i class="fa fa-plus-square "></i> BUAT USULAN</a></li>
@@ -115,7 +141,7 @@
       <?php } ?>
       <!-- VERIFIKASI USULAN -->
       <?php if($udata['type'] == 3){ ?>
-      <li class="<?php if($bc == 'verifikasi'){?>active<?php }?>">
+      <li class="<?php if(!empty($bc)&&$bc == 'verifikasi'){?>active<?php }?> treeview">
         <a href="#"><i class="fa fa-legal"></i> VERIFIKASI<i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
           <li class="<?php if(!empty($msbc)&&$msbc == 'verifikasi_usulan'){?>active<?php }?>"><a href="<?= base_url()?>usulan/verifikasi"><i class="fa  fa-list"></i> USULAN TERBARU</a></li>

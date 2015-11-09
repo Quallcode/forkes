@@ -23,14 +23,10 @@ class Sub_Kelas_Terapi extends CI_Controller {
       'sub_kelas_terapi' => array(
               'type' => 'TEXT',
       ),
-      'date_created' => array(
-              'type' => 'DATETIME',
-              'null' => TRUE,
-      ),
-      'date_modified' => array(
-              'type' => 'DATETIME',
-              'null' => TRUE,
-      ),
+      'sub' => array(
+        'type' => 'TINYINT'
+        'default' => 1
+      );
     );
     //COMPILE FOR CREATE TABLE
     $this->dbforge->add_field('id');
@@ -86,16 +82,17 @@ class Sub_Kelas_Terapi extends CI_Controller {
         $rowData = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row, NULL, TRUE, FALSE);
 
         //iNSERT ROW DATA ARRAY INTO YOUR DATABASE OF CHOISE HERE
-
+        $i = 0;
         if(strlen($rowData[0][0])==1){
           $new_rowData = '0'.$rowData[0][0];
         }else{
           $new_rowData = $rowData[0][0];
         }
         $data_upload = array(
-          'id_sub_kelas'=>$new_rowData,
+          'id_sub_kelas'=>$i.$new_rowData,
           'sub_kelas_terapi'=>$rowData[0][1]
         );
+        $i++;
         $this->db->insert(TABLE,$data_upload);
       }
       echo 'Compile for insert to table '.TABLE.' success';
