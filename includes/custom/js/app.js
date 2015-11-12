@@ -76,7 +76,7 @@ function create_usulan_html(num){
                 <div class="form-group">\
                   <label for="inputTypeUsulan'+num+'" class="col-sm-2 control-label labelTypeUsulan">Type Usulan</label>\
                   <div class="col-sm-10">\
-                    <input type="text" class="form-control inputTypeUsulan" id="inputTypeUsulan'+num+'" placeholder="Type Usulan">\
+                    <input type="text" class="form-control inputTypeUsulan" id="inputTypeUsulan'+num+'" placeholder="Type Usulan" name="tipe_usulan[]">\
                   </div>\
                 </div>\
               </div><!-- /.box-body -->';

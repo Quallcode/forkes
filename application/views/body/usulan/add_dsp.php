@@ -110,6 +110,12 @@ var no_fornas = '<?=$no_fornas?>';
         </div><!-- /.col -->
       </div>   <!-- /.row -->
 
+      <select class="form-control" id="idSelectTerapiHidden" style="display:none">
+        <?php foreach( $obat as $key5) { ?>
+          <option value="<?=$key5['id_terapi']?>" ><?=$key5['kelas_terapi']?></option>
+        <?php } ?>
+      </select>
+
       <select class="form-control" id="idSelectObatHidden" style="display:none">
         <?php foreach( $obat as $key5) { ?>
           <option value="<?=$key5['id_atc_obat']?>" ><?=$key5['nama_obat']?></option>
@@ -144,6 +150,16 @@ var no_fornas = '<?=$no_fornas?>';
                 <div class="box-body clonedInput" id="entry1">
                   <h2  class="heading-reference">Entry #1</h2>
                   <!-- select -->
+                  <div class="form-group">
+                    <label for="inputKelasTerapi" class="col-sm-2 control-label labelNamaObat">Kelas Terapi</label>
+                    <div class="col-sm-10">
+                      <select class="form-control inputKelasTerapi" id="inputKelasTerapi" name="id_terapi[]">
+                        <?php foreach( $obat as $key) { ?>
+                          <option value="<?=$key['id_terapi']?>" ><?=$key['kelas_terapi']?></option>
+                        <?php } ?>
+                      </select>
+                    </div>
+                  </div>
                   <div class="form-group">
                     <label for="inputNamaObat" class="col-sm-2 control-label labelNamaObat">Nama Obat</label>
                     <div class="col-sm-10">

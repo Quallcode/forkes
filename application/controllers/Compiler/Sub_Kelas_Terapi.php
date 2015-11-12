@@ -24,9 +24,9 @@ class Sub_Kelas_Terapi extends CI_Controller {
               'type' => 'TEXT',
       ),
       'sub' => array(
-        'type' => 'TINYINT'
-        'default' => 1
-      );
+        'type' => 'TINYINT',
+        'default' => 1,
+      )
     );
     //COMPILE FOR CREATE TABLE
     $this->dbforge->add_field('id');

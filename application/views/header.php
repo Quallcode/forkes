@@ -18,7 +18,7 @@
         <!-- User Account: style can be found in dropdown.less -->
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <span class="hidden-xs"><?= $udata['nama']; ?></span>
+            <span class="hidden-xs"><i class="fa fa-power-off"></i></span>
           </a>
           <ul class="dropdown-menu">
             <!-- User image -->
@@ -145,6 +145,7 @@
         <a href="#"><i class="fa fa-legal"></i> VERIFIKASI<i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
           <li class="<?php if(!empty($msbc)&&$msbc == 'verifikasi_usulan'){?>active<?php }?>"><a href="<?= base_url()?>usulan/verifikasi"><i class="fa  fa-list"></i> USULAN TERBARU</a></li>
+          <li class="<?php if(!empty($msbc)&&$msbc == 'usulan_obat_baru'){?>active<?php }?>"><a href="<?= base_url()?>usulan/Insert_Obat_Baru"><i class="fa  fa-list"></i> USULAN OBAT BARU</a></li>
           <li class="<?php if(!empty($msbc)&&$msbc == 'daftar_usulan_lengkap'){?>active<?php }?>"><a href="<?= base_url()?>usulan/daftar_lengkap"><i class="fa  fa-list"></i> DAFTAR USULAN LENGKAP</a></li>
           <li class="<?php if(!empty($msbc)&&$msbc == 'daftar_usulan_tidak_lengkap'){?>active<?php }?>"><a href="<?= base_url()?>usulan/daftar_tidak_lengkap"><i class="fa  fa-list"></i>DAFTAR USULAN TIDAK LENGKAP</a></li>
         </ul>

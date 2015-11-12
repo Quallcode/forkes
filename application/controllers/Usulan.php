@@ -83,6 +83,7 @@ class Usulan extends CI_Controller {
 
   public function Add_Usulan(){
     $post = $this->input->post();
+    //print_r($post);exit;
     $sess = $this->session->userdata('user_data');
     if(!empty($post)){
       $check = $this->Model_Get_Usulan->Validate('usulan',$post['nomor_efornas']);
@@ -206,5 +207,37 @@ class Usulan extends CI_Controller {
     }
   }
   //END OF INDEX FOR TOLAK USULAN
+
+  //INDEX FOR ADD USULAN VIEW
+	public function Insert_Obat_Baru(){
+    //SET SUB BREADCRUMB
+    $this->session->set_userdata(array('main_sub_breadcrumb'=>'tambah_usulan'));
+    //GET KEKUATAN DATA
+    $sess = $this->session->userdata('user_data');
+    $no_fornas = $this->session->userdata('nomor_efornas');
+    //print_r($no_fornas);exit;
+    $view_data['nousulan'] = NOUSULAN;
+    $rumah_sakit = $this->Model_Get_Usulan->Normal_Select('rumah_sakit','id_rs',$sess['id_faskes'],'id_provinsi',$sess['id_provinsi'],'id_kabkota',$sess['id_kabkota']);
+    $obat        = $this->Model_Get_Usulan->Normal_Select('atc_obat');
+    $sediaan     = $this->Model_Get_Usulan->Normal_Select('sediaan');
+    $satuan      = $this->Model_Get_Usulan->Normal_Select('satuan');
+    $kekuatan    = $this->Model_Get_Usulan->Normal_Select('kekuatan');
+    $terapi      = $this->Model_Get_Usulan->Normal_Select('kelas_terapi');
+    $basefolder  = $sess['id_provinsi'].$sess['id_kabkota'].$sess['id_faskes'];
+    $no_fornas   = $no_fornas['no'];
+    //print_r($rumah_sakit);exit;
+    $view_data['obat'] = $obat;
+    $view_data['sediaan'] = $sediaan;
+    $view_data['satuan'] = $satuan;
+    $view_data['kekuatan'] = $kekuatan;
+    $view_data['basefolder'] = $basefolder;
+    $view_data['no_fornas'] = $no_fornas;
+    $view_data['rs'] = $rumah_sakit[0];
+    //DECLARE VIEW DATA FOR WRAPPER
+    $view_data['body']   = 'body/usulan/add_dsp';
+    //LOAD VIEW DATA TO WRAPPER
+    $this->load->view('wrapper',$view_data);
+	}
+  //END OF INDEX FOR ADD USULAN VIEW
 }
 ?>
