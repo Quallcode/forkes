@@ -28,20 +28,17 @@
                 <tr>
                   <th>ID Satuan</th>
                   <th>Nama</th>
-                  <th>Keterangan</th>
-                  <th>Aksi</th>
                 </tr>
               </thead>
               <tbody>
                 <?php if(!empty($data)){?>
                   <?php foreach($data as $val){?>
                     <tr>
-                      <td><?=$val['id_satuan']?></td>
-                      <td><?=$val['nama_satuan']?></td>
-                      <td><?=$val['keterangan']?></td>
+                      <td><?=$val['id_terapi']?></td>
+                      <td><?=$val['Kelas_terapi']?></td>
                       <td>
-                        <a href="<?=base_url()?>satuan/update/<?=$val['id']?>" class="btn btn-info">Update</a>&nbsp;
-                        <a href="<?=base_url()?>satuan/delete/<?=$val['id']?>" class="btn btn-danger">Delete</a>
+                        <a href="<?=base_url()?>Kelas_Terapi/update/<?=$val['id_terapi']?>" class="btn btn-info">Update</a>&nbsp;
+                        <a href="<?=base_url()?>Kelas_Terapi/delete/<?=$val['id_terapi']?>" class="btn btn-danger">Delete</a>
                       </td>
                     </tr>
                   <?php }?>

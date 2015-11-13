@@ -85,7 +85,7 @@
               <li class="treeview <?php if(!empty($msbc)&&$msbc == 'kelas_terapi'){?>active<?php }?>">
                 <a><i class="fa fa-circle-o"></i> KELAS TERAPI</a>
                 <ul class="treeview-menu">
-                  <li><a href="<?= base_url()?>kelas_terapi"><i class="fa fa-circle-o"></i> DAFTAR KELAS</a></li>
+                  <li><a href="<?= base_url()?>Kelas_Terapi"><i class="fa fa-circle-o"></i> DAFTAR KELAS</a></li>
                   <li><a href="<?= base_url()?>kelas_terapi/insert"><i class="fa fa-circle-o"></i> TAMBAH KELAS</a></li>
                 </ul>
               </li>

@@ -24,7 +24,7 @@ class Kelas_Terapi extends CI_Controller {
   //INDEX FOR FIRST VIEW
 	public function Index(){
     //GET SATUAAN DATA
-    $satuan = $this->Model_Get_Satuan->Normal_Select(TABLE);
+    $satuan = $this->Model_Get_Kelas_Terapi->Normal_Select(TABLE);
     //print_r($satuan);exit;
     //DECLARE VIEW DATA FOR WRAPPER
     $view_data['data']   = $satuan;

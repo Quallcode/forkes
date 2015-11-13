@@ -8,6 +8,7 @@ class Usulan extends CI_Controller {
     //INIT MODEL TRANSACTION
     $this->load->model('Model_Transaction');
     $this->load->model('Model_Get_Usulan');
+    date_default_timezone_set('Asia/Jakarta');
     //CHECK SESSION
     $sess = $this->session->userdata('user_data');
     if(empty($sess)){
@@ -103,7 +104,9 @@ class Usulan extends CI_Controller {
         'id_kabkota'         => $sess['id_kabkota'],
         'type'               => $sess['type'],
         'surat_pengantar'    => $post['UploadFile'][0],
-        'daftar_usulan_obat' => $post['UploadFile'][1]
+        'daftar_usulan_obat' => $post['UploadFile'][1],
+        'date_apply'         => date("Y-m-d H:i:s"),
+        'apply_by'           => $sess['nama']
       );
       $this->Model_Transaction->Insert_To_Db($data_usulan,'usulan');
       $counted = count($post['id_atc_obat']);
