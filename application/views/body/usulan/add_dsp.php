@@ -111,8 +111,8 @@ var no_fornas = '<?=$no_fornas?>';
       </div>   <!-- /.row -->
 
       <select class="form-control" id="idSelectTerapiHidden" style="display:none">
-        <?php foreach( $obat as $key5) { ?>
-          <option value="<?=$key5['id_terapi']?>" ><?=$key5['kelas_terapi']?></option>
+        <?php foreach( $terapi as $key5) { ?>
+          <option value="<?=$key5['id_terapi']?>" ><?=$key5['Kelas_terapi']?></option>
         <?php } ?>
       </select>
 
@@ -154,8 +154,8 @@ var no_fornas = '<?=$no_fornas?>';
                     <label for="inputKelasTerapi" class="col-sm-2 control-label labelNamaObat">Kelas Terapi</label>
                     <div class="col-sm-10">
                       <select class="form-control inputKelasTerapi" id="inputKelasTerapi" name="id_terapi[]">
-                        <?php foreach( $obat as $key) { ?>
-                          <option value="<?=$key['id_terapi']?>" ><?=$key['kelas_terapi']?></option>
+                        <?php foreach( $terapi as $key) { ?>
+                          <option value="<?=$key['id_terapi']?>" ><?=$key['Kelas_terapi']?></option>
                         <?php } ?>
                       </select>
                     </div>

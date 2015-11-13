@@ -232,6 +232,7 @@ class Usulan extends CI_Controller {
     $view_data['kekuatan'] = $kekuatan;
     $view_data['basefolder'] = $basefolder;
     $view_data['no_fornas'] = $no_fornas;
+    $view_data['terapi'] = $terapi;
     $view_data['rs'] = $rumah_sakit[0];
     //DECLARE VIEW DATA FOR WRAPPER
     $view_data['body']   = 'body/usulan/add_dsp';
