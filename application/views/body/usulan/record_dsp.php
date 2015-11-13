@@ -55,6 +55,7 @@
           <thead>
             <tr>
               <th>No</th>
+              <th>Kelas Terapi</th>
               <th>Nama Obat</th>
               <th>Sediaan</th>
               <th>Kekuatan</th>
@@ -69,6 +70,7 @@
             <?php foreach($row2['detail_usulan'] as $i => $val){?>
             <tr>
               <td><?=$i+1?></td>
+              <td><?=$val['Kelas_terapi']?></td>
               <td><?=$val['nama_obat']?></td>
               <td><?=$val['nama_sediaan']?></td>
               <td><?=$val['kekuatan']?></td>

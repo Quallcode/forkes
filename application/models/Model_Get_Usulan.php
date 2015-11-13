@@ -158,8 +158,9 @@ class Model_Get_Usulan extends CI_Model {
   }
 
   function Sub_Select($table,$param,$on){
-    $this->db->select('kekuatan, nama_sediaan, nama_satuan, nama_obat, jurnal, alasan, restriksi, tipe_usulan, file_jurnal');
+    $this->db->select('kekuatan, nama_sediaan, nama_satuan, nama_obat, jurnal, alasan, restriksi, tipe_usulan, file_jurnal, Kelas_terapi');
     $this->db->from($table);
+    $this->db->join('kelas_terapi', '`kelas_terapi`.`id_terapi` = `detail_usulan`.`id_terapi`' , 'left');
     $this->db->join('atc_obat', '`atc_obat`.`id_atc_obat` = `detail_usulan`.`id_atc_obat`' , 'left');
     $this->db->join('kekuatan', ' `kekuatan`.`id_kekuatan` = `detail_usulan`.`id_kekuatan`' , 'left');
     $this->db->join('sediaan', '`sediaan`.`id_sediaan` = `detail_usulan`.`id_sediaan`' , 'left');

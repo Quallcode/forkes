@@ -63,6 +63,7 @@ class Usulan extends CI_Controller {
     $sediaan     = $this->Model_Get_Usulan->Normal_Select('sediaan');
     $satuan      = $this->Model_Get_Usulan->Normal_Select('satuan');
     $kekuatan    = $this->Model_Get_Usulan->Normal_Select('kekuatan');
+    $terapi      = $this->Model_Get_Usulan->Normal_Select('kelas_terapi');
     $basefolder  = $sess['id_provinsi'].$sess['id_kabkota'].$sess['id_faskes'];
     $no_fornas   = $no_fornas['no'];
     //print_r($rumah_sakit);exit;
@@ -71,6 +72,7 @@ class Usulan extends CI_Controller {
     $view_data['satuan'] = $satuan;
     $view_data['kekuatan'] = $kekuatan;
     $view_data['basefolder'] = $basefolder;
+    $view_data['terapi'] = $terapi;
     $view_data['no_fornas'] = $no_fornas;
     $view_data['rs'] = $rumah_sakit[0];
     //DECLARE VIEW DATA FOR WRAPPER
@@ -108,6 +110,7 @@ class Usulan extends CI_Controller {
       for($i = 0; $i <$counted; $i++){
         $data_detail_usulan = array(
           'nomor_efornas' => $post['nomor_efornas'],
+          'id_terapi'     => $post['id_terapi'][$i],
           'id_atc_obat'   => $post['id_atc_obat'][$i],
           'id_sediaan'    => $post['id_sediaan'][$i],
           'id_kekuatan'   => $post['id_kekuatan'][$i],

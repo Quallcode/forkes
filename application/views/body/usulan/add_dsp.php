@@ -54,7 +54,7 @@ var no_fornas = '<?=$no_fornas?>';
                 <div class="form-group">
                   <label for="inputNoEfornas" class="col-sm-2 control-label">No E-Fornas</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputNoEfornas" name="nomor_efornas" value="<?=$nousulan?>">
+                    <input type="text" class="form-control" id="inputNoEfornas" name="nomor_efornas" value="<?=$nousulan?>" readonly="TRUE">
                   </div>
                 </div>
 
@@ -151,7 +151,7 @@ var no_fornas = '<?=$no_fornas?>';
                   <h2  class="heading-reference">Entry #1</h2>
                   <!-- select -->
                   <div class="form-group">
-                    <label for="inputKelasTerapi" class="col-sm-2 control-label labelNamaObat">Kelas Terapi</label>
+                    <label for="inputKelasTerapi" class="col-sm-2 control-label labelKelasTerapi">Kelas Terapi</label>
                     <div class="col-sm-10">
                       <select class="form-control inputKelasTerapi" id="inputKelasTerapi" name="id_terapi[]">
                         <?php foreach( $terapi as $key) { ?>

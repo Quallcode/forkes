@@ -5,6 +5,7 @@ $(function () {
 });
 
 function Autocomplete(){
+    $("#inputKelasTerapi").select2();
     $("#inputFaskes").select2();
     $("#inputNamaObat").select2();
     $("#inputSediaan").select2();
@@ -18,6 +19,7 @@ function CheckSediaan(sediaan){
 }
 
 function create_usulan_html(num){
+  var kelas_terapi = $('#idSelectTerapiHidden').html();
   var obat = $('#idSelectObatHidden').html();
   var sediaan = $('#idSelectSediaanHidden').html();
   var kekuatan = $('#idSelectKekuatanHidden').html();
@@ -26,31 +28,38 @@ function create_usulan_html(num){
   var html = '<div class="box-body clonedInput" id="entry'+num+'">\
                 <h2 class="heading-reference">Entry #'+num+'</h2>\
                 <div class="form-group">\
+                  <label for="inputKelasTerapi'+num+'" class="col-sm-2 control-label labelKelasTerapi">Kelas Terapi</label>\
+                  <div class="col-sm-10">\
+                    <select class="form-control inputKelasTerapi" id="inputKelasTerapi'+num+'" name="id_terapi[]">';
+  var html2 =       '</select>\
+                  </div>\
+                </div>\
+                <div class="form-group">\
                   <label for="inputNamaObat'+num+'" class="col-sm-2 control-label labelNamaObat">Nama Obat</label>\
                   <div class="col-sm-10">\
                     <select class="form-control inputNamaObat" id="inputNamaObat'+num+'" name="id_atc_obat[]">';
-  var html2 =       '</select>\
+  var html3 =       '</select>\
                   </div>\
                 </div>\
                 <div class="form-group">\
                   <label for="inputSediaan'+num+'" class="col-sm-2 control-label labelSediaan">Sediaan</label>\
                   <div class="col-sm-10">\
                     <select class="form-control inputSediaan" id="inputSediaan'+num+'" name="id_sediaan[]" onchange="CheckSediaan(this.value)">';
-  var html3 =      '</select>\
+  var html4 =      '</select>\
                   </div>\
                 </div>\
                 <div class="form-group">\
                   <label for="inputKekuatan'+num+'" class="col-sm-2 control-label labelKekuatan">Kekuatan</label>\
                   <div class="col-sm-10">\
                     <select class="form-control inputKekuatan" id="inputKekuatan'+num+'" name="id_kekuatan[]">';
-  var html4 =       '</select>\
+  var html5 =       '</select>\
                   </div>\
                 </div>\
                 <div class="form-group">\
                   <label for="inputSatuan'+num+'" class="col-sm-2 control-label labelSatuan">Satuan</label>\
                   <div class="col-sm-10">\
                     <select class="form-control inputSatuan" id="inputSatuan'+num+'" name="id_satuan[]">';
-  var html5 =      '</select>\
+  var html6 =      '</select>\
                   </div>\
                 </div>\
                 <div class="form-group">\
@@ -81,7 +90,7 @@ function create_usulan_html(num){
                 </div>\
               </div><!-- /.box-body -->';
 
-  var final_html =html + obat + html2 +sediaan + html3 + kekuatan +html4+satuan+html5;
+  var final_html =html +kelas_terapi + html2 +obat + html3 +sediaan + html4 + kekuatan +html5+satuan+html6;
   return final_html;
 }
 
@@ -95,6 +104,7 @@ $(function () {
       // create the new element via clone(), and manipulate it's ID using newNum value
       // manipulate the name/id values of the input inside the new element
       // H2 - section
+      $("#inputKelasTerapi"+ newNum ).select2();
       $("#inputNamaObat"+ newNum ).select2();
       $("#inputSediaan"+ newNum ).select2();
       $("#inputKekuatan"+ newNum ).select2();
