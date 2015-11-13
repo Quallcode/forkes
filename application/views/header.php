@@ -146,6 +146,7 @@
         <ul class="treeview-menu">
           <li class="<?php if(!empty($msbc)&&$msbc == 'verifikasi_usulan'){?>active<?php }?>"><a href="<?= base_url()?>usulan/verifikasi"><i class="fa  fa-list"></i> USULAN TERBARU</a></li>
           <li class="<?php if(!empty($msbc)&&$msbc == 'usulan_obat_baru'){?>active<?php }?>"><a href="<?= base_url()?>usulan/Insert_Obat_Baru"><i class="fa  fa-list"></i> USULAN OBAT BARU</a></li>
+          <li class="<?php if(!empty($msbc)&&$msbc == 'usulan_obat_combinasi'){?>active<?php }?>"><a href="<?= base_url()?>usulan/Insert_Obat_Combinasi"><i class="fa  fa-list"></i> USULAN OBAT KOMBINASI</a></li>
           <li class="<?php if(!empty($msbc)&&$msbc == 'daftar_usulan_lengkap'){?>active<?php }?>"><a href="<?= base_url()?>usulan/daftar_lengkap"><i class="fa  fa-list"></i> DAFTAR USULAN LENGKAP</a></li>
           <li class="<?php if(!empty($msbc)&&$msbc == 'daftar_usulan_tidak_lengkap'){?>active<?php }?>"><a href="<?= base_url()?>usulan/daftar_tidak_lengkap"><i class="fa  fa-list"></i>DAFTAR USULAN TIDAK LENGKAP</a></li>
         </ul>

@@ -289,7 +289,33 @@
           "info": true,
           "autoWidth": false
         });
+        $(".inputNamaObat").change(function(){
+
+          var obat = $(this).val();
+          var baseurl = '<?=base_url()?>';
+          alert(obat);
+          $.ajax(
+            {
+              type: "POST",
+              url: baseurl+"Check_combobox/Check_obat",
+              dataType : 'json',
+              success: funtion(){
+                alert('a1');
+              }
+            }
+          );
+        });
       });
     </script>
+    <!--<script>
+    $(document).ready(function(){
+
+      $('.inputTypeUsulan').keyup(function(){
+        alert('asdasda');
+        var obat = $(this).val();
+        alert(obat);
+      });
+    });
+  </script>-->
   </body>
 </html>
