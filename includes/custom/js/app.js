@@ -94,7 +94,48 @@ function create_usulan_html(num){
   return final_html;
 }
 
+function create_obat_html(num){
+  var obat = $('#idSelectObatHidden').html();
+
+  var html = '<div class="box-body clonedInput" id="entry'+num+'">\
+                <div class="form-group">\
+                  <label for="inputNamaObat'+num+'" class="col-sm-2 control-label labelNamaObat">Nama Obat</label>\
+                  <div class="col-sm-6">\
+                    <select class="form-control inputNamaObat" id="inputNamaObat'+num+'" name="id_atc_obat[]">';
+  var html2 =       '</select>\
+                  </div>\
+                </div>\
+              </div><!-- /.box-body -->';
+
+
+  var final_html2 =html +obat + html2;
+  return final_html2;
+}
+
 $(function () {
+
+  $('#btnAddObat').click(function () {
+      var num     = $('.clonedInput').length, // how many "duplicatable" input fields we currently have
+          newNum  = new Number(num + 1),
+          final_html = create_obat_html(newNum);     // the numeric ID of the new input field being added
+
+      $('#form-usulan2').append(final_html);
+      // create the new element via clone(), and manipulate it's ID using newNum value
+      // manipulate the name/id values of the input inside the new element
+      // H2 - section
+      $("#inputKelasTerapi"+ newNum ).select2();
+      $("#inputNamaObat"+ newNum ).select2();
+      $("#inputSediaan"+ newNum ).select2();
+      $("#inputKekuatan"+ newNum ).select2();
+      $("#inputSatuan"+ newNum ).select2();
+      $("#inputJurnal"+ newNum ).ckeditor();
+      window.location.hash = "#entry"+ newNum;
+      $('#btnDel').attr('disabled', false);
+      // right now you can only add 5 sections. change '5' below to the max number of times the form can be duplicated
+      if (newNum == 99)
+      $('#btnAddObat').attr('disabled', true).prop('value', "Anda telah melewati batas untuk memasukkan detail usulan");
+  });
+
   $('#btnAdd').click(function () {
       var num     = $('.clonedInput').length, // how many "duplicatable" input fields we currently have
           newNum  = new Number(num + 1),
