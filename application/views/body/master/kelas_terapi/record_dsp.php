@@ -28,6 +28,7 @@
                 <tr>
                   <th>ID Satuan</th>
                   <th>Nama</th>
+                  <th>Aksi</th>
                 </tr>
               </thead>
               <tbody>

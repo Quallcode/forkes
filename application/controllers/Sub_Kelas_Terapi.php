@@ -15,7 +15,7 @@ class Sub_Kelas_Terapi extends CI_Controller {
       exit;
     }
     //SET TABLE NAME
-    define('TABLE','sub_kelas_terapi');
+    define('TABLE','sub_kelasterapi');
     //SET BREADCRUMB
     $this->session->set_userdata(array('breadcrumb'=>'master'));
     $this->session->set_userdata(array('main_sub_breadcrumb'=>'sub_kelas_terapi'));

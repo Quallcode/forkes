@@ -26,9 +26,9 @@
             <table id="dataTable" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <th>ID Satuan</th>
-                  <th>Nama</th>
-                  <th>Keterangan</th>
+                  <th>ID Terapi</th>
+                  <th>ID Sub Terapi</th>
+                  <th>Nama Sub Terapi</th>
                   <th>Aksi</th>
                 </tr>
               </thead>
@@ -36,12 +36,12 @@
                 <?php if(!empty($data)){?>
                   <?php foreach($data as $val){?>
                     <tr>
-                      <td><?=$val['id_satuan']?></td>
-                      <td><?=$val['nama_satuan']?></td>
-                      <td><?=$val['keterangan']?></td>
+                      <td><?=$val['id_terapi']?></td>
+                      <td><?=$val['id_sub_kelasterapi']?></td>
+                      <td><?=$val['Sub_Kelas_Terapi']?></td>
                       <td>
-                        <a href="<?=base_url()?>satuan/update/<?=$val['id']?>" class="btn btn-info">Update</a>&nbsp;
-                        <a href="<?=base_url()?>satuan/delete/<?=$val['id']?>" class="btn btn-danger">Delete</a>
+                        <a href="<?=base_url()?>satuan/update/<?=$val['id_sub_kelasterapi']?>" class="btn btn-info">Update</a>&nbsp;
+                        <a href="<?=base_url()?>satuan/delete/<?=$val['id_sub_kelasterapi']?>" class="btn btn-danger">Delete</a>
                       </td>
                     </tr>
                   <?php }?>
