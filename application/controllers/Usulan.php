@@ -230,7 +230,8 @@ class Usulan extends CI_Controller {
     $post = $this->input->post();
     if(!empty($post)){
       $data = array(
-        'status' => 'SUDAH'
+        'status' => 'SUDAH',
+        'date_approve' => date('Y-m-d')
       );
       $this->Model_Transaction->Update_To_Db($data,'usulan','nomor_efornas',$post['nomor_efornas']);
     }else{
@@ -243,7 +244,8 @@ class Usulan extends CI_Controller {
     $post = $this->input->post();
     if(!empty($post)){
       $data = array(
-        'status' => 'TIDAK'
+        'status' => 'TIDAK',
+        'date_approve' => date('Y-m-d')
       );
       $this->Model_Transaction->Update_To_Db($data,'usulan','nomor_efornas',$post['nomor_efornas']);
     }else{
