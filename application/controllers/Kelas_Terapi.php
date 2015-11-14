@@ -63,16 +63,18 @@ class Kelas_Terapi extends CI_Controller {
 	$uri = $this->uri->segment(3);
 	if(empty($uri)){
 		$post = $this->input->post();
+    //print_r($post); exit;
 		$id = $post['id'];
 		$data = array(
-			'id_kelas_terapi' 	=> $post['id_kelas_terapi'],
-			'nama_satuan'	=> $post['nama_satuan']
+			'id_terapi' 	=> $post['id_kelas_terapi'],
+			'Kelas_terapi'	=> $post['nama_terapi']
 		);
-		$this->Model_Transaction->Update_To_Db($data,TABLE,'id',$id);
+		$this->Model_Transaction->Update_To_Db($data,TABLE,'id_terapi',$id);
 		echo '<script>alert("Berhasil Merubah Data"); window.location.assign("'.base_url().'kelas_terapi");</script>';
 	}else{
     //GET SATUAAN DATA
-		$satuan = $this->Model_Get_Satuan->Update_Select(TABLE,'id',$uri);
+		$satuan = $this->Model_Get_Kelas_Terapi->Update_Select(TABLE,'id_terapi',$uri);
+    //print_r($satuan); exit;
 		//DECLARE VIEW DATA FOR WRAPPER
 		$view_data['data']   = $satuan[0];
 		$view_data['body']   = 'body/master/kelas_terapi/update_dsp';
