@@ -8,6 +8,7 @@ class Usulan extends CI_Controller {
     //INIT MODEL TRANSACTION
     $this->load->model('Model_Transaction');
     $this->load->model('Model_Get_Usulan');
+    $this->load->model('Model_Get_Combinasi');
     date_default_timezone_set('Asia/Jakarta');
     //CHECK SESSION
     $sess = $this->session->userdata('user_data');
@@ -131,6 +132,41 @@ class Usulan extends CI_Controller {
       echo '<script type="text/javascript">alert("User Berhasil melakukan penambahan usulan dengan nomor efornas '.$post['nomor_efornas'].'"); window.location.assign("'.base_url().'dashboard");</script>';
     }else{
       echo "Error empty post occured";
+    }
+  }
+
+  public function Add_Obat_Combinasi(){
+    $post = $this->input->post();
+    //print_r($post);exit;
+    $sess = $this->session->userdata('user_data');
+    if(!empty($post['obat_combinasi'])){
+      $check = $this->Model_Get_Combinasi->Validate('obat_combinasi',$post['obat_combinasi']);
+      if(!empty($check)){
+        echo '<script type="text/javascript">alert("Nama Obat Kombinasi '.$post['obat_combinasi'].' telah terdaftar. Silahkan mencoba beberapa saat lagi"); window.location.assign("'.base_url().'usulan/Insert_Obat_Combinasi");</script>';
+      }
+      $data_obat_combinasi = array(
+        'nama_obat_combinasi' => $post['obat_combinasi']
+      );
+      $this->Model_Transaction->Insert_To_Db($data_obat_combinasi,'obat_combinasi');
+
+      $counted = count($post['id_atc_obat']);
+      for($i = 0; $i <$counted; $i++){
+        $data_detail_obat_combinasi = array(
+          'nama_obat_combinasi' => $post['obat_combinasi'],
+          'id_atc_obat'   => $post['id_atc_obat'][$i]
+        );
+        //print_r($data_detail_usulan); exit;
+        $this->Model_Transaction->Insert_To_Db($data_detail_obat_combinasi,'detail_obat_combinasi');
+      }
+      $check = $this->Model_Get_Combinasi->Validate('obat_combinasi',$post['obat_combinasi']);
+      if(!empty($check)){
+        echo '<script type="text/javascript">alert("User Berhasil melakukan penambahan kombinasi obat dengan nama obat combinasi '.$post['obat_combinasi'].'"); window.location.assign("'.base_url().'usulan/Insert_Obat_Combinasi");</script>';
+      }
+      else {
+        echo '<script type="text/javascript">alert("Gagal memasukkan obat kombinasi"); window.location.assign("'.base_url().'usulan/Insert_Obat_Combinasi");</script>';
+      }
+    }else{
+      echo '<script type="text/javascript">alert("Nama Obat Kombinasi Tidak Boleh Kosong!!"); window.location.assign("'.base_url().'usulan/Insert_Obat_Combinasi");</script>';
     }
   }
 

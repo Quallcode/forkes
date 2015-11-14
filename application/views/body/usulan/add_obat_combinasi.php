@@ -2,7 +2,7 @@
 var basefolder = '<?=$basefolder?>';
 var no_fornas = '<?=$no_fornas?>';
 </script>
-<form class="form-horizontal" action="<?=base_url()?>usulan/add_usulan" method="post" enctype="multipart/form-data">
+<form class="form-horizontal" action="<?=base_url()?>usulan/Add_Obat_Combinasi" method="post" enctype="multipart/form-data">
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -26,11 +26,11 @@ var no_fornas = '<?=$no_fornas?>';
 
 
               <div>
-                <div class="box-body clonedInput">
+                <div class="box-body">
                   <div class="form-group">
                     <label for="inputObatCombinasi" class="col-sm-2 control-label labelObatCombinasi">Nama Obat Kombinasi</label>
                     <div class="col-sm-6">
-                      <input type="text" class="form-control inputTypeUsulan" id="inputTypeUsulan" placeholder="Nama Obat Kombinasi" name="tipe_usulan[]">
+                      <input type="text" class="form-control inputObatCombinasi" id="inputObatCombinasi" placeholder="Nama Obat Kombinasi" name="obat_combinasi">
                     </div>
                   </div>
                 </div><!-- tutup box body-->
