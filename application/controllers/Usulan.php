@@ -122,7 +122,9 @@ class Usulan extends CI_Controller {
           'alasan'        => $post['alasan'][$i],
           'restriksi'     => $post['restriksi'][$i],
           'tipe_usulan'   => $post['tipe_usulan'][$i],
+          'id_tingkat'    => $post['tingkat_faskes'.($i+1)]
         );
+        //print_r($data_detail_usulan); exit;
         $this->Model_Transaction->Insert_To_Db($data_detail_usulan,'detail_usulan');
       }
       $this->session->unset_userdata('nomor_efornas');

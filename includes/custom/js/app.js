@@ -88,6 +88,24 @@ function create_usulan_html(num){
                     <input type="text" class="form-control inputTypeUsulan" id="inputTypeUsulan'+num+'" placeholder="Type Usulan" name="tipe_usulan[]">\
                   </div>\
                 </div>\
+                <div class="form-group">\
+                  <label for="inputTingkatFaskes'+num+'" class="col-sm-2 control-label labelTigkatFaskes">Tingkat Faskes</label>\
+                  <div class="col-sm-2">\
+                    <input type="radio" class="inputTingkatFaskes" id="inputTingkatFaskes'+num+'" name="tingkat_faskes'+num+'" value="1" checked>\
+                    TK I\
+                    </input>\
+                  </div>\
+                  <div class="col-sm-2">\
+                    <input type="radio" class="inputTingkatFaskes" id="inputTingkatFaskes'+num+'" name="tingkat_faskes'+num+'" value="2">\
+                    TK II\
+                    </input>\
+                  </div>\
+                  <div class="col-sm-2">\
+                    <input type="radio" class="inputTingkatFaskes" id="inputTingkatFaskes'+num+'" name="tingkat_faskes'+num+'" value="3">\
+                    TK III\
+                    </input>\
+                  </div>\
+                </div>\
               </div><!-- /.box-body -->';
 
   var final_html =html +kelas_terapi + html2 +obat + html3 +sediaan + html4 + kekuatan +html5+satuan+html6;

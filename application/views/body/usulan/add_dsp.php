@@ -140,6 +140,7 @@ var no_fornas = '<?=$no_fornas?>';
         <?php } ?>
       </select>
 
+
       <div class="row" >
         <div class="col-md-12">
           <!-- general form elements -->
@@ -270,6 +271,24 @@ var no_fornas = '<?=$no_fornas?>';
                     <label for="inputTypeUsulan" class="col-sm-2 control-label labelTypeUsulan">Type Usulan</label>
                     <div class="col-sm-10">
                       <input type="text" class="form-control inputTypeUsulan" id="inputTypeUsulan" placeholder="Type Usulan" name="tipe_usulan[]">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputTingkatFaskes" class="col-sm-2 control-label labelTigkatFaskes">Tingkat Faskes</label>
+                    <div class="col-sm-2">
+                      <input type="radio" class="inputTingkatFaskes" id="inputTingkatFaskes" name="tingkat_faskes1" value="1" checked>
+                      TK I
+                    </input>
+                    </div>
+                    <div class="col-sm-2">
+                      <input type="radio" class="inputTingkatFaskes" id="inputTingkatFaskes" name="tingkat_faskes1" value="2">
+                      TK II
+                    </input>
+                    </div>
+                    <div class="col-sm-2">
+                      <input type="radio" class="inputTingkatFaskes" id="inputTingkatFaskes" name="tingkat_faskes1" value="3">
+                      TK III
+                      </input>
                     </div>
                   </div>
                   <!--<div class="form-group">
