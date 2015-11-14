@@ -5,17 +5,99 @@ $(function () {
 });
 
 function Autocomplete(){
-    $("#inputKelasTerapi").select2();
-    $("#inputFaskes").select2();
-    $("#inputNamaObat").select2();
-    $("#inputSediaan").select2();
-    $("#inputKekuatan").select2();
-    $("#inputSatuan").select2();
-    $("#inputJurnal").ckeditor();
+    $("#inputKelasTerapi1").select2({
+    });
+    $("#inputFaskes1").select2();
+    $("#inputNamaObat1").select2();
+    $("#inputSediaan1").select2();
+    $("#inputKekuatan1").select2();
+    $("#inputSatuan1").select2();
+    $("#inputJurnal1").ckeditor();
 }
 
-function CheckSediaan(sediaan){
-  alert(sediaan);
+function CheckObat(obat,id){
+  var data = {
+    "id_atc_obat": obat
+  };
+  $.ajax({
+    type: "POST",
+    dataType: "json",
+    url: base_url+"Checking/Obat", //Relative or absolute path to response.php file
+    data: data,
+    success: function(data) {
+      if(data.status == '00'){
+        GetMsg(id);
+      }
+    }
+  });
+  return false;
+}
+
+function CheckSediaan(sediaan,id){
+  var data = {
+    "id_sediaan": sediaan
+  };
+  $.ajax({
+    type: "POST",
+    dataType: "json",
+    url: base_url+"Checking/Sediaan", //Relative or absolute path to response.php file
+    data: data,
+    success: function(data) {
+      GetMsg(id);
+    }
+  });
+  return false;
+}
+
+function CheckSatuan(satuan,id){
+  var data = {
+    "id_satuan": satuan
+  };
+  $.ajax({
+    type: "POST",
+    dataType: "json",
+    url: base_url+"Checking/Satuan", //Relative or absolute path to response.php file
+    data: data,
+    success: function(data) {
+      GetMsg(id);
+    }
+  });
+  return false;
+}
+
+
+
+function CheckKekuatan(kekuatan,id){
+  var data = {
+    "id_kekuatan": kekuatan
+  };
+  $.ajax({
+    type: "POST",
+    dataType: "json",
+    url: base_url+"Checking/Kekuatan", //Relative or absolute path to response.php file
+    data: data,
+    success: function(data) {
+      GetMsg(id);
+    }
+  });
+  return false;
+}
+
+function GetMsg(id){
+  var data = {
+    "trigger": 1
+  };
+  $.ajax({
+    type: "POST",
+    dataType: "json",
+    url: base_url+"Checking/GetMsg", //Relative or absolute path to response.php file
+    data: data,
+    success: function(data) {
+      $('#inputTypeUsulan'+id).val(data.msg);
+      $('#inputTypeUsulanRead'+id).val(data.msg);
+    }
+  });
+  return false;
 }
 
 function create_usulan_html(num){
@@ -37,28 +119,28 @@ function create_usulan_html(num){
                 <div class="form-group">\
                   <label for="inputNamaObat'+num+'" class="col-sm-2 control-label labelNamaObat">Nama Obat</label>\
                   <div class="col-sm-10">\
-                    <select class="form-control inputNamaObat" id="inputNamaObat'+num+'" name="id_atc_obat[]">';
+                    <select class="form-control inputNamaObat" id="inputNamaObat'+num+'" name="id_atc_obat[]" onchange="CheckObat(this.value,'+num+')">';
   var html3 =       '</select>\
                   </div>\
                 </div>\
                 <div class="form-group">\
                   <label for="inputSediaan'+num+'" class="col-sm-2 control-label labelSediaan">Sediaan</label>\
                   <div class="col-sm-10">\
-                    <select class="form-control inputSediaan" id="inputSediaan'+num+'" name="id_sediaan[]" onchange="CheckSediaan(this.value)">';
+                    <select class="form-control inputSediaan" id="inputSediaan'+num+'" name="id_sediaan[]" onchange="CheckSediaan(this.value,'+num+')">';
   var html4 =      '</select>\
                   </div>\
                 </div>\
                 <div class="form-group">\
                   <label for="inputKekuatan'+num+'" class="col-sm-2 control-label labelKekuatan">Kekuatan</label>\
                   <div class="col-sm-10">\
-                    <select class="form-control inputKekuatan" id="inputKekuatan'+num+'" name="id_kekuatan[]">';
+                    <select class="form-control inputKekuatan" id="inputKekuatan'+num+'" name="id_kekuatan[]" onchange="CheckKekuatan(this.value,'+num+')">';
   var html5 =       '</select>\
                   </div>\
                 </div>\
                 <div class="form-group">\
                   <label for="inputSatuan'+num+'" class="col-sm-2 control-label labelSatuan">Satuan</label>\
                   <div class="col-sm-10">\
-                    <select class="form-control inputSatuan" id="inputSatuan'+num+'" name="id_satuan[]">';
+                    <select class="form-control inputSatuan" id="inputSatuan'+num+'" name="id_satuan[]" onchange="CheckSatuan(this.value,'+num+')">';
   var html6 =      '</select>\
                   </div>\
                 </div>\
@@ -85,7 +167,8 @@ function create_usulan_html(num){
                 <div class="form-group">\
                   <label for="inputTypeUsulan'+num+'" class="col-sm-2 control-label labelTypeUsulan">Type Usulan</label>\
                   <div class="col-sm-10">\
-                    <input type="text" class="form-control inputTypeUsulan" id="inputTypeUsulan'+num+'" placeholder="Type Usulan" name="tipe_usulan[]">\
+                    <input type="hidden" class="form-control inputTypeUsulan" id="inputTypeUsulan'+num+'" placeholder="Type Usulan" name="tipe_usulan[]">\
+                    <input type="text" class="form-control inputTypeUsulan"   id="inputTypeUsulanRead'+num+'" readonly="readonly">\
                   </div>\
                 </div>\
                 <div class="form-group">\

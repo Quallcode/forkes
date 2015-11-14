@@ -122,19 +122,19 @@ var no_fornas = '<?=$no_fornas?>';
         <?php } ?>
       </select>
 
-      <select class="form-control" id="idSelectSediaanHidden" style="display:none">
+      <select class="form-control" id="idSelectSediaanHidden" style="display:none" onchange="CheckSediaan(this.value)">
         <?php foreach( $sediaan as $key6) { ?>
           <option data-id="<?=$key6['id_sediaan']?>" value="<?=$key6['id_sediaan']?>" ><?=$key6['nama_sediaan']?></option>
         <?php } ?>
       </select>
 
-      <select class="form-control" id="idSelectKekuatanHidden" style="display:none">
+      <select class="form-control" id="idSelectKekuatanHidden" style="display:none" onchange="CheckKekuatan(this.value)">
         <?php foreach( $kekuatan as $key7) { ?>
           <option value="<?=$key7['id_kekuatan']?>" ><?=$key7['kekuatan']?></option>
         <?php } ?>
       </select>
 
-      <select class="form-controls" id="idSelectSatuanHidden" style="display:none">
+      <select class="form-controls" id="idSelectSatuanHidden" style="display:none" onchange="CheckSatuan(this.value)">
         <?php foreach( $satuan as $key8) { ?>
           <option value="<?=$key8['id_satuan']?>" ><?=$key8['nama_satuan']?></option>
         <?php } ?>
@@ -154,7 +154,7 @@ var no_fornas = '<?=$no_fornas?>';
                   <div class="form-group">
                     <label for="inputKelasTerapi" class="col-sm-2 control-label labelKelasTerapi">Kelas Terapi</label>
                     <div class="col-sm-10">
-                      <select class="form-control inputKelasTerapi" id="inputKelasTerapi" name="id_terapi[]">
+                      <select class="form-control inputKelasTerapi" id="inputKelasTerapi1" name="id_terapi[]">
                         <?php foreach( $terapi as $key) { ?>
                           <option value="<?=$key['id_terapi']?>" ><?=$key['Kelas_terapi']?></option>
                         <?php } ?>
@@ -164,7 +164,7 @@ var no_fornas = '<?=$no_fornas?>';
                   <div class="form-group">
                     <label for="inputNamaObat" class="col-sm-2 control-label labelNamaObat">Nama Obat</label>
                     <div class="col-sm-10">
-                      <select class="form-control inputNamaObat" id="inputNamaObat" name="id_atc_obat[]">
+                      <select class="form-control inputNamaObat" id="inputNamaObat1" name="id_atc_obat[]" onchange="CheckObat(this.value,1)">
                         <?php foreach( $obat as $key) { ?>
                           <option value="<?=$key['id_atc_obat']?>" ><?=$key['nama_obat']?></option>
                         <?php } ?>
@@ -174,7 +174,7 @@ var no_fornas = '<?=$no_fornas?>';
                   <div class="form-group">
                     <label for="inputSediaan" class="col-sm-2 control-label labelSediaan">Sediaan</label>
                     <div class="col-sm-10">
-                      <select class="form-control inputSediaan" id="inputSediaan" name="id_sediaan[]" onchange="CheckSediaan(this.value)">
+                      <select class="form-control inputSediaan" id="inputSediaan1" name="id_sediaan[]" onchange="CheckSediaan(this.value,1)">
                         <?php foreach( $sediaan as $key2) { ?>
                           <option data-id="<?=$key6['id_sediaan']?>" value="<?=$key2['id_sediaan']?>"><?=$key2['nama_sediaan']?></option>
                         <?php } ?>
@@ -214,7 +214,7 @@ var no_fornas = '<?=$no_fornas?>';
                   <div class="form-group">
                     <label for="inputKekuatan" class="col-sm-2 control-label labelKekuatan">Kekuatan</label>
                     <div class="col-sm-10">
-                      <select class="form-control inputKekuatan" id="inputKekuatan" name="id_kekuatan[]">
+                      <select class="form-control inputKekuatan" id="inputKekuatan1" name="id_kekuatan[]" onchange="CheckKekuatan(this.value,1)">
                         <?php foreach( $kekuatan as $key3) { ?>
                           <option value="<?=$key3['id_kekuatan']?>"><?=$key3['kekuatan']?></option>
                         <?php } ?>
@@ -224,7 +224,7 @@ var no_fornas = '<?=$no_fornas?>';
                   <div class="form-group">
                     <label for="inputSatuan" class="col-sm-2 control-label labelSatuan">Satuan</label>
                     <div class="col-sm-10">
-                      <select class="form-control inputSatuan" id="inputSatuan" name="id_satuan[]">
+                      <select class="form-control inputSatuan" id="inputSatuan1" name="id_satuan[]" onchange="CheckSatuan(this.value,1)">
                         <?php foreach( $satuan as $key4) { ?>
                           <option value="<?=$key4['id_satuan']?>"><?=$key4['nama_satuan']?></option>
                         <?php } ?>
@@ -234,21 +234,21 @@ var no_fornas = '<?=$no_fornas?>';
                   <div class="form-group">
                     <label for="inputJurnal" class="col-sm-2 control-label labelJurnal">Jurnal</label>
                     <div class="col-sm-10">
-                      <textarea class="form-control inputJurnal" rows="3" placeholder="Masukkan Jurnal" id="inputJurnal" name="jurnal[]"></textarea>
+                      <textarea class="form-control inputJurnal" rows="3" placeholder="Masukkan Jurnal" id="inputJurnal1" name="jurnal[]"></textarea>
                       <b>File Pendukung Jurnal (optional)</b>
-                      <input type="file" id="inputJurnal" class="form-control inputJurnal" name="file_jurnal[]">
+                      <input type="file" id="inputJurnal1" class="form-control inputJurnal" name="file_jurnal[]">
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="inputAlasan" class="col-sm-2 control-label labelAlasan">Alasan</label>
                     <div class="col-sm-10">
-                      <textarea class="form-control inputAlasan" rows="3" placeholder="Masukkan Alasan" id="inputAlasan" name="alasan[]"></textarea>
+                      <textarea class="form-control inputAlasan" rows="3" placeholder="Masukkan Alasan" id="inputAlasan1" name="alasan[]"></textarea>
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="inputRestriksi" class="col-sm-2 control-label labelRestriksi">Restriksi baru</label>
                     <div class="col-sm-10">
-                      <textarea class="form-control inputRestriksi" rows="3" placeholder="Masukkan Restriksi baru" id="inputRestriksi" name="restriksi[]"></textarea>
+                      <textarea class="form-control inputRestriksi" rows="3" placeholder="Masukkan Restriksi baru" id="inputRestriksi1" name="restriksi[]"></textarea>
                     </div>
                   </div>
                   <!--<div class="form-group">
@@ -270,7 +270,8 @@ var no_fornas = '<?=$no_fornas?>';
                   <div class="form-group">
                     <label for="inputTypeUsulan" class="col-sm-2 control-label labelTypeUsulan">Type Usulan</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control inputTypeUsulan" id="inputTypeUsulan" placeholder="Type Usulan" name="tipe_usulan[]">
+                      <input type="hidden" class="form-control inputTypeUsulan" id="inputTypeUsulan1" placeholder="Type Usulan" name="tipe_usulan[]">
+                      <input type="text" class="form-control inputTypeUsulan" id="inputTypeUsulanRead1" readonly="readonly">
                     </div>
                   </div>
                   <div class="form-group">
