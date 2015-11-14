@@ -59,7 +59,7 @@ class Model_Get_Usulan extends CI_Model {
 
   function Custom_UsulanWithParam($type,$sess){
     if($type == 1)
-      $query = "SELECT `usulan`.`id`,B.`provinsi`,B.`kabkota`,B.`nama_rs`,`usulan`.`nomor_efornas`,`usulan`.`daftar_usulan_obat`,`usulan`.`surat_pengantar`, `usulan`.`status` FROM `usulan`,
+      $query = "SELECT `usulan`.`id`,B.`provinsi`,B.`kabkota`,B.`nama_rs`,`usulan`.`nomor_efornas`,`usulan`.`daftar_usulan_obat`,`usulan`.`surat_pengantar`, `usulan`.`status`, `usulan`.`date_approve` FROM `usulan`,
         (SELECT `rumah_sakit`.`id_rs`,`rumah_sakit`.`nama_rs`, A.`id_provinsi`, A.`id_kabkota`,A.`kabkota`,A.`provinsi` FROM `rumah_sakit`,
         (SELECT `id_provinsi`,`id_kabkota`, `kabkota`.`kabkota`,`provinsi`.`provinsi` FROM `kabkota`, `provinsi` WHERE `kabkota`.`parent_id` = `provinsi`.`id_provinsi`) A
         WHERE A.`id_provinsi` = `rumah_sakit`.`id_provinsi` AND A.`id_kabkota` = `rumah_sakit`.`id_kabkota` AND A.`id_kabkota` = ".$sess['id_kabkota']." AND A.`id_provinsi` = ".$sess['id_provinsi'].") B

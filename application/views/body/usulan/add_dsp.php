@@ -61,7 +61,7 @@ var no_fornas = '<?=$no_fornas?>';
                 <form action="" id="form-upload">
                   <div class="form-group">
                     <label for="inputFile" class="col-sm-2 control-label">Surat Pengantar</label>
-                    <div class="col-sm-10">
+                    <div class="col-sm-10" id="upload1">
                         <div class="fileinput fileinput-new input-group" data-provides="fileinput">
                           <div class="form-control" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
                           <span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new"><i class="glyphicon glyphicon-paperclip"></i> Select file</span><span class="fileinput-exists"><i class="glyphicon glyphicon-repeat"></i> Change</span><input type="file" name="file"></span>
@@ -74,7 +74,7 @@ var no_fornas = '<?=$no_fornas?>';
                   <div class="form-group">
                     <label for="inputFile" class="col-sm-2 control-label">Daftar Usulan Obat</label>
                     <div class="col-sm-10">
-                        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                        <div class="fileinput fileinput-new input-group" data-provides="fileinput" id="upload2">
                           <div class="form-control" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
                           <span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new"><i class="glyphicon glyphicon-paperclip"></i> Select file</span><span class="fileinput-exists"><i class="glyphicon glyphicon-repeat"></i> Change</span><input type="file" name="file2"></span>
                           <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput"><i class="glyphicon glyphicon-remove"></i> Remove</a>
