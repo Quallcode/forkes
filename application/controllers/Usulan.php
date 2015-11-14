@@ -160,7 +160,7 @@ class Usulan extends CI_Controller {
       }
       $check = $this->Model_Get_Combinasi->Validate('obat_combinasi',$post['obat_combinasi']);
       if(!empty($check)){
-        echo '<script type="text/javascript">alert("User Berhasil melakukan penambahan kombinasi obat dengan nama obat combinasi '.$post['obat_combinasi'].'"); window.location.assign("'.base_url().'usulan/Insert_Obat_Combinasi");</script>';
+        echo '<script type="text/javascript">alert("User Berhasil melakukan penambahan kombinasi obat dengan nama obat combinasi '.$post['obat_combinasi'].'"); window.location.assign("'.base_url().'Obat_Combinasi");</script>';
       }
       else {
         echo '<script type="text/javascript">alert("Gagal memasukkan obat kombinasi"); window.location.assign("'.base_url().'usulan/Insert_Obat_Combinasi");</script>';
