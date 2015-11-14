@@ -322,14 +322,14 @@ $(function () {
                 $('.progress').show();
                 progressBar.css({width: percentComplete + "%"});
                 progressBar.text(percentComplete + '%');
+                $('.progress').hide();
               };
             }, false);
-
             return xhr;
           }
         });
       }
-
+      document.getElementById('upload1').style.visibility = 'hidden';
     }
   });
 
@@ -369,6 +369,7 @@ $(function () {
                 $('.progress').show();
                 progressBar.css({width: percentComplete + "%"});
                 progressBar.text(percentComplete + '%');
+                $('.progress').hide();
               };
             }, false);
 
@@ -376,7 +377,7 @@ $(function () {
           }
         });
       }
-
+      document.getElementById('upload2').style.visibility = 'hidden';
     }
   });
 
