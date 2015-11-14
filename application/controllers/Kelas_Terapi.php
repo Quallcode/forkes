@@ -88,7 +88,7 @@ class Kelas_Terapi extends CI_Controller {
 	$data = array(
 		'deleted'	=> '1'
 	);
-	$this->Model_Transaction->Update_To_Db($data,TABLE,'id',$uri);
+	$this->Model_Transaction->Update_To_Db($data,TABLE,'id_terapi',$uri);
 	echo '<script>alert("Berhasil Menghapus Data"); window.location.assign("'.base_url().'kelas_terapi");</script>';
   }
   //END OF POST SATUAAN
