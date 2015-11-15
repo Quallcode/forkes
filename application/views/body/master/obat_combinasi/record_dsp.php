@@ -47,9 +47,8 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <th>ID Satuan</th>
-                  <th>Nama</th>
-                  <th>Keterangan</th>
+                  <th>ID Kombinasi</th>
+                  <th>Nama Obat Kombinasi</th>
                   <th>Aksi</th>
                 </tr>
               </tfoot>
