@@ -7,8 +7,6 @@ class Obat_Combinasi extends CI_Controller {
     parent::__construct();
     //INIT MODEL TRANSACTION
     $this->load->model('Model_Get_Combinasi');
-    $this->load->model('Model_Get_Usulan');
-    $this->load->model('Model_Transaction');
     //CHECK SESSION
     $sess = $this->session->userdata('user_data');
     if(empty($sess)){
@@ -71,18 +69,13 @@ class Obat_Combinasi extends CI_Controller {
 			'nama_satuan'	=> $post['nama_satuan']
 		);
 		$this->Model_Transaction->Update_To_Db($data,TABLE,'id',$id);
-		echo '<script>alert("Berhasil Merubah Data"); window.location.assign("'.base_url().'Obat_Combinasi");</script>';
+		echo '<script>alert("Berhasil Merubah Data"); window.location.assign("'.base_url().'kelas_terapi");</script>';
 	}else{
     //GET SATUAAN DATA
-		$atc_obat = $this->Model_Get_Combinasi->Check_Update_Combinasi($uri);
-    $nama_combinasi = $this->Model_Get_Combinasi->Select_Name_Combinasi($uri);
-    $obat        = $this->Model_Get_Usulan->Normal_Select('atc_obat');
-    //print_r($satuan); exit;
+		$satuan = $this->Model_Get_Satuan->Update_Select(TABLE,'id',$uri);
 		//DECLARE VIEW DATA FOR WRAPPER
-    $view_data['obat'] = $obat;
-    $view_data['nama_combinasi'] = $nama_combinasi;
-		$view_data['atc_obat']   = $atc_obat;
-		$view_data['body']   = 'body/master/obat_combinasi/update_dsp';
+		$view_data['data']   = $satuan[0];
+		$view_data['body']   = 'body/master/kelas_terapi/update_dsp';
 		//LOAD VIEW DATA TO WRAPPER
 		$this->load->view('wrapper',$view_data);
 		}
@@ -93,34 +86,9 @@ class Obat_Combinasi extends CI_Controller {
 	$data = array(
 		'deleted'	=> '1'
 	);
-	$this->Model_Transaction->Update_To_Db($data,TABLE,'id_obat_combinasi',$uri);
-	echo '<script>alert("Berhasil Menghapus Data"); window.location.assign("'.base_url().'Obat_Combinasi");</script>';
+	$this->Model_Transaction->Update_To_Db($data,TABLE,'id',$uri);
+	echo '<script>alert("Berhasil Menghapus Data"); window.location.assign("'.base_url().'kelas_terapi");</script>';
   }
-
-  public function Edit_Usulan(){
-    $post = $this->input->post();
-    //print_r($post);exit;
-
-    if(!empty($post))
-    {
-      $this->Model_Transaction->Delete_To_Db('detail_obat_combinasi','nama_obat_combinasi',$post['obat_combinasi']);
-      $counted = count($post['id_atc_obat']);
-      for($i = 0; $i <$counted; $i++){
-        $data_detail_obat_combinasi = array(
-          'nama_obat_combinasi' => $post['obat_combinasi'],
-          'id_atc_obat'   => $post['id_atc_obat'][$i]
-        );
-        //print_r($data_detail_usulan); exit;
-        $this->Model_Transaction->Insert_To_Db($data_detail_obat_combinasi,'detail_obat_combinasi');
-      }
-      echo '<script type="text/javascript">alert("User Berhasil melakukan Pengeditan Kombinasi Obat dengan Nama Obat Kombinasi '.$post['obat_combinasi'].'"); window.location.assign("'.base_url().'Obat_Combinasi");</script>';
-    }else{
-      echo "Error empty post occured";
-    }
-  }
-
-
-
   //END OF POST SATUAAN
 }
 ?>

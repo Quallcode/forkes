@@ -15,7 +15,7 @@
             <h3 class="box-title">Data Master Atc Obat</h3>
           </div><!-- /.box-header -->
           <!-- form start -->
-          <form role="form" action="<?=base_url()?>atc_obat/insert" method="post" enctype="multipart/form-data">
+          <form role="form" action="<?=base_url()?>Atc_Obat/Insert" method="post" enctype="multipart/form-data">
             <div class="box-body">
               <div class="form-group">
                 <label for="id_atc_obat">ID ATC Obat</label>

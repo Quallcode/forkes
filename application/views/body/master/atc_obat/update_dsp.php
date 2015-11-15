@@ -15,7 +15,7 @@
             <h3 class="box-title">Data ATC Obat</h3>
           </div><!-- /.box-header -->
           <!-- form start -->
-          <form role="form" action="<?=base_url()?>atc_obat/update" method="post" enctype="multipart/form-data">
+          <form role="form" action="<?=base_url()?>Atc_Obat/Update" method="post" enctype="multipart/form-data">
           <input type="hidden" class="form-control" id="id" name="id" value="<?= $data['id']; ?>">
             <div class="box-body">
               <div class="form-group">

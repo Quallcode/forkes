@@ -9,7 +9,7 @@
     <ol class="breadcrumb">
       <li><a href="<?=base_url()?>dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
       <li>Master</li>
-      <li class="active"><a href="<?=base_url()?>atc_obat">Daftar ATC Obat</a></li>
+      <li class="active"><a href="<?=base_url()?>Atc_Obat">Daftar ATC Obat</a></li>
     </ol>
   </section>
 
@@ -40,8 +40,8 @@
                       <td><?=$val['nama_obat']?></td>
                       <td><?=$val['keterangan']?></td>
                       <td>
-                        <a href="<?=base_url()?>atc_obat/update/<?=$val['id']?>" class="btn btn-info">Update</a>&nbsp;
-                        <a href="<?=base_url()?>atc_obat/delete/<?=$val['id']?>" onclick="return confirm('Apakah Anda Yakin Akan Menghapus Data?')" class="btn btn-danger">Delete</a>
+                        <a href="<?=base_url()?>Atc_Obat/Update/<?=$val['id']?>" class="btn btn-info">Update</a>&nbsp;
+                        <a href="<?=base_url()?>Atc_Obat/Delete/<?=$val['id']?>" onclick="return confirm('Apakah Anda Yakin Akan Menghapus Data?')" class="btn btn-danger">Delete</a>
                       </td>
                     </tr>
                   <?php }?>
