@@ -255,7 +255,7 @@ class Usulan extends CI_Controller {
   }
 
   //INDEX FOR DAFTAR USULAN LENGKAP VIEW
-	public function Daftar_lengkap(){
+	public function Daftar_Lengkap(){
     //SET SUB BREADCRUMB
     $this->session->set_userdata(array('main_sub_breadcrumb'=>'daftar_usulan_lengkap'));
     $usulan_rs = $this->Model_Get_Usulan->Custom_Usulan_Lengkap(1);
@@ -273,7 +273,7 @@ class Usulan extends CI_Controller {
   //END OF INDEX FOR DAFTAR USULAN LENGKAP VIEW
 
   //INDEX FOR DAFTAR USULAN TIDAK LENGKAP VIEW
-	public function Daftar_tidak_lengkap(){
+	public function Daftar_Tidak_Lengkap(){
     //SET SUB BREADCRUMB
     $this->session->set_userdata(array('main_sub_breadcrumb'=>'daftar_usulan_tidak_lengkap'));
     $this->session->set_userdata(array('main_sub_breadcrumb'=>'daftar_usulan_lengkap'));
