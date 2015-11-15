@@ -135,6 +135,7 @@ var no_fornas = '<?=$nomor_efornas?>';
           <!-- general form elements -->
           <div class="box box-info">
               <div id="form-usulan">
+                <!--<?php print_r($detail_usulan); ?>-->
                 <?php foreach($detail_usulan as $i => $data){
                 $i +=1?>
                 <div class="box-body clonedInput" id="entry<?=$i?>">

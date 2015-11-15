@@ -341,6 +341,7 @@ class Usulan extends CI_Controller {
   //INDEX FOR ADD USULAN VIEW IN ADMIN
 	public function Insert_Obat_Baru(){
     //SET SUB BREADCRUMB
+    $this->session->set_userdata(array('breadcrumb'=>'usulan_obat_baru'));
     $this->session->set_userdata(array('main_sub_breadcrumb'=>'usulan_obat_baru'));
     //GET KEKUATAN DATA
     $sess = $this->session->userdata('user_data');
@@ -374,6 +375,7 @@ class Usulan extends CI_Controller {
   //INDEX FOR ADD USULAN VIEW IN ADMIN
 	public function Insert_Obat_Combinasi(){
     //SET SUB BREADCRUMB
+    $this->session->set_userdata(array('breadcrumb'=>'master'));
     $this->session->set_userdata(array('main_sub_breadcrumb'=>'usulan_obat_combinasi'));
     //GET KEKUATAN DATA
     $sess = $this->session->userdata('user_data');

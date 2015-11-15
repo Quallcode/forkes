@@ -79,10 +79,11 @@
               <li><a href="<?= base_url()?>atc_obat/insert"><i class="fa fa-circle-o"></i> TAMBAH ATC OBAT</a></li>
             </ul>
           </li>
-          <li class="<?php if(!empty($msbc)&&$msbc == 'obat_combinasi'){?>active<?php }?>">
+          <li class="<?php if(!empty($msbc)&& ($msbc == 'obat_combinasi' || $msbc == 'usulan_obat_combinasi')){?>active<?php }?>">
             <a><i class="fa fa-circle-o"></i> OBAT KOMBINASI</a>
             <ul class="treeview-menu">
               <li><a href="<?= base_url()?>Obat_Combinasi"><i class="fa  fa-list "></i> DAFTAR OBAT KOMBINASI</a></li>
+              <li><a href="<?= base_url()?>usulan/Insert_Obat_Combinasi"><i class="fa  fa-list "></i> TAMBAH OBAT KOMBINASI</a></li>
             </ul>
           </li>
           <li class="<?php if(!empty($msbc)&& ($msbc == 'kelas_terapi' || $msbc == 'sub_kelas_terapi')){?>active<?php }?>">
@@ -152,10 +153,22 @@
         <ul class="treeview-menu">
           <li class="<?php if(!empty($msbc)&&$msbc == 'verifikasi_usulan'){?>active<?php }?>"><a href="<?= base_url()?>usulan/verifikasi"><i class="fa  fa-list"></i> USULAN TERBARU</a></li>
           <li class="<?php if(!empty($msbc)&&$msbc == 'usulan_obat_baru'){?>active<?php }?>"><a href="<?= base_url()?>usulan/Insert_Obat_Baru"><i class="fa  fa-list"></i> USULAN OBAT BARU</a></li>
-          <li class="<?php if(!empty($msbc)&&$msbc == 'usulan_obat_combinasi'){?>active<?php }?>"><a href="<?= base_url()?>usulan/Insert_Obat_Combinasi"><i class="fa  fa-list"></i> USULAN OBAT KOMBINASI</a></li>
+          <!--<li class="<?php if(!empty($msbc)&&$msbc == 'usulan_obat_combinasi'){?>active<?php }?>"><a href="<?= base_url()?>usulan/Insert_Obat_Combinasi"><i class="fa  fa-list"></i> USULAN OBAT KOMBINASI</a></li>-->
           <li class="<?php if(!empty($msbc)&&$msbc == 'daftar_usulan_lengkap'){?>active<?php }?>"><a href="<?= base_url()?>usulan/daftar_lengkap"><i class="fa  fa-list"></i> DAFTAR USULAN LENGKAP</a></li>
           <li class="<?php if(!empty($msbc)&&$msbc == 'daftar_usulan_tidak_lengkap'){?>active<?php }?>"><a href="<?= base_url()?>usulan/daftar_tidak_lengkap"><i class="fa  fa-list"></i>DAFTAR USULAN TIDAK LENGKAP</a></li>
         </ul>
+      </li>
+      <?php } ?>
+      <!-- VERIFIKASI USULAN -->
+      <?php if($udata['type'] == 3){ ?>
+      <li class="<?php if(!empty($bc)&&$bc == 'usulan_obat_baru'){?>active<?php }?> treeview">
+        <a href="<?= base_url()?>usulan/Insert_Obat_Baru"><i class="fa fa-file-text"></i> USULAN OBAT BARU</a>
+        <!--<ul class="treeview-menu">
+          <li class="<?php if(!empty($msbc)&&$msbc == 'verifikasi_usulan'){?>active<?php }?>"><a href="<?= base_url()?>usulan/verifikasi"><i class="fa  fa-list"></i> USULAN TERBARU</a></li>
+          <li class="<?php if(!empty($msbc)&&$msbc == 'usulan_obat_baru'){?>active<?php }?>"><a href="<?= base_url()?>usulan/Insert_Obat_Baru"><i class="fa  fa-list"></i> USULAN OBAT BARU</a></li>
+          <li class="<?php if(!empty($msbc)&&$msbc == 'daftar_usulan_lengkap'){?>active<?php }?>"><a href="<?= base_url()?>usulan/daftar_lengkap"><i class="fa  fa-list"></i> DAFTAR USULAN LENGKAP</a></li>
+          <li class="<?php if(!empty($msbc)&&$msbc == 'daftar_usulan_tidak_lengkap'){?>active<?php }?>"><a href="<?= base_url()?>usulan/daftar_tidak_lengkap"><i class="fa  fa-list"></i>DAFTAR USULAN TIDAK LENGKAP</a></li>
+        </ul>-->
       </li>
       <?php } ?>
     </ul>

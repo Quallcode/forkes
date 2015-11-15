@@ -38,8 +38,8 @@
                       <td><?=$val['id_obat_combinasi']?></td>
                       <td><a data-toggle="modal" href="#ModalDetailCO<?=$val['id_obat_combinasi']?>"><?=$val['nama_obat_combinasi']?></a></td>
                       <td>
-                        <a href="<?=base_url()?>Kelas_Terapi/update/<?=$val['id_obat_combinasi']?>" class="btn btn-info">Update</a>&nbsp;
-                        <a href="<?=base_url()?>Kelas_Terapi/delete/<?=$val['id_obat_combinasi']?>" class="btn btn-danger">Delete</a>
+                        <a href="<?=base_url()?>Obat_Combinasi/update/<?=$val['id_obat_combinasi']?>" class="btn btn-info">Update</a>&nbsp;
+                        <a href="<?=base_url()?>Obat_Combinasi/delete/<?=$val['id_obat_combinasi']?>" class="btn btn-danger">Delete</a>
                       </td>
                     </tr>
                   <?php }?>

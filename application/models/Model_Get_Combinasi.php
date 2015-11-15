@@ -25,7 +25,7 @@ class Model_Get_Combinasi extends CI_Model {
 	}
 
   function Select_Data () {
-	   $query = "select * from obat_combinasi";
+	   $query = "select * from obat_combinasi where deleted=0";
      $execute = $this->db->query($query);
      $i = 0;
      //print_r($execute->result_array()); exit;
@@ -116,5 +116,40 @@ class Model_Get_Combinasi extends CI_Model {
 			return FALSE;
 		}
 	}
+
+  function Check_Update_Combinasi($id_obat_combinasi) {
+    $query = "select nama_obat_combinasi from obat_combinasi where id_obat_combinasi ='".$id_obat_combinasi."'";
+    //print_r($query); exit;
+    $execute = $this->db->query($query);
+    //print_r($execute->result_array()); exit;
+    $data = $execute->result_array();
+
+    $query2 = "select id_atc_obat from detail_obat_combinasi where nama_obat_combinasi ='".$data[0]['nama_obat_combinasi']."'";
+    $execute2 = $this->db->query($query2);
+    $data2 = $execute2->result_array();
+    //print_r($data2);exit;
+
+		if ($execute2->num_rows() > 0) {
+			return $data2;
+		}
+		else{
+			return FALSE;
+		}
+  }
+  function Select_Name_Combinasi($id_obat_combinasi) {
+    $query = "select nama_obat_combinasi from obat_combinasi where id_obat_combinasi ='".$id_obat_combinasi."'";
+    //print_r($query); exit;
+    $execute = $this->db->query($query);
+    //print_r($execute->result_array()); exit;
+    $data = $execute->result_array();
+    //print_r($data[0]['nama_obat_combinasi']);exit;
+
+		if ($execute->num_rows() > 0) {
+			return $data[0]['nama_obat_combinasi'];
+		}
+		else{
+			return FALSE;
+		}
+  }
 }
 ?>
