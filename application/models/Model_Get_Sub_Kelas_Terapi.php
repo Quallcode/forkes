@@ -18,10 +18,11 @@ class Model_Get_Sub_Kelas_Terapi extends CI_Model {
 		}
 	}
   function validate($table,$id){
-    $this->db->select('id');
+    $this->db->select('id_sub_kelasterapi');
     $this->db->from($table);
-    $this->db->where('id_sub_kelas_terapi',$id);
+    $this->db->where('id_sub_kelasterapi',$id);
     $result = $this->db->get();
+    //print_r($result->result_array()); exit;
     $view_result = $result->result_array();
     if($view_result == Array ( ))
     {

@@ -15,19 +15,15 @@
             <h3 class="box-title">Data Master Satuan</h3>
           </div><!-- /.box-header -->
           <!-- form start -->
-          <form role="form" action="<?=base_url()?>satuan/insert" method="post" enctype="multipart/form-data">
+          <form role="form" action="<?=base_url()?>kelas_terapi/insert" method="post" enctype="multipart/form-data">
             <div class="box-body">
               <div class="form-group">
-                <label for="id_satuan">ID Satuan</label>
-                <input type="text" class="form-control" id="id_satuan" name="id_satuan" placeholder="ID untuk Satuan Baru">
+                <label for="id_satuan">ID Terapi</label>
+                <input type="text" class="form-control" id="id_terapi" name="id_terapi" placeholder="ID untuk Satuan Baru">
               </div>
               <div class="form-group">
-                <label for="satuan">Nama Satuan</label>
-                <input type="text" class="form-control" id="nama_satuan" name="nama_satuan" placeholder="Nama Satuan">
-              </div>
-              <div class="form-group">
-                <label for="keterangan">Keterangan</label>
-                <input type="text" class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan">
+                <label for="satuan">Nama Kelas Terapi</label>
+                <input type="text" class="form-control" id="kelas_terapi" name="kelas_terapi" placeholder="Nama Satuan">
               </div>
             </div><!-- /.box-body -->
 

@@ -40,8 +40,8 @@
                       <td><?=$val['id_sub_kelasterapi']?></td>
                       <td><?=$val['Sub_Kelas_Terapi']?></td>
                       <td>
-                        <a href="<?=base_url()?>satuan/update/<?=$val['id_sub_kelasterapi']?>" class="btn btn-info">Update</a>&nbsp;
-                        <a href="<?=base_url()?>satuan/delete/<?=$val['id_sub_kelasterapi']?>" class="btn btn-danger">Delete</a>
+                        <a href="<?=base_url()?>Sub_Kelas_Terapi/update/<?=$val['id_sub_kelasterapi']?>" class="btn btn-info">Update</a>&nbsp;
+                        <a href="<?=base_url()?>Sub_Kelas_Terapi/delete/<?=$val['id_sub_kelasterapi']?>" class="btn btn-danger">Delete</a>
                       </td>
                     </tr>
                   <?php }?>

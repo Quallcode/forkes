@@ -20,7 +20,7 @@
             <div class="box-body">
               <div class="form-group">
                 <label for="id_sediaan">ID Sediaan</label>
-                <input type="text" class="form-control" id="id_sediaan" name="id_sediaan" value="<?= $data['id_sediaan']; ?>">
+                <input type="text" class="form-control" id="id_sediaan" name="id_sediaan" value="<?= $data['id_sediaan']; ?>" readonly="TRUE">
               </div>
               <div class="form-group">
                 <label for="nama_sediaan">Nama Sediaan</label>

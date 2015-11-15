@@ -15,20 +15,16 @@
             <h3 class="box-title">Data Satuan</h3>
           </div><!-- /.box-header -->
           <!-- form start -->
-          <form role="form" action="<?=base_url()?>satuan/update" method="post" enctype="multipart/form-data">
-          <input type="hidden" class="form-control" id="id" name="id" value="<?= $data['id']; ?>">
+          <form role="form" action="<?=base_url()?>Sub_Kelas_Terapi/update" method="post" enctype="multipart/form-data">
+          <input type="hidden" class="form-control" id="id_sub_kelasterapi" name="id_sub_kelasterapi" value="<?= $data['Sub_Kelas_Terapi']; ?>">
             <div class="box-body">
               <div class="form-group">
-                <label for="id_satuan">ID Satuan</label>
-                <input type="text" class="form-control" id="id_satuan" name="id_satuan" value="<?= $data['id_satuan']; ?>">
+                <label for="id_satuan">ID Sub Kelas Terapi </label>
+                <input type="text" class="form-control" id="id_sub_kelasterapi" name="id_sub_kelasterapi" value="<?= $data['id_sub_kelasterapi']; ?>" readonly="TRUE">
               </div>
               <div class="form-group">
-                <label for="nama_satuan">Nama Satuan</label>
-                <input type="text" class="form-control" id="nama_satuan" name="nama_satuan" value="<?= $data['nama_satuan']; ?>">
-              </div>
-              <div class="form-group">
-                <label for="keterangan">Keterangan</label>
-                <input type="text" class="form-control" id="keterangan" name="keterangan" value="<?= $data['keterangan']; ?>">
+                <label for="nama_satuan">Nama Sub Kelas Terapi</label>
+                <input type="text" class="form-control" id="Sub_Kelas_Terapi" name="Sub_Kelas_Terapi" value="<?= $data['Sub_Kelas_Terapi']; ?>">
               </div>
             </div><!-- /.box-body -->
 

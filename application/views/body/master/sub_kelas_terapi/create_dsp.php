@@ -15,19 +15,23 @@
             <h3 class="box-title">Data Master Satuan</h3>
           </div><!-- /.box-header -->
           <!-- form start -->
-          <form role="form" action="<?=base_url()?>satuan/insert" method="post" enctype="multipart/form-data">
+          <form role="form" action="<?=base_url()?>Sub_Kelas_Terapi/insert" method="post" enctype="multipart/form-data">
             <div class="box-body">
               <div class="form-group">
-                <label for="id_satuan">ID Satuan</label>
-                <input type="text" class="form-control" id="id_satuan" name="id_satuan" placeholder="ID untuk Satuan Baru">
+                <label for="id_terapi">Kelas Terapi</label>
+                <select class="form-control inputKelasTerapi" id="inputKelasTerapi1" name="id_terapi[]">
+                  <?php foreach( $terapi as $key) { ?>
+                    <option value="<?=$key['id_terapi']?>" ><?=$key['Kelas_terapi']?></option>
+                  <?php } ?>
+                </select>
               </div>
               <div class="form-group">
-                <label for="satuan">Nama Satuan</label>
-                <input type="text" class="form-control" id="nama_satuan" name="nama_satuan" placeholder="Nama Satuan">
+                <label for="id_sub_kelasterapi">ID Sub Kelas Terapi</label>
+                <input type="text" class="form-control" id="id_sub_kelasterapi" name="id_sub_kelasterapi" placeholder="ID untuk Sub Kelas Terapi Baru">
               </div>
               <div class="form-group">
-                <label for="keterangan">Keterangan</label>
-                <input type="text" class="form-control" id="keterangan" name="keterangan" placeholder="Keterangan">
+                <label for="Sub_Kelas_Terapi">Nama Sub Kelas Terapi</label>
+                <input type="text" class="form-control" id="Sub_Kelas_Terapi" name="Sub_Kelas_Terapi" placeholder="Nama Sub Kelas Terapi">
               </div>
             </div><!-- /.box-body -->
 

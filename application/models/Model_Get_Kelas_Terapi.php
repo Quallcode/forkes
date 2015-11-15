@@ -18,9 +18,9 @@ class Model_Get_Kelas_Terapi extends CI_Model {
 		}
 	}
   function validate($table,$id){
-    $this->db->select('id');
+    $this->db->select('id_terapi');
     $this->db->from($table);
-    $this->db->where('id_kelas_terapi',$id);
+    $this->db->where('id_terapi',$id);
     $result = $this->db->get();
     $view_result = $result->result_array();
     if($view_result == Array ( ))

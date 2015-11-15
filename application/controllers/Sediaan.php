@@ -58,7 +58,7 @@ class Sediaan extends CI_Controller {
       }
     }
   }
-  
+
   public function update(){
 	$uri = $this->uri->segment(3);
 	if(empty($uri)){
@@ -69,7 +69,7 @@ class Sediaan extends CI_Controller {
 			'nama_sediaan'	=> $post['nama_sediaan'],
 			'keterangan'	=> $post['keterangan']
 		);
-		$this->Model_Transaction->Update_To_Db($data,TABLE,'id',$id);
+		$this->Model_Transaction->Update_To_Db($data,TABLE,'id_sediaan',$post['id_sediaan']);
 		echo '<script>alert("Berhasil Merubah Data"); window.location.assign("'.base_url().'sediaan");</script>';
 	}else{
     //GET SEDIAAN DATA

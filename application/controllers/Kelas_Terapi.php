@@ -46,7 +46,8 @@ class Kelas_Terapi extends CI_Controller {
       $this->load->view('wrapper',$view_data);
     }else{
       //VALIDATE TO DATABASE
-      $exist = $this->Model_Get_Kelas_Terapi->validate(TABLE,$post['id_kelas_terapi']);
+      //print_r($post); exit;
+      $exist = $this->Model_Get_Kelas_Terapi->validate(TABLE,$post['id_terapi']);
       if($exist==1)
       {
         echo '<script>alert("ID Kelas Terapi Sudah Ada"); window.location.assign("'.base_url().'kelas_terapi");</script>';

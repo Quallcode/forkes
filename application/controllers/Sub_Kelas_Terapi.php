@@ -8,6 +8,7 @@ class Sub_Kelas_Terapi extends CI_Controller {
     //INIT MODEL TRANSACTION
     $this->load->model('Model_Transaction');
     $this->load->model('Model_Get_Sub_Kelas_Terapi');
+    $this->load->model('Model_Get_Usulan');
     //CHECK SESSION
     $sess = $this->session->userdata('user_data');
     if(empty($sess)){
@@ -41,19 +42,27 @@ class Sub_Kelas_Terapi extends CI_Controller {
     //CHECK IF EMPTY POST
     if(empty($post)){
       //DECLARE VIEW DATA FOR WRAPPER
+      $terapi      = $this->Model_Get_Usulan->Normal_Select('kelas_terapi');
+      $view_data['terapi'] = $terapi;
       $view_data['body']   = 'body/master/sub_kelas_terapi/create_dsp';
       //LOAD VIEW DATA TO WRAPPER
       $this->load->view('wrapper',$view_data);
     }else{
       //VALIDATE TO DATABASE
-      $exist = $this->Model_Get_Satuan->validate(TABLE,$post['id_sub_kelas_terapi']);
+      //print_r($post); exit;
+      $data = array(
+        'id_terapi' 	=> $post['id_terapi'][0],
+        'id_sub_kelasterapi'	  	=> $post['id_sub_kelasterapi'],
+        'Sub_Kelas_Terapi' => $post['Sub_Kelas_Terapi']
+      );
+      $exist = $this->Model_Get_Sub_Kelas_Terapi->validate(TABLE,$post['id_sub_kelasterapi']);
       if($exist==1)
       {
         echo '<script>alert("ID Sub Kelas Terapi Sudah Ada"); window.location.assign("'.base_url().'sub_kelas_terapi");</script>';
       }
       else {
         //INSERT TO DATABASE
-        $this->Model_Transaction->Insert_To_Db($post,TABLE);
+        $this->Model_Transaction->Insert_To_Db($data,TABLE);
 		echo '<script>alert("Berhasil Menambahkan Data"); window.location.assign("'.base_url().'sub_kelas_terapi");</script>';
       }
     }
@@ -63,19 +72,20 @@ class Sub_Kelas_Terapi extends CI_Controller {
 	$uri = $this->uri->segment(3);
 	if(empty($uri)){
 		$post = $this->input->post();
-		$id = $post['id'];
+    //print_r($post); exit;
+		$id = $post['id_sub_kelasterapi'];
 		$data = array(
-			'id_sub_kelas' 	=> $post['id_sub_kelas_terapi'],
-			'nama_sub_kelas'	=> $post['nama_sub_kelas_terapi']
+			'id_sub_kelasterapi' 	=> $post['id_sub_kelasterapi'],
+			'Sub_Kelas_Terapi'	=> $post['Sub_Kelas_Terapi']
 		);
-		$this->Model_Transaction->Update_To_Db($data,TABLE,'id',$id);
+		$this->Model_Transaction->Update_To_Db($data,TABLE,'id_sub_kelasterapi',$id);
 		echo '<script>alert("Berhasil Merubah Data"); window.location.assign("'.base_url().'sub_kelas_terapi");</script>';
 	}else{
     //GET SATUAAN DATA
-		$satuan = $this->Model_Get_Satuan->Update_Select(TABLE,'id',$uri);
+		$satuan = $this->Model_Get_Sub_Kelas_Terapi->Update_Select(TABLE,'id_sub_kelasterapi',$uri);
 		//DECLARE VIEW DATA FOR WRAPPER
 		$view_data['data']   = $satuan[0];
-		$view_data['body']   = 'body/master/satuan/update_dsp';
+		$view_data['body']   = 'body/master/sub_kelas_terapi/update_dsp';
 		//LOAD VIEW DATA TO WRAPPER
 		$this->load->view('wrapper',$view_data);
 		}
@@ -86,7 +96,7 @@ class Sub_Kelas_Terapi extends CI_Controller {
 	$data = array(
 		'deleted'	=> '1'
 	);
-	$this->Model_Transaction->Update_To_Db($data,TABLE,'id',$uri);
+	$this->Model_Transaction->Update_To_Db($data,TABLE,'id_sub_kelasterapi',$uri);
 	echo '<script>alert("Berhasil Menghapus Data"); window.location.assign("'.base_url().'sub_kelas_terapi");</script>';
   }
   //END OF POST SATUAAN

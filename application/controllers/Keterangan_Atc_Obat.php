@@ -86,7 +86,7 @@ class Keterangan_Atc_Obat extends CI_Controller {
   		'deleted'	=> '1'
   	);
   	$this->Model_Transaction->Update_To_Db($data,TABLE,'id',$uri);
-  	echo '<script>alert("Berhasil Menghapus Data"); window.location.assign("'.base_url().'atc_obat");</script>';
+  	echo '<script>alert("Berhasil Menghapus Data"); window.location.assign("'.base_url().'keterangan_atc_obat");</script>';
   }
   //END OF POST ATC OBAT
 }
