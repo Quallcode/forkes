@@ -4,12 +4,12 @@
   <section class="content-header">
     <h1>
       Daftar
-      <small>Satuan</small>
+      <small>Sub Kelas Terapi</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="<?=base_url()?>dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
       <li>Master</li>
-      <li class="active"><a href="<?=base_url()?>satuan">Daftar Satuan</a></li>
+      <li class="active"><a href="<?=base_url()?>satuan">Daftar Sub Kelas Terapi</a></li>
     </ol>
   </section>
 
@@ -49,9 +49,9 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <th>ID Satuan</th>
-                  <th>Nama</th>
-                  <th>Keterangan</th>
+                  <th>ID Terapi</th>
+                  <th>ID Sub Terapi</th>
+                  <th>Nama Sub Terapi</th>
                   <th>Aksi</th>
                 </tr>
               </tfoot>

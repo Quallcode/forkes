@@ -12,7 +12,7 @@
         <!-- general form elements -->
         <div class="box box-primary">
           <div class="box-header with-border">
-            <h3 class="box-title">Data Satuan</h3>
+            <h3 class="box-title">Data Kelas Terapi</h3>
           </div><!-- /.box-header -->
           <!-- form start -->
           <form role="form" action="<?=base_url()?>Kelas_Terapi/update" method="post" enctype="multipart/form-data">
