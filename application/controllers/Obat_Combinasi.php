@@ -7,7 +7,6 @@ class Obat_Combinasi extends CI_Controller {
     parent::__construct();
     //INIT MODEL TRANSACTION
     $this->load->model('Model_Get_Combinasi');
-    $this->load->model('Model_Transaction');
     //CHECK SESSION
     $sess = $this->session->userdata('user_data');
     if(empty($sess)){
@@ -73,7 +72,7 @@ class Obat_Combinasi extends CI_Controller {
 		echo '<script>alert("Berhasil Merubah Data"); window.location.assign("'.base_url().'Obat_Combinasi");</script>';
 	}else{
     //GET SATUAAN DATA
-		$satuan = $this->Model_Get_Combinasi->Update_Select(TABLE,'id',$uri);
+		$satuan = $this->Model_Get_Satuan->Update_Select(TABLE,'id',$uri);
 		//DECLARE VIEW DATA FOR WRAPPER
 		$view_data['data']   = $satuan[0];
 		$view_data['body']   = 'body/master/kelas_terapi/update_dsp';
