@@ -79,6 +79,12 @@
               <li><a href="<?= base_url()?>atc_obat/insert"><i class="fa fa-circle-o"></i> TAMBAH ATC OBAT</a></li>
             </ul>
           </li>
+          <li class="<?php if(!empty($msbc)&&$msbc == 'obat_combinasi'){?>active<?php }?>">
+            <a><i class="fa fa-circle-o"></i> OBAT KOMBINASI</a>
+            <ul class="treeview-menu">
+              <li><a href="<?= base_url()?>Obat_Combinasi"><i class="fa  fa-list "></i> DAFTAR OBAT KOMBINASI</a></li>
+            </ul>
+          </li>
           <li class="<?php if(!empty($msbc)&& ($msbc == 'kelas_terapi' || $msbc == 'sub_kelas_terapi')){?>active<?php }?>">
             <a><i class="fa fa-circle-o"></i> KELAS</a>
             <ul class="treeview-menu">

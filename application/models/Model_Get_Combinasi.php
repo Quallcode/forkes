@@ -24,6 +24,66 @@ class Model_Get_Combinasi extends CI_Model {
 		}
 	}
 
+  function Select_Data () {
+	   $query = "select * from obat_combinasi";
+     $execute = $this->db->query($query);
+     $i = 0;
+     //print_r($execute->result_array()); exit;
+     if($execute->num_rows() > 0)
+     {
+       foreach ($execute->result_array() as $row) {
+         $data[$i] = $row;
+         //print_r($row['nama_obat_combinasi']); exit;
+         $detail_obat_combinasi = $this->Select_Detail_Combinasi($row['nama_obat_combinasi']);
+         $data[$i]['atc_obat'] = $detail_obat_combinasi;
+         $i++;
+       }
+       return $data;
+     }
+     else {
+       return FALSE;
+     }
+	}
+
+  function Select_Detail_Combinasi($nama_combinasi){
+
+    $query = "select detail_obat_combinasi.id_atc_obat, atc_obat.nama_obat, atc_obat.id_keterangan from detail_obat_combinasi, atc_obat where detail_obat_combinasi.id_atc_obat = atc_obat.id_atc_obat and detail_obat_combinasi.nama_obat_combinasi ='".$nama_combinasi."'";
+    $execute = $this->db->query($query);
+    //print_r($execute->result_array()); exit;
+    $i = 0;
+
+		if ($execute->num_rows() > 0) {
+			foreach($execute->result_array() as $row){
+				$data[$i] = $row;
+        //print_r($row['id_keterangan']);exit;
+        $detail_keterangan = $this->Select_Keterangan($row['id_keterangan']);
+        $data[$i]['keterangan'] = $detail_keterangan;
+        $i++;
+      }
+			return $data;
+		}
+		else{
+			return FALSE;
+		}
+  }
+
+  function Select_Keterangan($id_keterangan){
+
+    $query = "select keterangan_atc_obat.keterangan from keterangan_atc_obat where keterangan_atc_obat.id ='".$id_keterangan."'";
+    //print_r($query); exit;
+    $execute = $this->db->query($query);
+    //print_r($execute->result_array()); exit;
+    $data = $execute->result_array();
+    //print_r($data[0]['keterangan']);exit;
+
+		if ($execute->num_rows() > 0) {
+			return $data[0]['keterangan'];
+		}
+		else{
+			return FALSE;
+		}
+  }
+
   function Validate($table,$id){
     $this->db->select('nama_obat_combinasi');
     $this->db->from($table);
@@ -56,128 +116,5 @@ class Model_Get_Combinasi extends CI_Model {
 			return FALSE;
 		}
 	}
-
-  function Custom_UsulanWithParam($type,$sess){
-    if($type == 1)
-      $query = "SELECT `usulan`.`id`,B.`provinsi`,B.`kabkota`,B.`nama_rs`,`usulan`.`nomor_efornas`,`usulan`.`daftar_usulan_obat`,`usulan`.`surat_pengantar`, `usulan`.`status` FROM `usulan`,
-        (SELECT `rumah_sakit`.`id_rs`,`rumah_sakit`.`nama_rs`, A.`id_provinsi`, A.`id_kabkota`,A.`kabkota`,A.`provinsi` FROM `rumah_sakit`,
-        (SELECT `id_provinsi`,`id_kabkota`, `kabkota`.`kabkota`,`provinsi`.`provinsi` FROM `kabkota`, `provinsi` WHERE `kabkota`.`parent_id` = `provinsi`.`id_provinsi`) A
-        WHERE A.`id_provinsi` = `rumah_sakit`.`id_provinsi` AND A.`id_kabkota` = `rumah_sakit`.`id_kabkota` AND A.`id_kabkota` = ".$sess['id_kabkota']." AND A.`id_provinsi` = ".$sess['id_provinsi'].") B
-        WHERE B.`id_kabkota` = `usulan`.`id_kabkota` AND B.`id_provinsi` = `usulan`.`id_provinsi` AND `usulan`.`id_faskes` = B.`id_rs` AND `usulan`.`deleted` = 0 AND `usulan`.`id_faskes` = ".$sess['id_faskes'] ." GROUP BY `usulan`.`nomor_efornas`";
-    if($type == 2)
-      $query = "SELECT `usulan`.`id`,B.`provinsi`,B.`kabkota`,B.`nama_klinik`,`usulan`.`nomor_efornas`,`usulan`.`daftar_usulan_obat`,`usulan`.`surat_pengantar`, `usulan`.`status` FROM `usulan`,(SELECT `klinik`.`id_klinik`,`klinik`.`nama_klinik`, A.`id_provinsi`, A.`id_kabkota`,A.`kabkota,A.`provinsi` FROM `klinik`, (SELECT `id_provinsi`,`id_kabkota`, `kabkota`.`kabkota`,`provinsi`.`provinsi` FROM `kabkota`,`provinsi` WHERE `kabkota`.`parent_id` = `provinsi`.`id_provinsi`) A WHERE A.`id_provinsi` = `klinik`.`id_provinsi` AND A.`id_kabkota` = `klinik`.`id_kabkota`) B WHERE B.`id_kabkota` = `usulan`.`id_kabkota` AND B.`id_provinsi` = `usulan`.`id_provinsi` AND `usulan`.`id_faskes` = B.`id_klinik` AND `usulan`.`deleted` = 0";
-    $result = $this->db->query($query);
-    $i = 0;
-    if ($result->num_rows() > 0) {
-      foreach($result->result_array() as $row){
-        $data[$i] = $row;
-        $detail_usulan = $this->Sub_Select('detail_usulan','nomor_efornas',$row['nomor_efornas']);
-        $data[$i]['detail_usulan'] = $detail_usulan;
-        $i++;
-      }
-      return $data;
-    }
-    else{
-      return FALSE;
-    }
-  }
-
-  function Custom_Usulan($type){
-    if($type == 1)
-      $query = "SELECT `usulan`.`id`,B.`provinsi`,B.`kabkota`,B.`nama_rs`,`usulan`.`nomor_efornas`,`usulan`.`daftar_usulan_obat`,`usulan`.`surat_pengantar`, `usulan`.`status` FROM `usulan`,
-        (SELECT `rumah_sakit`.`id_rs`,`rumah_sakit`.`nama_rs`, A.`id_provinsi`, A.`id_kabkota`,A.`kabkota`,A.`provinsi` FROM `rumah_sakit`,
-        (SELECT `id_provinsi`,`id_kabkota`, `kabkota`.`kabkota`,`provinsi`.`provinsi` FROM `kabkota`, `provinsi` WHERE `kabkota`.`parent_id` = `provinsi`.`id_provinsi`) A
-        WHERE A.`id_provinsi` = `rumah_sakit`.`id_provinsi` AND A.`id_kabkota` = `rumah_sakit`.`id_kabkota`) B
-        WHERE B.`id_kabkota` = `usulan`.`id_kabkota` AND B.`id_provinsi` = `usulan`.`id_provinsi` AND `usulan`.`id_faskes` = B.`id_rs` AND `usulan`.`deleted` = 0 AND `usulan`.`status` = 'BELUM' GROUP BY `usulan`.`nomor_efornas`";
-    if($type == 2)
-      $query = "SELECT `usulan`.`id`,B.`provinsi`,B.`kabkota`,B.`nama_klinik`,`usulan`.`nomor_efornas`,`usulan`.`daftar_usulan_obat`,`usulan`.`surat_pengantar`, `usulan`.`status` FROM `usulan`,(SELECT `klinik`.`id_klinik`,`klinik`.`nama_klinik`, A.`id_provinsi`, A.`id_kabkota`,A.`kabkota,A.`provinsi` FROM `klinik`, (SELECT `id_provinsi`,`id_kabkota`, `kabkota`.`kabkota`,`provinsi`.`provinsi` FROM `kabkota`,`provinsi` WHERE `kabkota`.`parent_id` = `provinsi`.`id_provinsi`) A WHERE A.`id_provinsi` = `klinik`.`id_provinsi` AND A.`id_kabkota` = `klinik`.`id_kabkota`) B WHERE B.`id_kabkota` = `usulan`.`id_kabkota` AND B.`id_provinsi` = `usulan`.`id_provinsi` AND `usulan`.`id_faskes` = B.`id_klinik` AND `usulan`.`deleted` = 0";
-    $result = $this->db->query($query);
-    $i = 0;
-    if ($result->num_rows() > 0) {
-      foreach($result->result_array() as $row){
-        $data[$i] = $row;
-        $detail_usulan = $this->Sub_Select('detail_usulan','nomor_efornas',$row['nomor_efornas']);
-        $data[$i]['detail_usulan'] = $detail_usulan;
-        $i++;
-      }
-      return $data;
-    }
-    else{
-      return FALSE;
-    }
-  }
-
-  function Custom_Usulan_Lengkap($type){
-    if($type == 1)
-      $query = "SELECT `usulan`.`id`,B.`provinsi`,B.`kabkota`,B.`nama_rs`,`usulan`.`nomor_efornas`,`usulan`.`daftar_usulan_obat`,`usulan`.`surat_pengantar`, `usulan`.`status` FROM `usulan`,
-        (SELECT `rumah_sakit`.`id_rs`,`rumah_sakit`.`nama_rs`, A.`id_provinsi`, A.`id_kabkota`,A.`kabkota`,A.`provinsi` FROM `rumah_sakit`,
-        (SELECT `id_provinsi`,`id_kabkota`, `kabkota`.`kabkota`,`provinsi`.`provinsi` FROM `kabkota`, `provinsi` WHERE `kabkota`.`parent_id` = `provinsi`.`id_provinsi`) A
-        WHERE A.`id_provinsi` = `rumah_sakit`.`id_provinsi` AND A.`id_kabkota` = `rumah_sakit`.`id_kabkota`) B
-        WHERE B.`id_kabkota` = `usulan`.`id_kabkota` AND B.`id_provinsi` = `usulan`.`id_provinsi` AND `usulan`.`id_faskes` = B.`id_rs` AND `usulan`.`deleted` = 0 AND `usulan`.`status` = 'SUDAH' GROUP BY `usulan`.`nomor_efornas`";
-    if($type == 2)
-      $query = "SELECT `usulan`.`id`,B.`provinsi`,B.`kabkota`,B.`nama_klinik`,`usulan`.`nomor_efornas`,`usulan`.`daftar_usulan_obat`,`usulan`.`surat_pengantar`, `usulan`.`status` FROM `usulan`,(SELECT `klinik`.`id_klinik`,`klinik`.`nama_klinik`, A.`id_provinsi`, A.`id_kabkota`,A.`kabkota,A.`provinsi` FROM `klinik`, (SELECT `id_provinsi`,`id_kabkota`, `kabkota`.`kabkota`,`provinsi`.`provinsi` FROM `kabkota`,`provinsi` WHERE `kabkota`.`parent_id` = `provinsi`.`id_provinsi`) A WHERE A.`id_provinsi` = `klinik`.`id_provinsi` AND A.`id_kabkota` = `klinik`.`id_kabkota`) B WHERE B.`id_kabkota` = `usulan`.`id_kabkota` AND B.`id_provinsi` = `usulan`.`id_provinsi` AND `usulan`.`id_faskes` = B.`id_klinik` AND `usulan`.`deleted` = 0";
-    $result = $this->db->query($query);
-    $i = 0;
-    if ($result->num_rows() > 0) {
-      foreach($result->result_array() as $row){
-        $data[$i] = $row;
-        $detail_usulan = $this->Sub_Select('detail_usulan','nomor_efornas',$row['nomor_efornas']);
-        $data[$i]['detail_usulan'] = $detail_usulan;
-        $i++;
-      }
-      return $data;
-    }
-    else{
-      return FALSE;
-    }
-  }
-
-  function Custom_Usulan_Tidak_Lengkap($type){
-    if($type == 1)
-      $query = "SELECT `usulan`.`id`,B.`provinsi`,B.`kabkota`,B.`nama_rs`,`usulan`.`nomor_efornas`,`usulan`.`daftar_usulan_obat`,`usulan`.`surat_pengantar`, `usulan`.`status` FROM `usulan`,
-        (SELECT `rumah_sakit`.`id_rs`,`rumah_sakit`.`nama_rs`, A.`id_provinsi`, A.`id_kabkota`,A.`kabkota`,A.`provinsi` FROM `rumah_sakit`,
-        (SELECT `id_provinsi`,`id_kabkota`, `kabkota`.`kabkota`,`provinsi`.`provinsi` FROM `kabkota`, `provinsi` WHERE `kabkota`.`parent_id` = `provinsi`.`id_provinsi`) A
-        WHERE A.`id_provinsi` = `rumah_sakit`.`id_provinsi` AND A.`id_kabkota` = `rumah_sakit`.`id_kabkota`) B
-        WHERE B.`id_kabkota` = `usulan`.`id_kabkota` AND B.`id_provinsi` = `usulan`.`id_provinsi` AND `usulan`.`id_faskes` = B.`id_rs` AND `usulan`.`deleted` = 0 AND `usulan`.`status` = 'TIDAK' GROUP BY `usulan`.`nomor_efornas`";
-    if($type == 2)
-      $query = "SELECT `usulan`.`id`,B.`provinsi`,B.`kabkota`,B.`nama_klinik`,`usulan`.`nomor_efornas`,`usulan`.`daftar_usulan_obat`,`usulan`.`surat_pengantar`, `usulan`.`status` FROM `usulan`,(SELECT `klinik`.`id_klinik`,`klinik`.`nama_klinik`, A.`id_provinsi`, A.`id_kabkota`,A.`kabkota,A.`provinsi` FROM `klinik`, (SELECT `id_provinsi`,`id_kabkota`, `kabkota`.`kabkota`,`provinsi`.`provinsi` FROM `kabkota`,`provinsi` WHERE `kabkota`.`parent_id` = `provinsi`.`id_provinsi`) A WHERE A.`id_provinsi` = `klinik`.`id_provinsi` AND A.`id_kabkota` = `klinik`.`id_kabkota`) B WHERE B.`id_kabkota` = `usulan`.`id_kabkota` AND B.`id_provinsi` = `usulan`.`id_provinsi` AND `usulan`.`id_faskes` = B.`id_klinik` AND `usulan`.`deleted` = 0";
-    $result = $this->db->query($query);
-    $i = 0;
-    if ($result->num_rows() > 0) {
-      foreach($result->result_array() as $row){
-        $data[$i] = $row;
-        $detail_usulan = $this->Sub_Select('detail_usulan','nomor_efornas',$row['nomor_efornas']);
-        $data[$i]['detail_usulan'] = $detail_usulan;
-        $i++;
-      }
-      return $data;
-    }
-    else{
-      return FALSE;
-    }
-  }
-
-  function Sub_Select($table,$param,$on){
-    $this->db->select('kekuatan, nama_sediaan, nama_satuan, nama_obat, jurnal, alasan, restriksi, tipe_usulan, file_jurnal, Kelas_terapi');
-    $this->db->from($table);
-    $this->db->join('kelas_terapi', '`kelas_terapi`.`id_terapi` = `detail_usulan`.`id_terapi`' , 'left');
-    $this->db->join('atc_obat', '`atc_obat`.`id_atc_obat` = `detail_usulan`.`id_atc_obat`' , 'left');
-    $this->db->join('kekuatan', ' `kekuatan`.`id_kekuatan` = `detail_usulan`.`id_kekuatan`' , 'left');
-    $this->db->join('sediaan', '`sediaan`.`id_sediaan` = `detail_usulan`.`id_sediaan`' , 'left');
-    $this->db->join('satuan', '`satuan`.`id_satuan` = `detail_usulan`.`id_satuan`' , 'left');
-		$this->db->where($param,$on);
-    $result = $this->db->get();
-    $i = 0;
-		if ($result->num_rows() > 0) {
-			foreach($result->result_array() as $row){
-				$data[$i] = $row;
-        $i++;
-      }
-			return $data;
-		}
-		else{
-			return FALSE;
-		}
-  }
 }
 ?>

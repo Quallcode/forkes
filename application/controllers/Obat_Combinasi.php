@@ -1,13 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Kelas_Terapi extends CI_Controller {
+class Obat_Combinasi extends CI_Controller {
   //CONSTRUCT FOR SATUAAN
   function __construct(){
     parent::__construct();
     //INIT MODEL TRANSACTION
-    $this->load->model('Model_Transaction');
-    $this->load->model('Model_Get_Kelas_Terapi');
+    $this->load->model('Model_Get_Combinasi');
     //CHECK SESSION
     $sess = $this->session->userdata('user_data');
     if(empty($sess)){
@@ -15,20 +14,21 @@ class Kelas_Terapi extends CI_Controller {
       exit;
     }
     //SET TABLE NAME
-    define('TABLE','kelas_terapi');
+    define('TABLE','obat_combinasi');
+    define('DETAIL_TABLE','detail_obat_combinasi');
     //SET BREADCRUMB
     $this->session->set_userdata(array('breadcrumb'=>'master'));
-    $this->session->set_userdata(array('main_sub_breadcrumb'=>'kelas_terapi'));
+    $this->session->set_userdata(array('main_sub_breadcrumb'=>'obat_combinasi'));
   }
 
   //INDEX FOR FIRST VIEW
 	public function Index(){
     //GET SATUAAN DATA
-    $satuan = $this->Model_Get_Kelas_Terapi->Normal_Select(TABLE);
-    //print_r($satuan);exit;
+    $obt_combinasi = $this->Model_Get_Combinasi->Select_Data();
+    //print_r($obt_combinasi);exit;
     //DECLARE VIEW DATA FOR WRAPPER
-    $view_data['data']   = $satuan;
-    $view_data['body']   = 'body/master/kelas_terapi/record_dsp';
+    $view_data['data']   = $obt_combinasi;
+    $view_data['body']   = 'body/master/obat_combinasi/record_dsp';
     //LOAD VIEW DATA TO WRAPPER
     $this->load->view('wrapper',$view_data);
 	}
@@ -63,18 +63,16 @@ class Kelas_Terapi extends CI_Controller {
 	$uri = $this->uri->segment(3);
 	if(empty($uri)){
 		$post = $this->input->post();
-    //print_r($post); exit;
 		$id = $post['id'];
 		$data = array(
-			'id_terapi' 	=> $post['id_kelas_terapi'],
-			'Kelas_terapi'	=> $post['nama_terapi']
+			'id_kelas_terapi' 	=> $post['id_kelas_terapi'],
+			'nama_satuan'	=> $post['nama_satuan']
 		);
-		$this->Model_Transaction->Update_To_Db($data,TABLE,'id_terapi',$id);
+		$this->Model_Transaction->Update_To_Db($data,TABLE,'id',$id);
 		echo '<script>alert("Berhasil Merubah Data"); window.location.assign("'.base_url().'kelas_terapi");</script>';
 	}else{
     //GET SATUAAN DATA
-		$satuan = $this->Model_Get_Kelas_Terapi->Update_Select(TABLE,'id_terapi',$uri);
-    //print_r($satuan); exit;
+		$satuan = $this->Model_Get_Satuan->Update_Select(TABLE,'id',$uri);
 		//DECLARE VIEW DATA FOR WRAPPER
 		$view_data['data']   = $satuan[0];
 		$view_data['body']   = 'body/master/kelas_terapi/update_dsp';
@@ -88,7 +86,7 @@ class Kelas_Terapi extends CI_Controller {
 	$data = array(
 		'deleted'	=> '1'
 	);
-	$this->Model_Transaction->Update_To_Db($data,TABLE,'id_terapi',$uri);
+	$this->Model_Transaction->Update_To_Db($data,TABLE,'id',$uri);
 	echo '<script>alert("Berhasil Menghapus Data"); window.location.assign("'.base_url().'kelas_terapi");</script>';
   }
   //END OF POST SATUAAN
