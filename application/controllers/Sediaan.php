@@ -49,17 +49,17 @@ class Sediaan extends CI_Controller {
       $exist = $this->Model_Get_Sediaan->validate(TABLE,$post['id_sediaan']);
       if($exist==1)
       {
-        echo '<script>alert("ID Kekuatan Sudah Ada"); window.location.assign("'.base_url().'sediaan");</script>';
+        echo '<script>alert("ID Kekuatan Sudah Ada"); window.location.assign("'.base_url().'Sediaan");</script>';
       }
       else {
         //INSERT TO DATABASE
         $this->Model_Transaction->Insert_To_Db($post,TABLE);
-        echo '<script>alert("Berhasil Menambahkan Data"); window.location.assign("'.base_url().'sediaan");</script>';
+        echo '<script>alert("Berhasil Menambahkan Data"); window.location.assign("'.base_url().'Sediaan");</script>';
       }
     }
   }
 
-  public function update(){
+  public function Update(){
 	$uri = $this->uri->segment(3);
 	if(empty($uri)){
 		$post = $this->input->post();
@@ -70,7 +70,7 @@ class Sediaan extends CI_Controller {
 			'keterangan'	=> $post['keterangan']
 		);
 		$this->Model_Transaction->Update_To_Db($data,TABLE,'id_sediaan',$post['id_sediaan']);
-		echo '<script>alert("Berhasil Merubah Data"); window.location.assign("'.base_url().'sediaan");</script>';
+		echo '<script>alert("Berhasil Merubah Data"); window.location.assign("'.base_url().'Sediaan");</script>';
 	}else{
     //GET SEDIAAN DATA
 		$sediaan = $this->Model_Get_Sediaan->Update_Select(TABLE,'id',$uri);
@@ -82,13 +82,13 @@ class Sediaan extends CI_Controller {
 		}
   }
 
-  public function delete(){
+  public function Delete(){
 	$uri = $this->uri->segment(3);
 	$data = array(
 		'deleted'	=> '1'
 	);
 	$this->Model_Transaction->Update_To_Db($data,TABLE,'id',$uri);
-	echo '<script>alert("Berhasil Menghapus Data"); window.location.assign("'.base_url().'sediaan");</script>';
+	echo '<script>alert("Berhasil Menghapus Data"); window.location.assign("'.base_url().'Sediaan");</script>';
   }
   //END OF POST SEDIAAN
 }

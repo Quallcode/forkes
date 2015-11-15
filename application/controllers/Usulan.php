@@ -134,10 +134,10 @@ class Usulan extends CI_Controller {
     if(!empty($post)){
       $check = $this->Model_Get_Usulan->Validate('usulan',$post['nomor_efornas']);
       if(!empty($check)){
-        echo '<script type="text/javascript">alert("Nomor efornas '.$post['nomor_efornas'].' telah terdaftar. Silahkan mencoba beberapa saat lagi"); window.location.assign("'.base_url().'usulan");</script>';
+        echo '<script type="text/javascript">alert("Nomor efornas '.$post['nomor_efornas'].' telah terdaftar. Silahkan mencoba beberapa saat lagi"); window.location.assign("'.base_url().'Usulan");</script>';
       }
       if(!isset($post['UploadFile'][0]) || !isset($post['UploadFile'][1]) ){
-        echo ('<script type="text/javascript">alert("Anda harus memasukkan file data usulan obat dan surat pengantar");window.location.assign("'.base_url().'usulan/insert");</script>');
+        echo ('<script type="text/javascript">alert("Anda harus memasukkan file data usulan obat dan surat pengantar");window.location.assign("'.base_url().'Usulan/Insert");</script>');
         exit;
       }
       $data_usulan = array(
@@ -171,7 +171,7 @@ class Usulan extends CI_Controller {
         $this->Model_Transaction->Insert_To_Db($data_detail_usulan,'detail_usulan');
       }
       $this->session->unset_userdata('nomor_efornas');
-      echo '<script type="text/javascript">alert("User Berhasil melakukan penambahan usulan dengan nomor efornas '.$post['nomor_efornas'].'"); window.location.assign("'.base_url().'dashboard");</script>';
+      echo '<script type="text/javascript">alert("User Berhasil melakukan penambahan usulan dengan nomor efornas '.$post['nomor_efornas'].'"); window.location.assign("'.base_url().'Usulan");</script>';
     }else{
       echo "Error empty post occured";
     }
@@ -183,7 +183,7 @@ class Usulan extends CI_Controller {
     $sess = $this->session->userdata('user_data');
     if(!empty($post)){
       if(!isset($post['UploadFile'][0]) || !isset($post['UploadFile'][1]) ){
-        echo ('<script type="text/javascript">alert("Anda harus memasukkan file data usulan obat dan surat pengantar");window.location.assign("'.base_url().'usulan");</script>');
+        echo ('<script type="text/javascript">alert("Anda harus memasukkan file data usulan obat dan surat pengantar");window.location.assign("'.base_url().'Usulan");</script>');
         exit;
       }
       $data_usulan = array(
@@ -213,7 +213,7 @@ class Usulan extends CI_Controller {
         //print_r($data_detail_usulan); exit;
         $this->Model_Transaction->Insert_To_Db($data_detail_usulan,'detail_usulan');
       }
-      echo '<script type="text/javascript">alert("User Berhasil melakukan Pengeditan usulan dengan nomor efornas '.$post['edit_no_fornas'].'"); window.location.assign("'.base_url().'dashboard");</script>';
+      echo '<script type="text/javascript">alert("User Berhasil melakukan Pengeditan usulan dengan nomor efornas '.$post['edit_no_fornas'].'"); window.location.assign("'.base_url().'Usulan");</script>';
     }else{
       echo "Error empty post occured";
     }
@@ -226,7 +226,7 @@ class Usulan extends CI_Controller {
     if(!empty($post['obat_combinasi'])){
       $check = $this->Model_Get_Combinasi->Validate('obat_combinasi',$post['obat_combinasi']);
       if(!empty($check)){
-        echo '<script type="text/javascript">alert("Nama Obat Kombinasi '.$post['obat_combinasi'].' telah terdaftar. Silahkan mencoba beberapa saat lagi"); window.location.assign("'.base_url().'usulan/Insert_Obat_Combinasi");</script>';
+        echo '<script type="text/javascript">alert("Nama Obat Kombinasi '.$post['obat_combinasi'].' telah terdaftar. Silahkan mencoba beberapa saat lagi"); window.location.assign("'.base_url().'Usulan/Insert_Obat_Combinasi");</script>';
       }
       $data_obat_combinasi = array(
         'nama_obat_combinasi' => $post['obat_combinasi']
@@ -247,10 +247,10 @@ class Usulan extends CI_Controller {
         echo '<script type="text/javascript">alert("User Berhasil melakukan penambahan kombinasi obat dengan nama obat combinasi '.$post['obat_combinasi'].'"); window.location.assign("'.base_url().'Obat_Combinasi");</script>';
       }
       else {
-        echo '<script type="text/javascript">alert("Gagal memasukkan obat kombinasi"); window.location.assign("'.base_url().'usulan/Insert_Obat_Combinasi");</script>';
+        echo '<script type="text/javascript">alert("Gagal memasukkan obat kombinasi"); window.location.assign("'.base_url().'Usulan/Insert_Obat_Combinasi");</script>';
       }
     }else{
-      echo '<script type="text/javascript">alert("Nama Obat Kombinasi Tidak Boleh Kosong!!"); window.location.assign("'.base_url().'usulan/Insert_Obat_Combinasi");</script>';
+      echo '<script type="text/javascript">alert("Nama Obat Kombinasi Tidak Boleh Kosong!!"); window.location.assign("'.base_url().'Usulan/Insert_Obat_Combinasi");</script>';
     }
   }
 

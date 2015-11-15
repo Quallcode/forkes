@@ -58,17 +58,17 @@ class Sub_Kelas_Terapi extends CI_Controller {
       $exist = $this->Model_Get_Sub_Kelas_Terapi->validate(TABLE,$post['id_sub_kelasterapi']);
       if($exist==1)
       {
-        echo '<script>alert("ID Sub Kelas Terapi Sudah Ada"); window.location.assign("'.base_url().'sub_kelas_terapi");</script>';
+        echo '<script>alert("ID Sub Kelas Terapi Sudah Ada"); window.location.assign("'.base_url().'Sub_Kelas_Terapi");</script>';
       }
       else {
         //INSERT TO DATABASE
         $this->Model_Transaction->Insert_To_Db($data,TABLE);
-		echo '<script>alert("Berhasil Menambahkan Data"); window.location.assign("'.base_url().'sub_kelas_terapi");</script>';
+		echo '<script>alert("Berhasil Menambahkan Data"); window.location.assign("'.base_url().'Sub_Kelas_Terapi");</script>';
       }
     }
   }
 
-  public function update(){
+  public function Update(){
 	$uri = $this->uri->segment(3);
 	if(empty($uri)){
 		$post = $this->input->post();
@@ -79,7 +79,7 @@ class Sub_Kelas_Terapi extends CI_Controller {
 			'Sub_Kelas_Terapi'	=> $post['Sub_Kelas_Terapi']
 		);
 		$this->Model_Transaction->Update_To_Db($data,TABLE,'id_sub_kelasterapi',$id);
-		echo '<script>alert("Berhasil Merubah Data"); window.location.assign("'.base_url().'sub_kelas_terapi");</script>';
+		echo '<script>alert("Berhasil Merubah Data"); window.location.assign("'.base_url().'Sub_Kelas_Terapi");</script>';
 	}else{
     //GET SATUAAN DATA
 		$satuan = $this->Model_Get_Sub_Kelas_Terapi->Update_Select(TABLE,'id_sub_kelasterapi',$uri);
@@ -91,13 +91,13 @@ class Sub_Kelas_Terapi extends CI_Controller {
 		}
   }
 
-  public function delete(){
+  public function Delete(){
 	$uri = $this->uri->segment(3);
 	$data = array(
 		'deleted'	=> '1'
 	);
 	$this->Model_Transaction->Update_To_Db($data,TABLE,'id_sub_kelasterapi',$uri);
-	echo '<script>alert("Berhasil Menghapus Data"); window.location.assign("'.base_url().'sub_kelas_terapi");</script>';
+	echo '<script>alert("Berhasil Menghapus Data"); window.location.assign("'.base_url().'Sub_Kelas_Terapi");</script>';
   }
   //END OF POST SATUAAN
 }

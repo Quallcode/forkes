@@ -49,17 +49,17 @@ class Obat_Combinasi extends CI_Controller {
       $exist = $this->Model_Get_Kelas_Terapi->validate(TABLE,$post['id_kelas_terapi']);
       if($exist==1)
       {
-        echo '<script>alert("ID Kelas Terapi Sudah Ada"); window.location.assign("'.base_url().'kelas_terapi");</script>';
+        echo '<script>alert("ID Kelas Terapi Sudah Ada"); window.location.assign("'.base_url().'Obat_Combinasi");</script>';
       }
       else {
         //INSERT TO DATABASE
         $this->Model_Transaction->Insert_To_Db($post,TABLE);
-		echo '<script>alert("Berhasil Menambahkan Data"); window.location.assign("'.base_url().'kelas_terapi");</script>';
+		echo '<script>alert("Berhasil Menambahkan Data"); window.location.assign("'.base_url().'Obat_Combinasi");</script>';
       }
     }
   }
 
-  public function update(){
+  public function Update(){
 	$uri = $this->uri->segment(3);
 	if(empty($uri)){
 		$post = $this->input->post();
@@ -69,7 +69,7 @@ class Obat_Combinasi extends CI_Controller {
 			'nama_satuan'	=> $post['nama_satuan']
 		);
 		$this->Model_Transaction->Update_To_Db($data,TABLE,'id',$id);
-		echo '<script>alert("Berhasil Merubah Data"); window.location.assign("'.base_url().'kelas_terapi");</script>';
+		echo '<script>alert("Berhasil Merubah Data"); window.location.assign("'.base_url().'Obat_Combinasi");</script>';
 	}else{
     //GET SATUAAN DATA
 		$satuan = $this->Model_Get_Satuan->Update_Select(TABLE,'id',$uri);
@@ -81,13 +81,13 @@ class Obat_Combinasi extends CI_Controller {
 		}
   }
 
-  public function delete(){
+  public function Delete(){
 	$uri = $this->uri->segment(3);
 	$data = array(
 		'deleted'	=> '1'
 	);
 	$this->Model_Transaction->Update_To_Db($data,TABLE,'id',$uri);
-	echo '<script>alert("Berhasil Menghapus Data"); window.location.assign("'.base_url().'kelas_terapi");</script>';
+	echo '<script>alert("Berhasil Menghapus Data"); window.location.assign("'.base_url().'Obat_Combinasi");</script>';
   }
   //END OF POST SATUAAN
 }

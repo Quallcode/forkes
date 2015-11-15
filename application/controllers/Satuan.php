@@ -49,17 +49,17 @@ class Satuan extends CI_Controller {
       $exist = $this->Model_Get_Satuan->validate(TABLE,$post['id_satuan']);
       if($exist==1)
       {
-        echo '<script>alert("ID Kekuatan Sudah Ada"); window.location.assign("'.base_url().'satuan");</script>';
+        echo '<script>alert("ID Kekuatan Sudah Ada"); window.location.assign("'.base_url().'Satuan");</script>';
       }
       else {
         //INSERT TO DATABASE
         $this->Model_Transaction->Insert_To_Db($post,TABLE);
-		echo '<script>alert("Berhasil Menambahkan Data"); window.location.assign("'.base_url().'satuan");</script>';
+		echo '<script>alert("Berhasil Menambahkan Data"); window.location.assign("'.base_url().'Satuan");</script>';
       }
     }
   }
 
-  public function update(){
+  public function Update(){
 	$uri = $this->uri->segment(3);
 	if(empty($uri)){
 		$post = $this->input->post();
@@ -70,7 +70,7 @@ class Satuan extends CI_Controller {
 			'keterangan'	=> $post['keterangan']
 		);
 		$this->Model_Transaction->Update_To_Db($data,TABLE,'id',$id);
-		echo '<script>alert("Berhasil Merubah Data"); window.location.assign("'.base_url().'satuan");</script>';
+		echo '<script>alert("Berhasil Merubah Data"); window.location.assign("'.base_url().'Satuan");</script>';
 	}else{
     //GET SATUAAN DATA
 		$satuan = $this->Model_Get_Satuan->Update_Select(TABLE,'id',$uri);
@@ -82,13 +82,13 @@ class Satuan extends CI_Controller {
 		}
   }
 
-  public function delete(){
+  public function Delete(){
 	$uri = $this->uri->segment(3);
 	$data = array(
 		'deleted'	=> '1'
 	);
 	$this->Model_Transaction->Update_To_Db($data,TABLE,'id',$uri);
-	echo '<script>alert("Berhasil Menghapus Data"); window.location.assign("'.base_url().'satuan");</script>';
+	echo '<script>alert("Berhasil Menghapus Data"); window.location.assign("'.base_url().'Satuan");</script>';
   }
   //END OF POST SATUAAN
 }

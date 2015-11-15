@@ -48,13 +48,13 @@ class Keterangan_Atc_Obat extends CI_Controller {
       $exist = $this->Model_Get_Keterangan_Atc_Obat->validate(TABLE,$post['keterangan']);
       if($exist==1)
       {
-		echo '<script>alert("ID Untuk Keterangan ATC Obat ini Sudah Ada"); window.location.assign("'.base_url().'keterangan_atc_obat");</script>';
+		echo '<script>alert("ID Untuk Keterangan ATC Obat ini Sudah Ada"); window.location.assign("'.base_url().'Keterangan_Atc_Obat");</script>';
         //redirect('kekuatan');
       }
       else {
         //INSERT TO DATABASE
         $this->Model_Transaction->Insert_To_Db($post,TABLE);
-		echo '<script>alert("Berhasil Menambahkan Data"); window.location.assign("'.base_url().'keterangan_atc_obat");</script>';
+		echo '<script>alert("Berhasil Menambahkan Data"); window.location.assign("'.base_url().'Keterangan_Atc_Obat");</script>';
       }
     }
   }
@@ -68,7 +68,7 @@ class Keterangan_Atc_Obat extends CI_Controller {
         'keterangan' => $post['keterangan']
       );
   		$this->Model_Transaction->Update_To_Db($data,TABLE,'id',$id);
-  		echo '<script>alert("Berhasil Merubah Data"); window.location.assign("'.base_url().'keterangan_atc_obat");</script>';
+  		echo '<script>alert("Berhasil Merubah Data"); window.location.assign("'.base_url().'Keterangan_Atc_Obat");</script>';
   	}else{
       //GET ATC OBAT DATA
   		$atc_obat = $this->Model_Get_Keterangan_Atc_Obat->Update_Select(TABLE,'id',$uri);
@@ -86,7 +86,7 @@ class Keterangan_Atc_Obat extends CI_Controller {
   		'deleted'	=> '1'
   	);
   	$this->Model_Transaction->Update_To_Db($data,TABLE,'id',$uri);
-  	echo '<script>alert("Berhasil Menghapus Data"); window.location.assign("'.base_url().'keterangan_atc_obat");</script>';
+  	echo '<script>alert("Berhasil Menghapus Data"); window.location.assign("'.base_url().'Keterangan_Atc_Obat");</script>';
   }
   //END OF POST ATC OBAT
 }

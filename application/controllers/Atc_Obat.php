@@ -52,13 +52,13 @@ class Atc_Obat extends CI_Controller {
       $exist = $this->Model_Get_Atc_Obat->validate(TABLE,$post['id_atc_obat']);
       if($exist==1)
       {
-		echo '<script>alert("ID Untuk Obat ini Sudah Ada"); window.location.assign("'.base_url().'atc_obat");</script>';
+		echo '<script>alert("ID Untuk Obat ini Sudah Ada"); window.location.assign("'.base_url().'Atc_Obat");</script>';
         //redirect('kekuatan');
       }
       else {
         //INSERT TO DATABASE
         $this->Model_Transaction->Insert_To_Db($post,TABLE);
-		echo '<script>alert("Berhasil Menambahkan Data"); window.location.assign("'.base_url().'atc_obat");</script>';
+		echo '<script>alert("Berhasil Menambahkan Data"); window.location.assign("'.base_url().'Atc_Obat");</script>';
       }
     }
   }
@@ -75,7 +75,7 @@ class Atc_Obat extends CI_Controller {
       );
       //print_r($post);exit;
   		$this->Model_Transaction->Update_To_Db($data,TABLE,'id',$id);
-  		echo '<script>alert("Berhasil Merubah Data"); window.location.assign("'.base_url().'atc_obat");</script>';
+  		echo '<script>alert("Berhasil Merubah Data"); window.location.assign("'.base_url().'Atc_Obat");</script>';
   	}else{
       //DECLARE VIEW DATA FOR WRAPPER
       $keterangan_atc_obat = $this->Model_Get_Atc_Obat->Normal_Select(TABLE2);
@@ -96,7 +96,7 @@ class Atc_Obat extends CI_Controller {
   		'deleted'	=> '1'
   	);
   	$this->Model_Transaction->Update_To_Db($data,TABLE,'id',$uri);
-  	echo '<script>alert("Berhasil Menghapus Data"); window.location.assign("'.base_url().'atc_obat");</script>';
+  	echo '<script>alert("Berhasil Menghapus Data"); window.location.assign("'.base_url().'Atc_Obat");</script>';
   }
   //END OF POST ATC OBAT
 }

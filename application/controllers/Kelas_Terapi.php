@@ -50,12 +50,12 @@ class Kelas_Terapi extends CI_Controller {
       $exist = $this->Model_Get_Kelas_Terapi->validate(TABLE,$post['id_terapi']);
       if($exist==1)
       {
-        echo '<script>alert("ID Kelas Terapi Sudah Ada"); window.location.assign("'.base_url().'kelas_terapi");</script>';
+        echo '<script>alert("ID Kelas Terapi Sudah Ada"); window.location.assign("'.base_url().'Kelas_Terapi");</script>';
       }
       else {
         //INSERT TO DATABASE
         $this->Model_Transaction->Insert_To_Db($post,TABLE);
-		    echo '<script>alert("Berhasil Menambahkan Data"); window.location.assign("'.base_url().'kelas_terapi");</script>';
+		    echo '<script>alert("Berhasil Menambahkan Data"); window.location.assign("'.base_url().'Kelas_Terapi");</script>';
       }
     }
   }
@@ -72,7 +72,7 @@ class Kelas_Terapi extends CI_Controller {
   			'Kelas_terapi'	=> $post['nama_terapi']
   		);
   		$this->Model_Transaction->Update_To_Db($data,TABLE,'id_terapi',$id);
-  		echo '<script>alert("Berhasil Merubah Data"); window.location.assign("'.base_url().'kelas_terapi");</script>';
+  		echo '<script>alert("Berhasil Merubah Data"); window.location.assign("'.base_url().'Kelas_Terapi");</script>';
   	}else{
       //GET SATUAAN DATA
   		$satuan = $this->Model_Get_Kelas_Terapi->Update_Select(TABLE,'id_terapi',$uri);
@@ -91,7 +91,7 @@ class Kelas_Terapi extends CI_Controller {
 		'deleted'	=> '1'
 	);
 	$this->Model_Transaction->Update_To_Db($data,TABLE,'id_terapi',$uri);
-	echo '<script>alert("Berhasil Menghapus Data"); window.location.assign("'.base_url().'kelas_terapi");</script>';
+	echo '<script>alert("Berhasil Menghapus Data"); window.location.assign("'.base_url().'Kelas_Terapi");</script>';
   }
   //END OF POST SATUAAN
 }
