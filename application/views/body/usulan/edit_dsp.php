@@ -107,7 +107,7 @@ var no_fornas = '<?=$nomor_efornas?>';
 
       <select class="form-control" id="idSelectObatHidden" style="display:none">
         <?php foreach( $obat as $key5) { ?>
-          <option value="<?=$key5['id_atc_obat']?>" ><?=$key5['nama_obat']?></option>
+          <option value="<?=$key5['id_atc_obat']?>" ><?=$key5['nama_obat']?>&nbsp;<?php if(!empty($key5['translate_nama_obat'])){?>(<sub><?=$key5['translate_nama_obat']?></sub>)<?php } ?></option>
         <?php } ?>
       </select>
 
@@ -156,7 +156,7 @@ var no_fornas = '<?=$nomor_efornas?>';
                     <div class="col-sm-10">
                       <select class="form-control inputNamaObat" id="inputNamaObat<?=$i?>" name="id_atc_obat[]" onchange="CheckObat(this.value,<?=$i?>)">
                         <?php foreach( $obat as $key) { ?>
-                          <option value="<?=$key['id_atc_obat']?>" <?php if($key['id_atc_obat'] == $data['id_atc_obat']) { ?>selected="selected"<?php } ?> ><?=$key['nama_obat']?></option>
+                          <option value="<?=$key['id_atc_obat']?>" <?php if($key['id_atc_obat'] == $data['id_atc_obat']) { ?>selected="selected"<?php } ?> ><?=$key['nama_obat']?>&nbsp;<?php if(!empty($key['translate_nama_obat'])){?>(<sub><?=$key['translate_nama_obat']?></sub>)<?php } ?></option>
                         <?php } ?>
                       </select>
                     </div>

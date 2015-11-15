@@ -4,12 +4,12 @@
   <section class="content-header">
     <h1>
       Daftar
-      <small>Satuan</small>
+      <small>Kelas Terapi</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="<?=base_url()?>dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
       <li>Master</li>
-      <li class="active"><a href="<?=base_url()?>satuan">Daftar Satuan</a></li>
+      <li class="active"><a href="<?=base_url()?>satuan">Daftar Kelas Terapi</a></li>
     </ol>
   </section>
 
@@ -26,7 +26,7 @@
             <table id="dataTable" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <th>ID Satuan</th>
+                  <th>ID Terapi</th>
                   <th>Nama</th>
                   <th>Aksi</th>
                 </tr>
@@ -47,7 +47,7 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <th>ID Satuan</th>
+                  <th>ID Terapi</th>
                   <th>Nama</th>
                   <th>Keterangan</th>
                   <th>Aksi</th>

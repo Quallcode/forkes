@@ -55,36 +55,37 @@ class Kelas_Terapi extends CI_Controller {
       else {
         //INSERT TO DATABASE
         $this->Model_Transaction->Insert_To_Db($post,TABLE);
-		echo '<script>alert("Berhasil Menambahkan Data"); window.location.assign("'.base_url().'kelas_terapi");</script>';
+		    echo '<script>alert("Berhasil Menambahkan Data"); window.location.assign("'.base_url().'kelas_terapi");</script>';
       }
     }
   }
 
-  public function update(){
-	$uri = $this->uri->segment(3);
-	if(empty($uri)){
-		$post = $this->input->post();
-    //print_r($post); exit;
-		$id = $post['id'];
-		$data = array(
-			'id_terapi' 	=> $post['id_kelas_terapi'],
-			'Kelas_terapi'	=> $post['nama_terapi']
-		);
-		$this->Model_Transaction->Update_To_Db($data,TABLE,'id_terapi',$id);
-		echo '<script>alert("Berhasil Merubah Data"); window.location.assign("'.base_url().'kelas_terapi");</script>';
-	}else{
-    //GET SATUAAN DATA
-		$satuan = $this->Model_Get_Kelas_Terapi->Update_Select(TABLE,'id_terapi',$uri);
-    //print_r($satuan); exit;
-		//DECLARE VIEW DATA FOR WRAPPER
-		$view_data['data']   = $satuan[0];
-		$view_data['body']   = 'body/master/kelas_terapi/update_dsp';
-		//LOAD VIEW DATA TO WRAPPER
-		$this->load->view('wrapper',$view_data);
-		}
+  public function Update()
+  {
+  	$uri = $this->uri->segment(3);
+  	if(empty($uri)){
+  		$post = $this->input->post();
+      //print_r($post); exit;
+  		$id = $post['id'];
+  		$data = array(
+  			'id_terapi' 	=> $post['id_kelas_terapi'],
+  			'Kelas_terapi'	=> $post['nama_terapi']
+  		);
+  		$this->Model_Transaction->Update_To_Db($data,TABLE,'id_terapi',$id);
+  		echo '<script>alert("Berhasil Merubah Data"); window.location.assign("'.base_url().'kelas_terapi");</script>';
+  	}else{
+      //GET SATUAAN DATA
+  		$satuan = $this->Model_Get_Kelas_Terapi->Update_Select(TABLE,'id_terapi',$uri);
+      //print_r($satuan); exit;
+  		//DECLARE VIEW DATA FOR WRAPPER
+  		$view_data['data']   = $satuan[0];
+  		$view_data['body']   = 'body/master/kelas_terapi/update_dsp';
+  		//LOAD VIEW DATA TO WRAPPER
+  		$this->load->view('wrapper',$view_data);
+  		}
   }
 
-  public function delete(){
+  public function Delete(){
 	$uri = $this->uri->segment(3);
 	$data = array(
 		'deleted'	=> '1'

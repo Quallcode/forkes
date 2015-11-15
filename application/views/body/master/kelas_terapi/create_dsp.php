@@ -2,7 +2,7 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Input Satuan Baru
+      Input Kelas Terapi Baru
     </h1>
   </section>
   <section class="content">
@@ -12,7 +12,7 @@
         <!-- general form elements -->
         <div class="box box-primary">
           <div class="box-header with-border">
-            <h3 class="box-title">Data Master Satuan</h3>
+            <h3 class="box-title">Data Master Kelas Terapi</h3>
           </div><!-- /.box-header -->
           <!-- form start -->
           <form role="form" action="<?=base_url()?>kelas_terapi/insert" method="post" enctype="multipart/form-data">

@@ -118,7 +118,7 @@ var no_fornas = '<?=$no_fornas?>';
 
       <select class="form-control" id="idSelectObatHidden" style="display:none">
         <?php foreach( $obat as $key5) { ?>
-          <option value="<?=$key5['id_atc_obat']?>" ><?=$key5['nama_obat']?></option>
+          <option value="<?=$key5['id_atc_obat']?>" ><?=$key5['nama_obat']?>&nbsp;<?php if(!empty($key5['translate_nama_obat'])){?>(<sub><?=$key5['translate_nama_obat']?></sub>)<?php } ?></option>
         <?php } ?>
       </select>
 
@@ -166,7 +166,7 @@ var no_fornas = '<?=$no_fornas?>';
                     <div class="col-sm-10">
                       <select class="form-control inputNamaObat" id="inputNamaObat1" name="id_atc_obat[]" onchange="CheckObat(this.value,1)">
                         <?php foreach( $obat as $key) { ?>
-                          <option value="<?=$key['id_atc_obat']?>" ><?=$key['nama_obat']?></option>
+                          <option value="<?=$key['id_atc_obat']?>" ><?=$key['nama_obat']?> &nbsp;<?php if(!empty($key['translate_nama_obat'])){?>(<sub><?=$key['translate_nama_obat']?></sub>)<?php } ?></option>
                         <?php } ?>
                       </select>
                     </div>
