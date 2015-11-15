@@ -401,7 +401,7 @@ $(function () {
 
     $.getJSON(uploadURI, function(data) {
       $.each(data, function(index, element) {
-        items.push('<li class="list-group-item uploadsItems"><input type="hidden" value="uploads/'+basefolder+'/'+no_fornas+'/'+element+'" name ="UploadFile[]"/><a href="'+base_url+'/uploads/'+basefolder+'/'+no_fornas+'/'+element+'" target="_blank">' + element  + '</a><div class="pull-right"><a href="#" data-file="' + element + '" class="remove-file"><i class="glyphicon glyphicon-remove"></i></a></div></li>');
+        items.push('<li class="list-group-item uploadsItems"><input type="hidden" value="uploads/'+basefolder+'/'+no_fornas+'/'+element+'" name ="UploadFile[]"/><a href="'+base_url+'uploads/'+basefolder+'/'+no_fornas+'/'+element+'" target="_blank">' + element  + '</a><div class="pull-right"><a href="#" data-file="' + element + '" class="remove-file"><i class="glyphicon glyphicon-remove"></i></a></div></li>');
       });
       $('.list-group').html("").html(items.join(""));
     });

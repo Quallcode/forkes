@@ -9,5 +9,10 @@ class Model_Transaction extends CI_Model {
 		$this->db->where($param, $on);
 		$this->db->update($table, $data);
 	}
+
+	function Delete_To_Db($table, $param, $on){
+		$this->db->where($param, $on);
+		$this->db->delete($table);
+	}
 }
 ?>

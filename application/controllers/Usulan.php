@@ -84,6 +84,48 @@ class Usulan extends CI_Controller {
 	}
   //END OF INDEX FOR ADD USULAN VIEW
 
+  //INDEX FOR ADD USULAN VIEW
+	public function Update(){
+    //SET SUB BREADCRUMB
+    $this->session->set_userdata(array('main_sub_breadcrumb'=>'edit_usulan'));
+    //GET KEKUATAN DATA
+    $sess = $this->session->userdata('user_data');
+    $post = $this->input->post();
+    //print_r($post);exit;
+    if(!empty($post)){
+      $no_efornas = $post['nomor_efornas'];
+
+      //print_r($nomor_efornas);exit;
+      //print_r($no_fornas);exit;
+      $rumah_sakit = $this->Model_Get_Usulan->Normal_Select('rumah_sakit','id_rs',$sess['id_faskes'],'id_provinsi',$sess['id_provinsi'],'id_kabkota',$sess['id_kabkota']);
+      $obat        = $this->Model_Get_Usulan->Normal_Select('atc_obat');
+      $sediaan     = $this->Model_Get_Usulan->Normal_Select('sediaan');
+      $satuan      = $this->Model_Get_Usulan->Normal_Select('satuan');
+      $kekuatan    = $this->Model_Get_Usulan->Normal_Select('kekuatan');
+      $terapi      = $this->Model_Get_Usulan->Normal_Select('kelas_terapi');
+      $basefolder  = $sess['id_provinsi'].$sess['id_kabkota'].$sess['id_faskes'];
+      $nomor_efornas['no'] = str_replace("e-fornas/".$basefolder."/","",$no_efornas);
+      $this->session->set_userdata(array('nomor_efornas'=>$nomor_efornas));
+      $view_data['nomor_efornas'] = $nomor_efornas['no'];
+      $view_data['detail_usulan'] = $this->Model_Get_Usulan->Normal_Select('detail_usulan','nomor_efornas',$no_efornas);
+      //print_r($rumah_sakit);exit;
+      $view_data['obat'] = $obat;
+      $view_data['sediaan'] = $sediaan;
+      $view_data['satuan'] = $satuan;
+      $view_data['kekuatan'] = $kekuatan;
+      $view_data['basefolder'] = $basefolder;
+      $view_data['terapi'] = $terapi;
+      $view_data['no_efornas'] = $no_efornas;
+      $view_data['rs'] = $rumah_sakit[0];
+      //DECLARE VIEW DATA FOR WRAPPER
+      $view_data['body']   = 'body/usulan/edit_dsp';
+      //LOAD VIEW DATA TO WRAPPER
+      $this->load->view('wrapper',$view_data);
+    }else{
+      echo('Error page tidak dapat diakses');
+    }
+	}
+  //END OF INDEX FOR ADD USULAN VIEW
 
   public function Add_Usulan(){
     $post = $this->input->post();
@@ -130,6 +172,48 @@ class Usulan extends CI_Controller {
       }
       $this->session->unset_userdata('nomor_efornas');
       echo '<script type="text/javascript">alert("User Berhasil melakukan penambahan usulan dengan nomor efornas '.$post['nomor_efornas'].'"); window.location.assign("'.base_url().'dashboard");</script>';
+    }else{
+      echo "Error empty post occured";
+    }
+  }
+
+  public function Edit_Usulan(){
+    $post = $this->input->post();
+    //print_r($post);exit;
+    $sess = $this->session->userdata('user_data');
+    if(!empty($post)){
+      if(!isset($post['UploadFile'][0]) || !isset($post['UploadFile'][1]) ){
+        echo ('<script type="text/javascript">alert("Anda harus memasukkan file data usulan obat dan surat pengantar");window.location.assign("'.base_url().'usulan");</script>');
+        exit;
+      }
+      $data_usulan = array(
+        'surat_pengantar'    => $post['UploadFile'][0],
+        'daftar_usulan_obat' => $post['UploadFile'][1],
+        'status'             => 'BELUM',
+        'date_apply'         => date("Y-m-d H:i:s"),
+        'apply_by'           => $sess['nama']
+      );
+      $this->Model_Transaction->Update_To_Db($data_usulan,'usulan','nomor_efornas',$post['edit_no_fornas']);
+      $this->Model_Transaction->Delete_To_Db('detail_usulan','nomor_efornas',$post['edit_no_fornas']);
+      $counted = count($post['id_atc_obat']);
+      for($i = 0; $i <$counted; $i++){
+        $data_detail_usulan = array(
+          'nomor_efornas' => $post['edit_no_fornas'],
+          'id_terapi'     => $post['id_terapi'][$i],
+          'id_atc_obat'   => $post['id_atc_obat'][$i],
+          'id_sediaan'    => $post['id_sediaan'][$i],
+          'id_kekuatan'   => $post['id_kekuatan'][$i],
+          'id_satuan'     => $post['id_satuan'][$i],
+          'jurnal'        => $post['jurnal'][$i],
+          'alasan'        => $post['alasan'][$i],
+          'restriksi'     => $post['restriksi'][$i],
+          'tipe_usulan'   => $post['tipe_usulan'][$i],
+          'id_tingkat'    => $post['tingkat_faskes'.($i+1)]
+        );
+        //print_r($data_detail_usulan); exit;
+        $this->Model_Transaction->Insert_To_Db($data_detail_usulan,'detail_usulan');
+      }
+      echo '<script type="text/javascript">alert("User Berhasil melakukan Pengeditan usulan dengan nomor efornas '.$post['edit_no_fornas'].'"); window.location.assign("'.base_url().'dashboard");</script>';
     }else{
       echo "Error empty post occured";
     }
