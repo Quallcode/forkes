@@ -1,0 +1,74 @@
+-- phpMyAdmin SQL Dump
+-- version 4.2.11
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: 15 Nov 2015 pada 12.41
+-- Versi Server: 5.6.21
+-- PHP Version: 5.6.3
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `fornas`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `kelas_terapi`
+--
+
+CREATE TABLE IF NOT EXISTS `kelas_terapi` (
+  `id_terapi` varchar(2) DEFAULT NULL,
+  `Kelas_terapi` varchar(60) DEFAULT NULL,
+  `deleted` int(11) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `kelas_terapi`
+--
+
+INSERT INTO `kelas_terapi` (`id_terapi`, `Kelas_terapi`, `deleted`) VALUES
+('AA', 'ANALGESIK, ANTIPIRETIK, ANTIINFLAMASI NON STEROID', 0),
+('AN', 'ANESTETIK', 0),
+('AL', 'ANTIALERGI dan OBAT untuk ANAFILAKSIS', 0),
+('AK', 'ANTIDOT dan OBAT LAIN untuk KERACUNAN', 0),
+('AE', 'ANTIEPILEPSI - ANTIKONVULSI', 0),
+('AI', 'ANTIINFEKSI', 0),
+('AM', 'ANTIMIGREN', 0),
+('IM', 'ANTINEOPLASTIK, IMUNOSUPRESAN dan OBAT untuk TERAPI PALIATIF', 0),
+('AP', 'ANTIPARKINSON', 0),
+('OD', 'OBAT yang MEMPENGARUHI DARAH', 0),
+('PD', 'PRODUK DARAH dan PENGGANTI PLASMA', 0),
+('DG', 'DIAGNOSTIK', 0),
+('AS', 'ANTISEPTIK dan DISINFEKTAN', 0),
+('OG', 'OBAT dan BAHAN untuk GIGI', 0),
+('DI', 'DIURETIK dan OBAT untuk HIPERTROFI PROSTAT', 0),
+('HO', 'HORMON, OBAT ENDOKRIN LAIN dan KONTRASEPSI', 0),
+('OK', 'OBAT KARDIOVASKULER', 0),
+('OT', 'OBAT TOPIKAL untuk KULIT', 0),
+('LD', 'LARUTAN DIALISIS PERITONEAL', 0),
+('LE', 'LARUTAN ELEKTROLIT, NUTRISI, dan LAIN-LAIN', 0),
+('OM', 'OBAT untuk MATA', 0),
+('OS', 'OKSITOSIK', 0),
+('PS', 'PSIKOFARMAKA', 0),
+('RO', 'RELAKSAN OTOT PERIFER dan PENGHAMBAT KOLINESTERASE', 0),
+('OC', 'OBAT untuk SALURAN CERNA', 0),
+('ON', 'OBAT untuk SALURAN NAPAS', 0),
+('OI', 'OBAT yang MEMPENGARUHI SISTEM IMUN', 0),
+('TH', 'OBAT untuk TELINGA, HIDUNG, dan TENGGOROKAN', 0),
+('VM', 'VITAMIN dan MINERAL', 0),
+('12', '123', 1),
+('12', '123123', 1);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
