@@ -15,7 +15,7 @@
             <h3 class="box-title">Data Sediaan</h3>
           </div><!-- /.box-header -->
           <!-- form start -->
-          <form role="form" action="<?=base_url()?>sediaan/update" method="post" enctype="multipart/form-data">
+          <form role="form" action="<?=base_url()?>Sediaan/Update" method="post" enctype="multipart/form-data">
           <input type="hidden" class="form-control" id="id" name="id" value="<? echo $data['id']; ?>">
             <div class="box-body">
               <div class="form-group">

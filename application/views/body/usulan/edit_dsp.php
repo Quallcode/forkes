@@ -2,7 +2,7 @@
 var basefolder = '<?=$basefolder?>';
 var no_fornas = '<?=$nomor_efornas?>';
 </script>
-<form class="form-horizontal" action="<?=base_url()?>usulan/edit_usulan" method="post" enctype="multipart/form-data">
+<form class="form-horizontal" action="<?=base_url()?>Usulan/Edit_Usulan" method="post" enctype="multipart/form-data">
   <input type="hidden" name="edit_no_fornas" value="<?=$no_efornas?>" />
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->

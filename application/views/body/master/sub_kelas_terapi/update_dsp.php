@@ -15,7 +15,7 @@
             <h3 class="box-title">Data Satuan</h3>
           </div><!-- /.box-header -->
           <!-- form start -->
-          <form role="form" action="<?=base_url()?>Sub_Kelas_Terapi/update" method="post" enctype="multipart/form-data">
+          <form role="form" action="<?=base_url()?>Sub_Kelas_Terapi/Update" method="post" enctype="multipart/form-data">
           <input type="hidden" class="form-control" id="id_sub_kelasterapi" name="id_sub_kelasterapi" value="<?= $data['Sub_Kelas_Terapi']; ?>">
             <div class="box-body">
               <div class="form-group">

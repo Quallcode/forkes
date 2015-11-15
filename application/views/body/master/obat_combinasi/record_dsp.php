@@ -9,7 +9,7 @@
     <ol class="breadcrumb">
       <li><a href="<?=base_url()?>dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
       <li>Master</li>
-      <li class="active"><a href="<?=base_url()?>satuan">Daftar Satuan</a></li>
+      <li class="active"><a href="<?=base_url()?>Obat_Combinasi">Daftar Obat Kombinasi</a></li>
     </ol>
   </section>
 
@@ -38,8 +38,8 @@
                       <td><?=$val['id_obat_combinasi']?></td>
                       <td><a data-toggle="modal" href="#ModalDetailCO<?=$val['id_obat_combinasi']?>"><?=$val['nama_obat_combinasi']?></a></td>
                       <td>
-                        <a href="<?=base_url()?>Obat_Combinasi/update/<?=$val['id_obat_combinasi']?>" class="btn btn-info">Update</a>&nbsp;
-                        <a href="<?=base_url()?>Obat_Combinasi/delete/<?=$val['id_obat_combinasi']?>" class="btn btn-danger">Delete</a>
+                        <a href="<?=base_url()?>Obat_Combinasi/Update/<?=$val['id_obat_combinasi']?>" class="btn btn-info">Update</a>&nbsp;
+                        <a href="<?=base_url()?>Obat_Combinasi/Delete/<?=$val['id_obat_combinasi']?>" class="btn btn-danger">Delete</a>
                       </td>
                     </tr>
                   <?php }?>

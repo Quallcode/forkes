@@ -15,7 +15,7 @@
             <h3 class="box-title">Data Kekuatan</h3>
           </div><!-- /.box-header -->
           <!-- form start -->
-          <form role="form" action="<?=base_url()?>kekuatan/update" method="post" enctype="multipart/form-data">
+          <form role="form" action="<?=base_url()?>Kekuatan/Update" method="post" enctype="multipart/form-data">
           <input type="hidden" class="form-control" id="id" name="id" value="<?= $data['id']; ?>">
             <div class="box-body">
               <div class="form-group">

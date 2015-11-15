@@ -15,7 +15,7 @@
             <h3 class="box-title">Data Master Satuan</h3>
           </div><!-- /.box-header -->
           <!-- form start -->
-          <form role="form" action="<?=base_url()?>satuan/insert" method="post" enctype="multipart/form-data">
+          <form role="form" action="<?=base_url()?>Satuan/Insert" method="post" enctype="multipart/form-data">
             <div class="box-body">
               <div class="form-group">
                 <label for="id_satuan">ID Satuan</label>

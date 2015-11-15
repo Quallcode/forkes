@@ -15,7 +15,7 @@
             <h3 class="box-title">Data Master Sub Kelas Terapi</h3>
           </div><!-- /.box-header -->
           <!-- form start -->
-          <form role="form" action="<?=base_url()?>Sub_Kelas_Terapi/insert" method="post" enctype="multipart/form-data">
+          <form role="form" action="<?=base_url()?>Sub_Kelas_Terapi/Insert" method="post" enctype="multipart/form-data">
             <div class="box-body">
               <div class="form-group">
                 <label for="id_terapi">Kelas Terapi</label>

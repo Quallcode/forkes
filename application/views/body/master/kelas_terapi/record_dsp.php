@@ -9,7 +9,7 @@
     <ol class="breadcrumb">
       <li><a href="<?=base_url()?>dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
       <li>Master</li>
-      <li class="active"><a href="<?=base_url()?>satuan">Daftar Kelas Terapi</a></li>
+      <li class="active"><a href="<?=base_url()?>Kelas_Terapi">Daftar Kelas Terapi</a></li>
     </ol>
   </section>
 
@@ -38,8 +38,8 @@
                       <td><?=$val['id_terapi']?></td>
                       <td><?=$val['Kelas_terapi']?></td>
                       <td>
-                        <a href="<?=base_url()?>Kelas_Terapi/update/<?=$val['id_terapi']?>" class="btn btn-info">Update</a>&nbsp;
-                        <a href="<?=base_url()?>Kelas_Terapi/delete/<?=$val['id_terapi']?>" class="btn btn-danger">Delete</a>
+                        <a href="<?=base_url()?>Kelas_Terapi/Update/<?=$val['id_terapi']?>" class="btn btn-info">Update</a>&nbsp;
+                        <a href="<?=base_url()?>Kelas_Terapi/Delete/<?=$val['id_terapi']?>" class="btn btn-danger">Delete</a>
                       </td>
                     </tr>
                   <?php }?>

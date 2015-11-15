@@ -9,7 +9,7 @@
     <ol class="breadcrumb">
       <li><a href="<?=base_url()?>dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
       <li>Master</li>
-      <li class="active"><a href="<?=base_url()?>sediaan">Daftar Sediaan</a></li>
+      <li class="active"><a href="<?=base_url()?>Sediaan">Daftar Sediaan</a></li>
     </ol>
   </section>
 
@@ -40,8 +40,8 @@
                       <td><?=$val['nama_sediaan']?></td>
                       <td><?=$val['keterangan']?></td>
                       <td>
-                        <a href="<?=base_url()?>sediaan/update/<?=$val['id']?>" class="btn btn-info">Update</a>&nbsp;
-                        <a href="<?=base_url()?>sediaan/delete/<?=$val['id']?>" class="btn btn-danger">Delete</a>
+                        <a href="<?=base_url()?>Sediaan/Update/<?=$val['id']?>" class="btn btn-info">Update</a>&nbsp;
+                        <a href="<?=base_url()?>Sediaan/Delete/<?=$val['id']?>" class="btn btn-danger">Delete</a>
                       </td>
                     </tr>
                   <?php }?>

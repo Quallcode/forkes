@@ -2,7 +2,7 @@
 var basefolder = '<?=$basefolder?>';
 var no_fornas = '<?=$no_fornas?>';
 </script>
-<form class="form-horizontal" action="<?=base_url()?>usulan/add_usulan" method="post" enctype="multipart/form-data">
+<form class="form-horizontal" action="<?=base_url()?>Usulan/Add_Usulan" method="post" enctype="multipart/form-data">
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
