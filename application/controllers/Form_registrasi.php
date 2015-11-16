@@ -21,12 +21,17 @@ class Form_registrasi extends CI_Controller {
   }
 
   public function Rumah_sakit(){
+    $post = $this->input->post();
+    //print_r($post);exit;
+    $id_provinsi = $this->input->post('id_provinsi');
+    $id_kabkota = $this->input->post('id_kabkota');
     //SET SUB BREADCRUMB
-    $data = $this->Model_Get_RumahSakit->Normal_Select(TABLE);
+    $data = $this->Model_Get_RumahSakit->Custom_Select($id_provinsi,$id_kabkota);
+    //print_r($data); exit;
     $this->session->set_userdata(array('main_sub_breadcrumb'=>'form_rumah_sakit'));
     //DECLARE VIEW DATA FOR WRAPPER
     //$view_data['data']   = $kekuatan;
-	$view_data['data']   = $data;
+	  $view_data['data']   = $data;
     //$view_data['body']   = 'body/form/rumah_sak_dsp';
     //LOAD VIEW DATA TO WRAPPER
     $this->load->view('body/form/rumah_sakit_dsp',$view_data);

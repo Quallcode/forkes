@@ -77,5 +77,20 @@ class Model_Get_RumahSakit extends CI_Model {
 			return FALSE;
 		}
 	}
+  function Custom_Select ($id_provinsi,$id_kabkota) {
+		$query = "select * from rumah_sakit where id_kabkota ='".$id_kabkota."' and id_provinsi ='".$id_provinsi."'";
+    $result = $this->db->query($query);
+    	$i = 0;
+		if ($result->num_rows() > 0) {
+			foreach($result->result_array() as $row){
+				$data[$i] = $row;
+        $i++;
+      }
+			return $data;
+		}
+		else{
+			return FALSE;
+		}
+	}
 }
 ?>

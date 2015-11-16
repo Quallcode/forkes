@@ -46,14 +46,17 @@
 			  <center>OR</center>
             </div>
 
-			<div class="col-xs-12">
-              <a href="<?php base_url()?>Registrasi/RumahSakit"class="btn btn-primary btn-block btn-flat">REGISTRASI RUMAH SAKIT</a>
-			  <center>OR</center>
+            <div class="col-xs-12">
+              <a href="<?php base_url()?>Pendaftaran" class="btn btn-primary btn-block btn-flat">DAFTAR</a>
             </div>
-
-			<div class="col-xs-12">
+			      <!--<div class="col-xs-12">
+              <a href="<?php base_url()?>Registrasi/RumahSakit"class="btn btn-primary btn-block btn-flat">REGISTRASI RUMAH SAKIT</a>
+			           <center>OR</center>
+            </div>
+			      <div class="col-xs-12">
               <a href="<?php base_url()?>Registrasi/DokterPraktek" class="btn btn-primary btn-block btn-flat">REGISTRASI DOKTER PRAKTEK</a>
-            </div><!-- /.col -->
+            </div>--><!-- /.col -->
+
           </div>
         </form>
       </div><!-- /.login-box-body -->
