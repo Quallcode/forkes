@@ -8,6 +8,7 @@ class Form_registrasi extends CI_Controller {
     //INIT MODEL TRANSACTION
     $this->load->model('Model_Transaction');
     $this->load->model('Model_Get_RumahSakit');
+    $this->load->model('Model_Get_Dokter_Praktek');
     /**CHECK SESSION
     $sess = $this->session->userdata('user_data');
     if(!empty($sess)){
@@ -39,6 +40,7 @@ class Form_registrasi extends CI_Controller {
 
   public function Daftar_User(){
     $post = $this->input->post();
+    //print_r($post); exit;
     if(!empty($post)){
       $arr_rs = explode('#',$post['organization']);
       //print_r($arr_rs);exit;
@@ -56,13 +58,15 @@ class Form_registrasi extends CI_Controller {
 
   public function Dokter_praktek(){
     //SET SUB BREADCRUMB
-    $data = $this->Model_Get_RumahSakit->Normal_Select(TABLE);
+    $data = $this->Model_Get_Dokter_Praktek->Normal_Select(TABLE);
+    $view['data'] = $data;
     $this->session->set_userdata(array('main_sub_breadcrumb'=>'form_dokter_praktek'));
     //DECLARE VIEW DATA FOR WRAPPER
     //$view_data['data']   = $kekuatan;
     //$view_data['body']   = 'body/form/dokter_prak_dsp';
     //LOAD VIEW DATA TO WRAPPER
-    $this->load->view('body/form/dokter_praktek_dsp');
+    $view['data'] = $data;
+    $this->load->view('body/form/dokter_praktek_dsp',$view);
   }
 }
 ?>
