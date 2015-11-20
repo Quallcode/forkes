@@ -25,10 +25,15 @@
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script src="<?=base_url()?>includes/css_dashboard/plugins/select2/select2.full.min.js"></script>
+    <!-- Page script -->
     <script type="text/javascript">
+      var base_url = '<?= base_url()?>';
+    </script>
+    <script type="text/javascript">
+
     $(function () {
       $("#inputFaskes").select2();
-
+      $('#provinsi').select2();
     });
     function get_form(){
       var organize = $('#organization').find('option:selected').val();
@@ -43,14 +48,32 @@
         $('#dokter_praktek_form').hide();
         $('#dokter_praktek_link').show();
       }
-      function get_id_provinsi(){
+    }
+    function get_id_provinsi(){
         var provinsi = $('#provinsi').find('option:selected').val();
+        var html = '';
         $('#id_provinsi').val(provinsi);
-      }
-      function get_id_kabupaten(){
-        var kabupaten = $('#kabupaten').find('option:selected').val();
-        $('#id_kabupaten').val(kabupaten);
-      }
+        $('#kabupaten_dropdown').show();
+        $.ajax({
+          type: "GET",
+          dataType: "json",
+          url: base_url+"Pendaftaran/Get_Kabupaten?id="+provinsi,
+          //Relative or absolute path to response.php file
+          success: function(data) {
+            if(data.status == '00'){
+              $('#kabupaten').html('');
+              for(var i = 0; i <data.msg.length; i++){
+                 html += '<option value="'+data.msg[i]['id_kabkota']+'">'+data.msg[i]['kabkota']+'</option>';
+              }
+              $('#kabupaten').append(html);
+              $('#kabupaten').select2();
+            }
+          }
+        });
+    }
+    function get_id_kabupaten(){
+      var kabupaten = $('#kabupaten').find('option:selected').val();
+      $('#id_kabupaten').val(kabupaten);
     }
     </script>
 
@@ -62,6 +85,9 @@
     <![endif]-->
   </head>
   <body class="hold-transition login-page">
+  <select id="kabupaten_option" style="display:none">
+
+  </select>
   <div class="col-md-12">
     <div class="login-box">
       <div class="login-logo">
@@ -69,7 +95,7 @@
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         <!-- form start -->
-          <form class="form-horizontal" action="<?php base_url()?>Registrasi/RumahSakit" method="post" enctype="multipart/form-data">
+          <form class="form-horizontal" action="<?= base_url()?>Registrasi/RumahSakit" method="post" enctype="multipart/form-data">
             <div class="box-body">
               <input type="hidden" name="type" value="1" />
               <div class="form-group">
@@ -85,23 +111,21 @@
               <div id="rumah_sakit_form">
                 <div class="form-group">
 
-                  <div class="col-sm-10" style="text-align:-webkit-center">
+                  <div class="col-sm-10">
   				          <label for="inputType" class="col-sm-2 control-label">Provinsi</label>
-                      <select class="form-control" id="provinsi" style="width:21em"  name="id_provinsi"  onchange="get_id_provinsi()">
+                      <select class="form-control" id="provinsi" style="width:21em"  name="id_provinsi" onchange="get_id_provinsi()">
                         <?php foreach( $provinsi as $key5) { ?>
                           <option value="<?=$key5['id_provinsi']?>" ><?=$key5['provinsi']?></option>
                         <?php } ?>
                       </select>
                   </div><!-- /.form-group -->
                 </div>
-                <div class="form-group">
+                <div class="form-group" id="kabupaten_dropdown" style="display:none">
 
-                  <div class="col-sm-10" style="text-align:-webkit-center">
+                  <div class="col-sm-10">
   				          <label for="inputType" class="col-sm-2 control-label">Kabupaten</label>
-                    <select class="form-control" id="kabupaten" style="width:21em" name="id_kabkota"  onchange="get_id_kabupaten()">
-                      <?php foreach( $kabupaten as $key5) { ?>
-                        <option value="<?=$key5['id_kabkota']?>" ><?=$key5['kabkota']?></option>
-                      <?php } ?>
+                    <select class="form-control" id="kabupaten" style="width:21em" name="id_kabkota" onchange="get_id_kabupaten()">
+
                     </select>
                   </div><!-- /.form-group -->
                 </div>
@@ -110,7 +134,7 @@
               <div id="dokter_praktek_form" style="display:none">
                 <div class="form-group">
 
-                  <div class="col-sm-10" style="text-align:-webkit-center">
+                  <div class="col-sm-10">
   				          <label for="inputType" class="col-sm-2 control-label">Provinsi</label>
                     <select class="form-control" id="id_provinsi" name="id_provinsi" style="width:21em">
 

@@ -28,6 +28,22 @@ class Pendaftaran extends CI_Controller {
 	}
   //END OF INDEX FOR FIRST VIEW
 
+  //INDEX FOR FIRST VIEW
+	public function Get_Kabupaten(){
+    $id = $this->input->get('id');
+    if(!empty($id)){
+      $kabupaten = $this->Model_Get_Kabupaten->Normal_Select('kabkota','parent_id',$id);
+      if(empty($kabupaten)){
+        echo json_encode(array('status'=>'01','msg'=>'error kabupaten untuk provinsi ini kosong'));
+      }else{
+        echo json_encode(array('status'=>'00','msg'=>$kabupaten));
+      }
+    }else{
+      echo json_encode(array('status'=>'01','msg'=>'error post kosong'));
+    }
+	}
+  //END OF INDEX FOR FIRST VIEW
+
   //POST LOGIN
   public function Verify(){
     //GET POST DATA
