@@ -34,7 +34,7 @@
                   <td><?=$row['status']?></td>
                   <td align="center">
                   <?php if(isset($row['date_approve']) && !empty($row['date_approve'])){?>
-                    <?php if($row['status'] == 'TIDAK'){ ?>
+                    <?php if($row['status'] == 'PEMBAHARUAN'){ ?>
                       <?php $datetime1 = new DateTime($row['date_approve']);
                             $datetime2 = new DateTime(date('Y-m-d'));
                             $interval = $datetime1->diff($datetime2);

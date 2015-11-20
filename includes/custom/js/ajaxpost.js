@@ -1,7 +1,5 @@
 // Attach a submit handler to the form
 function UpdateStatusTerima(noefornas,id) {
-  alert(noefornas);
-  alert(id);
   // Get some values from elements on the page:
   url = base_url+'Usulan/Terima';
 
@@ -10,15 +8,13 @@ function UpdateStatusTerima(noefornas,id) {
 
   // Put the results in a div
   posting.done(function( data ) {
-    $('.status'+id).html('SUDAH');
+    $('.status'+id).html('LENGKAP');
     $('#terima'+id).html('TERVERIFIKASI');
     alert('Usulan '+noefornas+' telah diverifikasi dan diterima');
   });
 }
 
 function UpdateStatusTolak(noefornas,id) {
-  alert(noefornas);
-  alert(id);
   // Get some values from elements on the page:
   url = base_url+'Usulan/Tolak';
 
@@ -27,7 +23,7 @@ function UpdateStatusTolak(noefornas,id) {
 
   // Put the results in a div
   posting.done(function( data ) {
-    $('.status'+id).html('TIDAK');
+    $('.status'+id).html('TIDAK LENGKAP');
     $('#terima'+id).html('TERVERIFIKASI');
     alert('Usulan '+noefornas+' telah diverifikasi dan tidak diterima');
   });

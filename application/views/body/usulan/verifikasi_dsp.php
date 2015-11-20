@@ -33,9 +33,9 @@
                   <td><a href="<?=base_url().$val['surat_pengantar']?>" target="_blank"><?php $sp_element = explode('/',$val['surat_pengantar']) ?><?=$sp_element[6]?></a></td>
                   <td><a href="<?=base_url().$val['daftar_usulan_obat']?>" target="_blank"><?php $sp_element = explode('/',$val['daftar_usulan_obat']) ?><?=$sp_element[6]?></a></td>
                   <td><a data-toggle="modal" href="#ModalDetailUR<?=$val['id']?>">DETAIL</a></td>
-                  <td><span class="status<?=$urskey+1?>"><?=$val['status']?></span> DITERIMA</td>
+                  <td><span class="status<?=$urskey+1?>"><?=$val['status']?></span> </td>
                   <td align="center">
-                    <?php if($val['status'] == 'BELUM'){ ?>
+                    <?php if($val['status'] == 'PEMBAHARUAN'){ ?>
                       <span class="status<?=$urskey+1?>">
                         <button type="button" onclick="UpdateStatusTerima('<?=$val['nomor_efornas']?>',<?=$urskey+1?>);" class="btn btn-info">DITERIMA</button>
                           &nbsp;&nbsp;
@@ -64,7 +64,7 @@
                   <td><a data-toggle="modal" href="#ModalDetailUK<?=$val2['id']?>">DETAIL</a></td>
                   <td><span class="status<?=$flag + ($uklkey+1)?>"><?=$val2['status']?></span> DITERIMA</td>
                   <td align="center">
-                    <?php if($val2['status'] == 'BELUM'){ ?>
+                    <?php if($val2['status'] == 'PEMBAHARUAN'){ ?>
                     <span class="status<?=$flag + ($uklkey+1)?>">
                       <button type="button" onclick="UpdateStatusTerima('<?=$val2['nomor_efornas']?>',<?=$flag + ($uklkey+1)?>);" class="btn btn-info">DITERIMA</button>
                         &nbsp;&nbsp;
