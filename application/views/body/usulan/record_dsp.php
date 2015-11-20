@@ -31,7 +31,7 @@
                   <td><a href="<?=base_url().$row['surat_pengantar']?>" target="_blank"><?php $sp_element = explode('/',$row['surat_pengantar']) ?><?=$sp_element[6]?></a></td>
                   <td><a href="<?=base_url().$row['daftar_usulan_obat']?>" target="_blank"><?php $sp_element = explode('/',$row['daftar_usulan_obat']) ?><?=$sp_element[6]?></a></td>
                   <td><a data-toggle="modal" href="#ModalDetail<?=$row['id']?>">DETAIL</a></td>
-                  <td><?=$row['status']?> DITERIMA</td>
+                  <td><?=$row['status']?></td>
                   <td align="center">
                   <?php if(isset($row['date_approve']) && !empty($row['date_approve'])){?>
                     <?php if($row['status'] == 'TIDAK'){ ?>

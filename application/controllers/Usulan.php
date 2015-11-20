@@ -189,7 +189,7 @@ class Usulan extends CI_Controller {
       $data_usulan = array(
         'surat_pengantar'    => $post['UploadFile'][0],
         'daftar_usulan_obat' => $post['UploadFile'][1],
-        'status'             => 'BELUM',
+        'status'             => 'PEMBAHARUAN',
         'date_apply'         => date("Y-m-d H:i:s"),
         'apply_by'           => $sess['nama']
       );
@@ -316,7 +316,7 @@ class Usulan extends CI_Controller {
     $post = $this->input->post();
     if(!empty($post)){
       $data = array(
-        'status' => 'SUDAH',
+        'status' => 'LENGKAP',
         'date_approve' => date('Y-m-d')
       );
       $this->Model_Transaction->Update_To_Db($data,'usulan','nomor_efornas',$post['nomor_efornas']);
@@ -330,7 +330,7 @@ class Usulan extends CI_Controller {
     $post = $this->input->post();
     if(!empty($post)){
       $data = array(
-        'status' => 'TIDAK',
+        'status' => 'TIDAK LENGKAP',
         'date_approve' => date('Y-m-d')
       );
       $this->Model_Transaction->Update_To_Db($data,'usulan','nomor_efornas',$post['nomor_efornas']);

@@ -32,7 +32,7 @@
                   <td><a href="<?=base_url().$val['surat_pengantar']?>" target="_blank"><?php $sp_element = explode('/',$val['surat_pengantar']) ?><?=$sp_element[6]?></a></td>
                   <td><a href="<?=base_url().$val['daftar_usulan_obat']?>" target="_blank"><?php $sp_element = explode('/',$val['daftar_usulan_obat']) ?><?=$sp_element[6]?></a></td>
                   <td><a data-toggle="modal" href="#ModalDetailUR<?=$val['id']?>">DETAIL</a></td>
-                  <td><span class="status<?=$urskey+1?>"><?=$val['status']?></span> DITERIMA</td>
+                  <td><span class="status<?=$urskey+1?>"><?=$val['status']?></span></td>
                 </tr>
                 <?php
                       $flag = $urskey+1;
@@ -47,7 +47,7 @@
                   <td><a href="<?=base_url().$val2['surat_pengantar']?>" target="_blank"><?php $sp_element2 = explode('/',$val2['surat_pengantar']) ?><?=$sp_element2[6]?></a></td>
                   <td><a href="<?=base_url().$val2['daftar_usulan_obat']?>" target="_blank"><?php $sp_element2 = explode('/',$val2['daftar_usulan_obat']) ?><?=$sp_element2[6]?></a></td>
                   <td><a data-toggle="modal" href="#ModalDetailUK<?=$val2['id']?>">DETAIL</a></td>
-                  <td><span class="status<?=$flag + ($uklkey+1)?>"><?=$val2['status']?></span> DITERIMA</td>
+                  <td><span class="status<?=$flag + ($uklkey+1)?>"><?=$val2['status']?></span></td>
                   <td align="center">
                     <?php if($val2['status'] == 'BELUM'){ ?>
                     <span class="status<?=$flag + ($uklkey+1)?>">
