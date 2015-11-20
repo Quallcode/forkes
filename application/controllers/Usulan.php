@@ -41,6 +41,9 @@ class Usulan extends CI_Controller {
     }elseif($sess['type'] ==2){
       $faskes = $this->Model_Get_Usulan->Normal_Select('klinik','id_klinik',$sess['id_faskes'],'id_provinsi',$sess['id_provinsi'],'id_kabkota',$sess['id_kabkota']);
       $view_data['faskes'] = $faskes[0]['nama_klinik'];
+    }elseif($sess['type'] ==3){
+      $faskes = $this->Model_Get_Usulan->Normal_Select('rumah_sakit','id_rs',$sess['id_faskes'],'id_provinsi',$sess['id_provinsi'],'id_kabkota',$sess['id_kabkota']);
+      $view_data['faskes'] = $faskes[0]['nama_rs'];
     }
     $data = $this->Model_Get_Usulan->Custom_UsulanWithParam($sess['type'],$sess);
     //print_r($data);exit;
@@ -145,6 +148,60 @@ class Usulan extends CI_Controller {
         'id_faskes'          => $sess['id_faskes'],
         'id_provinsi'        => $sess['id_provinsi'],
         'id_kabkota'         => $sess['id_kabkota'],
+        'type'               => $sess['type'],
+        'surat_pengantar'    => $post['UploadFile'][0],
+        'daftar_usulan_obat' => $post['UploadFile'][1],
+        'date_apply'         => date("Y-m-d H:i:s"),
+        'apply_by'           => $sess['nama']
+      );
+      $this->Model_Transaction->Insert_To_Db($data_usulan,'usulan');
+      $counted = count($post['id_atc_obat']);
+      for($i = 0; $i <$counted; $i++){
+        $data_detail_usulan = array(
+          'nomor_efornas' => $post['nomor_efornas'],
+          'id_terapi'     => $post['id_terapi'][$i],
+          'id_atc_obat'   => $post['id_atc_obat'][$i],
+          'id_sediaan'    => $post['id_sediaan'][$i],
+          'id_kekuatan'   => $post['id_kekuatan'][$i],
+          'id_satuan'     => $post['id_satuan'][$i],
+          'jurnal'        => $post['jurnal'][$i],
+          'alasan'        => $post['alasan'][$i],
+          'restriksi'     => $post['restriksi'][$i],
+          'tipe_usulan'   => $post['tipe_usulan'][$i],
+          'id_tingkat'    => $post['tingkat_faskes'.($i+1)]
+        );
+        //print_r($data_detail_usulan); exit;
+        $this->Model_Transaction->Insert_To_Db($data_detail_usulan,'detail_usulan');
+      }
+      $this->session->unset_userdata('nomor_efornas');
+      echo '<script type="text/javascript">alert("User Berhasil melakukan penambahan usulan dengan nomor efornas '.$post['nomor_efornas'].'"); window.location.assign("'.base_url().'Usulan");</script>';
+    }else{
+      echo "Error empty post occured";
+    }
+  }
+
+  public function Add_Usulan_By_Admin(){
+    $post = $this->input->post();
+    //print_r($post);exit;
+    $sess = $this->session->userdata('user_data');
+    if(!empty($post)){
+      $check = $this->Model_Get_Usulan->Validate('usulan',$post['nomor_efornas']);
+      if(!empty($check)){
+        echo '<script type="text/javascript">alert("Nomor efornas '.$post['nomor_efornas'].' telah terdaftar. Silahkan mencoba beberapa saat lagi"); window.location.assign("'.base_url().'Usulan");</script>';
+      }
+      if(!isset($post['UploadFile'][0]) || !isset($post['UploadFile'][1]) ){
+        echo ('<script type="text/javascript">alert("Anda harus memasukkan file data usulan obat dan surat pengantar");window.location.assign("'.base_url().'Usulan/Insert");</script>');
+        exit;
+      }
+
+      $query_select_data_rs = $this->Model_Get_Usulan->Select_Data_RS($post['id_rs'][0]);
+      //print_r($query_select_data_rs); exit;
+
+      $data_usulan = array(
+        'nomor_efornas'      => $post['nomor_efornas'],
+        'id_faskes'          => $query_select_data_rs[0]['id_rs'],
+        'id_provinsi'        => $query_select_data_rs[0]['id_provinsi'],
+        'id_kabkota'         => $query_select_data_rs[0]['id_kabkota'],
         'type'               => $sess['type'],
         'surat_pengantar'    => $post['UploadFile'][0],
         'daftar_usulan_obat' => $post['UploadFile'][1],

@@ -66,6 +66,22 @@ class Model_Get_Usulan extends CI_Model {
         WHERE B.`id_kabkota` = `usulan`.`id_kabkota` AND B.`id_provinsi` = `usulan`.`id_provinsi` AND `usulan`.`id_faskes` = B.`id_rs` AND `usulan`.`deleted` = 0 AND `usulan`.`id_faskes` = ".$sess['id_faskes'] ." GROUP BY `usulan`.`nomor_efornas`";
     if($type == 2)
       $query = "SELECT `usulan`.`id`,B.`provinsi`,B.`kabkota`,B.`nama_klinik`,`usulan`.`nomor_efornas`,`usulan`.`daftar_usulan_obat`,`usulan`.`surat_pengantar`, `usulan`.`status` FROM `usulan`,(SELECT `klinik`.`id_klinik`,`klinik`.`nama_klinik`, A.`id_provinsi`, A.`id_kabkota`,A.`kabkota,A.`provinsi` FROM `klinik`, (SELECT `id_provinsi`,`id_kabkota`, `kabkota`.`kabkota`,`provinsi`.`provinsi` FROM `kabkota`,`provinsi` WHERE `kabkota`.`parent_id` = `provinsi`.`id_provinsi`) A WHERE A.`id_provinsi` = `klinik`.`id_provinsi` AND A.`id_kabkota` = `klinik`.`id_kabkota`) B WHERE B.`id_kabkota` = `usulan`.`id_kabkota` AND B.`id_provinsi` = `usulan`.`id_provinsi` AND `usulan`.`id_faskes` = B.`id_klinik` AND `usulan`.`deleted` = 0";
+    if($type == 3)
+      $query = "SELECT `usulan`.`id`,B.`provinsi`,B.`kabkota`,B.`nama_rs`,`usulan`.`nomor_efornas`,`usulan`.`daftar_usulan_obat`,`usulan`.`surat_pengantar`, `usulan`.`status`, `usulan`.`date_approve` FROM `usulan`,
+        (SELECT `rumah_sakit`.`id_rs`,`rumah_sakit`.`nama_rs`, A.`id_provinsi`, A.`id_kabkota`,A.`kabkota`,A.`provinsi` FROM `rumah_sakit`,
+        (SELECT `id_provinsi`,`id_kabkota`, `kabkota`.`kabkota`,`provinsi`.`provinsi` FROM `kabkota`, `provinsi` WHERE `kabkota`.`parent_id` = `provinsi`.`id_provinsi`) A
+        WHERE A.`id_provinsi` = `rumah_sakit`.`id_provinsi` AND A.`id_kabkota` = `rumah_sakit`.`id_kabkota` AND A.`id_kabkota` = ".$sess['id_kabkota']." AND A.`id_provinsi` = ".$sess['id_provinsi'].") B
+        WHERE B.`id_kabkota` = `usulan`.`id_kabkota` AND B.`id_provinsi` = `usulan`.`id_provinsi` AND `usulan`.`id_faskes` = B.`id_rs` AND `usulan`.`deleted` = 0 AND `usulan`.`id_faskes` = ".$sess['id_faskes'] ." GROUP BY `usulan`.`nomor_efornas`";
+
+/*
+      $query = "select usulan.id , provinsi.provinsi, kabkota.kabkota, rumah_sakit.nama_rs, usulan.nomor_efornas, usulan.daftar_usulan_obat, usulan.surat_pengantar, usulan.status, usulan.date_approve
+        FROM usulan, provinsi, kabkota, rumah_sakit
+        WHERE usulan.id_provinsi = provinsi.id_provinsi
+        AND usulan.id_kabkota = kabkota.id_kabkota
+        AND usulan.id_faskes = rumah_sakit.id_rs
+        AND kabkota.parent_id = provinsi.id_provinsi
+        AND
+        AND usulan.deleted = 0";*/
     $result = $this->db->query($query);
     $i = 0;
     if ($result->num_rows() > 0) {
@@ -203,6 +219,14 @@ class Model_Get_Usulan extends CI_Model {
 		else{
 			return FALSE;
 		}
+  }
+
+  function Select_Data_RS($id){
+
+    $query = "select * from rumah_sakit where id='".$id."'";
+    $result = $this->db->query($query);
+    //print_r($result->result_array()); exit;
+    return $result->result_array();
   }
 }
 ?>

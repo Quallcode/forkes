@@ -2,7 +2,7 @@
 var basefolder = '<?=$basefolder?>';
 var no_fornas = '<?=$no_fornas?>';
 </script>
-<form class="form-horizontal" action="<?=base_url()?>Usulan/Add_Usulan" method="post" enctype="multipart/form-data">
+<form class="form-horizontal" action="<?=base_url()?>Usulan/Add_Usulan_By_Admin" method="post" enctype="multipart/form-data">
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -19,27 +19,13 @@ var no_fornas = '<?=$no_fornas?>';
               <tr>
                 <td>Nama Rumah Sakit</td>
                 <td>:</td>
-                <td><?=$rs['nama_rs']?></td>
-              </tr>
-              <tr>
-                <td>Kepemilikan</td>
-                <td>:</td>
-                <td><?=$rs['deskripsi_kepemilikan']?></td>
-              </tr>
-              <tr>
-                <td>Jenis</td>
-                <td>:</td>
-                <td><?=$rs['jenis_rs']?></td>
-              </tr>
-              <tr>
-                <td>Tipe</td>
-                <td>:</td>
-                <td><?=$rs['jenis_kelas_rs']?></td>
-              </tr>
-              <tr>
-                <td>Alamat</td>
-                <td>:</td>
-                <td><?=$rs['alamat_rs']?></td>
+                <td>
+                  <select class="form-control inputRumahSakit" id="inputRumahSakit" name="id_rs[]">
+                    <?php foreach( $rumah_sakit as $key) { ?>
+                      <option value="<?=$key['id']?>" ><?=$key['nama_rs']?></option>
+                    <?php } ?>
+                  </select>
+                </td>
               </tr>
             </table>
           </div><!-- /.box -->
