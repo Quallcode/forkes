@@ -23,6 +23,7 @@ class Model_Get_Atc_Obat extends CI_Model {
     $this->db->from($table);
     $this->db->from($table2);
   	$this->db->where($table.'.id_keterangan = '.$table2.'.id');
+    $this->db->where($table.".deleted = '0'");
   	$result = $this->db->get();
     $i = 0;
 		if ($result->num_rows() > 0) {

@@ -257,6 +257,7 @@ class Usulan extends CI_Controller {
   //INDEX FOR DAFTAR USULAN LENGKAP VIEW
 	public function Daftar_Lengkap(){
     //SET SUB BREADCRUMB
+    $this->session->set_userdata(array('breadcrumb'=>'verifikasi'));
     $this->session->set_userdata(array('main_sub_breadcrumb'=>'daftar_usulan_lengkap'));
     $usulan_rs = $this->Model_Get_Usulan->Custom_Usulan_Lengkap(1);
     $usulan_klinik = $this->Model_Get_Usulan->Custom_Usulan_Lengkap(1);
@@ -275,8 +276,8 @@ class Usulan extends CI_Controller {
   //INDEX FOR DAFTAR USULAN TIDAK LENGKAP VIEW
 	public function Daftar_Tidak_Lengkap(){
     //SET SUB BREADCRUMB
+    $this->session->set_userdata(array('breadcrumb'=>'verifikasi'));
     $this->session->set_userdata(array('main_sub_breadcrumb'=>'daftar_usulan_tidak_lengkap'));
-    $this->session->set_userdata(array('main_sub_breadcrumb'=>'daftar_usulan_lengkap'));
     $usulan_rs = $this->Model_Get_Usulan->Custom_Usulan_Tidak_Lengkap(1);
     $usulan_klinik = $this->Model_Get_Usulan->Custom_Usulan_Tidak_Lengkap(1);
     $usulan_klinik = array();
@@ -294,6 +295,7 @@ class Usulan extends CI_Controller {
   //INDEX FOR VERIFIKASI USULAN VIEW
 	public function Verifikasi(){
     //SET SUB BREADCRUMB
+    $this->session->set_userdata(array('breadcrumb'=>'verifikasi'));
     $this->session->set_userdata(array('main_sub_breadcrumb'=>'verifikasi_usulan'));
     $usulan_rs = $this->Model_Get_Usulan->Custom_Usulan(1);
     $usulan_klinik = $this->Model_Get_Usulan->Custom_Usulan(1);

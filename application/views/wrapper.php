@@ -91,7 +91,7 @@
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <!--<script src="<?=base_url()?>includes/css_dashboard/dist/js/pages/dashboard.js"></script>-->
   <!-- LOAD SCRIPT-->
-  <body class="hold-transition skin-blue sidebar-mini">
+  <body class="hold-transition fixed skin-purple-light sidebar-mini">
     <div class="wrapper">
 
       <?php $this->load->view('header');?>
