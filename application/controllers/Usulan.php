@@ -350,7 +350,7 @@ class Usulan extends CI_Controller {
     $no_fornas = $this->session->userdata('nomor_efornas');
     //print_r($no_fornas);exit;
     $view_data['nousulan'] = NOUSULAN;
-    $rumah_sakit = $this->Model_Get_Usulan->Normal_Select('rumah_sakit','id_rs',$sess['id_faskes'],'id_provinsi',$sess['id_provinsi'],'id_kabkota',$sess['id_kabkota']);
+    $rumah_sakit = $this->Model_Get_Usulan->Normal_Select('rumah_sakit');
     $obat        = $this->Model_Get_Usulan->Normal_Select('atc_obat');
     $sediaan     = $this->Model_Get_Usulan->Normal_Select('sediaan');
     $satuan      = $this->Model_Get_Usulan->Normal_Select('satuan');
@@ -359,6 +359,7 @@ class Usulan extends CI_Controller {
     $basefolder  = $sess['id_provinsi'].$sess['id_kabkota'].$sess['id_faskes'];
     $no_fornas   = $no_fornas['no'];
     //print_r($rumah_sakit);exit;
+    $view_data['rumah_sakit'] = $rumah_sakit;
     $view_data['obat'] = $obat;
     $view_data['sediaan'] = $sediaan;
     $view_data['satuan'] = $satuan;
@@ -368,7 +369,7 @@ class Usulan extends CI_Controller {
     $view_data['terapi'] = $terapi;
     $view_data['rs'] = $rumah_sakit[0];
     //DECLARE VIEW DATA FOR WRAPPER
-    $view_data['body']   = 'body/usulan/add_dsp';
+    $view_data['body']   = 'body/usulan/add_dsp_by_admin';
     //LOAD VIEW DATA TO WRAPPER
     $this->load->view('wrapper',$view_data);
 	}
