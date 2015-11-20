@@ -45,6 +45,26 @@ class Model_Get_RumahSakit extends CI_Model {
 		}
 	}
 
+  function Many_Sub_Main_Select ($param, $on, $table, $param2  = NULL, $on2 = NULL) {
+	 $this->db->select('*');
+   $this->db->from($table);
+	 $this->db->where($param .' = ', $on);
+   if(!empty($param2)){
+     $this->db->where($param2 .' = ', $on2);
+   }
+	 $result = $this->db->get();
+   $i =0;
+		if ($result->num_rows() >= 1) {
+			foreach($result->result_array() as $row){
+				$data[$i]= $row;
+      }
+			return $data;
+		}
+		else{
+			return FALSE;
+		}
+	}
+
   function validate($table,$id){
     $this->db->select('id');
     $this->db->from($table);

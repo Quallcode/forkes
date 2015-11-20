@@ -37,22 +37,19 @@
     });
     function get_form(){
       var organize = $('#organization').find('option:selected').val();
-      if(organize == 'rumah_sakit'){
-        $('#rumah_sakit_form').show();
-        $('#rumah_sakit_link').show();
-        $('#dokter_praktek_form').hide();
-        $('#dokter_praktek_link').hide();
+      if(organize == '1'){
+        $('.rumah_sakit_form').show();
+        $('.dokter_praktek_form').hide();
       }else{
-        $('#rumah_sakit_form').hide();
-        $('#rumah_sakit_link').hide();
-        $('#dokter_praktek_form').hide();
-        $('#dokter_praktek_link').show();
+        $('#kabupaten_dropdown').hide();
+        $('#rs_dropdown').hide();
+        $('.rumah_sakit_form').hide();
+        $('.dokter_praktek_form').show();
       }
     }
     function get_id_provinsi(){
         var provinsi = $('#provinsi').find('option:selected').val();
         var html = '';
-        $('#id_provinsi').val(provinsi);
         $('#kabupaten_dropdown').show();
         $.ajax({
           type: "GET",
@@ -72,8 +69,26 @@
         });
     }
     function get_id_kabupaten(){
+      var provinsi = $('#provinsi').find('option:selected').val();
       var kabupaten = $('#kabupaten').find('option:selected').val();
-      $('#id_kabupaten').val(kabupaten);
+      var html = '';
+      $('#rs_dropdown').show();
+      $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: base_url+"Pendaftaran/Get_Rumah_Sakit?id_provinsi="+provinsi+"&id_kabkota="+kabupaten,
+        //Relative or absolute path to response.php file
+        success: function(data) {
+          if(data.status == '00'){
+            $('#inputDokter').html('');
+            for(var i = 0; i <data.msg.length; i++){
+               html += '<option value="'+data.msg[i]['id_rs']+'">'+data.msg[i]['nama_rs']+'</option>';
+            }
+            $('#inputFaskes').append(html);
+            $('#inputFaskes').select2();
+          }
+        }
+      });
     }
     </script>
 
@@ -85,9 +100,6 @@
     <![endif]-->
   </head>
   <body class="hold-transition login-page">
-  <select id="kabupaten_option" style="display:none">
-
-  </select>
   <div class="col-md-12">
     <div class="login-box">
       <div class="login-logo">
@@ -95,67 +107,113 @@
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         <!-- form start -->
-          <form class="form-horizontal" action="<?= base_url()?>Registrasi/RumahSakit" method="post" enctype="multipart/form-data">
-            <div class="box-body">
-              <input type="hidden" name="type" value="1" />
-              <div class="form-group">
-
-                <div class="col-sm-10" style="text-align:-webkit-center">
-				          <label for="inputType" class="col-sm-2 control-label">Faskes</label>
-                  <select class="form-control" id="organization" name="organization" style="width:21em" onchange="get_form()">
-                    <option value="rumah_sakit">Rumah Sakit</option>
-                    <option value="dokter_praktek">Dokter Praktek</option>
-                  </select>
-                </div><!-- /.form-group -->
+        <p class="login-box-msg">Isi informasi anda dengan benar</p>
+        <form class="form-horizontal" action="<?=base_url()?>Form_registrasi/Daftar_User" method="post" enctype="multipart/form-data">
+        <div class="box-body">
+            <div class="form-group">
+              <div class="col-sm-10" style="text-align:-webkit-center">
+  		          <label for="inputType" class="col-sm-2 control-label">Faskes</label>
+                <select class="form-control" id="organization" name="organization" style="width:21em" onchange="get_form()">
+                  <option value="1">Rumah Sakit</option>
+                  <option value="2">Dokter Praktek</option>
+                </select>
+              </div><!-- /.form-group -->
+            </div>
+            <!-- RUMAH SAKIT FORM-->
+            <div class="form-group rumah_sakit_form">
+              <div class="col-sm-10">
+                <label for="inputType" class="col-sm-2 control-label">Provinsi</label>
+                <select class="form-control" id="provinsi" style="width:21em"  name="id_provinsi" onchange="get_id_provinsi()">
+                  <?php foreach( $provinsi as $key5) { ?>
+                    <option value="<?=$key5['id_provinsi']?>" ><?=$key5['provinsi']?></option>
+                  <?php } ?>
+                </select>
+              </div><!-- /.form-group -->
+            </div>
+            <div class="form-group" id="kabupaten_dropdown" style="display:none">
+              <div class="col-sm-10">
+                <label for="inputType" class="col-sm-2 control-label">Kabupaten</label>
+                <select class="form-control" id="kabupaten" style="width:21em" name="id_kabkota" onchange="get_id_kabupaten()">
+                </select>
+              </div><!-- /.form-group -->
+            </div>
+            <div class="form-group" id="rs_dropdown" style="display:none">
+              <div class="col-sm-10" style="text-align:-webkit-center">
+                <label for="inputFaskes" class="col-sm-2 control-label">Faskes</label>
+                <select class="form-control" id="inputFaskes" name="id_faskes" style="width:21em">
+                </select>
+              </div><!-- /.form-group -->
+            </div>
+            <div class="form-group rumah_sakit_form">
+              <div class="col-sm-10" style="text-align:-webkit-center">
+                <label for="inputNama" class="col-sm-2 control-label">Nama</label>
+                <input type="text" class="form-control" id="inputNama" placeholder="Nama Dokter" name="nama" style="width:21em">
               </div>
-              <div id="rumah_sakit_form">
-                <div class="form-group">
-
-                  <div class="col-sm-10">
-  				          <label for="inputType" class="col-sm-2 control-label">Provinsi</label>
-                      <select class="form-control" id="provinsi" style="width:21em"  name="id_provinsi" onchange="get_id_provinsi()">
-                        <?php foreach( $provinsi as $key5) { ?>
-                          <option value="<?=$key5['id_provinsi']?>" ><?=$key5['provinsi']?></option>
-                        <?php } ?>
-                      </select>
-                  </div><!-- /.form-group -->
-                </div>
-                <div class="form-group" id="kabupaten_dropdown" style="display:none">
-
-                  <div class="col-sm-10">
-  				          <label for="inputType" class="col-sm-2 control-label">Kabupaten</label>
-                    <select class="form-control" id="kabupaten" style="width:21em" name="id_kabkota" onchange="get_id_kabupaten()">
-
-                    </select>
-                  </div><!-- /.form-group -->
-                </div>
-
+            </div>
+            <div class="form-group rumah_sakit_form">
+              <div class="col-sm-10" style="text-align:-webkit-center">
+                <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                <input type="email" class="form-control" id="inputEmail" placeholder="E-mail" name="email" style="width:21em">
               </div>
-              <div id="dokter_praktek_form" style="display:none">
-                <div class="form-group">
+            </div>
+            <div class="form-group rumah_sakit_form">
+              <div class="col-sm-10" style="text-align:-webkit-center">
+                <label for="inputNoTlp" class="col-sm-2 control-label">No.Tel</label>
+                <input type="number" class="form-control" id="inputNoTlp" placeholder="No Telepon" name="no_telp" style="width:21em">
+              </div>
+            </div>
+            <div class="form-group rumah_sakit_form">
+              <div class="col-sm-10" style="text-align:-webkit-center">
+                <label for="inputUsername" class="col-sm-2 control-label">Username</label>
+                <input type="text" class="form-control" id="inputUsername" placeholder="User name" name="username" style="width:21em">
+              </div>
+            </div>
+            <div class="form-group rumah_sakit_form">
+              <div class="col-sm-10" style="text-align:-webkit-center">
+                <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+                <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password" style="width:21em">
+              </div>
+            </div>
+            <!-- DOKTER PRAKTEK FORM-->
+            <div class="form-group dokter_praktek_form" style="display:none;">
+              <div class="col-sm-10" style="text-align:-webkit-center">
+                <label for="inputNama" class="col-sm-2 control-label">Nama</label>
+                <input type="text" class="form-control" id="inputNama" placeholder="Nama Dokter" name="nama_praktek" style="width:21em">
+              </div>
+            </div>
+            <div class="form-group dokter_praktek_form" style="display:none;">
+              <div class="col-sm-10" style="text-align:-webkit-center">
+                <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                <input type="email" class="form-control" id="inputEmail" placeholder="E-mail" name="email_praktek" style="width:21em">
+              </div>
+            </div>
+            <div class="form-group dokter_praktek_form" style="display:none;">
+              <div class="col-sm-10" style="text-align:-webkit-center">
+                <label for="inputNoTlp" class="col-sm-2 control-label">No.Tel</label>
+                <input type="number" class="form-control" id="inputNoTlp" placeholder="No Telepon" name="no_telp_praktek" style="width:21em">
+              </div>
+            </div>
+            <div class="form-group dokter_praktek_form" style="display:none;">
+              <div class="col-sm-10" style="text-align:-webkit-center">
+                <label for="inputUsername" class="col-sm-2 control-label">Username</label>
+                <input type="text" class="form-control" id="inputUsername" placeholder="User name" name="username_praktek" style="width:21em">
+              </div>
+            </div>
+            <div class="form-group dokter_praktek_form" style="display:none;">
+              <div class="col-sm-10" style="text-align:-webkit-center">
+                <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+                <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password_praktek" style="width:21em">
+              </div>
+            </div>
 
-                  <div class="col-sm-10">
-  				          <label for="inputType" class="col-sm-2 control-label">Provinsi</label>
-                    <select class="form-control" id="id_provinsi" name="id_provinsi" style="width:21em">
-
-                    </select>
-                  </div><!-- /.form-group -->
-                </div>
-              </div>
-            </div><!-- /.box-body -->
-            <div class="box-footer">
-              <div id="rumah_sakit_link">
-                <form action="form_regis"  method="post">
-                  <input type="submit" class="btn btn-default" style="width:100%" value="Daftar Sekarang"></input>
-                </form>
-              </div>
-              <div id="dokter_praktek_link" style="display:none">
-                <a href="<?php base_url()?>Registrasi/DokterPraktek" class="btn btn-default" style="width:100%">Daftar Sekarang</a>
-              </div>
-            </div><!-- /.box-footer -->
-          </form>
-      </div><!-- /.login-box-body -->
+          </div><!-- /.box-body -->
+          <div class="box-footer">
+            <a href="<?=base_url()?>Login" class="btn btn-default">Batal</a>
+            <button type="submit" class="btn btn-info pull-right">Daftar</button>
+          </div><!-- /.box-footer -->
+      </form>
     </div><!-- /.login-box -->
 </div>
-  </body>
+</div>
+</body>
 </html>

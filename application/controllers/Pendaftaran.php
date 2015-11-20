@@ -8,6 +8,7 @@ class Pendaftaran extends CI_Controller {
     //INIT MODEL USERS
     $this->load->model('Model_Get_Provinsi');
     $this->load->model('Model_Get_Kabupaten');
+    $this->load->model('Model_Get_RumahSakit');
     //CHECK SESSION
     $sess = $this->session->userdata('user_data');
     if(!empty($sess)){
@@ -37,6 +38,23 @@ class Pendaftaran extends CI_Controller {
         echo json_encode(array('status'=>'01','msg'=>'error kabupaten untuk provinsi ini kosong'));
       }else{
         echo json_encode(array('status'=>'00','msg'=>$kabupaten));
+      }
+    }else{
+      echo json_encode(array('status'=>'01','msg'=>'error post kosong'));
+    }
+	}
+  //END OF INDEX FOR FIRST VIEW
+
+  //INDEX FOR FIRST VIEW
+	public function Get_Rumah_Sakit(){
+    $provinsi = $this->input->get('id_provinsi');
+    $kabupaten = $this->input->get('id_kabkota');
+    if(!empty($kabupaten) && !empty($provinsi)){
+      $rumah_sakit = $this->Model_Get_RumahSakit->Many_Sub_Main_Select('id_provinsi',$provinsi,'rumah_sakit','id_kabkota',$kabupaten);
+      if(empty($rumah_sakit)){
+        echo json_encode(array('status'=>'01','msg'=>'error kabupaten untuk provinsi ini kosong'));
+      }else{
+        echo json_encode(array('status'=>'00','msg'=>$rumah_sakit));
       }
     }else{
       echo json_encode(array('status'=>'01','msg'=>'error post kosong'));

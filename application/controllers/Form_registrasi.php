@@ -40,15 +40,39 @@ class Form_registrasi extends CI_Controller {
 
   public function Daftar_User(){
     $post = $this->input->post();
-    //print_r($post); exit;
     if(!empty($post)){
-      $arr_rs = explode('#',$post['organization']);
+      //$arr_rs = explode('#',$post['organization']);
       //print_r($arr_rs);exit;
+      $post['type']    = $post['organization'];
       unset($post['organization']);
-      $post['id_provinsi']  = $arr_rs[0];
-      $post['id_kabkota']   = $arr_rs[1];
-      $post['id_faskes']    = $arr_rs[2];
+      if($post['type'] == '1'){
+        unset($post['nama_praktek']);
+        unset($post['email_praktek']);
+        unset($post['no_telp_praktek']);
+        unset($post['username_praktek']);
+        unset($post['password_praktek']);
+      }else{
+        unset($post['id_provinsi']);
+        unset($post['id_kabkota']);
+        unset($post['id_faskes']);
+        unset($post['nama']);
+        unset($post['email']);
+        unset($post['no_telp']);
+        unset($post['username']);
+        unset($post['passwor']);
+        $post['nama'] = $post['nama_praktek'];
+        $post['email'] = $post['email_praktek'];
+        $post['no_telp'] = $post['no_telp_praktek'];
+        $post['username'] = $post['username_praktek'];
+        $post['password'] = $post['password_praktek'];
+        unset($post['nama_praktek']);
+        unset($post['email_praktek']);
+        unset($post['no_telp_praktek']);
+        unset($post['username_praktek']);
+        unset($post['password_praktek']);
+      }
       $post['password']     = md5($post['password']);
+      //print_r($post);exit;
       $this->Model_Transaction->Insert_To_Db($post,'users');
       echo '<script>alert("User Berhasil melakukan registrasi silahkan melakukan login"); window.location.assign("'.base_url().'login");</script>';
     }else{

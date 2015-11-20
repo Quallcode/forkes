@@ -43,61 +43,7 @@
       <div class="login-box-body">
         <p class="login-box-msg">Isi informasi anda dengan benar</p>
           <!-- form start -->
-          <form class="form-horizontal" action="<?=base_url()?>Form_registrasi/daftar_user" method="post" enctype="multipart/form-data">
-            <div class="box-body">
-              <input type="hidden" name="type" value="2" />
-              <div class="form-group">
-                <div class="col-sm-10" style="text-align:-webkit-center">
-				          <label for="inputFaskes" class="col-sm-2 control-label">Faskes</label>
-                  <select class="form-control" id="inputDokter" name="organization" style="width:21em">
-                    <?php foreach( $data as $key) { ?>
-                    <option value="<?=$key['id_provinsi']?>#<?=$key['id_kabkota']?>#<?=$key['id_rs']?>"><?=$key['nama_rs']?></option>
-                    <?php } ?>
-                  </select>
-                </div><!-- /.form-group -->
-              </div>
-              <!--<div class="form-group">
-                <div class="col-sm-10" style="text-align:-webkit-center">
-				          <label for="inputFaskes" class="col-sm-2 control-label">FASKES</label>
-                  <input type="text" class="form-control" id="inputFaskes" placeholder="FASKES" style="width:21em">
-                </div>
-              </div>-->
-              <div class="form-group">
-                <div class="col-sm-10" style="text-align:-webkit-center">
-				<label for="inputNama" class="col-sm-2 control-label">Nama</label>
-                  <input type="text" class="form-control" id="inputNama" placeholder="Nama Dokter" name="nama" style="width:21em">
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-sm-10" style="text-align:-webkit-center">
-				<label for="inputEmail" class="col-sm-2 control-label">Email</label>
-                  <input type="email" class="form-control" id="inputEmail" placeholder="E-mail" name="email" style="width:21em">
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-sm-10" style="text-align:-webkit-center">
-				<label for="inputNoTlp" class="col-sm-2 control-label">No.Tel</label>
-                  <input type="number" class="form-control" id="inputNoTlp" placeholder="No Telepon" name="no_telp" style="width:21em">
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-sm-10" style="text-align:-webkit-center">
-				<label for="inputUsername" class="col-sm-2 control-label">Username</label>
-                  <input type="text" class="form-control" id="inputUsername" placeholder="User name" name="username" style="width:21em">
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-sm-10" style="text-align:-webkit-center">
-				<label for="inputPassword" class="col-sm-2 control-label">Password</label>
-                  <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password" style="width:21em">
-                </div>
-              </div>
-            </div><!-- /.box-body -->
-            <div class="box-footer">
-              <button type="submit" class="btn btn-default">Batal</button>
-              <button type="submit" class="btn btn-info pull-right">Daftar</button>
-            </div><!-- /.box-footer -->
-          </form>
+          
         </div><!-- /.box -->
     </div>   <!-- /.row -->
   </section>
