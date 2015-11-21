@@ -1,13 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Users extends CI_Controller {
+class Privilege extends CI_Controller {
   //CONSTRUCT FOR KEKUATAN
   function __construct(){
     parent::__construct();
     //INIT MODEL TRANSACTION
     $this->load->model('Model_Transaction');
-    $this->load->model('Model_Get_Users');
     $this->load->model('Model_Get_Privilege');
     //CHECK SESSION
     $sess = $this->session->userdata('user_data');
@@ -16,20 +15,19 @@ class Users extends CI_Controller {
       exit;
     }
     //SET TABLE NAME
-    define('TABLE','users');
-    define('TABLE2','privilege');
+    define('TABLE','privilege');
     //SET BREADCRUMB
     $this->session->set_userdata(array('breadcrumb'=>'manajemen_user'));
-    $this->session->set_userdata(array('main_sub_breadcrumb'=>'users'));
+    $this->session->set_userdata(array('main_sub_breadcrumb'=>'privilege'));
   }
 
   //INDEX FOR FIRST VIEW
 	public function Index(){
     //GET KEKUATAN DATA
-    $users = $this->Model_Get_Users->Normal_Select(TABLE);
+    $users = $this->Model_Get_Privilege->Normal_Select(TABLE);
     //DECLARE VIEW DATA FOR WRAPPER
 	  $view_data['data']   = $users;
-    $view_data['body']   = 'body/users/record_dsp';
+    $view_data['body']   = 'body/privilege/record_dsp';
     //LOAD VIEW DATA TO WRAPPER
     $this->load->view('wrapper',$view_data);
 	}
@@ -39,16 +37,17 @@ class Users extends CI_Controller {
   public function Insert(){
     //GET POST DATA
     $post = $this->input->post();
+
     //CHECK IF EMPTY POST
     if(empty($post)){
       //DECLARE VIEW DATA FOR WRAPPER
-      $view_data['body']   = 'body/users/create_dsp';
-      $view_data['privilege'] = $this->Model_Get_Privilege->Normal_Select(TABLE2);
+      $view_data['body']   = 'body/privilege/create_dsp';
       //LOAD VIEW DATA TO WRAPPER
       $this->load->view('wrapper',$view_data);
     }else{
+      //print_r($post);exit;
       //VALIDATE TO DATABASE
-      $exist = $this->Model_Get_Users->validate(TABLE,$post['username']);
+      $exist = $this->Model_Get_Privilege->validate(TABLE,$post['nama_privilege']);
       if($exist==1){
 		    echo '<script>alert("Username Sudah Tedaftar"); window.location.assign("'.base_url().'Users/Insert");</script>';
         //redirect('kekuatan');
