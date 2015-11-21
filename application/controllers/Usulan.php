@@ -228,7 +228,7 @@ class Usulan extends CI_Controller {
         $this->Model_Transaction->Insert_To_Db($data_detail_usulan,'detail_usulan');
       }
       $this->session->unset_userdata('nomor_efornas');
-      echo '<script type="text/javascript">alert("User Berhasil melakukan penambahan usulan dengan nomor efornas '.$post['nomor_efornas'].'"); window.location.assign("'.base_url().'Usulan");</script>';
+      echo '<script type="text/javascript">alert("User Berhasil melakukan penambahan usulan dengan nomor efornas '.$post['nomor_efornas'].'"); window.location.assign("'.base_url().'Usulan/Verifikasi");</script>';
     }else{
       echo "Error empty post occured";
     }
