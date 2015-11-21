@@ -100,7 +100,21 @@
                 <a><i class="fa fa-circle-o"></i> SUB KELAS TERAPI</a>
                 <ul class="treeview-menu">
                   <li><a href="<?= base_url()?>Sub_Kelas_Terapi"><i class="fa fa-circle-o"></i> DAFTAR SUB KELAS</a></li>
-                  <li><a href="<?= base_url()?>Sub_Kelas_Terapi/Insert"><i class="fa fa-circle-o"></i> TAMBAH KELAS</a></li>
+                  <li><a href="<?= base_url()?>Sub_Kelas_Terapi/Insert"><i class="fa fa-circle-o"></i> TAMBAH SUB KELAS</a></li>
+                </ul>
+              </li>
+              <li class="treeview <?php if(!empty($msbc)&&$msbc == 'sub_kelas_terapi2'){?>active<?php }?>">
+                <a><i class="fa fa-circle-o"></i> SUB KELAS TERAPI 2</a>
+                <ul class="treeview-menu">
+                  <li><a href="<?= base_url()?>Sub_Kelas_Terapi2"><i class="fa fa-circle-o"></i> DAFTAR SUB KELAS 2</a></li>
+                  <li><a href="<?= base_url()?>Sub_Kelas_Terapi2/Insert"><i class="fa fa-circle-o"></i> TAMBAH SUB KELAS 2</a></li>
+                </ul>
+              </li>
+              <li class="treeview <?php if(!empty($msbc)&&$msbc == 'sub_kelas_terapi2'){?>active<?php }?>">
+                <a><i class="fa fa-circle-o"></i> SUB KELAS TERAPI 3</a>
+                <ul class="treeview-menu">
+                  <li><a href="<?= base_url()?>Sub_Kelas_Terapi3"><i class="fa fa-circle-o"></i> DAFTAR SUB KELAS 3</a></li>
+                  <li><a href="<?= base_url()?>Sub_Kelas_Terapi3/Insert"><i class="fa fa-circle-o"></i> TAMBAH SUB KELAS 3</a></li>
                 </ul>
               </li>
             </ul>
