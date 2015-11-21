@@ -13,6 +13,7 @@ function Autocomplete(){
     $("#inputKekuatan1").select2();
     $("#inputSatuan1").select2();
     $("#inputJurnal1").ckeditor();
+    $("#inputRumahSakit").select2();
 }
 
 function CheckObat(obat,id){
