@@ -2,7 +2,7 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Update Data Sub Kelas Terapi
+      Update Data Sub Kelas Terapi 2
     </h1>
   </section>
   <section class="content">
@@ -12,19 +12,19 @@
         <!-- general form elements -->
         <div class="box box-primary">
           <div class="box-header with-border">
-            <h3 class="box-title">Data Sub Kelas Terapi</h3>
+            <h3 class="box-title">Data Sub Kelas Terapi 2</h3>
           </div><!-- /.box-header -->
           <!-- form start -->
-          <form role="form" action="<?=base_url()?>Sub_Kelas_Terapi/Update" method="post" enctype="multipart/form-data">
-          <input type="hidden" class="form-control" id="id_sub_kelasterapi" name="id_sub_kelasterapi" value="<?= $data['Sub_Kelas_Terapi']; ?>">
+          <form role="form" action="<?=base_url()?>Sub_Kelas_Terapi2/Update" method="post" enctype="multipart/form-data">
+          <input type="hidden" class="form-control" id="id" name="id" value="<?= $data['id']; ?>">
             <div class="box-body">
               <div class="form-group">
-                <label for="id_satuan">ID Sub Kelas Terapi </label>
-                <input type="text" class="form-control" id="id_sub_kelasterapi" name="id_sub_kelasterapi" value="<?= $data['id_sub_kelasterapi']; ?>" readonly="TRUE">
+                <label for="id_satuan">ID Sub Kelas Terapi 2 </label>
+                <input type="text" class="form-control" id="id_sub_kelasterapi2" name="id_sub_kelasterapi2" value="<?= $data['id_sub_kelasterapi2']; ?>" readonly="TRUE">
               </div>
               <div class="form-group">
-                <label for="nama_satuan">Nama Sub Kelas Terapi</label>
-                <input type="text" class="form-control" id="Sub_Kelas_Terapi" name="Sub_Kelas_Terapi" value="<?= $data['Sub_Kelas_Terapi']; ?>">
+                <label for="nama_satuan">Nama Sub Kelas Terapi 2</label>
+                <input type="text" class="form-control" id="Sub_Kelas_Terapi2" name="Sub_Kelas_Terapi2" value="<?= $data['Sub_Kelas_Terapi_2']; ?>">
               </div>
             </div><!-- /.box-body -->
 
