@@ -8,7 +8,9 @@ class Sub_Kelas_Terapi2 extends CI_Controller {
     //INIT MODEL TRANSACTION
     $this->load->model('Model_Transaction');
     $this->load->model('Model_Get_Sub_Kelas_Terapi2');
+    $this->load->model('Model_Get_Sub_Kelas_Terapi');
     $this->load->model('Model_Get_Usulan');
+    $this->load->model('Model_Get_Kelas_Terapi');
     //CHECK SESSION
     $sess = $this->session->userdata('user_data');
     if(empty($sess)){
@@ -25,10 +27,10 @@ class Sub_Kelas_Terapi2 extends CI_Controller {
   //INDEX FOR FIRST VIEW
 	public function Index(){
     //GET SATUAAN DATA
-    $satuan = $this->Model_Get_Sub_Kelas_Terapi2->Custom_Select();
+    $sub_kelas_terapi2 = $this->Model_Get_Sub_Kelas_Terapi2->Normal_Select(TABLE);
     //print_r($satuan);exit;
     //DECLARE VIEW DATA FOR WRAPPER
-    $view_data['data']   = $satuan;
+    $view_data['data']   = $sub_kelas_terapi2;
     $view_data['body']   = 'body/master/sub_kelas_terapi2/record_dsp';
     //LOAD VIEW DATA TO WRAPPER
     $this->load->view('wrapper',$view_data);
@@ -39,23 +41,28 @@ class Sub_Kelas_Terapi2 extends CI_Controller {
   public function Insert(){
     //GET POST DATA
     $post = $this->input->post();
+    //print_r($post); exit;
     //CHECK IF EMPTY POST
     if(empty($post)){
       //DECLARE VIEW DATA FOR WRAPPER
-      $terapi      = $this->Model_Get_Usulan->Normal_Select('kelas_terapi');
+      $terapi      = $this->Model_Get_Kelas_Terapi->Normal_Select('kelas_terapi');
+      $sub_terapi      = $this->Model_Get_Sub_Kelas_Terapi->Custom_Select();
+      //print_r($sub_terapi); exit;
       $view_data['terapi'] = $terapi;
-      $view_data['body']   = 'body/master/sub_kelas_terapi/create_dsp';
+      $view_data['sub_terapi'] = $sub_terapi;
+      $view_data['body']   = 'body/master/sub_kelas_terapi2/create_dsp';
       //LOAD VIEW DATA TO WRAPPER
       $this->load->view('wrapper',$view_data);
     }else{
       //VALIDATE TO DATABASE
-      //print_r($post); exit;
+      print_r($post); exit;
       $data = array(
         'id_terapi' 	=> $post['id_terapi'][0],
-        'id_sub_kelasterapi'	  	=> $post['id_sub_kelasterapi'],
-        'Sub_Kelas_Terapi' => $post['Sub_Kelas_Terapi']
+        'id_sub_kelasterapi'	=> $post['id_sub_kelasterapi'][0],
+        'id_sub_kelasterapi2' => $post['id_sub_kelasterapi2'],
+        'Sub_Kelas_Terapi_2'  => $post['Sub_Kelas_Terapi2']
       );
-      $exist = $this->Model_Get_Sub_Kelas_Terapi->validate(TABLE,$post['id_sub_kelasterapi']);
+      $exist = $this->Model_Get_Sub_Kelas_Terapi2->validate(TABLE,$post['id_sub_kelasterapi']);
       if($exist==1)
       {
         echo '<script>alert("ID Sub Kelas Terapi Sudah Ada"); window.location.assign("'.base_url().'Sub_Kelas_Terapi");</script>';

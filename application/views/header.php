@@ -86,7 +86,7 @@
               <li><a href="<?= base_url()?>usulan/Insert_Obat_Combinasi"><i class="fa  fa-list "></i> TAMBAH OBAT KOMBINASI</a></li>
             </ul>
           </li>
-          <li class="<?php if(!empty($msbc)&& ($msbc == 'kelas_terapi' || $msbc == 'sub_kelas_terapi')){?>active<?php }?>">
+          <li class="<?php if(!empty($msbc)&& ($msbc == 'kelas_terapi' || $msbc == 'sub_kelas_terapi' || $msbc == 'sub_kelas_terapi2' || $msbc == 'sub_kelas_terapi3')){?>active<?php }?>">
             <a><i class="fa fa-circle-o"></i> KELAS</a>
             <ul class="treeview-menu">
               <li class="treeview <?php if(!empty($msbc)&&$msbc == 'kelas_terapi'){?>active<?php }?>">
@@ -110,7 +110,7 @@
                   <li><a href="<?= base_url()?>Sub_Kelas_Terapi2/Insert"><i class="fa fa-circle-o"></i> TAMBAH SUB KELAS 2</a></li>
                 </ul>
               </li>
-              <li class="treeview <?php if(!empty($msbc)&&$msbc == 'sub_kelas_terapi2'){?>active<?php }?>">
+              <li class="treeview <?php if(!empty($msbc)&&$msbc == 'sub_kelas_terapi3'){?>active<?php }?>">
                 <a><i class="fa fa-circle-o"></i> SUB KELAS TERAPI 3</a>
                 <ul class="treeview-menu">
                   <li><a href="<?= base_url()?>Sub_Kelas_Terapi3"><i class="fa fa-circle-o"></i> DAFTAR SUB KELAS 3</a></li>

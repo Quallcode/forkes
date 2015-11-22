@@ -26,46 +26,41 @@
             <table id="dataTable" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <th>KELAS TERAPI</th>
-                  <th>SUB KELAS TERAPI</th>
-                  <th>SUB KELAS TERAPI2</th>
+                  <th>ID Terapi</th>
+                  <th>ID Sub Terapi</th>
+                  <th>ID Sub Terapi2</th>
+                  <th>Nama Sub Kelas Terapi 2</th>
                   <th>Aksi</th>
                 </tr>
               </thead>
               <tbody>
                 <?php if(!empty($data)){?>
                   <?php foreach($data as $val){?>
-                    <?php foreach ($val['sub_kelas_terapi'] as $val2) {
-                      foreach ($val2['sub_kelas_terapi2'] as $val3) {
-                        if(!empty($val2['sub_kelas_terapi2']))
-                        {?>
-                          <tr>
-                            <td><?=$val['id_terapi']?></td>
-                            <td><?=$val2['id_sub_kelasterapi']?></td>
-                            <td><?=$val3['id_sub_kelasterapi2']?></td>
-                            <td>
-                              <a href="<?=base_url()?>Sub_Kelas_Terapi/Update/<?=$val3['id_sub_kelasterapi2']?>" class="btn btn-info">Update</a>&nbsp;
-                              <a href="<?=base_url()?>Sub_Kelas_Terapi/Delete/<?=$val3['id_sub_kelasterapi2']?>" class="btn btn-danger">Delete</a>
-                            </td>
-                          </tr>
-                        <?php }?>
-                      <?php }?>
-                    <?php } ?>
+                    <tr>
+                      <td><?=$val['id_terapi']?></td>
+                      <td><?=$val['id_sub_kelasterapi']?></td>
+                      <td><?=$val['id_sub_kelasterapi2']?></td>
+                      <td><?=$val['Sub_Kelas_Terapi_2']?></td>
+                      <td>
+                        <a href="<?=base_url()?>Sub_Kelas_Terapi2/Update/<?=$val['id']?>" class="btn btn-info">Update</a>&nbsp;
+                        <a href="<?=base_url()?>Sub_Kelas_Terapi2/Delete/<?=$val['id']?>" class="btn btn-danger">Delete</a>
+                      </td>
+                    </tr>
                   <?php }?>
                 <?php } ?>
               </tbody>
               <tfoot>
                 <tr>
-                  <th>KELAS TERAPI</th>
-                  <th>SUB KELAS TERAPI</th>
-                  <th>SUB KELAS TERAPI2</th>
+                  <th>ID Terapi</th>
+                  <th>ID Sub Terapi</th>
+                  <th>ID Sub Terapi2</th>
+                  <th>Nama Sub Kelas Terapi 2</th>
                   <th>Aksi</th>
                 </tr>
               </tfoot>
             </table>
           </div><!-- /.box-body -->
         </div><!-- /.box -->
-
       </div><!-- /.col -->
     </div><!-- /.row -->
   </section><!-- /.content -->

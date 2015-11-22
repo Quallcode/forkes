@@ -50,5 +50,22 @@ class Model_Get_Sub_Kelas_Terapi extends CI_Model {
 			return FALSE;
 		}
 	}
+
+  function Custom_Select () {
+    $query = "select * from sub_kelasterapi where deleted='0' group by Sub_Kelas_Terapi";
+    $result = $this->db->query($query);
+    //print_r($result->result_array()); exit;
+    	$i = 0;
+		if ($result->num_rows() > 0) {
+			foreach($result->result_array() as $row){
+				$data[$i] = $row;
+        $i++;
+      }
+			return $data;
+		}
+		else{
+			return FALSE;
+		}
+	}
 }
 ?>
