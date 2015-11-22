@@ -97,5 +97,181 @@ class Model_Get_Fornas extends CI_Model {
 			return FALSE;
 		}
   	}
+	
+	function Get_Atc_Obat_GB () {
+  	$this->db->select('*');
+    $this->db->from('atc_obat');
+  	$this->db->where('deleted = ', '0');
+  	$this->db->group_by('id_atc_obat');
+	$this->db->order_by('nama_obat','ASC');
+  	$result = $this->db->get();
+    $i = 0;
+		if ($result->num_rows() > 0) {
+			foreach($result->result_array() as $row){
+				$data[$i] = $row;
+        $i++;
+      }
+			return $data;
+		}
+		else{
+			return FALSE;
+		}
+	}
+	
+	function Get_Kelas_Terapi_GB () {
+  	$this->db->select('*');
+    $this->db->from('kelas_terapi');
+  	$this->db->where('deleted = ', '0');
+  	$this->db->group_by('id_terapi');
+	$this->db->order_by('Kelas_terapi','ASC');
+  	$result = $this->db->get();
+    $i = 0;
+		if ($result->num_rows() > 0) {
+			foreach($result->result_array() as $row){
+				$data[$i] = $row;
+        $i++;
+      }
+			return $data;
+		}
+		else{
+			return FALSE;
+		}
+	}
+	
+	function Get_Sub_Kelasterapi_GB () {
+  	$this->db->select('*');
+    $this->db->from('sub_kelasterapi');
+  	$this->db->where('deleted = ', '0');
+  	$this->db->group_by('id_sub_kelasterapi');
+	$this->db->order_by('Sub_Kelas_Terapi','ASC');
+  	$result = $this->db->get();
+    $i = 0;
+		if ($result->num_rows() > 0) {
+			foreach($result->result_array() as $row){
+				$data[$i] = $row;
+        $i++;
+      }
+			return $data;
+		}
+		else{
+			return FALSE;
+		}
+	}
+	
+	function Get_Sub_Kelasterapi2_GB () {
+  	$this->db->select('*');
+    $this->db->from('sub_kelasterapi2');
+  	$this->db->where('deleted = ', '0');
+  	$this->db->group_by('Sub_Kelas_Terapi_2');
+	$this->db->order_by('Sub_Kelas_Terapi_2','ASC');
+  	$result = $this->db->get();
+    $i = 0;
+		if ($result->num_rows() > 0) {
+			foreach($result->result_array() as $row){
+				$data[$i] = $row;
+        $i++;
+      }
+			return $data;
+		}
+		else{
+			return FALSE;
+		}
+	}
+	
+	function Get_Sub_Kelasterapi3_GB () {
+  	$this->db->select('*');
+    $this->db->from('sub_kelasterapi3');
+  	$this->db->where('deleted = ', '0');
+  	$this->db->group_by('Sub_Kelas_Terapi_3');
+	$this->db->order_by('Sub_Kelas_Terapi_3','ASC');
+  	$result = $this->db->get();
+    $i = 0;
+		if ($result->num_rows() > 0) {
+			foreach($result->result_array() as $row){
+				$data[$i] = $row;
+        $i++;
+      }
+			return $data;
+		}
+		else{
+			return FALSE;
+		}
+	}
+	
+	function Get_Sediaan_GB () {
+  	$this->db->select('*');
+    $this->db->from('sediaan');
+  	$this->db->where('deleted = ', '0');
+  	$this->db->group_by('id_sediaan');
+	$this->db->order_by('nama_sediaan','ASC');
+  	$result = $this->db->get();
+    $i = 0;
+		if ($result->num_rows() > 0) {
+			foreach($result->result_array() as $row){
+				$data[$i] = $row;
+        $i++;
+      }
+			return $data;
+		}
+		else{
+			return FALSE;
+		}
+	}
+	
+	function Get_Kekuatan_GB () {
+  	$this->db->select('*');
+    $this->db->from('kekuatan');
+  	$this->db->where('deleted = ', '0');
+  	$this->db->group_by('id_kekuatan');
+  	$result = $this->db->get();
+    $i = 0;
+		if ($result->num_rows() > 0) {
+			foreach($result->result_array() as $row){
+				$data[$i] = $row;
+        $i++;
+      }
+			return $data;
+		}
+		else{
+			return FALSE;
+		}
+	}
+	
+	function Get_Satuan_GB () {
+  	$this->db->select('*');
+    $this->db->from('satuan');
+  	$this->db->where('deleted = ', '0');
+  	$this->db->group_by('id_satuan');
+  	$result = $this->db->get();
+    $i = 0;
+		if ($result->num_rows() > 0) {
+			foreach($result->result_array() as $row){
+				$data[$i] = $row;
+        $i++;
+      }
+			return $data;
+		}
+		else{
+			return FALSE;
+		}
+	}
+	
+	function Update_Select ($table,$fieldname,$post) {
+		$this->db->select('*');
+    	$this->db->from($table);
+		$this->db->where($fieldname,$post);
+		$result = $this->db->get();
+    	$i = 0;
+		if ($result->num_rows() > 0) {
+			foreach($result->result_array() as $row){
+				$data[$i] = $row;
+        $i++;
+      }
+			return $data;
+		}
+		else{
+			return FALSE;
+		}
+	}
 }
 ?>
