@@ -15,6 +15,7 @@ function Autocomplete(){
     $("#inputJurnal1").ckeditor();
     $("#inputRumahSakit").select2();
     $("#inputSubKelasTerapi").select2();
+    $("#inputSubKelasTerapi2").select2();
 }
 
 function CheckObat(obat,id){
