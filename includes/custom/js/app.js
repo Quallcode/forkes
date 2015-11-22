@@ -18,6 +18,24 @@ function Autocomplete(){
     $("#inputSubKelasTerapi2").select2();
 }
 
+function CheckObatKombinasi(obat,id){
+  var data = {
+    "id_atc_obat": obat
+  };
+  $.ajax({
+    type: "POST",
+    dataType: "json",
+    url: base_url+"Checking/ObatKombinasi", //Relative or absolute path to response.php file
+    data: data,
+    success: function(data) {
+      if(data.status == '00'){
+        GetMsg(id);
+      }
+    }
+  });
+  return false;
+}
+
 function CheckObat(obat,id){
   var data = {
     "id_atc_obat": obat

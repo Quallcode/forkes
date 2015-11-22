@@ -25,6 +25,12 @@ class Sub_Kelas_Terapi extends CI_Controller {
   //INDEX FOR FIRST VIEW
 	public function Index(){
     //GET SATUAAN DATA
+    $sess = $this->session->userdata('user_data');
+    $privilege = $sess['sub_kelas_terapi_read'];
+    if($privilege != 'on'){
+      echo '<script>alert("Anda mempunyai limitasi untuk mengakses laman ini, silahkan hubungi administrator"); window.location.assign("'.base_url().'Dashboard");</script>';
+      exit;
+    }
     $satuan = $this->Model_Get_Sub_Kelas_Terapi->Normal_Select(TABLE);
     //print_r($satuan);exit;
     //DECLARE VIEW DATA FOR WRAPPER
@@ -38,6 +44,12 @@ class Sub_Kelas_Terapi extends CI_Controller {
   //POST SATUAAN
   public function Insert(){
     //GET POST DATA
+    $sess = $this->session->userdata('user_data');
+    $privilege = $sess['sub_kelas_terapi_write'];
+    if($privilege != 'on'){
+      echo '<script>alert("Anda mempunyai limitasi untuk mengakses laman ini, silahkan hubungi administrator"); window.location.assign("'.base_url().'Dashboard");</script>';
+      exit;
+    }
     $post = $this->input->post();
     //CHECK IF EMPTY POST
     if(empty($post)){
@@ -69,35 +81,47 @@ class Sub_Kelas_Terapi extends CI_Controller {
   }
 
   public function Update(){
-	$uri = $this->uri->segment(3);
-	if(empty($uri)){
-		$post = $this->input->post();
-    //print_r($post); exit;
-		$id = $post['id_sub_kelasterapi'];
-		$data = array(
-			'id_sub_kelasterapi' 	=> $post['id_sub_kelasterapi'],
-			'Sub_Kelas_Terapi'	=> $post['Sub_Kelas_Terapi']
-		);
-		$this->Model_Transaction->Update_To_Db($data,TABLE,'id_sub_kelasterapi',$id);
-		echo '<script>alert("Berhasil Merubah Data"); window.location.assign("'.base_url().'Sub_Kelas_Terapi");</script>';
-	}else{
-    //GET SATUAAN DATA
-		$satuan = $this->Model_Get_Sub_Kelas_Terapi->Update_Select(TABLE,'id_sub_kelasterapi',$uri);
-		//DECLARE VIEW DATA FOR WRAPPER
-		$view_data['data']   = $satuan[0];
-		$view_data['body']   = 'body/master/sub_kelas_terapi/update_dsp';
-		//LOAD VIEW DATA TO WRAPPER
-		$this->load->view('wrapper',$view_data);
+    $sess = $this->session->userdata('user_data');
+    $privilege = $sess['sub_kelas_terapi_write'];
+    if($privilege != 'on'){
+      echo '<script>alert("Anda mempunyai limitasi untuk mengakses laman ini, silahkan hubungi administrator"); window.location.assign("'.base_url().'Dashboard");</script>';
+      exit;
+    }
+  	$uri = $this->uri->segment(3);
+  	if(empty($uri)){
+  		$post = $this->input->post();
+      //print_r($post); exit;
+  		$id = $post['id_sub_kelasterapi'];
+  		$data = array(
+  			'id_sub_kelasterapi' 	=> $post['id_sub_kelasterapi'],
+  			'Sub_Kelas_Terapi'	=> $post['Sub_Kelas_Terapi']
+  		);
+  		$this->Model_Transaction->Update_To_Db($data,TABLE,'id_sub_kelasterapi',$id);
+  		echo '<script>alert("Berhasil Merubah Data"); window.location.assign("'.base_url().'Sub_Kelas_Terapi");</script>';
+  	}else{
+      //GET SATUAAN DATA
+  		$satuan = $this->Model_Get_Sub_Kelas_Terapi->Update_Select(TABLE,'id_sub_kelasterapi',$uri);
+  		//DECLARE VIEW DATA FOR WRAPPER
+  		$view_data['data']   = $satuan[0];
+  		$view_data['body']   = 'body/master/sub_kelas_terapi/update_dsp';
+  		//LOAD VIEW DATA TO WRAPPER
+  		$this->load->view('wrapper',$view_data);
 		}
   }
 
   public function Delete(){
-	$uri = $this->uri->segment(3);
-	$data = array(
-		'deleted'	=> '1'
-	);
-	$this->Model_Transaction->Update_To_Db($data,TABLE,'id_sub_kelasterapi',$uri);
-	echo '<script>alert("Berhasil Menghapus Data"); window.location.assign("'.base_url().'Sub_Kelas_Terapi");</script>';
+    $sess = $this->session->userdata('user_data');
+    $privilege = $sess['sub_kelas_terapi_delete'];
+    if($privilege != 'on'){
+      echo '<script>alert("Anda mempunyai limitasi untuk mengakses laman ini, silahkan hubungi administrator"); window.location.assign("'.base_url().'Dashboard");</script>';
+      exit;
+    }
+  	$uri = $this->uri->segment(3);
+  	$data = array(
+  		'deleted'	=> '1'
+  	);
+  	$this->Model_Transaction->Update_To_Db($data,TABLE,'id_sub_kelasterapi',$uri);
+  	echo '<script>alert("Berhasil Menghapus Data"); window.location.assign("'.base_url().'Sub_Kelas_Terapi");</script>';
   }
   //END OF POST SATUAAN
 }

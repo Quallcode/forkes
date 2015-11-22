@@ -35,7 +35,7 @@
                   <td><a data-toggle="modal" href="#ModalDetailUR<?=$val['id']?>">DETAIL</a></td>
                   <td><span class="status<?=$urskey+1?>"><?=$val['status']?></span> </td>
                   <td align="center">
-                    <?php if($val['status'] == 'PEMBAHARUAN'){ ?>
+                    <?php if($val['status'] == 'PEMBAHARUAN' || $val['status'] == 'BELUM'){ ?>
                       <span class="status<?=$urskey+1?>">
                         <button type="button" onclick="UpdateStatusTerima('<?=$val['nomor_efornas']?>',<?=$urskey+1?>);" class="btn btn-info">DITERIMA</button>
                           &nbsp;&nbsp;
@@ -205,3 +205,24 @@
 <?php }
   }
 ?>
+
+<!-- Modal -->
+<div class="modal fade" id="EmailModal" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Email To <span id="email_usulan"></span></h4>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="email"     value="" />
+        <input type="hidden" id="no_fornas" value="" />
+        <input type="hidden" id="id_usulan" value="" />
+        <input type="hidden" id="type"  value="" />
+        <textarea id="text_email_usulan"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" onclick="EmailNow()" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

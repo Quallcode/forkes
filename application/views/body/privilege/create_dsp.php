@@ -44,6 +44,24 @@
                     </div>
                   </div>
                 <hr/>
+                  Keterangan ATC Obat
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" name="keterangan_atc_obat_read">
+                        Read
+                      </label>
+                      <label>
+                        <input type="checkbox" name="keterangan_atc_obat_write">
+                        Write
+                      </label>
+                      <label>
+                        <input type="checkbox" name="keterangan_atc_obat_delete">
+                        Delete
+                      </label>
+                    </div>
+                  </div>
+                  <hr/>
                   Obat Kombinasi
                   <div class="form-group">
                     <div class="checkbox">
@@ -170,6 +188,42 @@
                     </div>
                   </div>
                 <hr/>
+                  Users
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" name="users_read">
+                        Read
+                      </label>
+                      <label>
+                        <input type="checkbox" name="users_write">
+                        Write
+                      </label>
+                      <label>
+                        <input type="checkbox" name="users_delete">
+                        Delete
+                      </label>
+                    </div>
+                  </div>
+                <hr/>
+                  Privilege
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" name="privilege_read">
+                        Read
+                      </label>
+                      <label>
+                        <input type="checkbox" name="privilege_write">
+                        Write
+                      </label>
+                      <label>
+                        <input type="checkbox" name="privilege_delete">
+                        Delete
+                      </label>
+                    </div>
+                  </div>
+                <hr/>
                   Usulan Terbaru
                   <div class="form-group">
                     <div class="checkbox">
@@ -184,7 +238,20 @@
                     </div>
                   </div>
                 <hr/>
-
+                  Usulan Obat Baru
+                  <div class="form-group">
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" name="usulan_obat_baru_read">
+                        Read
+                      </label>
+                      <label>
+                        <input type="checkbox" name="usulan_obat_baru_write">
+                        Write
+                      </label>
+                    </div>
+                  </div>
+                <hr/>
                 Daftar Usulan Lengkap
                 <div class="form-group">
                   <div class="checkbox">
@@ -195,7 +262,6 @@
                   </div>
                 </div>
               <hr/>
-
               Daftar Usulan Tidak Lengkap
               <div class="form-group">
                 <div class="checkbox">
@@ -206,7 +272,6 @@
                 </div>
               </div>
             <hr/>
-
               </div>
             </div><!-- /.box-body -->
 

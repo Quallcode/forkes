@@ -6,7 +6,7 @@ class Model_Users extends CI_Model {
 		$this->db->from('users');
 		$this->db->where('users.username = ',$post['username']);
 		$this->db->where('users.password =',md5($post['password']));
-
+		$this->db->join('privilege', 'users.id_privilege = privilege.id', 'left');
 		$result = $this->db->get();
 		if ($result->num_rows() == 1) {
 			foreach($result->result_array() as $row){

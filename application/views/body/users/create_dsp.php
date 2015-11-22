@@ -15,10 +15,11 @@
             <h3 class="box-title">Data Untuk User Baru</h3>
           </div><!-- /.box-header -->
           <!-- form start -->
-          <form role="form" action="<?=base_url()?>Kelas_Terapi/Insert" method="post" enctype="multipart/form-data">
+          <form role="form" action="<?=base_url()?>Users/Insert" method="post" enctype="multipart/form-data">
             <div class="box-body">
               <div class="form-group">
                 <label for="username">Username</label>
+                <input type="hidden" name="type" value="3"/>
                 <input type="text" class="form-control" id="username" name="username" placeholder="Username Baru">
               </div>
               <div class="form-group">
@@ -43,7 +44,7 @@
               </div>
               <div class="form-group">
                 <label for="privilage">Privilage</label>
-                <select id="privilage" class="form-control" name="privilage">
+                <select id="privilage" class="form-control" name="id_privilege">
                   <?php foreach($privilege as $row){?>
                     <option value="<?=$row['id']?>"><?=$row['nama_privilege']?></option>
                   <?php }?>

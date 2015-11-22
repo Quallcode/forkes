@@ -24,6 +24,12 @@ class Keterangan_Atc_Obat extends CI_Controller {
   //INDEX FOR FIRST VIEW
 	public function Index(){
     //GET ATC OBAT DATA
+    $sess = $this->session->userdata('user_data');
+    $privilege = $sess['keterangan_atc_obat_read'];
+    if($privilege != 'on'){
+      echo '<script>alert("Anda mempunyai limitasi untuk mengakses laman ini, silahkan hubungi administrator"); window.location.assign("'.base_url().'Dashboard");</script>';
+      exit;
+    }
     $keterangan_atc_obat = $this->Model_Get_Keterangan_Atc_Obat->Normal_Select(TABLE);
     //DECLARE VIEW DATA FOR WRAPPER
 	  $view_data['data']   = $keterangan_atc_obat;
@@ -36,6 +42,12 @@ class Keterangan_Atc_Obat extends CI_Controller {
   //POST ATC OBAT
   public function Insert(){
     //GET POST DATA
+    $sess = $this->session->userdata('user_data');
+    $privilege = $sess['keterangan_atc_obat_write'];
+    if($privilege != 'on'){
+      echo '<script>alert("Anda mempunyai limitasi untuk mengakses laman ini, silahkan hubungi administrator"); window.location.assign("'.base_url().'Dashboard");</script>';
+      exit;
+    }
     $post = $this->input->post();
     //CHECK IF EMPTY POST
     if(empty($post)){
@@ -60,6 +72,12 @@ class Keterangan_Atc_Obat extends CI_Controller {
   }
 
   public function Update(){
+    $sess = $this->session->userdata('user_data');
+    $privilege = $sess['keterangan_atc_obat_write'];
+    if($privilege != 'on'){
+      echo '<script>alert("Anda mempunyai limitasi untuk mengakses laman ini, silahkan hubungi administrator"); window.location.assign("'.base_url().'Dashboard");</script>';
+      exit;
+    }
   	$uri = $this->uri->segment(3);
   	if(empty($uri)){
   		$post = $this->input->post();
@@ -81,6 +99,12 @@ class Keterangan_Atc_Obat extends CI_Controller {
   }
 
   public function Delete(){
+    $sess = $this->session->userdata('user_data');
+    $privilege = $sess['keterangan_atc_obat_delete'];
+    if($privilege != 'on'){
+      echo '<script>alert("Anda mempunyai limitasi untuk mengakses laman ini, silahkan hubungi administrator"); window.location.assign("'.base_url().'Dashboard");</script>';
+      exit;
+    }
   	$uri = $this->uri->segment(3);
   	$data = array(
   		'deleted'	=> '1'

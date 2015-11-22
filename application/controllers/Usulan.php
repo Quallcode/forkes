@@ -9,6 +9,7 @@ class Usulan extends CI_Controller {
     $this->load->model('Model_Transaction');
     $this->load->model('Model_Get_Usulan');
     $this->load->model('Model_Get_Combinasi');
+    $this->load->model('Model_Get_Users');
     date_default_timezone_set('Asia/Jakarta');
     //CHECK SESSION
     $sess = $this->session->userdata('user_data');
@@ -152,7 +153,8 @@ class Usulan extends CI_Controller {
         'surat_pengantar'    => $post['UploadFile'][0],
         'daftar_usulan_obat' => $post['UploadFile'][1],
         'date_apply'         => date("Y-m-d H:i:s"),
-        'apply_by'           => $sess['nama']
+        'apply_by'           => $sess['nama'],
+        'id_user'            => $sess['id']
       );
       $this->Model_Transaction->Insert_To_Db($data_usulan,'usulan');
       $counted = count($post['id_atc_obat']);
@@ -206,7 +208,8 @@ class Usulan extends CI_Controller {
         'surat_pengantar'    => $post['UploadFile'][0],
         'daftar_usulan_obat' => $post['UploadFile'][1],
         'date_apply'         => date("Y-m-d H:i:s"),
-        'apply_by'           => $sess['nama']
+        'apply_by'           => $sess['nama'],
+        'id_user'            => $sess['id']
       );
       $this->Model_Transaction->Insert_To_Db($data_usulan,'usulan');
       $counted = count($post['id_atc_obat']);
@@ -277,6 +280,12 @@ class Usulan extends CI_Controller {
   }
 
   public function Add_Obat_Combinasi(){
+    $sess = $this->session->userdata('user_data');
+    $privilege = $sess['usulan_obat_combinasi_read'];
+    if($privilege != 'on'){
+      echo '<script>alert("Anda mempunyai limitasi untuk mengakses laman ini, silahkan hubungi administrator"); window.location.assign("'.base_url().'Dashboard");</script>';
+      exit;
+    }
     $post = $this->input->post();
     //print_r($post);exit;
     $sess = $this->session->userdata('user_data');
@@ -314,6 +323,12 @@ class Usulan extends CI_Controller {
   //INDEX FOR DAFTAR USULAN LENGKAP VIEW
 	public function Daftar_Lengkap(){
     //SET SUB BREADCRUMB
+    $sess = $this->session->userdata('user_data');
+    $privilege = $sess['daftar_usulan_lengkap_read'];
+    if($privilege != 'on'){
+      echo '<script>alert("Anda mempunyai limitasi untuk mengakses laman ini, silahkan hubungi administrator"); window.location.assign("'.base_url().'Dashboard");</script>';
+      exit;
+    }
     $this->session->set_userdata(array('breadcrumb'=>'verifikasi'));
     $this->session->set_userdata(array('main_sub_breadcrumb'=>'daftar_usulan_lengkap'));
     $usulan_rs = $this->Model_Get_Usulan->Custom_Usulan_Lengkap(1);
@@ -333,6 +348,12 @@ class Usulan extends CI_Controller {
   //INDEX FOR DAFTAR USULAN TIDAK LENGKAP VIEW
 	public function Daftar_Tidak_Lengkap(){
     //SET SUB BREADCRUMB
+    $sess = $this->session->userdata('user_data');
+    $privilege = $sess['daftar_usulan_tidak_lengkap_read'];
+    if($privilege != 'on'){
+      echo '<script>alert("Anda mempunyai limitasi untuk mengakses laman ini, silahkan hubungi administrator"); window.location.assign("'.base_url().'Dashboard");</script>';
+      exit;
+    }
     $this->session->set_userdata(array('breadcrumb'=>'verifikasi'));
     $this->session->set_userdata(array('main_sub_breadcrumb'=>'daftar_usulan_tidak_lengkap'));
     $usulan_rs = $this->Model_Get_Usulan->Custom_Usulan_Tidak_Lengkap(1);
@@ -351,6 +372,12 @@ class Usulan extends CI_Controller {
 
   //INDEX FOR VERIFIKASI USULAN VIEW
 	public function Verifikasi(){
+    $sess = $this->session->userdata('user_data');
+    $privilege = $sess['usulan_terbaru_read'];
+    if($privilege != 'on'){
+      echo '<script>alert("Anda mempunyai limitasi untuk mengakses laman ini, silahkan hubungi administrator"); window.location.assign("'.base_url().'Dashboard");</script>';
+      exit;
+    }
     //SET SUB BREADCRUMB
     $this->session->set_userdata(array('breadcrumb'=>'verifikasi'));
     $this->session->set_userdata(array('main_sub_breadcrumb'=>'verifikasi_usulan'));
@@ -370,29 +397,87 @@ class Usulan extends CI_Controller {
   //END OF INDEX FOR VERIFIKASI USULAN VIEW
   //FUNCTION FOR TERIMA USULAN
   Public function Terima(){
+    $sess = $this->session->userdata('user_data');
+    $privilege = $sess['usulan_terbaru_write'];
+    if($privilege != 'on'){
+      echo json_encode(array("code"=>"01","msg"=>"Anda mempunyai limitasi untuk mengakses laman ini, silahkan hubungi administrator"));
+      exit;
+    }
     $post = $this->input->post();
     if(!empty($post)){
       $data = array(
         'status' => 'LENGKAP',
         'date_approve' => date('Y-m-d')
       );
+      $usulan = $this->Model_Get_Usulan->Normal_Select('usulan','nomor_efornas',$post['nomor_efornas']);
+      $id_user = $usulan[0]['id_user'];
+      $user = $this->Model_Get_Users->Normal_Select('users','`users`.`id`',$id_user);
       $this->Model_Transaction->Update_To_Db($data,'usulan','nomor_efornas',$post['nomor_efornas']);
+      echo json_encode(array('code'=>'00','msg'=>$user[0]['email']));
+      exit;
     }else{
-      echo ('Anda tidak bisa mengakeses laman ini');
+      echo json_encode(array('code'=>'02','msg'=>'Anda tidak bisa mengakses laman ini'));
+      exit;
+    }
+  }
+
+  Public function Email_Now(){
+    $post = $this->input->post();
+    if(!empty($post)){
+      $this->load->library('email');
+
+      $config['protocol'] = 'smtp';
+      //$config['smtp_host'] = 'pacific.unlimited.id';
+      $config['smtp_host'] = 'mail@e-fornas.apps-prototype.com';
+      $config['smtp_user'] = 'info@e-fornas.apps-prototype.com';
+      $config['smtp_pass'] = '123admin';
+      $config['smtp_port'] = '25';
+      //$config['smtp_port'] = '465';
+      //$config['smtp_crypto'] = 'ssl';
+      $config['mailtype'] = 'html';
+      $config['wordwrap'] = TRUE;
+      $config['charset'] = 'iso-8859-1';
+
+      $this->email->initialize($config);
+
+      $this->email->from('info@e-fornas.apps-prototype.com', 'E-Fornas');
+      $this->email->to($post['email']);
+      if($post['type'] == 'LENGKAP')
+        $this->email->subject('Usulan '.$post['nomor_efornas'].' Diterima');
+      else
+        $this->email->subject('Usulan '.$post['nomor_efornas'].' Ditolak');
+      $this->email->message($post['text_email_usulan']);
+
+      $this->email->send();
+      echo json_encode(array('code'=>'00','msg'=>$post));
+    }else{
+      echo json_encode(array('code'=>'01','msg'=>'Anda tidak bisa mengakses laman ini'));
     }
   }
   //END OF INDEX FOR TERIMA USULAN
   //FUNCTION FOR TOLAK USULAN
   Public function Tolak(){
+    $sess = $this->session->userdata('user_data');
+    $privilege = $sess['usulan_terbaru_write'];
+    if($privilege != 'on'){
+      echo json_encode(array('code'=>'01','msg'=>'Anda mempunyai limitasi untuk mengakses laman ini, silahkan hubungi administrator'));
+      exit;
+    }
     $post = $this->input->post();
     if(!empty($post)){
       $data = array(
         'status' => 'TIDAK LENGKAP',
         'date_approve' => date('Y-m-d')
       );
+      $usulan = $this->Model_Transaction->Normal_Select('usulan','nomor_efornas',$post['nomor_efornas']);
+      $id_user = $usulan[0]['id_user'];
+      $user = $this->Model_Get_Users->Normal_Select('users','id',$id_user);
       $this->Model_Transaction->Update_To_Db($data,'usulan','nomor_efornas',$post['nomor_efornas']);
+      echo json_encode(array('code'=>'00','msg'=>'Usulan '.$post['nomor_efornas'].'telah diverifikasi dan ditolak','email'=>$user[0]['email']));
+      exit;
     }else{
-      echo ('Anda tidak bisa mengakeses laman ini');
+      echo json_encode(array('code'=>'02','msg'=>'Anda tidak bisa mengakses laman ini'));
+      exit;
     }
   }
   //END OF INDEX FOR TOLAK USULAN
@@ -400,6 +485,12 @@ class Usulan extends CI_Controller {
   //INDEX FOR ADD USULAN VIEW IN ADMIN
 	public function Insert_Obat_Baru(){
     //SET SUB BREADCRUMB
+    $sess = $this->session->userdata('user_data');
+    $privilege = $sess['usulan_obat_baru_write'];
+    if($privilege != 'on'){
+      echo '<script>alert("Anda mempunyai limitasi untuk mengakses laman ini, silahkan hubungi administrator"); window.location.assign("'.base_url().'Dashboard");</script>';
+      exit;
+    }
     $this->session->set_userdata(array('breadcrumb'=>'usulan_obat_baru'));
     $this->session->set_userdata(array('main_sub_breadcrumb'=>'usulan_obat_baru'));
     //GET KEKUATAN DATA
@@ -435,6 +526,12 @@ class Usulan extends CI_Controller {
   //INDEX FOR ADD USULAN VIEW IN ADMIN
 	public function Insert_Obat_Combinasi(){
     //SET SUB BREADCRUMB
+    $sess = $this->session->userdata('user_data');
+    $privilege = $sess['obat_kombinasi_write'];
+    if($privilege != 'on'){
+      echo '<script>alert("Anda mempunyai limitasi untuk mengakses laman ini, silahkan hubungi administrator"); window.location.assign("'.base_url().'Dashboard");</script>';
+      exit;
+    }
     $this->session->set_userdata(array('breadcrumb'=>'master'));
     $this->session->set_userdata(array('main_sub_breadcrumb'=>'usulan_obat_combinasi'));
     //GET KEKUATAN DATA

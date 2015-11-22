@@ -189,14 +189,14 @@
         <a href="#"><i class="fa fa-user"></i> MANAJEMEN USER<i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
           <li class="<?php if(!empty($msbc)&&$msbc == 'users'){?>active<?php }?>">
-            <a><i class="fa fa-user"></i> Users</a>
+            <a><i class="fa fa-user"></i> USERS</a>
             <ul class="treeview-menu">
               <li><a href="<?= base_url()?>Users"><i class="fa  fa-list "></i> DAFTAR USER</a></li>
               <li><a href="<?= base_url()?>Users/Insert"><i class="fa fa-plus-square"></i> TAMBAH USER</a></li>
             </ul>
           </li>
           <li class="<?php if(!empty($msbc)&&$msbc == 'privilege'){?>active<?php }?>">
-            <a><i class="fa fa-user"></i> Privilege</a>
+            <a><i class="fa fa-user"></i> PRIVILEGE</a>
             <ul class="treeview-menu">
               <li><a href="<?= base_url()?>Privilege"><i class="fa  fa-list "></i> DAFTAR PRIVILEGE</a></li>
               <li><a href="<?= base_url()?>Privilege/Insert"><i class="fa fa-plus-square"></i> TAMBAH PRIVILEGE</a></li>

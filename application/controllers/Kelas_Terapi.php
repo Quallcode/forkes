@@ -24,6 +24,12 @@ class Kelas_Terapi extends CI_Controller {
   //INDEX FOR FIRST VIEW
 	public function Index(){
     //GET SATUAAN DATA
+    $sess = $this->session->userdata('user_data');
+    $privilege = $sess['kelas_terapi_read'];
+    if($privilege != 'on'){
+      echo '<script>alert("Anda mempunyai limitasi untuk mengakses laman ini, silahkan hubungi administrator"); window.location.assign("'.base_url().'Dashboard");</script>';
+      exit;
+    }
     $satuan = $this->Model_Get_Kelas_Terapi->Normal_Select(TABLE);
     //print_r($satuan);exit;
     //DECLARE VIEW DATA FOR WRAPPER
@@ -37,6 +43,12 @@ class Kelas_Terapi extends CI_Controller {
   //POST SATUAAN
   public function Insert(){
     //GET POST DATA
+    $sess = $this->session->userdata('user_data');
+    $privilege = $sess['kelas_terapi_write'];
+    if($privilege != 'on'){
+      echo '<script>alert("Anda mempunyai limitasi untuk mengakses laman ini, silahkan hubungi administrator"); window.location.assign("'.base_url().'Dashboard");</script>';
+      exit;
+    }
     $post = $this->input->post();
     //CHECK IF EMPTY POST
     if(empty($post)){
@@ -62,6 +74,12 @@ class Kelas_Terapi extends CI_Controller {
 
   public function Update()
   {
+    $sess = $this->session->userdata('user_data');
+    $privilege = $sess['kelas_terapi_write'];
+    if($privilege != 'on'){
+      echo '<script>alert("Anda mempunyai limitasi untuk mengakses laman ini, silahkan hubungi administrator"); window.location.assign("'.base_url().'Dashboard");</script>';
+      exit;
+    }
   	$uri = $this->uri->segment(3);
   	if(empty($uri)){
   		$post = $this->input->post();
@@ -86,12 +104,18 @@ class Kelas_Terapi extends CI_Controller {
   }
 
   public function Delete(){
-	$uri = $this->uri->segment(3);
-	$data = array(
-		'deleted'	=> '1'
-	);
-	$this->Model_Transaction->Update_To_Db($data,TABLE,'id_terapi',$uri);
-	echo '<script>alert("Berhasil Menghapus Data"); window.location.assign("'.base_url().'Kelas_Terapi");</script>';
+    $sess = $this->session->userdata('user_data');
+    $privilege = $sess['kelas_terapi_delete'];
+    if($privilege != 'on'){
+      echo '<script>alert("Anda mempunyai limitasi untuk mengakses laman ini, silahkan hubungi administrator"); window.location.assign("'.base_url().'Dashboard");</script>';
+      exit;
+    }
+  	$uri = $this->uri->segment(3);
+  	$data = array(
+  		'deleted'	=> '1'
+  	);
+  	$this->Model_Transaction->Update_To_Db($data,TABLE,'id_terapi',$uri);
+  	echo '<script>alert("Berhasil Menghapus Data"); window.location.assign("'.base_url().'Kelas_Terapi");</script>';
   }
   //END OF POST SATUAAN
 }

@@ -26,6 +26,12 @@ class Obat_Combinasi extends CI_Controller {
   //INDEX FOR FIRST VIEW
 	public function Index(){
     //GET SATUAAN DATA
+    $sess = $this->session->userdata('user_data');
+    $privilege = $sess['obat_kombinasi_read'];
+    if($privilege != 'on'){
+      echo '<script>alert("Anda mempunyai limitasi untuk mengakses laman ini, silahkan hubungi administrator"); window.location.assign("'.base_url().'Dashboard");</script>';
+      exit;
+    }
     $obt_combinasi = $this->Model_Get_Combinasi->Select_Data();
     //print_r($obt_combinasi);exit;
     //DECLARE VIEW DATA FOR WRAPPER
@@ -39,6 +45,12 @@ class Obat_Combinasi extends CI_Controller {
   //POST SATUAAN
   public function Insert(){
     //GET POST DATA
+    $sess = $this->session->userdata('user_data');
+    $privilege = $sess['obat_kombinasi_write'];
+    if($privilege != 'on'){
+      echo '<script>alert("Anda mempunyai limitasi untuk mengakses laman ini, silahkan hubungi administrator"); window.location.assign("'.base_url().'Dashboard");</script>';
+      exit;
+    }
     $post = $this->input->post();
     //CHECK IF EMPTY POST
     if(empty($post)){
@@ -62,45 +74,62 @@ class Obat_Combinasi extends CI_Controller {
   }
 
   public function update(){
-	$uri = $this->uri->segment(3);
-	if(empty($uri)){
-		$post = $this->input->post();
-		$id = $post['id'];
-		$data = array(
-			'id_kelas_terapi' 	=> $post['id_kelas_terapi'],
-			'nama_satuan'	=> $post['nama_satuan']
-		);
-		$this->Model_Transaction->Update_To_Db($data,TABLE,'id',$id);
-		echo '<script>alert("Berhasil Merubah Data"); window.location.assign("'.base_url().'Obat_Combinasi");</script>';
-	}else{
-    //GET SATUAAN DATA
-		$atc_obat = $this->Model_Get_Combinasi->Check_Update_Combinasi($uri);
-    $nama_combinasi = $this->Model_Get_Combinasi->Select_Name_Combinasi($uri);
-    $obat        = $this->Model_Get_Usulan->Normal_Select('atc_obat');
-    //print_r($satuan); exit;
-		//DECLARE VIEW DATA FOR WRAPPER
-    $view_data['obat'] = $obat;
-    $view_data['nama_combinasi'] = $nama_combinasi;
-		$view_data['atc_obat']   = $atc_obat;
-		$view_data['body']   = 'body/master/obat_combinasi/update_dsp';
-		//LOAD VIEW DATA TO WRAPPER
-		$this->load->view('wrapper',$view_data);
-		}
+    $sess = $this->session->userdata('user_data');
+    $privilege = $sess['obat_kombinasi_write'];
+    if($privilege != 'on'){
+      echo '<script>alert("Anda mempunyai limitasi untuk mengakses laman ini, silahkan hubungi administrator"); window.location.assign("'.base_url().'Dashboard");</script>';
+      exit;
+    }
+  	$uri = $this->uri->segment(3);
+  	if(empty($uri)){
+  		$post = $this->input->post();
+  		$id = $post['id'];
+  		$data = array(
+  			'id_kelas_terapi' 	=> $post['id_kelas_terapi'],
+  			'nama_satuan'	=> $post['nama_satuan']
+  		);
+  		$this->Model_Transaction->Update_To_Db($data,TABLE,'id',$id);
+  		echo '<script>alert("Berhasil Merubah Data"); window.location.assign("'.base_url().'Obat_Combinasi");</script>';
+  	}else{
+      //GET SATUAAN DATA
+  		$atc_obat = $this->Model_Get_Combinasi->Check_Update_Combinasi($uri);
+      $nama_combinasi = $this->Model_Get_Combinasi->Select_Name_Combinasi($uri);
+      $obat        = $this->Model_Get_Usulan->Normal_Select('atc_obat');
+      //print_r($satuan); exit;
+  		//DECLARE VIEW DATA FOR WRAPPER
+      $view_data['obat'] = $obat;
+      $view_data['nama_combinasi'] = $nama_combinasi;
+  		$view_data['atc_obat']   = $atc_obat;
+  		$view_data['body']   = 'body/master/obat_combinasi/update_dsp';
+  		//LOAD VIEW DATA TO WRAPPER
+  		$this->load->view('wrapper',$view_data);
+  	}
   }
 
   public function delete(){
-	$uri = $this->uri->segment(3);
-	$data = array(
-		'deleted'	=> '1'
-	);
-	$this->Model_Transaction->Update_To_Db($data,TABLE,'id_obat_combinasi',$uri);
-	echo '<script>alert("Berhasil Menghapus Data"); window.location.assign("'.base_url().'Obat_Combinasi");</script>';
+    $sess = $this->session->userdata('user_data');
+    $privilege = $sess['obat_kombinasi_delete'];
+    if($privilege != 'on'){
+      echo '<script>alert("Anda mempunyai limitasi untuk mengakses laman ini, silahkan hubungi administrator"); window.location.assign("'.base_url().'Dashboard");</script>';
+      exit;
+    }
+  	$uri = $this->uri->segment(3);
+  	$data = array(
+  		'deleted'	=> '1'
+  	);
+  	$this->Model_Transaction->Update_To_Db($data,TABLE,'id_obat_combinasi',$uri);
+  	echo '<script>alert("Berhasil Menghapus Data"); window.location.assign("'.base_url().'Obat_Combinasi");</script>';
   }
 
   public function Edit_Usulan(){
+    $sess = $this->session->userdata('user_data');
+    $privilege = $sess['obat_kombinasi_delete'];
+    if($privilege != 'on'){
+      echo '<script>alert("Anda mempunyai limitasi untuk mengakses laman ini, silahkan hubungi administrator"); window.location.assign("'.base_url().'Dashboard");</script>';
+      exit;
+    }
     $post = $this->input->post();
     //print_r($post);exit;
-
     if(!empty($post))
     {
       $this->Model_Transaction->Delete_To_Db('detail_obat_combinasi','nama_obat_combinasi',$post['obat_combinasi']);
