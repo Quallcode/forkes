@@ -24,20 +24,34 @@ class Login extends CI_Controller {
   //POST LOGIN
   public function Verify(){
     //GET POST DATA
+//	print_r($sess);exit;
     $post = $this->input->post();
     //CHECK IF EMPTY POST
     if(empty($post['username']) || empty($post['password'])){
       echo '<script>alert("Username atau Password anda kosong"); window.location.assign("'.base_url().'login");</script>';
     }else{
       //CHECK POST TO DATABASE
-      $data = $this->Model_Users->Check_Login_Valid($post);
-      $this->session->set_userdata(array('user_data'=>$data));
-      if(!empty($data)) {
-        //IF DATA EXIST
-        echo '<script>alert("Selamat Datang '.$data['nama'].'"); window.location.assign("'.base_url().'dashboard");</script>';
+      $check_login_status = $this->Model_Users->Check_Login_Status($post);
+      //print_r($check_login_status); exit;
+      if($check_login_status == '1') {
+        $data = $this->Model_Users->Check_Login_Valid($post);
+    	  $data_input= array(
+    						'flag' 			=> '1',
+    						'date_login'	=> date('Y-m-d H:i:s'),
+    					);
+    					$this->Model_Users->Update_Flag_1($data_input,$post['username']);
+    	  $this->session->set_userdata(array('user_data'=>$data));
+
+          if(!empty($data)) {
+            //IF DATA EXIST
+            echo '<script>alert("Selamat Datang '.$data['nama'].'"); window.location.assign("'.base_url().'dashboard");</script>';
+          } else {
+            //IF DATA NOT EXIST
+            echo '<script>alert("Username atau Password anda salah"); window.location.assign("'.base_url().'login");</script>';
+          }
       } else {
         //IF DATA NOT EXIST
-        echo '<script>alert("Username atau Password anda salah"); window.location.assign("'.base_url().'login");</script>';
+        echo '<script>alert("ID sedang digunakan"); window.location.assign("'.base_url().'login");</script>';
       }
     }
   }
@@ -45,7 +59,7 @@ class Login extends CI_Controller {
 
   //LOGOUT FUNCTION
   public function Logout(){
-      $this->session->unset_userdata('user_data');
+	  $this->session->unset_userdata('user_data');
       session_write_close();
       redirect('login','refresh');
       exit;

@@ -32,6 +32,7 @@
       <div class="login-box-body">
         <p class="login-box-msg">Login untuk masuk ke menu utama</p>
         <form class="login-form" method="post" action="<?=base_url()?>login/verify">
+          <input type="hidden" name="flag" value="1"></input>
           <div class="form-group has-feedback">
             <input type="username" class="form-control" placeholder="Username" id="form-username" name="username">
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
