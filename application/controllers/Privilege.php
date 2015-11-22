@@ -82,18 +82,16 @@ class Privilege extends CI_Controller {
   	if(empty($uri)){
   		$post = $this->input->post();
   		$id = $post['id'];
-  		$data = array(
-  			'id_kekuatan' 	=> $post['id_kekuatan'],
-  			'kekuatan'		=> $post['kekuatan']
-  		);
+  		$data = $post;
+      unset($data['id']);
   		$this->Model_Transaction->Update_To_Db($data,TABLE,'id',$id);
-  		echo '<script>alert("Berhasil Merubah Data"); window.location.assign("'.base_url().'Kekuatan");</script>';
+  		echo '<script>alert("Berhasil Merubah Data"); window.location.assign("'.base_url().'Privilege");</script>';
   	}else{
       //GET KEKUATAN DATA
-  		$kekuatan = $this->Model_Get_Kekuatan->Update_Select(TABLE,'id',$uri);
+  		$kekuatan = $this->Model_Get_Privilege->Update_Select(TABLE,'id',$uri);
   		//DECLARE VIEW DATA FOR WRAPPER
   		$view_data['data']   = $kekuatan[0];
-  		$view_data['body']   = 'body/master/kekuatan/update_dsp';
+  		$view_data['body']   = 'body/privilege/update_dsp';
   		//LOAD VIEW DATA TO WRAPPER
   		$this->load->view('wrapper',$view_data);
 		}

@@ -27,6 +27,12 @@ class Sub_Kelas_Terapi2 extends CI_Controller {
   //INDEX FOR FIRST VIEW
 	public function Index(){
     //GET SATUAAN DATA
+    $sess = $this->session->userdata('user_data');
+    $privilege = $sess['sub_kelas_terapi2_read'];
+    if($privilege != 'on'){
+      echo '<script>alert("Anda mempunyai limitasi untuk mengakses laman ini, silahkan hubungi administrator"); window.location.assign("'.base_url().'Dashboard");</script>';
+      exit;
+    }
     $sub_kelas_terapi2 = $this->Model_Get_Sub_Kelas_Terapi2->Normal_Select(TABLE);
     //print_r($satuan);exit;
     //DECLARE VIEW DATA FOR WRAPPER
@@ -40,6 +46,12 @@ class Sub_Kelas_Terapi2 extends CI_Controller {
   //POST SATUAAN
   public function Insert(){
     //GET POST DATA
+    $sess = $this->session->userdata('user_data');
+    $privilege = $sess['sub_kelas_terapi2_write'];
+    if($privilege != 'on'){
+      echo '<script>alert("Anda mempunyai limitasi untuk mengakses laman ini, silahkan hubungi administrator"); window.location.assign("'.base_url().'Dashboard");</script>';
+      exit;
+    }
     $post = $this->input->post();
     //print_r($post); exit;
     //CHECK IF EMPTY POST
@@ -77,6 +89,12 @@ class Sub_Kelas_Terapi2 extends CI_Controller {
   }
 
   public function Update(){
+    $sess = $this->session->userdata('user_data');
+    $privilege = $sess['sub_kelas_terapi2_write'];
+    if($privilege != 'on'){
+      echo '<script>alert("Anda mempunyai limitasi untuk mengakses laman ini, silahkan hubungi administrator"); window.location.assign("'.base_url().'Dashboard");</script>';
+      exit;
+    }
 	$uri = $this->uri->segment(3);
 	if(empty($uri)){
 		$post = $this->input->post();
@@ -101,6 +119,12 @@ class Sub_Kelas_Terapi2 extends CI_Controller {
   }
 
   public function Delete(){
+    $sess = $this->session->userdata('user_data');
+    $privilege = $sess['sub_kelas_terapi2_delete'];
+    if($privilege != 'on'){
+      echo '<script>alert("Anda mempunyai limitasi untuk mengakses laman ini, silahkan hubungi administrator"); window.location.assign("'.base_url().'Dashboard");</script>';
+      exit;
+    }
 	$uri = $this->uri->segment(3);
 	$data = array(
 		'deleted'	=> '1'
