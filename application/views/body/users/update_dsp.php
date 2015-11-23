@@ -2,7 +2,7 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Input User Baru
+      Update User <?=$data['username']?>
     </h1>
   </section>
   <section class="content">
@@ -12,41 +12,34 @@
         <!-- general form elements -->
         <div class="box box-primary">
           <div class="box-header with-border">
-            <h3 class="box-title">Data Untuk User Baru</h3>
+            <h3 class="box-title">Data Untuk User <?=$data['username']?></h3>
           </div><!-- /.box-header -->
           <!-- form start -->
-          <form role="form" action="<?=base_url()?>Users/Insert" method="post" enctype="multipart/form-data">
+          <form role="form" action="<?=base_url()?>Users/Update" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="<?=$data['id']?>"/>
             <div class="box-body">
               <div class="form-group">
                 <label for="username">Username</label>
                 <input type="hidden" name="type" value="3"/>
-                <input type="text" class="form-control" id="username" name="username" placeholder="Username Baru">
-              </div>
-              <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-              </div>
-              <div class="form-group">
-                <label for="confirm_password">Confirm Password</label>
-                <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Konfirmasi Password">
+                <input type="text" class="form-control" id="username" name="username" value="<?=$data['username']?>" disabled>
               </div>
               <div class="form-group">
                 <label for="nama">Nama</label>
-                <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama User">
+                <input type="text" class="form-control" id="nama" name="nama" value="<?=$data['username']?>">
               </div>
               <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" class="form-control" id="email" name="email" placeholder="Email user">
+                <input type="text" class="form-control" id="email" name="email" value="<?=$data['email']?>">
               </div>
               <div class="form-group">
                 <label for="no_telp">No Telp</label>
-                <input type="text" class="form-control" id="no_telp" name="no_telp" placeholder="No Telp user">
+                <input type="text" class="form-control" id="no_telp" name="no_telp" value="<?=$data['no_telp']?>">
               </div>
               <div class="form-group">
                 <label for="privilage">Privilage</label>
                 <select id="privilage" class="form-control" name="id_privilege">
                   <?php foreach($privilege as $row){?>
-                    <option value="<?=$row['id']?>"><?=$row['nama_privilege']?></option>
+                    <option value="<?=$row['id']?>" <?php if($row['id'] == $data['id_privilege']) { ?>selected<?php } ?>><?=$row['nama_privilege']?></option>
                   <?php }?>
                 </select>
               </div>

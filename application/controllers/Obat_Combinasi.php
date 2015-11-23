@@ -73,9 +73,10 @@ class Obat_Combinasi extends CI_Controller {
     }
   }
 
-  public function update(){
+  public function Update(){
     $sess = $this->session->userdata('user_data');
     $privilege = $sess['obat_kombinasi_write'];
+    //print_r($privilege);exit;
     if($privilege != 'on'){
       echo '<script>alert("Anda mempunyai limitasi untuk mengakses laman ini, silahkan hubungi administrator"); window.location.assign("'.base_url().'Dashboard");</script>';
       exit;
