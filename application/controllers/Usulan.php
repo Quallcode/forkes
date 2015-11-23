@@ -428,10 +428,10 @@ class Usulan extends CI_Controller {
 
       $config['protocol'] = 'smtp';
       //$config['smtp_host'] = 'pacific.unlimited.id';
-      $config['smtp_host'] = 'mail@e-fornas.apps-prototype.com';
-      $config['smtp_user'] = 'info@e-fornas.apps-prototype.com';
-      $config['smtp_pass'] = '123admin';
-      $config['smtp_port'] = '25';
+      $config['smtp_host'] = 'ssl://smtp.googlemail.com';
+      $config['smtp_user'] = 'efornas.test@gmail.com';
+      $config['smtp_pass'] = '123efornas';
+      $config['smtp_port'] = '465';
       //$config['smtp_port'] = '465';
       //$config['smtp_crypto'] = 'ssl';
       $config['mailtype'] = 'html';
@@ -440,7 +440,7 @@ class Usulan extends CI_Controller {
 
       $this->email->initialize($config);
 
-      $this->email->from('info@e-fornas.apps-prototype.com', 'E-Fornas');
+      $this->email->from('efornas.test@gmail.com', 'E-Fornas');
       $this->email->to($post['email']);
       if($post['type'] == 'LENGKAP')
         $this->email->subject('Usulan '.$post['nomor_efornas'].' Diterima');
