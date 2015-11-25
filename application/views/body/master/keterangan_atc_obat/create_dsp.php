@@ -15,11 +15,11 @@
             <h3 class="box-title">Data Master Keterangan ATC Obat</h3>
           </div><!-- /.box-header -->
           <!-- form start -->
-          <form role="form" action="<?=base_url()?>Keterangan_Atc_Obat/Insert" method="post" enctype="multipart/form-data">
+          <form role="form" id="form_input" action="<?=base_url()?>Keterangan_Atc_Obat/Insert" method="post" enctype="multipart/form-data">
             <div class="box-body">
               <div class="form-group">
                 <label for="keterangan">Keterangan</label>
-                <input type="text" class="form-control" id="keterangan" name="keterangan" placeholder="Masukan Keterangan ATC Obat">
+                <input type="text" class="form-control required" id="keterangan" name="keterangan" placeholder="Masukan Keterangan ATC Obat">
               </div>
             </div><!-- /.box-body -->
 

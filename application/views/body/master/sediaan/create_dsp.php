@@ -15,19 +15,19 @@
             <h3 class="box-title">Data Master Sediaan</h3>
           </div><!-- /.box-header -->
           <!-- form start -->
-          <form role="form" action="<?=base_url()?>Sediaan/Insert" method="post">
+          <form role="form" id="form_input" action="<?=base_url()?>Sediaan/Insert" method="post">
             <div class="box-body">
               <div class="form-group">
                 <label for="id_sediaan">ID</label>
-                <input type="text" class="form-control" id="id_sediaan" name="id_sediaan" placeholder="ID untuk Sediaan Baru">
+                <input type="text" class="form-control required" id="id_sediaan" name="id_sediaan" placeholder="ID untuk Sediaan Baru">
               </div>
               <div class="form-group">
                 <label for="sediaan">Sediaan</label>
-                <input type="text" class="form-control" id="nama_sediaan" name="nama_sediaan" placeholder="Masukkan Nama Sediaan">
+                <input type="text" class="form-control required" id="nama_sediaan" name="nama_sediaan" placeholder="Masukkan Nama Sediaan">
               </div>
               <div class="form-group">
                 <label for="keterangan">Keterangan</label>
-                <textarea class="form-control" id="keterangan" name="keterangan" placeholder="Masukkan Keterangan Sediaan"></textarea>
+                <textarea class="form-control required" id="keterangan" name="keterangan" placeholder="Masukkan Keterangan Sediaan"></textarea>
               </div>
             </div><!-- /.box-body -->
 

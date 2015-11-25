@@ -124,6 +124,60 @@ function GetMsg(id){
   return false;
 }
 
+function CheckKelasterapi(kelasterapi,id){
+  //alert(kelasterapi);
+  var data = {
+    "id_terapi": kelasterapi
+  };
+  $.ajax({
+    type: "POST",
+    dataType: "json",
+    url: base_url+"Checking/KelasTerapi", //Relative or absolute path to response.php file
+    data: data,
+    success: function(data) {
+      //alert(data.status);
+      $('#id_sub_kelasterapi').val(kelasterapi +"0"+(data.msg+1));
+    }
+  });
+  return false;
+}
+
+function CheckSubKelasterapi(subkelasterapi,id){
+  //alert(subkelasterapi);
+  var data = {
+    "id_sub_kelasterapi": subkelasterapi
+  };
+  $.ajax({
+    type: "POST",
+    dataType: "json",
+    url: base_url+"Checking/SubKelasTerapi", //Relative or absolute path to response.php file
+    data: data,
+    success: function(data) {
+      //alert(data.status);
+      $('#id_sub_kelasterapi2').val(subkelasterapi +"0"+(data.msg+1));
+    }
+  });
+  return false;
+}
+
+function CheckSubKelasterapi2(subkelasterapi2,id){
+  //alert(subkelasterapi);
+  var data = {
+    "id_sub_kelasterapi2": subkelasterapi2
+  };
+  $.ajax({
+    type: "POST",
+    dataType: "json",
+    url: base_url+"Checking/SubKelasTerapi2", //Relative or absolute path to response.php file
+    data: data,
+    success: function(data) {
+      //alert(data.status);
+      $('#id_sub_kelasterapi3').val(subkelasterapi2 +"0"+(data.msg+1));
+    }
+  });
+  return false;
+}
+
 function get_id_kelasterapi(){
   var kelasterapi = $('.inputKelasTerapi').find('option:selected').val();
   var html = '';

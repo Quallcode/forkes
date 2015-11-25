@@ -2,7 +2,7 @@
 var basefolder = '<?=$basefolder?>';
 var no_fornas = '<?=$no_fornas?>';
 </script>
-<form class="form-horizontal" action="<?=base_url()?>Usulan/Add_Obat_Combinasi" method="post" enctype="multipart/form-data">
+<form class="form-horizontal" id="form_input" action="<?=base_url()?>Usulan/Add_Obat_Combinasi" method="post" enctype="multipart/form-data">
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -12,7 +12,7 @@ var no_fornas = '<?=$no_fornas?>';
     </section>
     <section class="content">
 
-      <select class="form-control" id="idSelectObatHidden" style="display:none">
+      <select class="form-control required" id="idSelectObatHidden" style="display:none">
         <?php foreach( $obat as $key5) { ?>
           <option value="<?=$key5['id_atc_obat']?>" ><?=$key5['nama_obat']?></option>
         <?php } ?>
@@ -28,7 +28,7 @@ var no_fornas = '<?=$no_fornas?>';
               <div>
                 <div class="box-body">
                   <div class="form-group">
-                    <label for="inputObatCombinasi" class="col-sm-2 control-label labelObatCombinasi">Nama Obat Kombinasi</label>
+                    <label for="inputObatCombinasi" class="col-sm-2 control-label required labelObatCombinasi">Nama Obat Kombinasi</label>
                     <div class="col-sm-6">
                       <input type="text" class="form-control inputObatCombinasi" id="inputObatCombinasi" placeholder="Nama Obat Kombinasi" name="obat_combinasi">
                     </div>
@@ -41,7 +41,7 @@ var no_fornas = '<?=$no_fornas?>';
                   <div class="form-group">
                     <label for="inputNamaObat" class="col-sm-2 control-label labelNamaObat">Nama Obat</label>
                     <div class="col-sm-6">
-                      <select class="form-control inputNamaObat1" id="inputNamaObat1" name="id_atc_obat[]">
+                      <select class="form-control required inputNamaObat1" id="inputNamaObat1" name="id_atc_obat[]">
                         <?php foreach( $obat as $key) { ?>
                           <option value="<?=$key['id_atc_obat']?>" ><?=$key['nama_obat']?></option>
                         <?php } ?>

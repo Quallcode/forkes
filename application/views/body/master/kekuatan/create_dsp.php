@@ -15,15 +15,15 @@
             <h3 class="box-title">Data Master Kekuatan</h3>
           </div><!-- /.box-header -->
           <!-- form start -->
-          <form role="form" action="<?=base_url()?>Kekuatan/Insert" method="post" enctype="multipart/form-data">
+          <form role="form" id="form_input" action="<?=base_url()?>Kekuatan/Insert" method="post" enctype="multipart/form-data">
             <div class="box-body">
               <div class="form-group">
                 <label for="id_kekuatan">ID Kekuatan</label>
-                <input type="text" class="form-control" id="id_kekuatan" name="id_kekuatan" placeholder="ID untuk Kekuatan Baru">
+                <input type="text" class="form-control required" id="id_kekuatan" name="id_kekuatan" placeholder="ID untuk Kekuatan Baru">
               </div>
               <div class="form-group">
                 <label for="besar_kekutaan">Besar Kekuatan</label>
-                <input type="text" class="form-control" id="kekuatan" name="kekuatan" placeholder="Besar Kekuatan">
+                <input type="text" class="form-control required" id="kekuatan" name="kekuatan" placeholder="Besar Kekuatan">
               </div>
             </div><!-- /.box-body -->
 

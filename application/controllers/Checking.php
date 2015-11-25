@@ -109,6 +109,57 @@ class Checking extends CI_Controller {
   }
   //END OF INDEX FOR CHECK SATUAN
 
+  //CHECK KELASTERAPI FUNCTION
+  public function KelasTerapi(){
+    //check empty post
+    $post = $this->input->post();
+    if(!empty($post)){
+      $count = $this->Model_Checking->Get_Id_Terapi($post['id_terapi']);
+      if(empty($count)){
+        echo json_encode(array('status'=>'01','msg'=>$count));
+      }else{
+        echo json_encode(array('status'=>'00','msg'=>$count));
+      }
+    }else{
+      echo json_encode(array('status'=>'60','msg'=>'Error, post yang diberikan kosong'));
+    }
+  }
+  //END OF INDEX FOR CHECK KELASTERAPI
+
+  //CHECK SUBKELASTERAPI FUNCTION
+  public function SubKelasTerapi(){
+    //check empty post
+    $post = $this->input->post();
+    if(!empty($post)){
+      $count = $this->Model_Checking->Get_Id_SubTerapi($post['id_sub_kelasterapi']);
+      if(empty($count)){
+        echo json_encode(array('status'=>'01','msg'=>$count));
+      }else{
+        echo json_encode(array('status'=>'00','msg'=>$count));
+      }
+    }else{
+      echo json_encode(array('status'=>'60','msg'=>'Error, post yang diberikan kosong'));
+    }
+  }
+  //END OF INDEX FOR CHECK SUBKELASTERAPI
+
+  //CHECK SUBKELASTERAPI2 FUNCTION
+  public function SubKelasTerapi2(){
+    //check empty post
+    $post = $this->input->post();
+    if(!empty($post)){
+      $count = $this->Model_Checking->Get_Id_SubTerapi2($post['id_sub_kelasterapi2']);
+      if(empty($count)){
+        echo json_encode(array('status'=>'01','msg'=>$count));
+      }else{
+        echo json_encode(array('status'=>'00','msg'=>$count));
+      }
+    }else{
+      echo json_encode(array('status'=>'60','msg'=>'Error, post yang diberikan kosong'));
+    }
+  }
+  //END OF INDEX FOR CHECK SUBKELASTERAPI2
+
   public function GetMsg(){
     //check empty post
     $post = $this->input->post();

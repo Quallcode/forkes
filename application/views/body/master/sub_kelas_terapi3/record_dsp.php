@@ -27,8 +27,6 @@
             <table id="dataTable" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <th>ID Terapi</th>
-                  <th>ID Sub Terapi</th>
                   <th>ID Sub Terapi2</th>
                   <th>ID Sub Terapi3</th>
                   <th>Nama Sub Kelas Terapi 3</th>
@@ -39,8 +37,6 @@
                 <?php if(!empty($data)){?>
                   <?php foreach($data as $val){?>
                     <tr>
-                      <td><?=$val['id_terapi']?></td>
-                      <td><?=$val['id_sub_kelasterapi']?></td>
                       <td><?=$val['id_sub_kelasterapi2']?></td>
                       <td><?=$val['id_sub_kelasterapi3']?></td>
                       <td><?=$val['Sub_Kelas_Terapi_3']?></td>
@@ -59,8 +55,6 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <th>ID Terapi</th>
-                  <th>ID Sub Terapi</th>
                   <th>ID Sub Terapi2</th>
                   <th>ID Sub Terapi3</th>
                   <th>Nama Sub Kelas Terapi 3</th>

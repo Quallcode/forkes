@@ -25,5 +25,47 @@ class Model_Checking extends CI_Model {
 			return FALSE;
 		}
 	}
+
+  function Get_Id_Terapi($id_terapi){
+    $query = "select * from sub_kelasterapi where id_terapi='".$id_terapi."'";
+    $result = $this->db->query($query);
+    $data = $result->num_rows();
+    $i = 0;
+		if ($result->num_rows() > 0) {
+			$data = $result->num_rows();
+			return $data;
+		}
+		else{
+			return FALSE;
+		}
+  }
+
+  function Get_Id_SubTerapi($id_subkelasterapi){
+    $query = "select * from sub_kelasterapi2 where id_sub_kelasterapi='".$id_subkelasterapi."'";
+    $result = $this->db->query($query);
+    $data = $result->num_rows();
+    $i = 0;
+		if ($result->num_rows() > 0) {
+			$data = $result->num_rows();
+			return $data;
+		}
+		else{
+			return FALSE;
+		}
+  }
+
+  function Get_Id_SubTerapi2($id_subkelasterapi2){
+    $query = "select * from sub_kelasterapi3 where id_sub_kelasterapi2='".$id_subkelasterapi2."'";
+    $result = $this->db->query($query);
+    $data = $result->num_rows();
+    $i = 0;
+		if ($result->num_rows() > 0) {
+			$data = $result->num_rows();
+			return $data;
+		}
+		else{
+			return FALSE;
+		}
+  }
 }
 ?>

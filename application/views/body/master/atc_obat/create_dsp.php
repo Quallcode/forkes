@@ -15,19 +15,19 @@
             <h3 class="box-title">Data Master Atc Obat</h3>
           </div><!-- /.box-header -->
           <!-- form start -->
-          <form role="form" action="<?=base_url()?>Atc_Obat/Insert" method="post" enctype="multipart/form-data">
+          <form role="form" id="form_input" action="<?=base_url()?>Atc_Obat/Insert" method="post" enctype="multipart/form-data">
             <div class="box-body">
               <div class="form-group">
                 <label for="id_atc_obat">ID ATC Obat</label>
-                <input type="text" class="form-control" id="id_atc_obat" name="id_atc_obat" placeholder="ID untuk ATC Obat">
+                <input type="text" class="form-control required" id="id_atc_obat" name="id_atc_obat" placeholder="ID untuk ATC Obat">
               </div>
               <div class="form-group">
                 <label for="nama_obat">Nama Obat</label>
-                <input type="text" class="form-control" id="nama_obat" name="nama_obat" placeholder="Nama Obat">
+                <input type="text" class="form-control required" id="nama_obat" name="nama_obat" placeholder="Nama Obat">
               </div>
               <div class="form-group">
                 <label for="id_keterangan">Keterangan</label>
-                <select class="form-control" id="id_keterangan" name="id_keterangan">
+                <select class="form-control required" id="id_keterangan" name="id_keterangan">
                   <?php if(!empty($data)){?>
                     <?php foreach($data as $val){?>
                       <option value="<?=$val['id']?>"><?=$val['keterangan']?></option>
