@@ -15,81 +15,81 @@
             <h3 class="box-title">Data Master Fornas</h3>
           </div><!-- /.box-header -->
           <!-- form start -->
-          <form role="form" action="<?=base_url()?>Fornas/Insert" method="post" enctype="multipart/form-data">
+          <form role="form" id="form_input" action="<?=base_url()?>Fornas/Insert" method="post" enctype="multipart/form-data">
             <div class="box-body">
               <div class="form-group">
                 <label for="kelas_terapi">Kelas Terapi*</label>
-                <select name="kelas_terapi" id="kelas_terapi" class="form-control inputKelasTerapi">
+                <select name="kelas_terapi" id="kelas_terapi" class="form-control required inputKelasTerapi">
                 	<option value="" selected="selected">Choose one</option>
 					<?php foreach($kelas_terapi as $terapi) { ?>
 						<option value="<?= $terapi['id_terapi'].'+'.$terapi['Kelas_terapi'] ?>"><?= $terapi['Kelas_terapi'] ?></option>
                     <?php } ?>
-                </select> 
+                </select>
               </div>
               <div class="form-group">
                 <label for="sub_kelasterapi">Sub Kelas Terapi 1 <small>(Jika Kosong silakan pilih "Choose One")</small></label>
-                <select name="sub_kelasterapi" id="sub_kelasterapi" class="form-control inputKelasTerapi">
+                <select name="sub_kelasterapi" id="sub_kelasterapi" class="form-control required inputKelasTerapi">
                 	<option value="" selected="selected">Choose one</option>
 					<?php foreach($sub_kelasterapi as $subterapi) { ?>
 						<option value="<?= $subterapi['id_sub_kelasterapi'].'+'.$subterapi['Sub_Kelas_Terapi'] ?>"><?= $subterapi['Sub_Kelas_Terapi'] ?></option>
                     <?php } ?>
-                </select> 
+                </select>
               </div>
               <div class="form-group">
                 <label for="sub_kelasterapi2">Sub Kelas Terapi 2 <small>(Jika Kosong silakan pilih "Choose One")</small></label>
-                <select name="sub_kelasterapi2" id="sub_kelasterapi2" class="form-control inputKelasTerapi">
+                <select name="sub_kelasterapi2" id="sub_kelasterapi2" class="form-control required inputKelasTerapi">
                 	<option value="" selected="selected">Choose one</option>
 					<?php foreach($sub_kelasterapi2 as $subterapi2) { ?>
 						<option value="<?= $subterapi2['id_sub_kelasterapi2'].'+'.$subterapi2['Sub_Kelas_Terapi_2'] ?>"><?= $subterapi2['Sub_Kelas_Terapi_2'] ?></option>
                     <?php } ?>
-                </select> 
+                </select>
               </div>
               <div class="form-group">
                 <label for="sub_kelasterapi3">Sub Kelas Terapi 3 <small>(Jika Kosong silakan pilih "Choose One")</small></label>
-                <select name="sub_kelasterapi3" id="sub_kelasterapi3" class="form-control inputKelasTerapi">
+                <select name="sub_kelasterapi3" id="sub_kelasterapi3" class="form-control required inputKelasTerapi">
                 	<option value="" selected="selected">Choose one</option>
 					<?php foreach($sub_kelasterapi3 as $subterapi3) { ?>
 						<option value="<?= $subterapi3['id_sub_kelasterapi3'].'+'.$subterapi3['Sub_Kelas_Terapi_3'] ?>"><?= $subterapi3['Sub_Kelas_Terapi_3'] ?></option>
                     <?php } ?>
-                </select> 
+                </select>
               </div>
               <div class="form-group">
                 <label for="atc_obat">ATC Obat*</label>
-                <select name="atc_obat" id="atc_obat" class="form-control inputKelasTerapi">
+                <select name="atc_obat" id="atc_obat" class="form-control required inputKelasTerapi">
                 	<option value="" selected="selected">Choose one</option>
 					<?php foreach($atc_obat as $atc) { ?>
 						<option value="<?= $atc['id_atc_obat'].'+'.$atc['nama_obat'] ?>"><?= $atc['nama_obat'] .' ( '. $atc['id_atc_obat'] .' )' ?></option>
                     <?php } ?>
-                </select> 
+                </select>
               </div>
               <div class="form-group">
                 <label for="sediaan">Sediaan*</label>
-                <select name="sediaan" id="sediaan" class="form-control inputKelasTerapi">
+                <select name="sediaan" id="sediaan" class="form-control required inputKelasTerapi">
                 	<option value="" selected="selected">Choose one</option>
 					<?php foreach($sediaan as $sedia) { ?>
 						<option value="<?= $sedia['id_sediaan'].'+'.$sedia['nama_sediaan'] ?>"><?= $sedia['nama_sediaan'] ?></option>
                     <?php } ?>
-                </select> 
+                </select>
               </div>
               <div class="form-group">
                 <label for="kekuatan">Kekuatan*</label>
-                <select name="kekuatan" id="kekuatan" class="form-control inputKelasTerapi">
+                <select name="kekuatan" id="kekuatan" class="form-control required inputKelasTerapi">
                 	<option value="" selected="selected">Choose one</option>
 					<?php foreach($kekuatan as $kuat) { ?>
 						<option value="<?= $kuat['id_kekuatan'].'+'.$kuat['kekuatan'] ?>"><?= $kuat['kekuatan'] ?></option>
                     <?php } ?>
-                </select> 
+                </select>
               </div>
               <div class="form-group">
                 <label for="satuan">Satuan*</label>
-                <select name="satuan" id="satuan" class="form-control inputKelasTerapi">
+                <select name="satuan" id="satuan" class="form-control required inputKelasTerapi">
                 	<option value="" selected="selected">Choose one</option>
 					<?php foreach($satuan as $satu) { ?>
 						<option value="<?= $satu['id_satuan'].'+'.$satu['nama_satuan'] ?>"><?= $satu['nama_satuan'] ?></option>
                     <?php } ?>
-                </select> 
+                </select>
               </div>
-              
+
               <div class="form-group">
                 <label for="subkutan">Subkutan*</label><br />
                 <input type="radio" name="subkutan" id="subkutan" value="√" /> Ya
@@ -236,7 +236,7 @@
                 <label for="restriksi_subkelas_terapi_3">Restriksi Sub Kelas Terapi 3</label>
                 <input type="text" class="form-control" id="restriksi_subkelas_terapi_3" name="restriksi_subkelas_terapi_3" placeholder="Restriksi Sub Kelas Terapi 3">
               </div>
-              
+
               <div class="form-group">
                 <label for="restriksi_obat">Restriksi Obat</label>
                 <input type="text" class="form-control" id="restriksi_obat" name="restriksi_obat" placeholder="Restriksi Obat">
@@ -257,7 +257,7 @@
                 <label for="restriksi_obat4">Restriksi Obat 4</label>
                 <input type="text" class="form-control" id="restriksi_obat4" name="restriksi_obat4" placeholder="Restriksi Obat 4">
               </div>
-              
+
               <div class="form-group">
                 <label for="restriksi_sediaan">Restriksi Sediaan</label>
                 <input type="text" class="form-control" id="restriksi_sediaan" name="restriksi_sediaan" placeholder="Restriksi Sediaan">
