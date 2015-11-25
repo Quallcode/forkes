@@ -124,6 +124,70 @@ function GetMsg(id){
   return false;
 }
 
+function get_id_kelasterapi(){
+  var kelasterapi = $('.inputKelasTerapi').find('option:selected').val();
+  var html = '';
+
+  $.ajax({
+    type: "GET",
+    dataType: "json",
+    url: base_url+"Usulan/Get_Sub_Kelasterapi?id_terapi="+kelasterapi,
+    //Relative or absolute path to response.php file
+    success: function(data) {
+      if(data.status == '00'){
+        //alert(base_url);
+        $('.inputSubKelasTerapi_1').html('');
+        for(var i = 0; i <data.msg.length; i++){
+           html += '<option value="'+data.msg[i]['id_sub_kelasterapi']+'">'+data.msg[i]['Sub_Kelas_Terapi']+'</option>';
+        }
+        $('.inputSubKelasTerapi_1').append(html);
+        $('.inputSubKelasTerapi_1').select2();
+      }
+      else{
+        $('.inputSubKelasTerapi_1').html('');
+        for(var i = 0; i <data.msg.length; i++){
+           html += '<option value=""></option>';
+        }
+        $('.inputSubKelasTerapi_1').append(html);
+        $('.inputSubKelasTerapi_1').select2();
+      }
+    }
+  });
+}
+
+function get_id_subkelasterapi(){
+  var kelasterapi = $('.inputKelasTerapi').find('option:selected').val();
+  var subkelasterapi = $('.inputSubKelasTerapi_1').find('option:selected').val();
+  var html = '';
+  $.ajax({
+    type: "GET",
+    dataType: "json",
+    url: base_url+"Usulan/Get_Sub_Kelasterapi2?id_terapi="+kelasterapi+"&id_subterapi="+subkelasterapi,
+    //Relative or absolute path to response.php file
+    success: function(data) {
+      //alert(data.status);
+      if(data.status == '00'){
+        $('.inputSubKelasTerapi_1').html('');
+        alert(data.msg);
+        for(var i = 0; i <data.msg.length; i++){
+           html += '<option value="'+data.msg[i]['id_sub_kelasterapi2']+'">'+data.msg[i]['Sub_Kelas_Terapi_2']+'</option>';
+        }
+        $('.inputSubKelasTerapi2_1').append(html);
+        $('.inputSubKelasTerapi2_1').select2();
+      }
+      else{
+        $('.inputSubKelasTerapi2_1').html('');
+        for(var i = 0; i <data.msg.length; i++){
+           html += '<option value=""></option>';
+        }
+        $('.inputSubKelasTerapi2_1').append(html);
+        $('.inputSubKelasTerapi2_1').select2();
+      }
+    }
+  });
+}
+
+
 function create_usulan_html(num){
   var kelas_terapi = $('#idSelectTerapiHidden').html();
   var sub_kelasterapi = $('#idSelectSubTerapiHidden').html();

@@ -237,12 +237,50 @@ class Model_Get_Usulan extends CI_Model {
     return $result->result_array();
   }
 
+  function Select_Data_Subterapi_Query($id){
+
+    $query = "select * from sub_kelasterapi where id_terapi='".$id."' and deleted = '0' group by Sub_Kelas_Terapi";
+    $result = $this->db->query($query);
+    $i = 0;
+    if ($result->num_rows() > 0) {
+      foreach($result->result_array() as $row){
+        $data[$i] = $row;
+        $i++;
+      }
+      return $data;
+    }
+    else{
+      return FALSE;
+    }
+    //print_r($result->result_array()); exit;
+    //return $result->result_array();
+  }
+
   function Select_Data_Subterapi2(){
 
     $query = "select * from sub_kelasterapi2 where deleted = '0' group by Sub_Kelas_Terapi_2";
     $result = $this->db->query($query);
     //print_r($result->result_array()); exit;
     return $result->result_array();
+  }
+
+  function Select_Data_Subterapi2_Query($id_terapi,$id_subterapi){
+
+    $query = "select * from sub_kelasterapi2 where id_terapi='".$id_terapi."' and id_sub_kelasterapi='".$id_subterapi."' and deleted = '0' group by Sub_Kelas_Terapi_2";
+    $result = $this->db->query($query);
+    $i = 0;
+    if ($result->num_rows() > 0) {
+      foreach($result->result_array() as $row){
+        $data[$i] = $row;
+        $i++;
+      }
+      return $data;
+    }
+    else{
+      return FALSE;
+    }
+    //print_r($result->result_array()); exit;
+    //return $result->result_array();
   }
 
   function Select_Data_Subterapi3(){

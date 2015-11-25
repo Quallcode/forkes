@@ -96,13 +96,13 @@ var no_fornas = '<?=$no_fornas?>';
         </div><!-- /.col -->
       </div>   <!-- /.row -->
 
-      <select class="form-control" id="idSelectTerapiHidden" style="display:none">
+      <select class="form-control" id="idSelectTerapiHidden" style="display:none" onchange="get_id_kelasterapi()">
         <?php foreach( $terapi as $key5) { ?>
           <option value="<?=$key5['id_terapi']?>" ><?=$key5['Kelas_terapi']?></option>
         <?php } ?>
       </select>
 
-      <select class="form-control" id="idSelectSubTerapiHidden" style="display:none">
+      <select class="form-control" id="idSelectSubTerapiHidden" style="display:none" onchange="get_id_subkelasterapi()">
         <?php foreach( $sub_kelasterapi as $key5) { ?>
           <option value="<?=$key5['id_sub_kelasterapi']?>" ><?=$key5['Sub_Kelas_Terapi']?></option>
         <?php } ?>
@@ -158,7 +158,7 @@ var no_fornas = '<?=$no_fornas?>';
                   <div class="form-group">
                     <label for="inputKelasTerapi" class="col-sm-2 control-label labelKelasTerapi">Kelas Terapi</label>
                     <div class="col-sm-10">
-                      <select class="form-control inputKelasTerapi" id="inputKelasTerapi1" name="id_terapi[]">
+                      <select class="form-control inputKelasTerapi" id="inputKelasTerapi1" name="id_terapi[]" onchange="get_id_kelasterapi()">
                         <?php foreach( $terapi as $key) { ?>
                           <option value="<?=$key['id_terapi']?>" ><?=$key['Kelas_terapi']?></option>
                         <?php } ?>
@@ -168,7 +168,7 @@ var no_fornas = '<?=$no_fornas?>';
                   <div class="form-group">
                     <label for="inputSubKelasTerapi_1" class="col-sm-2 control-label labelSubKelasTerapi_1">Sub Kelas Terapi 1</label>
                     <div class="col-sm-10">
-                      <select class="form-control inputSubKelasTerapi_1" id="inputSubKelasTerapi_1" name="inputSubKelasTerapi_1[]">
+                      <select class="form-control inputSubKelasTerapi_1" id="inputSubKelasTerapi_1" name="inputSubKelasTerapi_1[]" onchange="get_id_subkelasterapi()">
                         <?php foreach( $sub_kelasterapi as $key) { ?>
                           <option value="<?=$key['id_sub_kelasterapi']?>" ><?=$key['Sub_Kelas_Terapi']?></option>
                         <?php } ?>

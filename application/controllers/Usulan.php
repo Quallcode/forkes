@@ -576,5 +576,36 @@ class Usulan extends CI_Controller {
     $this->load->view('wrapper',$view_data);
 	}
   //END OF INDEX FOR ADD USULAN VIEW IN ADMIN
+
+  public function Get_Sub_Kelasterapi(){
+    $id = $this->input->get('id_terapi');
+    //print_r($id); exit;
+    if(!empty($id)){
+      $sub_terapi = $this->Model_Get_Usulan->Select_Data_Subterapi_Query($id);
+      if(empty($sub_terapi)){
+        echo json_encode(array('status'=>'01','msg'=>'error sub terapi untuk kelas terapi ini kosong'));
+      }else{
+        echo json_encode(array('status'=>'00','msg'=>$sub_terapi));
+      }
+    }else{
+      echo json_encode(array('status'=>'01','msg'=>'error post kosong'));
+    }
+  }
+  public function Get_Sub_Kelasterapi2(){
+    $id_terapi = $this->input->get('id_terapi');
+    $id_subterapi = $this->input->get('id_subterapi');
+
+    //print_r($id); exit;
+    if(!empty($id_subterapi)){
+      $sub_terapi2 = $this->Model_Get_Usulan->Select_Data_Subterapi2_Query($id_terapi,$id_subterapi);
+      if(empty($sub_terapi2)){
+        echo json_encode(array('status'=>'01','msg'=>'error sub terapi untuk kelas terapi ini kosong'));
+      }else{
+        echo json_encode(array('status'=>'00','msg'=>$sub_terapi2));
+      }
+    }else{
+      echo json_encode(array('status'=>'01','msg'=>'error post kosong'));
+    }
+  }
 }
 ?>
