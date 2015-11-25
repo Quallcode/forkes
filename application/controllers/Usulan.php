@@ -289,7 +289,8 @@ class Usulan extends CI_Controller {
 
   public function Add_Obat_Combinasi(){
     $sess = $this->session->userdata('user_data');
-    $privilege = $sess['usulan_obat_combinasi_read'];
+	//print_r($sess);exit;
+    $privilege = $sess['obat_kombinasi_write'];
     if($privilege != 'on'){
       echo '<script>alert("Anda mempunyai limitasi untuk mengakses laman ini, silahkan hubungi administrator"); window.location.assign("'.base_url().'Dashboard");</script>';
       exit;
