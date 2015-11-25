@@ -60,116 +60,76 @@
       </li>
       <!-- MASTER DATA -->
       <?php if($udata['type'] == 3) { ?>
-      <?php if($udata['keterangan_atc_obat_read'] == 'off' && $udata['keterangan_atc_obat_write'] == 'off' && $udata['atc_obat_read'] == 'off' && $udata['atc_obat_write'] == 'off' && $udata['obat_kombinasi_read'] == 'off' && $udata['obat_kombinasi_write'] == 'off' && $udata['kelas_terapi_read'] == 'off' && $udata['kelas_terapi_write'] == 'off' && $udata['sub_kelas_terapi_read'] == 'off' && $udata['sub_kelas_terapi_write'] == 'off' && $udata['sub_kelas_terapi2_read'] == 'off' && $udata['sub_kelas_terapi2_write'] == 'off' && $udata['sub_kelas_terapi3_read'] == 'off' && $udata['sub_kelas_terapi3_write'] == 'off' && $udata['fornas_read'] == 'off' && $udata['fornas_write'] == 'off' && $udata['sediaan_read'] == 'off' && $udata['sediaan_write'] == 'off' && $udata['satuan_read'] == 'off' && $udata['satuan_write'] == 'off' && $udata['kekuatan_read'] == 'off' && $udata['kekuatan_write'] == 'off'){}else{?>
       <li class="<?php if($bc == 'master'){?>active<?php }?> treeview">
         <a href="#">
           <i class="fa fa-file-text"></i> <span>MASTER</span> <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu">
         
-        <?php if($udata['keterangan_atc_obat_read'] == 'off' && $udata['keterangan_atc_obat_write'] == 'off' && $udata['atc_obat_read'] == 'off' && $udata['atc_obat_write'] == 'off'){}else{?>
+        <?php if($udata['atc_obat_read'] || $udata['atc_obat_write'] || $udata['atc_obat_delete'] || $udata['keterangan_atc_obat_read'] || $udata['keterangan_atc_obat_write'] || $udata['keterangan_atc_obat_delete'] == 'off'){}else{?>
         <li class="<?php if(!empty($msbc)&& ($msbc == 'atc_obat' || $msbc == 'keterangan_atc_obat')){?>active<?php }?>">
             <a><i class="fa fa-circle-o"></i> ATC OBAT</a>
             <ul class="treeview-menu">
-            <?php if($udata['keterangan_atc_obat_read'] == 'off' && $udata['keterangan_atc_obat_write'] == 'off'){}else{?>
               <li class="treeview <?php if(!empty($msbc)&&$msbc == 'keterangan_atc_obat'){?>active<?php }?>">
                 <a><i class="fa fa-circle-o"></i> KETERANGAN</a>
                 <ul class="treeview-menu">
-                <?php if($udata['keterangan_atc_obat_read'] == 'off'){}else{?>
                   <li><a href="<?= base_url()?>Keterangan_Atc_Obat"><i class="fa fa-circle-o"></i> DAFTAR KETERANGAN</a></li>
-                <? } ?>
-                <?php if($udata['keterangan_atc_obat_write'] == 'off'){}else{?>
                   <li><a href="<?= base_url()?>Keterangan_Atc_Obat/Insert"><i class="fa fa-circle-o"></i> TAMBAH KETERANGAN</a></li>
-                <? } ?>
                 </ul>
               </li>
-            <? } ?>
-            <?php if($udata['atc_obat_read'] == 'off'){}else{?>
               <li><a href="<?= base_url()?>Atc_Obat"><i class="fa fa-circle-o"></i> DAFTAR ATC OBAT</a></li>
-            <? } ?>
-            <?php if($udata['atc_obat_write'] == 'off'){}else{?>
               <li><a href="<?= base_url()?>Atc_Obat/Insert"><i class="fa fa-circle-o"></i> TAMBAH ATC OBAT</a></li>
-            <? } ?>
             </ul>
           </li>
           <? } ?>
           
-          <?php if($udata['obat_kombinasi_read'] == 'off' && $udata['obat_kombinasi_write'] == 'off'){}else{?>
+          <?php if($udata['obat_kombinasi_read'] || $udata['obat_kombinasi_write'] || $udata['obat_kombinasi_delete'] == 'off'){}else{?>
           <li class="<?php if(!empty($msbc)&& ($msbc == 'obat_combinasi' || $msbc == 'usulan_obat_combinasi')){?>active<?php }?>">
             <a><i class="fa fa-circle-o"></i> OBAT KOMBINASI</a>
             <ul class="treeview-menu">
-            <?php if($udata['obat_kombinasi_read'] == 'off'){}else{?>
               <li><a href="<?= base_url()?>Obat_Combinasi"><i class="fa  fa-list "></i> DAFTAR OBAT KOMBINASI</a></li>
-            <? } ?>
-            <?php if($udata['obat_kombinasi_write'] == 'off'){}else{?>
               <li><a href="<?= base_url()?>usulan/Insert_Obat_Combinasi"><i class="fa  fa-list "></i> TAMBAH OBAT KOMBINASI</a></li>
-            <? } ?>
             </ul>
           </li>
           <? } ?>
           
-          <?php if($udata['kelas_terapi_read'] == 'off' && $udata['kelas_terapi_write'] == 'off' && $udata['sub_kelas_terapi_read'] == 'off' && $udata['sub_kelas_terapi_write'] == 'off' && $udata['sub_kelas_terapi2_read'] == 'off' && $udata['sub_kelas_terapi2_write'] == 'off' && $udata['sub_kelas_terapi3_read'] == 'off' && $udata['sub_kelas_terapi3_write'] == 'off'){}else{?>
+          <?php if($udata['kelas_terapi_read'] == 'off' && $udata['kelas_terapi_write'] == 'off' && $udata['kelas_terapi_delete'] == 'off' && $udata['sub_kelas_terapi_read'] == 'off' && $udata['sub_kelas_terapi_write'] == 'off' && $udata['sub_kelas_terapi_delete'] == 'off' && $udata['sub_kelas_terapi2_read'] == 'off' && $udata['sub_kelas_terapi2_write'] == 'off' && $udata['sub_kelas_terapi2_delete'] == 'off' && $udata['sub_kelas_terapi3_read'] == 'off' && $udata['sub_kelas_terapi3_write'] == 'off' && $udata['sub_kelas_terapi3_delete'] == 'off'){}else{?>
           <li class="<?php if(!empty($msbc)&& ($msbc == 'kelas_terapi' || $msbc == 'sub_kelas_terapi' || $msbc == 'sub_kelas_terapi2' || $msbc == 'sub_kelas_terapi3')){?>active<?php }?>">
             <a><i class="fa fa-circle-o"></i> KELAS</a>
             <ul class="treeview-menu">
-            <?php if($udata['kelas_terapi_read'] == 'off' && $udata['kelas_terapi_write'] == 'off'){}else{?>
               <li class="treeview <?php if(!empty($msbc)&&$msbc == 'kelas_terapi'){?>active<?php }?>">
                 <a><i class="fa fa-circle-o"></i> KELAS TERAPI</a>
                 <ul class="treeview-menu">
-                <?php if($udata['kelas_terapi_read'] == 'off'){}else{?>
                   <li><a href="<?= base_url()?>Kelas_Terapi"><i class="fa fa-circle-o"></i> DAFTAR KELAS</a></li>
-                <? } ?>
-                <?php if($udata['kelas_terapi_write'] == 'off'){}else{?>
                   <li><a href="<?= base_url()?>Kelas_Terapi/Insert"><i class="fa fa-circle-o"></i> TAMBAH KELAS</a></li>
-                <? } ?>
                 </ul>
               </li>
-            <? } ?>
-            <?php if($udata['sub_kelas_terapi_read'] == 'off' && $udata['sub_kelas_terapi_write'] == 'off'){}else{?>
               <li class="treeview <?php if(!empty($msbc)&&$msbc == 'sub_kelas_terapi'){?>active<?php }?>">
                 <a><i class="fa fa-circle-o"></i> SUB KELAS TERAPI</a>
                 <ul class="treeview-menu">
-                <?php if($udata['sub_kelas_terapi_read'] == 'off'){}else{?>
                   <li><a href="<?= base_url()?>Sub_Kelas_Terapi"><i class="fa fa-circle-o"></i> DAFTAR SUB KELAS</a></li>
-                <? } ?>
-                <?php if($udata['sub_kelas_terapi_write'] == 'off'){}else{?>
                   <li><a href="<?= base_url()?>Sub_Kelas_Terapi/Insert"><i class="fa fa-circle-o"></i> TAMBAH SUB KELAS</a></li>
-                <? } ?>
                 </ul>
               </li>
-            <? } ?>
-            <?php if($udata['sub_kelas_terapi2_read'] == 'off' && $udata['sub_kelas_terapi2_write'] == 'off'){}else{?>
               <li class="treeview <?php if(!empty($msbc)&&$msbc == 'sub_kelas_terapi2'){?>active<?php }?>">
                 <a><i class="fa fa-circle-o"></i> SUB KELAS TERAPI 2</a>
                 <ul class="treeview-menu">
-                <?php if($udata['sub_kelas_terapi2_read'] == 'off'){}else{?>
                   <li><a href="<?= base_url()?>Sub_Kelas_Terapi2"><i class="fa fa-circle-o"></i> DAFTAR SUB KELAS 2</a></li>
-                <? } ?>
-                
-                <?php if($udata['sub_kelas_terapi2_write'] == 'off'){}else{?>
                   <li><a href="<?= base_url()?>Sub_Kelas_Terapi2/Insert"><i class="fa fa-circle-o"></i> TAMBAH SUB KELAS 2</a></li>
-                <? } ?>
                 </ul>
               </li>
-            <? } ?>
-            <?php if($udata['sub_kelas_terapi3_read'] == 'off' && $udata['sub_kelas_terapi3_write'] == 'off'){}else{?>
               <li class="treeview <?php if(!empty($msbc)&&$msbc == 'sub_kelas_terapi3'){?>active<?php }?>">
                 <a><i class="fa fa-circle-o"></i> SUB KELAS TERAPI 3</a>
                 <ul class="treeview-menu">
-                <?php if($udata['sub_kelas_terapi3_read'] == 'off'){}else{?>
                   <li><a href="<?= base_url()?>Sub_Kelas_Terapi3"><i class="fa fa-circle-o"></i> DAFTAR SUB KELAS 3</a></li>
-                <? } ?>
-                <?php if($udata['sub_kelas_terapi3_write'] == 'off'){}else{?>
                   <li><a href="<?= base_url()?>Sub_Kelas_Terapi3/Insert"><i class="fa fa-circle-o"></i> TAMBAH SUB KELAS 3</a></li>
-                <? } ?>
                 </ul>
               </li>
-            <? } ?>
             </ul>
           </li>
           <? } ?>
           
-          <?php if($udata['fornas_read'] == 'off' && $udata['fornas_write'] == 'off'){}else{?>
+          <?php if($udata['fornas_read'] == 'off' && $udata['fornas_write'] == 'off' && $udata['fornas_delete'] == 'off'){}else{?>
           <li class="<?php if(!empty($msbc)&&$msbc == 'fornas'){?>active<?php }?>">
             <a><i class="fa fa-flask"></i> FORNAS</a>
             <ul class="treeview-menu">
@@ -183,7 +143,7 @@
           </li>
           <? } ?>
           
-          <?php if($udata['sediaan_read'] == 'off' && $udata['sediaan_write'] == 'off'){}else{?>
+          <?php if($udata['sediaan_read'] == 'off' && $udata['sediaan_write'] == 'off' && $udata['sediaan_delete'] == 'off'){}else{?>
           <li class="<?php if(!empty($msbc)&&$msbc == 'sediaan'){?>active<?php }?>">
             <a><i class="fa fa-flask"></i> SEDIAAN</a>
             <ul class="treeview-menu">
@@ -197,7 +157,7 @@
           </li>
           <? } ?>
           
-          <?php if($udata['satuan_read'] == 'off' && $udata['satuan_write'] == 'off'){}else{?>
+          <?php if($udata['satuan_read'] == 'off' && $udata['satuan_write'] == 'off' && $udata['satuan_delete'] == 'off'){}else{?>
           <li class="<?php if(!empty($msbc)&&$msbc == 'satuan'){?>active<?php }?>">
             <a><i class="fa fa-superscript"></i> SATUAN</a>
             <ul class="treeview-menu">
@@ -211,7 +171,7 @@
           </li>
           <? } ?>
           
-          <?php if($udata['kekuatan_read'] == 'off' && $udata['kekuatan_write'] == 'off'){}else{?>
+          <?php if($udata['kekuatan_read'] == 'off' && $udata['kekuatan_write'] == 'off' && $udata['kekuatan_delete'] == 'off'){}else{?>
           <li class="<?php if(!empty($msbc)&&$msbc == 'kekuatan'){?>active<?php }?>">
             <a><i class="fa fa-flash"></i> KEKUATAN</a>
             <ul class="treeview-menu">
@@ -226,7 +186,6 @@
           <? } ?>
         </ul>
       </li>
-      <? } ?>
       <?php } ?>
       
       
@@ -244,36 +203,36 @@
       
       <!-- VERIFIKASI USULAN -->
       <?php if($udata['type'] == 3){ ?>
-      <?php if($udata['usulan_terbaru_read'] == 'off' && $udata['daftar_usulan_lengkap_read'] == 'off' && $udata['daftar_usulan_tidak_lengkap_read'] == 'off'){}else{?>
+      <?php if($udata['usulan_terbaru_read'] == 'off' && $udata['usulan_terbaru_write'] == 'off' && $udata['daftar_usulan_lengkap_read'] == 'off' && $udata['daftar_usulan_tidak_lengkap_read'] == 'off'){}else{?>
       <li class="<?php if(!empty($bc)&&$bc == 'verifikasi'){?>active<?php }?> treeview">
         <a href="#"><i class="fa fa-legal"></i> VERIFIKASI<i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
-        <?php if($udata['usulan_terbaru_read'] == 'off'){}else{?>
+          <?php if($udata['usulan_terbaru_read'] == 'off' && $udata['usulan_terbaru_write'] == 'off'){}else{?>
           <li class="<?php if(!empty($msbc)&&$msbc == 'verifikasi_usulan'){?>active<?php }?>"><a href="<?= base_url()?>Usulan/Verifikasi"><i class="fa  fa-list"></i> USULAN TERBARU</a></li>
-        <? } ?>
+          <? } ?>
           <!--<li class="<?php if(!empty($msbc)&&$msbc == 'usulan_obat_baru'){?>active<?php }?>"><a href="<?= base_url()?>Usulan/Insert_Obat_Baru"><i class="fa  fa-list"></i> USULAN OBAT BARU</a></li>
           <li class="<?php if(!empty($msbc)&&$msbc == 'usulan_obat_combinasi'){?>active<?php }?>"><a href="<?= base_url()?>Usulan/Insert_Obat_Combinasi"><i class="fa  fa-list"></i> USULAN OBAT KOMBINASI</a></li>-->
-        <?php if($udata['daftar_usulan_lengkap_read'] == 'off'){}else{?>
+          <?php if($udata['daftar_usulan_lengkap_read'] == 'off'){}else{?>
           <li class="<?php if(!empty($msbc)&&$msbc == 'daftar_usulan_lengkap'){?>active<?php }?>"><a href="<?= base_url()?>Usulan/Daftar_Lengkap"><i class="fa  fa-list"></i> DAFTAR USULAN LENGKAP</a></li>
-        <? } ?>
-        <?php if($udata['daftar_usulan_tidak_lengkap_read'] == 'off'){}else{?>
+          <? } ?>
+          <?php if($udata['daftar_usulan_tidak_lengkap_read'] == 'off'){}else{?>
           <li class="<?php if(!empty($msbc)&&$msbc == 'daftar_usulan_tidak_lengkap'){?>active<?php }?>"><a href="<?= base_url()?>Usulan/Daftar_Tidak_Lengkap"><i class="fa  fa-list"></i> DAFTAR USULAN TIDAK LENGKAP</a></li>
-        <? } ?>
+          <? } ?>
         </ul>
       </li>
-      <? } ?>
+      <?php } ?>
       <?php } ?>
       
       
       <!-- VERIFIKASI USULAN -->
       <?php if($udata['type'] == 3){ ?>
-      <?php if($udata['usulan_obat_baru_read'] == 'off'){}else{?>
+      <?php if($udata['usulan_obat_baru_read'] == 'off' && $udata['usulan_obat_baru_write'] == 'off'){}else{?>
       <li class="<?php if(!empty($bc)&&$bc == 'usulan_obat_baru'){?>active<?php }?> treeview">
         <a href="#"><i class="fa fa-file-text"></i> USULAN OBAT BARU<i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
-        <?php if($udata['usulan_obat_baru_read'] == 'off'){}else{?>
+          <?php if($udata['usulan_obat_baru_write'] == 'off'){}else{?>
           <li class="<?php if(!empty($msbc)&&$msbc == 'usulan_obat_baru'){?>active<?php }?>"><a href="<?= base_url()?>Usulan/Insert_Obat_Baru"><i class="fa  fa-list"></i> DAFTAR USULAN OBAT BARU</a></li>
-        <? } ?>
+          <? } ?>
         </ul>
       </li>
       <? } ?>
@@ -285,7 +244,7 @@
       <li class="<?php if(!empty($bc)&&$bc == 'manajemen_user'){?>active<?php }?> treeview">
         <a href="#"><i class="fa fa-user"></i> MANAJEMEN USER<i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
-          <?php if($udata['users_read'] == 'off' && $udata['users_write'] == 'off'){}else{?>
+        <?php if($udata['users_read'] == 'off' && $udata['users_write'] == 'off'){}else{?>
           <li class="<?php if(!empty($msbc)&&$msbc == 'users'){?>active<?php }?>">
             <a><i class="fa fa-user"></i> USERS</a>
             <ul class="treeview-menu">
@@ -297,8 +256,8 @@
               <? } ?>
             </ul>
           </li>
-          <? } ?>
-          <?php if($udata['privilege_read'] == 'off' && $udata['privilege_write'] == 'off'){}else{?>
+        <? } ?>
+        <?php if($udata['privilege_read'] == 'off' && $udata['privilege_write'] == 'off'){}else{?>
           <li class="<?php if(!empty($msbc)&&$msbc == 'privilege'){?>active<?php }?>">
             <a><i class="fa fa-user"></i> PRIVILEGE</a>
             <ul class="treeview-menu">
@@ -306,11 +265,10 @@
               <li><a href="<?= base_url()?>Privilege"><i class="fa  fa-list "></i> DAFTAR PRIVILEGE</a></li>
               <? } ?>
               <?php if($udata['privilege_write'] == 'off'){}else{?>
-              <li><a href="<?= base_url()?>Privilege/Insert"><i class="fa fa-plus-square"></i> TAMBAH PRIVILEGE</a></li>
-              <? } ?>
+              <li><a href="<?= base_url()?>Privilege/Insert"><i class="fa fa-plus-square"></i> TAMBAH PRIVILEGE</a></li><? } ?>
             </ul>
           </li>
-          <? } ?>
+        <? } ?>
         </ul>
       </li>
       <? } ?>

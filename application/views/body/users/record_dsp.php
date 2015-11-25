@@ -1,3 +1,4 @@
+<?php $udata = $this->session->userdata('user_data'); //print_r($data);exit;?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -31,6 +32,7 @@
                   <th>Email</th>
                   <th>No Telp</th>
                   <th>Tipe User</th>
+                  <th>Status Online</th>
                   <th></th>
                 </tr>
               </thead>
@@ -43,9 +45,21 @@
                       <td><?=$val['email']?></td>
                       <td><?=$val['no_telp']?></td>
                       <td><?=$val['name']?></td>
+                      <? if($val['flag'] == 1){ ?>
+                      <td><img src="<?=base_url()?>img/online.png" width="20px" /> Online</td>
+                      <? }else{ ?>
+                      <td><img src="<?=base_url()?>img/offline.png" width="20px" /> Offline</td>
+                      <? } ?>
                       <td>
-                        <a href="<?=base_url()?>Users/Update/<?=$val['id']?>" class="btn btn-info">Update</a>&nbsp;
+                        <?php if($udata['users_write'] == 'off'){}else{?>
+                        <a href="<?=base_url()?>Users/Update/<?=$val['id']?>" class="btn btn-info">Update</a>
+                        <? } ?>
+                        &nbsp;
+                        <?php if($udata['users_delete'] == 'off'){}else{?>
                         <a href="<?=base_url()?>Users/Delete/<?=$val['id']?>" onclick="return confirm('Apakah Anda Yakin Akan Menghapus Data?')" class="btn btn-danger">Delete</a>
+                        <? } ?>
+                        &nbsp;
+                        <a href="<?=base_url()?>Users/Logout/<?=$val['username']?>" onclick="return confirm('Apakah Anda Yakin Logout Manual?')" class="btn btn-danger">Logout</a>
                       </td>
                     </tr>
                   <?php }?>
@@ -58,6 +72,7 @@
                   <th>Email</th>
                   <th>No Telp</th>
                   <th>Tipe User</th>
+                  <th>Status Online</th>
                   <th></th>
                 </tr>
               </tfoot>

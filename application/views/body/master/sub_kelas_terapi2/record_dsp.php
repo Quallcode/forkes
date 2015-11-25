@@ -1,3 +1,4 @@
+<?php $udata = $this->session->userdata('user_data'); //print_r($udata);exit;?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -42,8 +43,13 @@
                       <td><?=$val['id_sub_kelasterapi2']?></td>
                       <td><?=$val['Sub_Kelas_Terapi_2']?></td>
                       <td>
-                        <a href="<?=base_url()?>Sub_Kelas_Terapi2/Update/<?=$val['id']?>" class="btn btn-info">Update</a>&nbsp;
+                        <?php if($udata['sub_kelas_terapi2_write'] == 'off'){}else{?>
+                        <a href="<?=base_url()?>Sub_Kelas_Terapi2/Update/<?=$val['id']?>" class="btn btn-info">Update</a>
+                        <? } ?>
+                        &nbsp;
+                        <?php if($udata['sub_kelas_terapi2_delete'] == 'off'){}else{?>
                         <a href="<?=base_url()?>Sub_Kelas_Terapi2/Delete/<?=$val['id']?>" class="btn btn-danger">Delete</a>
+                        <? } ?>
                       </td>
                     </tr>
                   <?php }?>

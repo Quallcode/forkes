@@ -1,3 +1,4 @@
+<?php $udata = $this->session->userdata('user_data'); //print_r($udata);exit;?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -36,8 +37,13 @@
                     <tr>
                       <td><?=$val['nama_privilege']?></td>
                       <td>
-                        <a href="<?=base_url()?>Privilege/Update/<?=$val['id']?>" class="btn btn-info">Update</a>&nbsp;
+                        <?php if($udata['privilege_write'] == 'off'){}else{?>
+                        <a href="<?=base_url()?>Privilege/Update/<?=$val['id']?>" class="btn btn-info">Update</a>
+                        <? } ?>
+                        &nbsp;
+                        <?php if($udata['privilege_delete'] == 'off'){}else{?>
                         <a href="<?=base_url()?>Privilege/Delete/<?=$val['id']?>" onclick="return confirm('Apakah Anda Yakin Akan Menghapus Data?')" class="btn btn-danger">Delete</a>
+                        <? } ?>
                       </td>
                     </tr>
                   <?php }?>

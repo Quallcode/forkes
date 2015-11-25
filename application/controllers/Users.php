@@ -9,6 +9,7 @@ class Users extends CI_Controller {
     $this->load->model('Model_Transaction');
     $this->load->model('Model_Get_Users');
     $this->load->model('Model_Get_Privilege');
+    $this->load->model('Model_Users');
     //CHECK SESSION
     $sess = $this->session->userdata('user_data');
     if(empty($sess)){
@@ -117,6 +118,16 @@ class Users extends CI_Controller {
   	);
   	$this->Model_Transaction->Update_To_Db($data,TABLE,'id',$uri);
   	echo '<script>alert("Berhasil Menghapus Data"); window.location.assign("'.base_url().'Kekuatan");</script>';
+  }
+  
+  public function Logout(){
+    $sess = $this->uri->segment(3);
+    $data_input= array(
+		'flag' 			=> '0',
+		'date_login'	=> date('Y-m-d H:i:s'),
+	);
+	$this->Model_Users->Update_Flag_0($data_input,$sess);
+  	echo '<script>alert("Berhasil Logout Manual"); window.location.assign("'.base_url().'Users");</script>';
   }
   //END OF POST KEKUATAN
 }

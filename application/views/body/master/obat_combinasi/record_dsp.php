@@ -1,3 +1,4 @@
+<?php $udata = $this->session->userdata('user_data'); //print_r($udata);exit;?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -38,8 +39,13 @@
                       <td><?=$val['id_obat_combinasi']?></td>
                       <td><a data-toggle="modal" href="#ModalDetailCO<?=$val['id_obat_combinasi']?>"><?=$val['nama_obat_combinasi']?></a></td>
                       <td>
-                        <a href="<?=base_url()?>Obat_Combinasi/Update/<?=$val['id_obat_combinasi']?>" class="btn btn-info">Update</a>&nbsp;
+                        <?php if($udata['obat_kombinasi_write'] == 'off'){}else{?>
+                        <a href="<?=base_url()?>Obat_Combinasi/Update/<?=$val['id_obat_combinasi']?>" class="btn btn-info">Update</a>
+                        <? } ?>
+                        &nbsp;
+                        <?php if($udata['obat_kombinasi_delete'] == 'off'){}else{?>
                         <a href="<?=base_url()?>Obat_Combinasi/Delete/<?=$val['id_obat_combinasi']?>" class="btn btn-danger">Delete</a>
+                        <? } ?>
                       </td>
                     </tr>
                   <?php }?>

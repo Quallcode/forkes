@@ -1,3 +1,4 @@
+<?php $udata = $this->session->userdata('user_data'); //print_r($udata);exit;?>
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
@@ -106,8 +107,13 @@
                   	<a data-toggle="modal" href="#RestriksiSediaan<?=$val['id_fornas']?>">Restriksi Sediaan</a>
                   </td>
                   <td>
-                    <a href="<?=base_url()?>Fornas/Update/<?=$val['id_fornas']?>" class="btn btn-info">Update</a>&nbsp;
+                    <?php if($udata['fornas_write'] == 'off'){}else{?>
+                    <a href="<?=base_url()?>Fornas/Update/<?=$val['id_fornas']?>" class="btn btn-info">Update</a>
+                    <? } ?>
+                    &nbsp;
+                    <?php if($udata['fornas_delete'] == 'off'){}else{?>
                     <a href="<?=base_url()?>Fornas/Delete/<?=$val['id_fornas']?>" class="btn btn-danger">Delete</a>
+                    <? } ?>
                   </td>
                 </tr>
                 <?php
