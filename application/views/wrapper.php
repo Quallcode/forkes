@@ -100,6 +100,7 @@
   </script>
   <script src="<?=base_url()?>includes/custom/js/app.js"></script>
   <script src="<?=base_url()?>includes/custom/js/ajaxpost.js"></script>
+  <script src="<?=base_url()?>includes/jquery/jquery.validate.js"></script>
 
   <script src="<?php echo base_url(); ?>includes/jqueryupload/jasny-bootstrap.min.js"></script>
   <!-- page script -->
@@ -114,6 +115,7 @@
         "info": true,
         "autoWidth": false
       });
+      $("#form_input").validate()
     });
   </script>
   <!--<script>

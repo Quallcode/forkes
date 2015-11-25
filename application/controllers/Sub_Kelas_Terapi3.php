@@ -72,14 +72,12 @@ class Sub_Kelas_Terapi3 extends CI_Controller {
       //VALIDATE TO DATABASE
       //print_r($post); exit;
       $data = array(
-        'id_terapi' 	=> $post['id_terapi'][0],
-        'id_sub_kelasterapi'	=> $post['id_sub_kelasterapi'][0],
         'id_sub_kelasterapi2' => $post['id_sub_kelasterapi2'][0],
         'id_sub_kelasterapi3' => $post['id_sub_kelasterapi3'],
         'Sub_Kelas_Terapi_3'  => $post['Sub_Kelas_Terapi3'],
         'deleted' =>  '0'
       );
-      $exist = $this->Model_Get_Sub_Kelas_Terapi3->validate($post['id_terapi'][0],$post['id_sub_kelasterapi'][0],$post['id_sub_kelasterapi2'][0],$post['id_sub_kelasterapi3'],$post['Sub_Kelas_Terapi3']);
+      $exist = $this->Model_Get_Sub_Kelas_Terapi3->validate($post['id_sub_kelasterapi2'][0],$post['id_sub_kelasterapi3'],$post['Sub_Kelas_Terapi3']);
       if($exist==1)
       {
         echo '<script>alert("ID Sub Kelas Terapi 2 Sudah Ada"); window.location.assign("'.base_url().'Sub_Kelas_Terapi3/Insert");</script>';

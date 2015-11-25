@@ -17,8 +17,8 @@ class Model_Get_Sub_Kelas_Terapi2 extends CI_Model {
 			return FALSE;
 		}
 	}
-  function validate($id_terapi,$id_sub_terapi,$id_sub_kelasterapi2,$sub_kelasterapi2){
-    $query = "select id from sub_kelasterapi2 where id_terapi='".$id_terapi."' and id_sub_kelasterapi='".$id_sub_terapi."' and id_sub_kelasterapi2='".$id_sub_kelasterapi2."' and Sub_Kelas_Terapi_2='".$sub_kelasterapi2."'";
+  function validate($id_sub_terapi,$id_sub_kelasterapi2,$sub_kelasterapi2){
+    $query = "select id from sub_kelasterapi2 where id_sub_kelasterapi='".$id_sub_terapi."' and id_sub_kelasterapi2='".$id_sub_kelasterapi2."' and Sub_Kelas_Terapi_2='".$sub_kelasterapi2."'";
     $result = $this->db->query($query);
     //print_r($result->result_array()); exit;
     $view_result = $result->result_array();
