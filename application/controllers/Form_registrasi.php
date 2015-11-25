@@ -40,7 +40,6 @@ class Form_registrasi extends CI_Controller {
 
   public function Daftar_User(){
     $post = $this->input->post();
-	print_r($post);exit;
     if(!empty($post)){
       //$arr_rs = explode('#',$post['organization']);
       //print_r($arr_rs);exit;

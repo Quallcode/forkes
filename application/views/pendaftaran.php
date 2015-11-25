@@ -108,7 +108,7 @@
       <div class="login-box-body">
         <!-- form start -->
         <p class="login-box-msg">Isi informasi anda dengan benar</p>
-        <form class="form-horizontal" action="<?=base_url()?>Form_registrasi/Daftar_User" method="post" enctype="multipart/form-data">
+        <form class="form-horizontal" action="<?=base_url()?>Form_registrasi/Daftar_User" method="post" enctype="multipart/form-data" onSubmit="return valregister()">
         <div class="box-body">
             <div class="form-group">
               <div class="col-sm-10" style="text-align:-webkit-center">
@@ -171,7 +171,13 @@
             <div class="form-group rumah_sakit_form">
               <div class="col-sm-10" style="text-align:-webkit-center">
                 <label for="inputPassword" class="col-sm-2 control-label">Password</label>
-                <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password" style="width:21em">
+                <input type="password" class="form-control" id="password" placeholder="Password" name="password" style="width:21em">
+              </div>
+            </div>
+            <div class="form-group rumah_sakit_form">
+              <div class="col-sm-10" style="text-align:-webkit-center">
+                <label for="inputPassword" class="col-sm-2 control-label">Confirm Password</label>
+                <input type="password" class="form-control" id="confirm_password" placeholder="Confirm Password" name="confirm_password" style="width:21em">
               </div>
             </div>
             <!-- DOKTER PRAKTEK FORM-->
@@ -202,7 +208,13 @@
             <div class="form-group dokter_praktek_form" style="display:none;">
               <div class="col-sm-10" style="text-align:-webkit-center">
                 <label for="inputPassword" class="col-sm-2 control-label">Password</label>
-                <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password_praktek" style="width:21em">
+                <input type="password" class="form-control" id="password_praktek" placeholder="Password" name="password_praktek" style="width:21em">
+              </div>
+            </div>
+            <div class="form-group dokter_praktek_form" style="display:none;">
+              <div class="col-sm-10" style="text-align:-webkit-center">
+                <label for="inputPassword" class="col-sm-2 control-label">Confirm Password</label>
+                <input type="password" class="form-control" id="confirm_password_praktek" placeholder="COnfirm Password" name="confirm_password_praktek" style="width:21em">
               </div>
             </div>
 
@@ -214,6 +226,35 @@
       </form>
     </div><!-- /.login-box -->
 </div>
-</div>
+</div> 
+
+	<script>
+    function valregister() {
+        var pass1 = document.getElementById("password").value;
+        var pass2 = document.getElementById("confirm_password").value;
+		var pass3 = document.getElementById("password_praktek").value;
+		var pass4 = document.getElementById("confirm_password_praktek").value;
+		var condition = document.getElementById("organization").value;
+		
+		if (condition == '1'){
+			if (pass1 != pass2) {
+				alert("Password And Confirm Password Not Match");
+				document.getElementById("confirm_password").style.borderColor = "#E34234";
+				return false;
+			}else{
+				document.getElementById("confirm_password").style.borderColor = "";
+			}
+		}else{
+			if (pass3 != pass4) {
+				alert("Password And Confirm Password Not Match");
+				document.getElementById("confirm_password_praktek").style.borderColor = "#E34234";
+				return false;
+			}else{
+				document.getElementById("confirm_password").style.borderColor = "";
+			}
+		}
+        return true;
+    }
+	</script>   
 </body>
 </html>

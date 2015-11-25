@@ -27,4 +27,13 @@ class Dashboard extends CI_Controller {
     //LOAD VIEW DATA TO WRAPPER
     $this->load->view('wrapper',$view_data);
 	}
+	
+	public function Change_password(){
+		if(){
+			$view_data['body']   = 'body/dashboard/change_password';
+			$this->load->view('wrapper',$view_data);
+		}else{
+			
+		}
+	}
 }

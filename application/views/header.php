@@ -28,6 +28,11 @@
                 <a href="<?=base_url()?>logout" class="btn btn-default btn-flat">Sign out</a>
               </p>
             </li>
+            <li class="user-header">
+              <p>
+                <a href="<?=base_url()?>Dashboard/Change_password" class="btn btn-default btn-flat">Change Password</a>
+              </p>
+            </li>
           </ul>
         </li>
       </ul>
