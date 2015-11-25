@@ -16,6 +16,9 @@ function Autocomplete(){
     $("#inputRumahSakit").select2();
     $("#inputSubKelasTerapi").select2();
     $("#inputSubKelasTerapi2").select2();
+    $("#inputSubKelasTerapi_1").select2();
+    $("#inputSubKelasTerapi2_1").select2();
+    $("#inputSubKelasTerapi3_1").select2();
 }
 
 function CheckObatKombinasi(obat,id){
@@ -123,6 +126,9 @@ function GetMsg(id){
 
 function create_usulan_html(num){
   var kelas_terapi = $('#idSelectTerapiHidden').html();
+  var sub_kelasterapi = $('#idSelectSubTerapiHidden').html();
+  var sub_kelasterapi2 = $('#idSelectSubTerapi2Hidden').html();
+  var sub_kelasterapi3 = $('#idSelectSubTerapi3Hidden').html();
   var obat = $('#idSelectObatHidden').html();
   var sediaan = $('#idSelectSediaanHidden').html();
   var kekuatan = $('#idSelectKekuatanHidden').html();
@@ -138,31 +144,52 @@ function create_usulan_html(num){
                   </div>\
                 </div>\
                 <div class="form-group">\
+                  <label for="inputSubKelasTerapi_'+num+'" class="col-sm-2 control-label labelSubKelasTerapi_1">Sub Kelas Terapi 1</label>\
+                  <div class="col-sm-10">\
+                    <select class="form-control inputSubKelasTerapi_1" id="inputSubKelasTerapi_'+num+'" name="id_sub_kelasterapi[]">';
+  var html3 =       '</select>\
+                  </div>\
+                </div>\
+                <div class="form-group">\
+                  <label for="inputSubKelasTerapi2_'+num+'" class="col-sm-2 control-label labelSubKelasTerapi2_1">Sub Kelas Terapi 2</label>\
+                  <div class="col-sm-10">\
+                    <select class="form-control inputSubKelasTerapi2_1" id="inputSubKelasTerapi2_'+num+'" name="id_sub_kelasterapi2[]">';
+  var html4 =       '</select>\
+                  </div>\
+                </div>\
+                <div class="form-group">\
+                  <label for="inputSubKelasTerapi3_'+num+'" class="col-sm-2 control-label labelSubKelasTerapi3_1">Sub Kelas Terapi 3</label>\
+                  <div class="col-sm-10">\
+                    <select class="form-control inputSubKelasTerapi3_1" id="inputSubKelasTerapi3_'+num+'" name="id_sub_kelasterapi3[]">';
+  var html5 =       '</select>\
+                  </div>\
+                </div>\
+                <div class="form-group">\
                   <label for="inputNamaObat'+num+'" class="col-sm-2 control-label labelNamaObat">Nama Obat</label>\
                   <div class="col-sm-10">\
                     <select class="form-control inputNamaObat" id="inputNamaObat'+num+'" name="id_atc_obat[]" onchange="CheckObat(this.value,'+num+')">';
-  var html3 =       '</select>\
+  var html6 =       '</select>\
                   </div>\
                 </div>\
                 <div class="form-group">\
                   <label for="inputSediaan'+num+'" class="col-sm-2 control-label labelSediaan">Sediaan</label>\
                   <div class="col-sm-10">\
                     <select class="form-control inputSediaan" id="inputSediaan'+num+'" name="id_sediaan[]" onchange="CheckSediaan(this.value,'+num+')">';
-  var html4 =      '</select>\
+  var html7 =      '</select>\
                   </div>\
                 </div>\
                 <div class="form-group">\
                   <label for="inputKekuatan'+num+'" class="col-sm-2 control-label labelKekuatan">Kekuatan</label>\
                   <div class="col-sm-10">\
                     <select class="form-control inputKekuatan" id="inputKekuatan'+num+'" name="id_kekuatan[]" onchange="CheckKekuatan(this.value,'+num+')">';
-  var html5 =       '</select>\
+  var html8 =       '</select>\
                   </div>\
                 </div>\
                 <div class="form-group">\
                   <label for="inputSatuan'+num+'" class="col-sm-2 control-label labelSatuan">Satuan</label>\
                   <div class="col-sm-10">\
                     <select class="form-control inputSatuan" id="inputSatuan'+num+'" name="id_satuan[]" onchange="CheckSatuan(this.value,'+num+')">';
-  var html6 =      '</select>\
+  var html9 =      '</select>\
                   </div>\
                 </div>\
                 <div class="form-group">\
@@ -212,7 +239,7 @@ function create_usulan_html(num){
                 </div>\
               </div><!-- /.box-body -->';
 
-  var final_html =html +kelas_terapi + html2 +obat + html3 +sediaan + html4 + kekuatan +html5+satuan+html6;
+  var final_html =html +kelas_terapi + html2 +sub_kelasterapi + html3 +sub_kelasterapi2 +html4 +sub_kelasterapi3 +html5 +obat + html6 +sediaan + html7 + kekuatan +html8+satuan+html9;
   return final_html;
 }
 
@@ -246,6 +273,9 @@ $(function () {
       // manipulate the name/id values of the input inside the new element
       // H2 - section
       $("#inputKelasTerapi"+ newNum ).select2();
+      $("#inputSubKelasTerapi_"+ newNum ).select2();
+      $("#inputSubKelasTerapi2_"+ newNum ).select2();
+      $("#inputSubKelasTerapi3_"+ newNum ).select2();
       $("#inputNamaObat"+ newNum ).select2();
       $("#inputSediaan"+ newNum ).select2();
       $("#inputKekuatan"+ newNum ).select2();
@@ -268,6 +298,9 @@ $(function () {
       // manipulate the name/id values of the input inside the new element
       // H2 - section
       $("#inputKelasTerapi"+ newNum ).select2();
+      $("#inputSubKelasTerapi_"+ newNum ).select2();
+      $("#inputSubKelasTerapi2_"+ newNum ).select2();
+      $("#inputSubKelasTerapi3_"+ newNum ).select2();
       $("#inputNamaObat"+ newNum ).select2();
       $("#inputSediaan"+ newNum ).select2();
       $("#inputKekuatan"+ newNum ).select2();

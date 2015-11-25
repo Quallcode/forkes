@@ -102,6 +102,24 @@ var no_fornas = '<?=$no_fornas?>';
         <?php } ?>
       </select>
 
+      <select class="form-control" id="idSelectSubTerapiHidden" style="display:none">
+        <?php foreach( $sub_kelasterapi as $key5) { ?>
+          <option value="<?=$key5['id_sub_kelasterapi']?>" ><?=$key5['Sub_Kelas_Terapi']?></option>
+        <?php } ?>
+      </select>
+
+      <select class="form-control" id="idSelectSubTerapi2Hidden" style="display:none">
+        <?php foreach( $sub_kelasterapi2 as $key5) { ?>
+          <option value="<?=$key5['id_sub_kelasterapi2']?>" ><?=$key5['Sub_Kelas_Terapi_2']?></option>
+        <?php } ?>
+      </select>
+
+      <select class="form-control" id="idSelectSubTerapi3Hidden" style="display:none">
+        <?php foreach( $sub_kelasterapi3 as $key5) { ?>
+          <option value="<?=$key5['id_sub_kelasterapi3']?>" ><?=$key5['Sub_Kelas_Terapi_3']?></option>
+        <?php } ?>
+      </select>
+
       <select class="form-control" id="idSelectObatHidden" style="display:none">
         <?php foreach( $obat as $key5) { ?>
           <option value="<?=$key5['id_atc_obat']?>" ><?=$key5['nama_obat']?>&nbsp;<?php if(!empty($key5['translate_nama_obat'])){?>(<sub><?=$key5['translate_nama_obat']?></sub>)<?php } ?></option>
@@ -143,6 +161,36 @@ var no_fornas = '<?=$no_fornas?>';
                       <select class="form-control inputKelasTerapi" id="inputKelasTerapi1" name="id_terapi[]">
                         <?php foreach( $terapi as $key) { ?>
                           <option value="<?=$key['id_terapi']?>" ><?=$key['Kelas_terapi']?></option>
+                        <?php } ?>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputSubKelasTerapi_1" class="col-sm-2 control-label labelSubKelasTerapi_1">Sub Kelas Terapi 1</label>
+                    <div class="col-sm-10">
+                      <select class="form-control inputSubKelasTerapi_1" id="inputSubKelasTerapi_1" name="inputSubKelasTerapi_1[]">
+                        <?php foreach( $sub_kelasterapi as $key) { ?>
+                          <option value="<?=$key['id_sub_kelasterapi']?>" ><?=$key['Sub_Kelas_Terapi']?></option>
+                        <?php } ?>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputSubKelasTerapi2_1" class="col-sm-2 control-label labelSubKelasTerapi2_1">Sub Kelas Terapi 2</label>
+                    <div class="col-sm-10">
+                      <select class="form-control inputSubKelasTerapi2_1" id="inputSubKelasTerapi2_1" name="inputSubKelasTerapi2_1[]">
+                        <?php foreach( $sub_kelasterapi2 as $key) { ?>
+                          <option value="<?=$key['id_sub_kelasterapi2']?>" ><?=$key['Sub_Kelas_Terapi_2']?></option>
+                        <?php } ?>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputSubKelasTerapi3_1" class="col-sm-2 control-label labelSubKelasTerapi3_1">Sub Kelas Terapi 3</label>
+                    <div class="col-sm-10">
+                      <select class="form-control inputSubKelasTerapi3_1" id="inputSubKelasTerapi3_1" name="inputSubKelasTerapi3_1[]">
+                        <?php foreach( $sub_kelasterapi3 as $key) { ?>
+                          <option value="<?=$key['id_sub_kelasterapi3']?>" ><?=$key['Sub_Kelas_Terapi_3']?></option>
                         <?php } ?>
                       </select>
                     </div>

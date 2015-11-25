@@ -228,5 +228,29 @@ class Model_Get_Usulan extends CI_Model {
     //print_r($result->result_array()); exit;
     return $result->result_array();
   }
+
+  function Select_Data_Subterapi(){
+
+    $query = "select * from sub_kelasterapi where deleted = '0' group by Sub_Kelas_Terapi";
+    $result = $this->db->query($query);
+    //print_r($result->result_array()); exit;
+    return $result->result_array();
+  }
+
+  function Select_Data_Subterapi2(){
+
+    $query = "select * from sub_kelasterapi2 where deleted = '0' group by Sub_Kelas_Terapi_2";
+    $result = $this->db->query($query);
+    //print_r($result->result_array()); exit;
+    return $result->result_array();
+  }
+
+  function Select_Data_Subterapi3(){
+
+    $query = "select * from sub_kelasterapi3 where deleted = '0' group by Sub_Kelas_Terapi_3";
+    $result = $this->db->query($query);
+    //print_r($result->result_array()); exit;
+    return $result->result_array();
+  }
 }
 ?>

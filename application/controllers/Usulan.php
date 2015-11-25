@@ -144,6 +144,7 @@ class Usulan extends CI_Controller {
         echo ('<script type="text/javascript">alert("Anda harus memasukkan file data usulan obat dan surat pengantar");window.location.assign("'.base_url().'Usulan/Insert");</script>');
         exit;
       }
+      //print_r($this->session->userdata('nomor_efornas')); exit;
       $data_usulan = array(
         'nomor_efornas'      => $post['nomor_efornas'],
         'id_faskes'          => $sess['id_faskes'],
@@ -162,6 +163,9 @@ class Usulan extends CI_Controller {
         $data_detail_usulan = array(
           'nomor_efornas' => $post['nomor_efornas'],
           'id_terapi'     => $post['id_terapi'][$i],
+          'id_sub_kelasterapi'     => $post['id_sub_kelasterapi'][$i],
+          'id_sub_kelasterapi2'     => $post['id_sub_kelasterapi2'][$i],
+          'id_sub_kelasterapi3'     => $post['id_sub_kelasterapi3'][$i],
           'id_atc_obat'   => $post['id_atc_obat'][$i],
           'id_sediaan'    => $post['id_sediaan'][$i],
           'id_kekuatan'   => $post['id_kekuatan'][$i],
@@ -183,6 +187,7 @@ class Usulan extends CI_Controller {
   }
 
   public function Add_Usulan_By_Admin(){
+    //print_r($this->session->userdata('nomor_efornas')); exit;
     $post = $this->input->post();
     //print_r($post);exit;
     $sess = $this->session->userdata('user_data');
@@ -217,6 +222,9 @@ class Usulan extends CI_Controller {
         $data_detail_usulan = array(
           'nomor_efornas' => $post['nomor_efornas'],
           'id_terapi'     => $post['id_terapi'][$i],
+          'id_sub_kelasterapi'     => $post['id_sub_kelasterapi'][$i],
+          'id_sub_kelasterapi2'     => $post['id_sub_kelasterapi2'][$i],
+          'id_sub_kelasterapi3'     => $post['id_sub_kelasterapi3'][$i],
           'id_atc_obat'   => $post['id_atc_obat'][$i],
           'id_sediaan'    => $post['id_sediaan'][$i],
           'id_kekuatan'   => $post['id_kekuatan'][$i],
@@ -499,6 +507,9 @@ class Usulan extends CI_Controller {
     //print_r($no_fornas);exit;
     $view_data['nousulan'] = NOUSULAN;
     $rumah_sakit = $this->Model_Get_Usulan->Normal_Select('rumah_sakit');
+    $sub_kelasterapi = $this->Model_Get_Usulan -> Select_Data_Subterapi();
+    $sub_kelasterapi2 = $this->Model_Get_Usulan -> Select_Data_Subterapi2();
+    $sub_kelasterapi3 = $this->Model_Get_Usulan -> Select_Data_Subterapi3();
     $obat        = $this->Model_Get_Usulan->Normal_Select('atc_obat');
     $sediaan     = $this->Model_Get_Usulan->Normal_Select('sediaan');
     $satuan      = $this->Model_Get_Usulan->Normal_Select('satuan');
@@ -508,6 +519,9 @@ class Usulan extends CI_Controller {
     $no_fornas   = $no_fornas['no'];
     //print_r($rumah_sakit);exit;
     $view_data['rumah_sakit'] = $rumah_sakit;
+    $view_data['sub_kelasterapi'] = $sub_kelasterapi;
+    $view_data['sub_kelasterapi2'] = $sub_kelasterapi2;
+    $view_data['sub_kelasterapi3'] = $sub_kelasterapi3;
     $view_data['obat'] = $obat;
     $view_data['sediaan'] = $sediaan;
     $view_data['satuan'] = $satuan;
