@@ -264,9 +264,66 @@ class Model_Get_Usulan extends CI_Model {
     return $result->result_array();
   }
 
-  function Select_Data_Subterapi2_Query($id_terapi,$id_subterapi){
+  function Select_Data_Subterapi2_Query($id_subterapi){
 
-    $query = "select * from sub_kelasterapi2 where id_terapi='".$id_terapi."' and id_sub_kelasterapi='".$id_subterapi."' and deleted = '0' group by Sub_Kelas_Terapi_2";
+    $query = "select * from sub_kelasterapi2 where id_sub_kelasterapi='".$id_subterapi."' and deleted = '0' group by Sub_Kelas_Terapi_2";
+    $result = $this->db->query($query);
+    $i = 0;
+    if ($result->num_rows() > 0) {
+      foreach($result->result_array() as $row){
+        $data[$i] = $row;
+        $i++;
+      }
+      return $data;
+    }
+    else{
+      return FALSE;
+    }
+    //print_r($result->result_array()); exit;
+    //return $result->result_array();
+  }
+
+  function Select_Data_Subterapi3_Query($id_subterapi2){
+
+    $query = "select * from sub_kelasterapi3 where id_sub_kelasterapi2='".$id_subterapi2."' and deleted = '0' group by Sub_Kelas_Terapi_3";
+    $result = $this->db->query($query);
+    $i = 0;
+    if ($result->num_rows() > 0) {
+      foreach($result->result_array() as $row){
+        $data[$i] = $row;
+        $i++;
+      }
+      return $data;
+    }
+    else{
+      return FALSE;
+    }
+    //print_r($result->result_array()); exit;
+    //return $result->result_array();
+  }
+
+  function Select_Data_Obat_Umum(){
+
+    $query = "select * from atc_obat where LENGTH(id_atc_obat) = 7 and deleted = '0'";
+    $result = $this->db->query($query);
+    $i = 0;
+    if ($result->num_rows() > 0) {
+      foreach($result->result_array() as $row){
+        $data[$i] = $row;
+        $i++;
+      }
+      return $data;
+    }
+    else{
+      return FALSE;
+    }
+    //print_r($result->result_array()); exit;
+    //return $result->result_array();
+  }
+
+  function Select_Data_Obat_Kombinasi(){
+
+    $query = "select * from obat_combinasi where deleted = '0'";
     $result = $this->db->query($query);
     $i = 0;
     if ($result->num_rows() > 0) {

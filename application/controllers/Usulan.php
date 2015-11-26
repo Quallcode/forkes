@@ -10,6 +10,7 @@ class Usulan extends CI_Controller {
     $this->load->model('Model_Get_Usulan');
     $this->load->model('Model_Get_Combinasi');
     $this->load->model('Model_Get_Users');
+    $this->load->model('Model_Get_Typeobat');
     date_default_timezone_set('Asia/Jakarta');
     //CHECK SESSION
     $sess = $this->session->userdata('user_data');
@@ -197,7 +198,7 @@ class Usulan extends CI_Controller {
         echo '<script type="text/javascript">alert("Nomor efornas '.$post['nomor_efornas'].' telah terdaftar. Silahkan mencoba beberapa saat lagi"); window.location.assign("'.base_url().'Usulan");</script>';
       }
       if(!isset($post['UploadFile'][0]) || !isset($post['UploadFile'][1]) ){
-        echo ('<script type="text/javascript">alert("Anda harus memasukkan file data usulan obat dan surat pengantar");window.location.assign("'.base_url().'Usulan/Insert");</script>');
+        echo ('<script type="text/javascript">alert("Anda harus memasukkan file data usulan obat dan surat pengantar");window.location.assign("'.base_url().'Usulan/Insert_Obat_Baru");</script>');
         exit;
       }
 
@@ -219,13 +220,20 @@ class Usulan extends CI_Controller {
       $this->Model_Transaction->Insert_To_Db($data_usulan,'usulan');
       $counted = count($post['id_atc_obat']);
       for($i = 0; $i <$counted; $i++){
+        if(empty($post['id_atc_obat'][$i])){
+          $id_obat = $post['id_obat_combinasi'][$i];
+        }
+        else {
+          $id_obat = $post['id_atc_obat'][$i];
+        }
         $data_detail_usulan = array(
           'nomor_efornas' => $post['nomor_efornas'],
+          'type_obat'     => $post['type_obat'][$i],
           'id_terapi'     => $post['id_terapi'][$i],
-          'id_sub_kelasterapi'     => $post['id_sub_kelasterapi'][$i],
-          'id_sub_kelasterapi2'     => $post['id_sub_kelasterapi2'][$i],
-          'id_sub_kelasterapi3'     => $post['id_sub_kelasterapi3'][$i],
-          'id_atc_obat'   => $post['id_atc_obat'][$i],
+          'id_sub_kelasterapi'     => $post['inputSubKelasTerapi_1'][$i],
+          'id_sub_kelasterapi2'     => $post['inputSubKelasTerapi2_1'][$i],
+          'id_sub_kelasterapi3'     => $post['inputSubKelasTerapi3_1'][$i],
+          'id_atc_obat'   => $id_obat,
           'id_sediaan'    => $post['id_sediaan'][$i],
           'id_kekuatan'   => $post['id_kekuatan'][$i],
           'id_satuan'     => $post['id_satuan'][$i],
@@ -507,6 +515,7 @@ class Usulan extends CI_Controller {
     $no_fornas = $this->session->userdata('nomor_efornas');
     //print_r($no_fornas);exit;
     $view_data['nousulan'] = NOUSULAN;
+    $type_obat = $this->Model_Get_Typeobat->Normal_Select('typeobat');
     $rumah_sakit = $this->Model_Get_Usulan->Normal_Select('rumah_sakit');
     $sub_kelasterapi = $this->Model_Get_Usulan -> Select_Data_Subterapi();
     $sub_kelasterapi2 = $this->Model_Get_Usulan -> Select_Data_Subterapi2();
@@ -519,6 +528,7 @@ class Usulan extends CI_Controller {
     $basefolder  = $sess['id_provinsi'].$sess['id_kabkota'].$sess['id_faskes'];
     $no_fornas   = $no_fornas['no'];
     //print_r($rumah_sakit);exit;
+    $view_data['type_obat'] = $type_obat;
     $view_data['rumah_sakit'] = $rumah_sakit;
     $view_data['sub_kelasterapi'] = $sub_kelasterapi;
     $view_data['sub_kelasterapi2'] = $sub_kelasterapi2;
@@ -593,16 +603,57 @@ class Usulan extends CI_Controller {
     }
   }
   public function Get_Sub_Kelasterapi2(){
-    $id_terapi = $this->input->get('id_terapi');
     $id_subterapi = $this->input->get('id_subterapi');
 
     //print_r($id); exit;
     if(!empty($id_subterapi)){
-      $sub_terapi2 = $this->Model_Get_Usulan->Select_Data_Subterapi2_Query($id_terapi,$id_subterapi);
+      $sub_terapi2 = $this->Model_Get_Usulan->Select_Data_Subterapi2_Query($id_subterapi);
       if(empty($sub_terapi2)){
         echo json_encode(array('status'=>'01','msg'=>'error sub terapi untuk kelas terapi ini kosong'));
       }else{
         echo json_encode(array('status'=>'00','msg'=>$sub_terapi2));
+      }
+    }else{
+      echo json_encode(array('status'=>'01','msg'=>'error post kosong'));
+    }
+  }
+  public function Get_Sub_Kelasterapi3(){
+    $id_subterapi2 = $this->input->get('id_subterapi2');
+
+    //print_r($id); exit;
+    if(!empty($id_subterapi2)){
+      $sub_terapi3 = $this->Model_Get_Usulan->Select_Data_Subterapi3_Query($id_subterapi2);
+      if(empty($sub_terapi2)){
+        echo json_encode(array('status'=>'01','msg'=>'error sub terapi untuk kelas terapi ini kosong'));
+      }else{
+        echo json_encode(array('status'=>'00','msg'=>$sub_terapi3));
+      }
+    }else{
+      echo json_encode(array('status'=>'01','msg'=>'error post kosong'));
+    }
+  }
+  public function Get_Data_Obat(){
+    $typeobat = $this->input->get('type_obat');
+
+    //print_r($id); exit;
+    if(!empty($typeobat)){
+      if($typeobat == '1')
+      {
+        $data_obat = $this->Model_Get_Usulan->Select_Data_Obat_Umum();
+        if(empty($data_obat)){
+          echo json_encode(array('status'=>'01','msg'=>'error atc obat kosong'));
+        }
+        else {
+          echo json_encode(array('status'=>'00','msg'=>$data_obat));
+        }
+      }else {
+        $data_obat = $this->Model_Get_Usulan->Select_Data_Obat_Kombinasi();
+        if(empty($data_obat)){
+          echo json_encode(array('status'=>'01','msg'=>'error atc obat kosong'));
+        }
+        else {
+          echo json_encode(array('status'=>'10','msg'=>$data_obat));
+        }
       }
     }else{
       echo json_encode(array('status'=>'01','msg'=>'error post kosong'));

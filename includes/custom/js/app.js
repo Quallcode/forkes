@@ -9,6 +9,7 @@ function Autocomplete(){
     });
     $("#inputFaskes1").select2();
     $("#inputNamaObat1").select2();
+    $("#inputNamaObat").select2();
     $("#inputSediaan1").select2();
     $("#inputKekuatan1").select2();
     $("#inputSatuan1").select2();
@@ -210,19 +211,18 @@ function get_id_kelasterapi(){
 }
 
 function get_id_subkelasterapi(){
-  var kelasterapi = $('.inputKelasTerapi').find('option:selected').val();
   var subkelasterapi = $('.inputSubKelasTerapi_1').find('option:selected').val();
   var html = '';
   $.ajax({
     type: "GET",
     dataType: "json",
-    url: base_url+"Usulan/Get_Sub_Kelasterapi2?id_terapi="+kelasterapi+"&id_subterapi="+subkelasterapi,
+    url: base_url+"Usulan/Get_Sub_Kelasterapi2?id_subterapi="+subkelasterapi,
     //Relative or absolute path to response.php file
     success: function(data) {
       //alert(data.status);
       if(data.status == '00'){
-        $('.inputSubKelasTerapi_1').html('');
-        alert(data.msg);
+        $('.inputSubKelasTerapi2_1').html('');
+        //alert(data.msg);
         for(var i = 0; i <data.msg.length; i++){
            html += '<option value="'+data.msg[i]['id_sub_kelasterapi2']+'">'+data.msg[i]['Sub_Kelas_Terapi_2']+'</option>';
         }
@@ -241,8 +241,81 @@ function get_id_subkelasterapi(){
   });
 }
 
+function get_id_subkelasterapi2(){
+  var subkelasterapi2 = $('.inputSubKelasTerapi2_1').find('option:selected').val();
+  //alert(subkelasterapi2);
+  var html = '';
+  $.ajax({
+    type: "GET",
+    dataType: "json",
+    url: base_url+"Usulan/Get_Sub_Kelasterapi3?id_subterapi2="+subkelasterapi2,
+    //Relative or absolute path to response.php file
+    success: function(data) {
+      //alert(data.status);
+      if(data.status == '00'){
+        $('.inputSubKelasTerapi3_1').html('');
+        alert(data.msg);
+        for(var i = 0; i <data.msg.length; i++){
+           html += '<option value="'+data.msg[i]['id_sub_kelasterapi3']+'">'+data.msg[i]['Sub_Kelas_Terapi_3']+'</option>';
+        }
+        $('.inputSubKelasTerapi3_1').append(html);
+        $('.inputSubKelasTerapi3_1').select2();
+      }
+      else{
+        $('.inputSubKelasTerapi3_1').html('');
+        for(var i = 0; i <data.msg.length; i++){
+           html += '<option value=""></option>';
+        }
+        $('.inputSubKelasTerapi3_1').append(html);
+        $('.inputSubKelasTerapi3_1').select2();
+      }
+    }
+  });
+}
+
+function get_type_obat(){
+  var typeobat = $('.inputTypeObat').find('option:selected').val();
+  //alert(typeobat); exit;
+  var html = '';
+  $.ajax({
+    type: "GET",
+    dataType: "json",
+    url: base_url+"Usulan/Get_Data_Obat?type_obat="+typeobat,
+    //Relative or absolute path to response.php file
+    success: function(data) {
+      //alert(data.status);
+      if(data.status == '00'){
+        $('.inputNamaObat').html('');
+        //alert(data.msg);
+        for(var i = 0; i <data.msg.length; i++){
+           html += '<option value="'+data.msg[i]['id_atc_obat']+'">'+data.msg[i]['nama_obat']+'</option>';
+        }
+        $('.inputNamaObat').append(html);
+        $('.inputNamaObat').select2();
+      }else if(data.status == '10'){
+        $('.inputNamaObat').html('');
+        //alert(data.msg);
+        for(var i = 0; i <data.msg.length; i++){
+           html += '<option value="'+data.msg[i]['id_obat_combinasi']+'">'+data.msg[i]['nama_obat_combinasi']+'</option>';
+        }
+        $('.inputNamaObat').append(html);
+        $('.inputNamaObat').select2();
+      }
+      else{
+        $('.inputNamaObat').html('');
+        for(var i = 0; i <data.msg.length; i++){
+           html += '<option value=""></option>';
+        }
+        $('.inputNamaObat').append(html);
+        $('.inputNamaObat').select2();
+      }
+    }
+  });
+}
+
 
 function create_usulan_html(num){
+  var typeobat = $('#idSelectTypeObatHidden').html();
   var kelas_terapi = $('#idSelectTerapiHidden').html();
   var sub_kelasterapi = $('#idSelectSubTerapiHidden').html();
   var sub_kelasterapi2 = $('#idSelectSubTerapi2Hidden').html();
@@ -255,59 +328,66 @@ function create_usulan_html(num){
   var html = '<div class="box-body clonedInput" id="entry'+num+'">\
                 <h2 class="heading-reference">Entry #'+num+'</h2>\
                 <div class="form-group">\
+                  <label for="inputTypeObat'+num+'" class="col-sm-2 control-label labelTypeObat">Type Obat</label>\
+                  <div class="col-sm-10">\
+                    <select class="form-control inputTypeObat" id="inputTypeObat'+num+'" name="type_obat" onchange="get_type_obat()">';
+  var html2 =       '</select>\
+                  </div>\
+                </div>\
+                <div class="form-group">\
                   <label for="inputKelasTerapi'+num+'" class="col-sm-2 control-label labelKelasTerapi">Kelas Terapi</label>\
                   <div class="col-sm-10">\
-                    <select class="form-control inputKelasTerapi" id="inputKelasTerapi'+num+'" name="id_terapi[]">';
-  var html2 =       '</select>\
+                    <select class="form-control inputKelasTerapi" id="inputKelasTerapi'+num+'" name="id_terapi[]" onchange="get_id_kelasterapi()">';
+  var html3 =       '</select>\
                   </div>\
                 </div>\
                 <div class="form-group">\
                   <label for="inputSubKelasTerapi_'+num+'" class="col-sm-2 control-label labelSubKelasTerapi_1">Sub Kelas Terapi 1</label>\
                   <div class="col-sm-10">\
-                    <select class="form-control inputSubKelasTerapi_1" id="inputSubKelasTerapi_'+num+'" name="id_sub_kelasterapi[]">';
-  var html3 =       '</select>\
+                    <select class="form-control inputSubKelasTerapi_1" id="inputSubKelasTerapi_'+num+'" name="id_sub_kelasterapi[]" onchange="get_id_subkelasterapi()">';
+  var html4 =       '</select>\
                   </div>\
                 </div>\
                 <div class="form-group">\
                   <label for="inputSubKelasTerapi2_'+num+'" class="col-sm-2 control-label labelSubKelasTerapi2_1">Sub Kelas Terapi 2</label>\
                   <div class="col-sm-10">\
-                    <select class="form-control inputSubKelasTerapi2_1" id="inputSubKelasTerapi2_'+num+'" name="id_sub_kelasterapi2[]">';
-  var html4 =       '</select>\
+                    <select class="form-control inputSubKelasTerapi2_1" id="inputSubKelasTerapi2_'+num+'" name="id_sub_kelasterapi2[]" onchange="get_id_subkelasterapi2()">';
+  var html5 =       '</select>\
                   </div>\
                 </div>\
                 <div class="form-group">\
                   <label for="inputSubKelasTerapi3_'+num+'" class="col-sm-2 control-label labelSubKelasTerapi3_1">Sub Kelas Terapi 3</label>\
                   <div class="col-sm-10">\
                     <select class="form-control inputSubKelasTerapi3_1" id="inputSubKelasTerapi3_'+num+'" name="id_sub_kelasterapi3[]">';
-  var html5 =       '</select>\
+  var html6 =       '</select>\
                   </div>\
                 </div>\
                 <div class="form-group">\
                   <label for="inputNamaObat'+num+'" class="col-sm-2 control-label labelNamaObat">Nama Obat</label>\
                   <div class="col-sm-10">\
                     <select class="form-control inputNamaObat" id="inputNamaObat'+num+'" name="id_atc_obat[]" onchange="CheckObat(this.value,'+num+')">';
-  var html6 =       '</select>\
+  var html7 =       '</select>\
                   </div>\
                 </div>\
                 <div class="form-group">\
                   <label for="inputSediaan'+num+'" class="col-sm-2 control-label labelSediaan">Sediaan</label>\
                   <div class="col-sm-10">\
                     <select class="form-control inputSediaan" id="inputSediaan'+num+'" name="id_sediaan[]" onchange="CheckSediaan(this.value,'+num+')">';
-  var html7 =      '</select>\
+  var html8 =      '</select>\
                   </div>\
                 </div>\
                 <div class="form-group">\
                   <label for="inputKekuatan'+num+'" class="col-sm-2 control-label labelKekuatan">Kekuatan</label>\
                   <div class="col-sm-10">\
                     <select class="form-control inputKekuatan" id="inputKekuatan'+num+'" name="id_kekuatan[]" onchange="CheckKekuatan(this.value,'+num+')">';
-  var html8 =       '</select>\
+  var html9 =       '</select>\
                   </div>\
                 </div>\
                 <div class="form-group">\
                   <label for="inputSatuan'+num+'" class="col-sm-2 control-label labelSatuan">Satuan</label>\
                   <div class="col-sm-10">\
                     <select class="form-control inputSatuan" id="inputSatuan'+num+'" name="id_satuan[]" onchange="CheckSatuan(this.value,'+num+')">';
-  var html9 =      '</select>\
+  var html10 =      '</select>\
                   </div>\
                 </div>\
                 <div class="form-group">\
@@ -356,8 +436,8 @@ function create_usulan_html(num){
                   </div>\
                 </div>\
               </div><!-- /.box-body -->';
-
-  var final_html =html +kelas_terapi + html2 +sub_kelasterapi + html3 +sub_kelasterapi2 +html4 +sub_kelasterapi3 +html5 +obat + html6 +sediaan + html7 + kekuatan +html8+satuan+html9;
+  var final_html =html +typeobat + html2 +kelas_terapi + html3 +sub_kelasterapi + html4 +sub_kelasterapi2 +html5 +sub_kelasterapi3 +html6 +obat + html7 +sediaan + html8 + kekuatan +html9+satuan+html10;
+  //alert(final_html);
   return final_html;
 }
 
@@ -390,6 +470,7 @@ $(function () {
       // create the new element via clone(), and manipulate it's ID using newNum value
       // manipulate the name/id values of the input inside the new element
       // H2 - section
+      $("#inputTypeObat"+ newNum ).select2();
       $("#inputKelasTerapi"+ newNum ).select2();
       $("#inputSubKelasTerapi_"+ newNum ).select2();
       $("#inputSubKelasTerapi2_"+ newNum ).select2();
@@ -415,6 +496,7 @@ $(function () {
       // create the new element via clone(), and manipulate it's ID using newNum value
       // manipulate the name/id values of the input inside the new element
       // H2 - section
+      $("#inputTypeObat"+ newNum ).select2();
       $("#inputKelasTerapi"+ newNum ).select2();
       $("#inputSubKelasTerapi_"+ newNum ).select2();
       $("#inputSubKelasTerapi2_"+ newNum ).select2();

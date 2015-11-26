@@ -96,6 +96,12 @@ var no_fornas = '<?=$no_fornas?>';
         </div><!-- /.col -->
       </div>   <!-- /.row -->
 
+      <select class="form-control" id="idSelectTypeObatHidden" style="display:none" onchange="get_type_obat()">
+        <?php foreach( $type_obat as $key5) { ?>
+          <option value="<?=$key5['id_typeobat']?>" ><?=$key5['nama_typeobat']?></option>
+        <?php } ?>
+      </select>
+
       <select class="form-control" id="idSelectTerapiHidden" style="display:none" onchange="get_id_kelasterapi()">
         <?php foreach( $terapi as $key5) { ?>
           <option value="<?=$key5['id_terapi']?>" ><?=$key5['Kelas_terapi']?></option>
@@ -108,7 +114,7 @@ var no_fornas = '<?=$no_fornas?>';
         <?php } ?>
       </select>
 
-      <select class="form-control" id="idSelectSubTerapi2Hidden" style="display:none">
+      <select class="form-control" id="idSelectSubTerapi2Hidden" style="display:none" onchange="get_id_subkelasterapi2()">
         <?php foreach( $sub_kelasterapi2 as $key5) { ?>
           <option value="<?=$key5['id_sub_kelasterapi2']?>" ><?=$key5['Sub_Kelas_Terapi_2']?></option>
         <?php } ?>
@@ -156,11 +162,11 @@ var no_fornas = '<?=$no_fornas?>';
                   <h2  class="heading-reference">Entry #1</h2>
                   <!-- select -->
                   <div class="form-group">
-                    <label for="inputFlagTypeObat" class="col-sm-2 control-label labelFlagTypeObat">Type Obat</label>
+                    <label for="inputTypeObat" class="col-sm-2 control-label labelTypeObat">Type Obat</label>
                     <div class="col-sm-10">
-                      <select class="form-control inputFlagTypeObat" id="inputFlagTypeObat" name="FlagType[]" onchange="get_type_obat()">
-                        <?php foreach( $terapi as $key) { ?>
-                          <option value="<?=$key['id_terapi']?>" ><?=$key['Kelas_terapi']?></option>
+                      <select class="form-control inputTypeObat" id="inputTypeObat1" name="type_obat[]" onchange="get_type_obat()">
+                        <?php foreach( $type_obat as $key) { ?>
+                          <option value="<?=$key['id_typeobat']?>" ><?=$key['nama_typeobat']?></option>
                         <?php } ?>
                       </select>
                     </div>
@@ -188,7 +194,7 @@ var no_fornas = '<?=$no_fornas?>';
                   <div class="form-group">
                     <label for="inputSubKelasTerapi2_1" class="col-sm-2 control-label labelSubKelasTerapi2_1">Sub Kelas Terapi 2</label>
                     <div class="col-sm-10">
-                      <select class="form-control inputSubKelasTerapi2_1" id="inputSubKelasTerapi2_1" name="inputSubKelasTerapi2_1[]">
+                      <select class="form-control inputSubKelasTerapi2_1" id="inputSubKelasTerapi2_1" name="inputSubKelasTerapi2_1[]" onchange="get_id_subkelasterapi2()">
                         <?php foreach( $sub_kelasterapi2 as $key) { ?>
                           <option value="<?=$key['id_sub_kelasterapi2']?>" ><?=$key['Sub_Kelas_Terapi_2']?></option>
                         <?php } ?>
