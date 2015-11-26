@@ -156,6 +156,16 @@ var no_fornas = '<?=$no_fornas?>';
                   <h2  class="heading-reference">Entry #1</h2>
                   <!-- select -->
                   <div class="form-group">
+                    <label for="inputFlagTypeObat" class="col-sm-2 control-label labelFlagTypeObat">Type Obat</label>
+                    <div class="col-sm-10">
+                      <select class="form-control inputFlagTypeObat" id="inputFlagTypeObat" name="FlagType[]" onchange="get_type_obat()">
+                        <?php foreach( $terapi as $key) { ?>
+                          <option value="<?=$key['id_terapi']?>" ><?=$key['Kelas_terapi']?></option>
+                        <?php } ?>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group">
                     <label for="inputKelasTerapi" class="col-sm-2 control-label labelKelasTerapi">Kelas Terapi</label>
                     <div class="col-sm-10">
                       <select class="form-control inputKelasTerapi" id="inputKelasTerapi1" name="id_terapi[]" onchange="get_id_kelasterapi()">
