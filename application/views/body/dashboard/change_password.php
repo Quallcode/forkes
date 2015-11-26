@@ -14,7 +14,7 @@
         <div class="box box-primary">
         <!-- /.box-header -->
           <!-- form start -->
-          <form role="form" action="<?=base_url()?>Dashboard/Change_password" method="post" enctype="multipart/form-data" onSubmit="return valregister()">
+          <form role="form" action="<?=base_url()?>Dashboard/Change_password/<?=$udata['id']?>" method="post" enctype="multipart/form-data" onSubmit="return valregister()">
             <div class="box-body">
               <div class="form-group">
                 <label for="inputpassword">Old Password</label>
@@ -26,7 +26,7 @@
               </div>
               <div class="form-group">
                 <label for="inputpassword">Confirm Password</label>
-                <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm Password">
+                <input type="password" class="form-control" id="confirm_password" placeholder="Confirm Password">
               </div>
             </div><!-- /.box-body -->
 
@@ -45,22 +45,13 @@
         var pass2 = document.getElementById("new_password").value;
 		var pass3 = document.getElementById("confirm_password").value;
 		
-		if (pass1 != pass2) {
+		if (pass2 != pass3) {
 			alert("Password And Confirm Password Not Match");
 			document.getElementById("confirm_password").style.borderColor = "#E34234";
 			return false;
 		}else{
 			document.getElementById("confirm_password").style.borderColor = "";
-		}
-		
-		if (pass3 != pass4) {
-			alert("Password And Confirm Password Not Match");
-			document.getElementById("confirm_password_praktek").style.borderColor = "#E34234";
-			return false;
-		}else{
-			document.getElementById("confirm_password").style.borderColor = "";
-		}
-		
+		}		
         return true;
     }
 	</script>

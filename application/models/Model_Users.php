@@ -52,14 +52,27 @@ class Model_Users extends CI_Model {
 		$this->db->from('users');
 		$this->db->where('users.username = ',$post['username']);
 		$this->db->where('users.password =',md5($post['password']));
-		$this->db->where('users.flag = ',$post['flag']);
-
 		$result = $this->db->get();
 		if ($result->num_rows() == 1) {
-			return FALSE;
-		}
-		else{
-			return TRUE;
+			foreach($result->result_array() as $row){
+				$data = $row;
+			}
+			if($data['type'] == '3'){
+				return TRUE;
+			}else{
+				$this->db->select('*');
+				$this->db->from('users');
+				$this->db->where('users.username = ',$post['username']);
+				$this->db->where('users.password =',md5($post['password']));
+				$this->db->where('users.flag = ',$post['flag']);
+				$result = $this->db->get();
+				if ($result->num_rows() == 1) {
+					return FALSE;
+				}
+				else{
+					return TRUE;
+				}
+			}
 		}
 	}
 }

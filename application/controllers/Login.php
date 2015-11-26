@@ -32,7 +32,6 @@ class Login extends CI_Controller {
     }else{
       //CHECK POST TO DATABASE
       $check_login_status = $this->Model_Users->Check_Login_Status($post);
-      //print_r($check_login_status); exit;
       if($check_login_status == '1') {
         $data = $this->Model_Users->Check_Login_Valid($post);
     	  $data_input= array(

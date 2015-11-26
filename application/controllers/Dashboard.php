@@ -7,7 +7,8 @@ class Dashboard extends CI_Controller {
     parent::__construct();
     //CALL MODEL
     $this->load->model('Model_Users');
-	  $this->load->model('Model_Dashboard');
+	$this->load->model('Model_Dashboard');
+	$this->load->model('Model_Transaction');
     //CHECK SESSION LOGIN
     $session = $this->session->userdata('user_data');
     if(empty($session)) {
@@ -29,11 +30,26 @@ class Dashboard extends CI_Controller {
 	}
 	
 	public function Change_password(){
-		if(){
+		$uri = $this->uri->segment(3);
+		$udata = $this->session->userdata('user_data');
+		$password = $udata['password'];
+		if(empty($uri)){
 			$view_data['body']   = 'body/dashboard/change_password';
 			$this->load->view('wrapper',$view_data);
 		}else{
-			
+			$post = $this->input->post();
+			$old_password = md5($post['old_password']);
+			if($password == $old_password){
+				$new_password = md5($post['new_password']);
+				$data = array(
+					'password' => $new_password
+				);
+				//print_r($data);exit;
+				$this->Model_Transaction->Update_To_Db($data,'users','id',$uri);
+				echo '<script>alert("Berhasil Mengganti Password"); window.location.assign("'.base_url().'Dashboard");</script>';
+			}else{
+				echo '<script>alert("Old Password yang Anda masukan salah"); window.location.assign("'.base_url().'Dashboard/Change_password");</script>';
+			}
 		}
 	}
 }
