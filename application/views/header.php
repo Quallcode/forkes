@@ -320,6 +320,14 @@
       </li>
       <?php } ?>
       <?php } ?>
+      
+      <li class="<?php if(!empty($msbc)&&$msbc == 'news'){?>active<?php }?>">
+        <a><i class="fa fa-file-text"></i> BERITA</a>
+        <ul class="treeview-menu">
+          <li><a href="<?= base_url()?>News"><i class="fa  fa-list "></i> DAFTAR BERITA</a></li>
+          <li><a href="<?= base_url()?>News/Insert"><i class="fa fa-plus-square"></i> TAMBAH BERITA</a></li>
+        </ul>
+      </li>
     </ul>
   </section>
   <!-- /.sidebar -->
